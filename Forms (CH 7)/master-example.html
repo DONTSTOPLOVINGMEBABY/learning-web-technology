@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Forms</title>
+    </head>
+    <body>
+        <fieldset>
+        <legend>Your Details:</legend>
+            <form action="http://www.sendtohenry.com/fireoff.php">
+                <label for="name">Name:</label>
+                <input type="text" name="name"></p>
+                <label for="email">Email:</label>
+                <input type="email" name="email">
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>Your Review:</legend>
+            <form action="http://www.thesecondfieldset.com/onetwo.php">
+                <p>How did you hear about us?
+                    <select name="referrer" id="hear-about">
+                        <option value="Google">Google</option>
+                        <option value="Firefox">Firefox</option>
+                        <option value="Bing">Bing</option></p>
+                    </select>
+                <p>Would you visit again?</p>
+                <label>
+                <input type="radio" name="visitagain" value="yes"> Yes</label>
+                <label> 
+                <input type="radio" name="visitagain" value="no"> No</label>
+                <label>
+                <input type="radio" name="visitagain" value="maybe"> Maybe</label>
+                <p>Comments:</p>
+                <textarea name="comments" cols="20" rows="4">Enter your comments chap</textarea>
+                <br />
+                <label>
+                <input type="checkbox" name="sign-up-for-updates" value="yes">
+                Sign me up for updates</label>
+                <br />
+                <input type="submit" value="Submit review">
+                </form>
+        </fieldset>
