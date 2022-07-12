@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Selectors</title>
+        <style type="text/css">
+            h1 {
+                font-family: Times New Roman;
+                color: cornflowerblue;
+            }
+
+            li>a {
+
+                font-family: Helvetica;
+                color: purple;
+            }
+
+            .note {
+
+                font-family: Cambria;
+                color: red;
+            }
+
+            a {
+                font-family: Georgia;
+                color: yellow;
+            }
+
+
+            h1+p { 
+
+                font-family: Calibri;
+                color: orange;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1 id="top">Kitchen Garden Calendar</h1>
+        <p id="introduction">Here you can read our handy guide about what to do when.</p>
+        <h2>Spring</h2>
+        <ul>
+            <li><a href="mulch.html">Spring mulch vegetable beds</a></li>
+            <li><a href="potato.html">Plant out early potatoes</a></li>
+            <li><a href="tomato.html">Sow tomato seeds</a></li>
+            <li><a href="beet.html">Sow beet seeds</a></li>
+            <li><a href="zucchini.html">Sow zucchini seeds</a></li>
+            <li><a href="rhubarb.html">Deadhead rubharb flowers</a></li>
+        </ul>
+        <p class="note">
+            This page was written by
+            <a href="mailto:ivy@example.org">ivy@example.org</a>.
+        </p>
+        <p>
+            <a href="#top">Top of page</a>
+        </p>
+        <h1>We have another big title for you out here</h1>
+        <p>Here is some more text, following a big title, that should be written in Calibri font, and in the color orange. I hope it's still easy to read with all these crazy colors!</p>
+        <p>This one is not the same color but is also listed under the h1 element above!</p>
+    </body>
+</html>
