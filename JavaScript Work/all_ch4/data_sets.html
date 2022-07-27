@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Javascript Template</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+        let list_of_numbers = [2, 3, 4, 5, 6, 7] ; 
+
+        for (let i = 0 ; i < list_of_numbers.length ; i++) { 
+            
+            document.write(list_of_numbers[i]) ; 
+            document.write("<br>")
+
+        }
+
+		let days_of_the_week_and_activities = {
+
+            "Monday" : ["Played Gutair", "Talked to Ben", "Fed Fish"], 
+            "Tuesday" : ["Had fun with video games", "Talked to females"], 
+            "Wednesday" : ["Laughed with Ryan", "Chatted with Emily"], 
+            "Thursday" : ["Baked Cookies", "Drank Wine"], 
+            "Friday" :  "Nothing Special"
+        } ; 
+
+        console.log(days_of_the_week_and_activities.Monday[2])
+        console.log(days_of_the_week_and_activities.Friday)
+        console.log("Friday" in days_of_the_week_and_activities)
+
+
+        let nice = ["Henry", "Was", "Here", "And", "Is", "Still", "Here", "Today"]
+
+
+        for (let entry of nice){
+
+            console.log(`${entry}`)
+        }
+
+        console.log(days_of_the_week_and_activities)
+
+
+
+		</script> 
+	</body>
+</html> 

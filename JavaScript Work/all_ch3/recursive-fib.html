@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Javascript Template</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+        function fibonnaci_sequence_recursive(again_to_what_number) {
+
+            if (again_to_what_number == 0) {
+                return 0 ; 
+            }
+            else if (again_to_what_number == 1) {
+                return 1 ; 
+            }
+            else {
+                return fibonnaci_sequence_recursive(again_to_what_number - 1 ) + fibonnaci_sequence_recursive (again_to_what_number - 2) ; 
+            }
+
+        }
+
+		
+        document.write(fibonnaci_sequence_recursive(11));
+        document.write("<br>") ; 
+        document.write(fibonnaci_sequence_recursive(16)) ; 
+
+
+        console.log("this is the output for the console") ; 
+
+
+
+        function recursive_exponentiation(base, exponent) {
+            if (exponent == 0) return 1 ; 
+
+            else return base * recursive_exponentiation(base, exponent - 1) ; 
+
+        }
+
+        let exponent_example = recursive_exponentiation(2, 3) ; 
+        document.write("<br>") ; 
+        document.write(exponent_example) ;
+
+
+
+
+
+
+
+
+
+
+
+		</script> 
+	</body>
+</html> 

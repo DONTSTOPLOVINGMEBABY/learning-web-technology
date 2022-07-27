@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Javascript Template</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+
+        function fibonnaci_sequence(to_what_number) {
+    
+            let current_num = 1 ; 
+            let previous_num = 0 ; 
+            let counter  = 0 ; 
+            let tempv = 0 ; 
+
+
+            while (counter != to_what_number) { 
+
+                document.write(previous_num) ; 
+                document.write("<br>") ; 
+                tempv = previous_num ; 
+                previous_num = current_num ; 
+                current_num = tempv + current_num ; 
+                counter += 1 
+            }
+            
+            }
+        
+        fibonnaci_sequence(12); 
+
+
+        const square1 = (x) => { return x * x} ; 
+        const square2 = x => x * x ;                // you can ommit the paranthesis when there is
+                                                    // only one function argument 
+        document.write("<br>") ; 
+        document.write(square1(55)) ; 
+
+
+        function greet(who) { 
+            document.write("<br>") ;
+            document.write("<br>") ;
+            document.write("Hello " + who) ; 
+        }
+
+        greet("Henry") ; 
+        greet("Christian") ; 
+
+
+        function power(base, exponent = 2) {
+            let result = 1 ; 
+            for (let count=0 ; count<exponent; count++) {
+                result *= base ; 
+            }
+            return result ; 
+
+        }
+
+        document.write("<br>")
+        document.write(power(22, 7))
+
+        console.log("hello")
+
+		</script> 
+	</body>
+</html> 

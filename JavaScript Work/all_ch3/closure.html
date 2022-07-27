@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Javascript Template</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+        function wrapValue(n) {
+            let local = n ; 
+            return () => local ; 
+        }
+
+        let n = 4 ; 
+        let wrap1 = wrapValue(1) ; 
+        let wrap2 = wrapValue(2) ; 
+        document.write(wrap1()) ; 
+        document.write("<br>") ;
+		document.write(wrap2()) ; 
+        document.write("<br>") ; 
+        document.write(n) ; 
+
+        /* You can use this method to return a local binding from a function, if you so please */ 
+
+
+        // Closure means you can reference a specific instance of a local binding in an enclosing scope
+
+
+        function multiplier(factor) {
+            return number => number * factor ; 
+        }
+
+        let twice = multiplier(2) ; //sets factor equal to 2, but number is still blank
+        document.write("<br>") ; 
+        document.write(twice(10)) ; // Multipler environment then stored in twice variable
+
+		</script> 
+	</body>
+</html> 
