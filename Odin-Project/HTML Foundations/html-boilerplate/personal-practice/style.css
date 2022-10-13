@@ -1,0 +1,33 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    color: yellow;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.green {
+    color: green;
+}
+
+.big {
+    font-size: 30px;
+}
+
+.green.big {
+    color: black;
+    background-color: white;
+}
+
+#bold {
+    font-weight: bold;
+}
