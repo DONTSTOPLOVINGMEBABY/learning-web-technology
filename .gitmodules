@@ -1,0 +1,3 @@
+[submodule "np_complete"]
+	path = np_complete
+	url = git@github.com:DONTSTOPLOVINGMEBABY/np_complete.git
