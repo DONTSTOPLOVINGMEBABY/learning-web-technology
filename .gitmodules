@@ -1,6 +1,3 @@
-[submodule "np_complete"]
-	path = np_complete
-	url = git@github.com:DONTSTOPLOVINGMEBABY/np_complete.git
 [submodule "Odin-Project/git_test"]
 	path = Odin-Project/git_test
 	url = git@github.com:DONTSTOPLOVINGMEBABY/git_test.git
