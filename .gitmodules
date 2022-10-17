@@ -2,5 +2,5 @@
 	path = Odin-Project/git_test
 	url = git@github.com:DONTSTOPLOVINGMEBABY/git_test.git
 [submodule "Odin-Project/HTML Foundations/odin-recipes"]
-	path = Odin-Project/HTML Foundations/odin-recipes
+	path = Odin-Project/Foundations/odin-recipes
 	url = git@github.com:DONTSTOPLOVINGMEBABY/odin-recipes.git
