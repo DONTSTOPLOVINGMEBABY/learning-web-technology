@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<body>
+
+    <style>
+        .container-1{
+            display:flex;
+            align-items: center;
+            /* align-items: flex-start/end; */
+
+        }
+
+        .container-1 div {
+            border: 1px black solid;
+            padding:10px;
+        }
+ 
+        .box-1 {
+            flex:1;
+            order:2;
+            width: 30%;
+        }
+
+        .box-2 {
+            flex:1;
+            order:3;
+            width: 30%;
+        }
+
+        .box-3 {
+            flex:1 ;
+            order:1;
+            width: 30%;
+        }
+
+    </style>
+
+
+
+    <div class="container-1">
+        <div class="box-1">
+            <h3>Box one</h3>
+            <p>Some text here that is really long
+                and is suppose to take up more room.
+                More and more and more and more and 
+                more and more and more and more text.
+            </p>
+        </div>
+        <div class="box-2">
+            <h3>Box two</h3>
+            <p>Some text here</p>
+        </div>
+        <div class="box-3">
+            <h3>Box three</h3>
+            <p>Some text here</p>
+        </div>
+    </div>
+    
+</body>
+</html>
