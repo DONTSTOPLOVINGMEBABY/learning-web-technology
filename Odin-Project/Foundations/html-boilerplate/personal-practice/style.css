@@ -1,4 +1,4 @@
-body {
+.mainBody {
     font-family: 'Times New Roman', Times, serif;
     background-color: black;
     color: yellow;
@@ -31,3 +31,43 @@ img {
 #bold {
     font-weight: bold;
 }
+
+* {
+    padding: 0%;
+    margin: 0;
+    font-size: 40px;
+}
+
+/*
+
+Set border-box for universal elements
+
+*, *::before, *::after {box-sizing: inherit}
+
+html {
+    box-sizing: border-box;
+}
+
+*/
+
+.box-one {
+    background-color: blue;
+    border-color: 0 solid black;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    border: 30px solid #9b51e0 ;
+    margin: 60px;
+}
+
+.box-two {
+    background-color: green;
+    border-color: 0 solid black;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    border: 30px solid #9b51e0 ;
+    margin: 60px;
+}
+
+
