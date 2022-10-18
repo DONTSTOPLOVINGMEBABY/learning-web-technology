@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox 2.0</title>
+</head>
+<body>
+    <style>
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-list li {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+        /* flex-basis: 100% makes the item the same size as its parent */ 
+            background-color: yellow;
+        }
+
+        header {
+            border-width: 5px;
+        }
+
+    </style>
+        
+
+    <h1>Flexbox made simple</h1> 
+    <header>
+        <nav>
+        <ul class="nav-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Service Information</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Element</a></li>
+            <li><a href="#">Element</a></li>
+            <li><a href="#">Element</a></li>
+            <li><a href="#">Element</a></li>
+
+        </ul>
+        </nav>
+    </header>
+
+
+
+</body>
+</html>
