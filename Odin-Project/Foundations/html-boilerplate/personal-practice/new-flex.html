@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New flex</title>
+</head>
+<body>
+    <style>
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            
+        }
+
+        li {
+            list-style: none;
+            gap: 2em;
+        }
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .left-links, .right-links {
+            display: flex;
+            gap: 2em;
+        }
+
+        .middle {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+  
+        .bottom {
+            display: flex;
+            gap: 2em;
+            justify-content: space-between;
+        }
+     
+        
+    </style>
+
+    <div class="header">
+        <ul class="left-links">
+            <li>Menu</li>
+            <li>Contact</li>
+        </ul>
+        <ul class="right-links">
+            <li>New4Love</li>
+            <li>New4Laughs</li>
+        </ul>
+    </div>
+
+    <div class="middle">
+        <img src="../../../images/Ryan.jpeg" alt="pic of ryan" width="300px">
+    </div>
+
+    <div class="bottom">
+        <ul class="left-links">
+            <li>Menu</li>
+            <li>Contact</li>
+        </ul>
+        <ul class="right-links">
+            <li>New4Love</li>
+            <li>New4Laughs</li>
+        </ul>
+    </div>
+
+
+
+</body>
+</html>
