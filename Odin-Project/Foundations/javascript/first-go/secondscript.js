@@ -30,6 +30,30 @@ console.log(dblSgl);
 const bigMouth = 'I\'ve got the no right to take my place...';
 console.log(bigMouth);
 
+const intro = `Hello`;
+const name3 = "Chris"; 
+const greeting = `${intro}, ${name3}`; 
+console.log(greeting); 
+
+const myString = "123" ; 
+const myNum = Number(myString);
+console.log(typeof myNum);
+const myNum2 = 123 ; 
+const myString2 = myNum2.toString(); 
+console.log(typeof myString2);
+
+const song = "Fight the Youth";
+const score = 9 ; 
+const highestScore = 10; 
+const output = `I like the song ${song}. I gave it a score of ${
+    (score / highestScore) * 100 
+}%.`; 
+console.log(output); 
+
+const bigString = "Henry is at the park smoking weed"; 
+console.log(bigString, bigString.length);
+console.log(bigString.slice(bigString.length-4,bigString.length))
+
 
 /* Boolean (logical type) */ 
 let nameFieldChecked = true ; 
