@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World!</title>
+</head>
+<body>
+
+    <script src="firstscript.js"></script>
+    <script>
+        console.log("Hello, World!")
+        console.log("From an inline file!")
+
+        const myInt = 5 ; 
+        const myFloat = 6.667 ; 
+        console.log(myInt + myFloat);
+        console.log(typeof myInt);
+        console.log(typeof myFloat);
+
+        const bigdecimal = 1.7665737382737322 ;
+        console.log(bigdecimal.toFixed(2));
+
+        let myNumber = "74"; 
+        myNumber += 3;  
+        console.log("Hello!", myNumber);
+
+        let first = 10 + 7 ; 
+        console.log(first);
+        first = 9 * 8 ; 
+        console.log(first);
+        first = 60 % 3 ; 
+        console.log(first)
+
+        let increment = 68 ; 
+        console.log("Before increment: ", increment);
+        console.log("After increment: ", ++increment)
+
+        //Guess Pointers aren't a thing in Javascript ; // 
+        let pointer = 3 ; 
+        let pointer2 = 4 ; 
+        pointer = pointer2 ; 
+        console.log(pointer, pointer2); 
+        pointer = 66 ; 
+        console.log(pointer, pointer2); 
+        pointer2 = 69;
+        console.log(pointer, pointer2); 
+
+        let var1 = 1 ; 
+        var1 = -var1;
+        console.log("After negation: ",var1);
+
+        //End of Odin Assignment // 
+        console.log("Assignment for end of Odin Project\n\n")
+        console.log(23 + 97);
+        console.log(24 + 42 + 21 + 34 + 21 + 34);
+        console.log( (4 + 6 + 9) / 77 );
+
+        let a = 10 ; 
+        console.log(a);
+        console.log(9*a);
+        let b = 7 * a ; 
+        console.log(b);
+        
+        const max = 57 ; 
+        let actual = max - 13 ; 
+        let percentage = actual / max ; 
+        console.log(actual, max)
+        console.log(percentage)
+
+        console.log(true == 1);
+        console.log(true===1);
+
+
+
+    </script>
+
+    
+</body>
+</html>
