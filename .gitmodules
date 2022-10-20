@@ -4,3 +4,6 @@
 [submodule "Odin-Project/HTML Foundations/odin-recipes"]
 	path = Odin-Project/Foundations/odin-recipes
 	url = git@github.com:DONTSTOPLOVINGMEBABY/odin-recipes.git
+[submodule "Odin-Project/Foundations/OTP---Landing-Page"]
+	path = Odin-Project/Foundations/OTP---Landing-Page
+	url = git@github.com:DONTSTOPLOVINGMEBABY/OTP---Landing-Page.git
