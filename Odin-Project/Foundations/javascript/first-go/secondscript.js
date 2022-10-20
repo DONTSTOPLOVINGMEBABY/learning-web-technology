@@ -186,7 +186,7 @@ if (!truth) {
     console.log("Reached the else statement"); 
 }
 
-//Switch Statement
+//Switch Statements
 const day = new Date().getDay(); // assigns day an integer based on the day. Sunday = 0 ... Saturday = 6 
 console.log(day); 
 
@@ -215,6 +215,26 @@ switch (day) {
     default:
         console.log("Something is messed up");
 }
+
+const grade = 87 ; 
+
+switch (true) {
+    case grade >= 90 :
+        console.log("A");
+        break;
+    case grade >= 80 :
+        console.log("B"); 
+        break;
+    case grade >= 70 :
+        console.log("C");
+        break;
+    case grade >= 60 :
+        console.log("D");
+        break;
+    default:
+        console.log("F");
+}
+
 
 
 
