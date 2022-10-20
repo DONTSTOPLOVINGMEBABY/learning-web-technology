@@ -178,7 +178,34 @@ if (!truth) {
     console.log("Reached the else statement"); 
 }
 
+/**********************Logical Operators**********************************/
 
+//or finds and returns the first truthy
+console.log("true || true", true || true); 
+console.log("false || true", false || true);
+console.log("true || false", true || false);
+console.log("false || false", false || false); 
+//and finds and returns the first falsy
+console.log("true && true", true && true); 
+console.log("true && false", true && false);
+console.log("false && true", false && true); 
+console.log("false && false", false && false); 
+//not
+console.log("not true", !true);
+console.log("not false", !false); 
+//examples
+console.log(null || 2 || undefined); //2 is returned
+//alert(alert(1) || 2 || alert(3)); //alert 1 is given, and then alert 2, and then execution halts
+console.log(1 && null && 2);
+
+if (null){ // evaluates to false
+    console.log("null evaluates to true");
+}
+if (undefined) { //evaluates to false
+    console.log("Undefined evaluates to true?")
+}
+
+/****************************************************************************/
 
 
 /* Typeof operator */ 
