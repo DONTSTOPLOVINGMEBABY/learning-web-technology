@@ -160,6 +160,14 @@ let truth = true ;
 let nottruth = false; 
 let num = 7 ; 
 
+//conditional operator
+
+let conditionalop = 3 > 4 ? 200 : -1 ; 
+console.log("Result of expression: 3 > 4 ? 200 : -1", conditionalop); 
+conditionalop = 3 < 4 ? 200 : -1 ; 
+console.log("Result of expression: 3 < 4 ? 200 : -1", conditionalop); 
+
+
 if (truth) {
     console.log("Truth executed"); 
 }
@@ -177,6 +185,39 @@ if (!truth) {
 } else {
     console.log("Reached the else statement"); 
 }
+
+//Switch Statement
+const day = new Date().getDay(); // assigns day an integer based on the day. Sunday = 0 ... Saturday = 6 
+console.log(day); 
+
+switch (day) {
+    case 0:
+        console.log("It's Sunday, time to relax!")
+        break ; 
+    case 1:
+        console.log("Happy Monday!") ;
+        break;
+    case 2:
+        console.log("It's Tuesday. You got this!"); 
+        break ; 
+    case 3:
+        console.log("Hump Day Already!");
+        break;
+    case 4:
+        console.log("Just one more day til' the weekend!:"); 
+        break ; 
+    case 5:
+        console.log("Happy Friday") ; 
+        break ;
+    case 6:
+        console.log("Have a wonderful Saturday") ; 
+        break ; 
+    default:
+        console.log("Something is messed up");
+}
+
+
+
 
 /**********************Logical Operators**********************************/
 
