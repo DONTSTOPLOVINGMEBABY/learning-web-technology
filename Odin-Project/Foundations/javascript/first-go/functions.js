@@ -64,16 +64,8 @@ function onetwothree(first, second, third) {
     console.log(first(), second(), third());
 }
 
-function onestring() {
-    return "This";
-}
-
-function twoString() {
-    return "That";
-}
-
 onetwothree(
-    () => "323" + "232323" , 
+    () => {if (3 > 2){return "this the dawg";}else{return "fuck you man!"}},
     () => "I have come to tell you" + "21928301", 
     () => "I am your father", 
 )
