@@ -58,13 +58,34 @@ console.log("Running factorial ", factorial(5))
 
 
 
+//Anonymous Function
+
+function onetwothree(first, second, third) {
+    console.log(first(), second(), third());
+}
+
+function onestring() {
+    return "This";
+}
+
+function twoString() {
+    return "That";
+}
+
+onetwothree(
+    () => "323" + "232323" , 
+    () => "I have come to tell you" + "21928301", 
+    () => "I am your father", 
+)
+
+
+
+
 //End of Odin Page Assignment
 function add7(number) {return number + 7;}
 function multiply(number1, number2){return number1 * number2;}
 function capitalize (string) {return `${string[0].toUpperCase()}${string.substring(1).toLowerCase()}`;} 
 function lastLetter(string) {return string.substring(string.length - 1);}
-
-
 
 console.log(add7(5));
 console.log(multiply(5,7));
