@@ -306,3 +306,31 @@ console.log(typeof Symbol("id"));
 console.log(typeof Math);
 console.log(typeof null);
 console.log(typeof alert); 
+
+//A dictionary sort of data-type
+
+let family = [
+
+    {
+        first: "Henry", 
+        last: "Jacobs"
+    }, 
+
+    {
+        first: "Samuel", 
+        last: "Jacobs"
+    }, 
+
+    {
+        first: "Olivia", 
+        last: "Jacobs"
+    },
+
+    {
+        first: "Elisa", 
+        last: "Jacobs"
+    }
+
+] ; 
+
+
