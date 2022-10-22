@@ -1,6 +1,17 @@
 console.log("Hello, we are solving Fizz Buzz today.");
 
-let answer = parseInt
+let userinput = parseInt(prompt("Please enter the number you would like Fizz Buzz to count to"));
+let number = 0 ;
+
+while (number <= userinput){
+    if (number % 3 == 0 && number % 5 == 0) {console.log("Fizz Buzz");}
+    else if (number % 3 == 0) {console.log("Fizz");}
+    else if (number % 5 == 0) {console.log("Buzz");}
+    else {console.log(number);}
+    number++;
+}
+
+
 
 
 
@@ -18,7 +29,9 @@ let answer = parseInt
 
 
 //Psuedo
+// while number <= userinput : 
 // if number mod 3 == 0 and number mod 3 == 5 then Fizz Buzz
 // elif number mod 3 == 0 then Fizz
 // elif number mod 5 == 0 then Buzz 
-// else print number 
+// else {number}
+// number++ 
