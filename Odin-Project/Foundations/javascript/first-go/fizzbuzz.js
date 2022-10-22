@@ -1,18 +1,15 @@
 console.log("Hello, we are solving Fizz Buzz today.");
 
 let userinput = parseInt(prompt("Please enter the number you would like Fizz Buzz to count to"));
-let number = 0 ;
+let number = 1 ;
 
 while (number <= userinput){
-    if (number % 3 == 0 && number % 5 == 0) {console.log("Fizz Buzz");}
+    if (number % 3 == 0 && number % 5 == 0) {console.log("FizzBuzz");}
     else if (number % 3 == 0) {console.log("Fizz");}
     else if (number % 5 == 0) {console.log("Buzz");}
     else {console.log(number);}
     number++;
 }
-
-
-
 
 
 
@@ -35,3 +32,13 @@ while (number <= userinput){
 // elif number mod 5 == 0 then Buzz 
 // else {number}
 // number++ 
+
+
+
+
+// A simple attempt a javascript for-loop
+
+let string = "Henry";
+for (let i = 0; i < string.length; i++){
+    console.log(string[i]);
+}
