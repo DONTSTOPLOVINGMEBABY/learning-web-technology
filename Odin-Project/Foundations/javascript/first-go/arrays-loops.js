@@ -16,4 +16,18 @@ console.log(`The array numbers is ${numbers.length} and when sorted looks like t
 for (let i = 0; i < cars.length ; i++){
     console.log(`${i} ${cars[i]}`);
 }
+//Using for each
 console.log("You can also use foreach");
+cars.forEach( (element) => {
+    console.log(element)
+});
+
+cars.forEach(hello)
+function hello (element) {
+    console.log(`Hello ${element}`);
+}
+
+let whilectr = 0 ; 
+while (whilectr < 10){
+    console.log(2 ** whilectr);
+}
