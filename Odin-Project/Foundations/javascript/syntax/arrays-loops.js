@@ -73,3 +73,12 @@ function functionarguments () {
 }
 
 functionarguments(1, "Henry", ["a", "list"]);
+
+
+
+/* SPREAD OPERATOR */
+
+console.log(Math.min(45, 23, 76, 1, 2, -4)); 
+temperatures = [76, 78, 62, 54, 21, 54]; 
+console.log(Math.min(temperatures)); // Will return NAN because it can't take the min of an object. 
+// Use spread operator and it will access each individual element in the array and insert them like an argument
