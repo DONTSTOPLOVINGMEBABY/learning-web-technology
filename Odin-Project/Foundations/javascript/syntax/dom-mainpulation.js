@@ -47,7 +47,6 @@ function redirect (arg) {
 const nice_btn = document.getElementById("last-btn");
 nice_btn.addEventListener('click', redirect);
 
-let counter = 0 
 
 const fancy_button = document.getElementById("btn3");
 fancy_button.addEventListener('click', function (e) {
@@ -56,16 +55,15 @@ fancy_button.addEventListener('click', function (e) {
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-
+   
     button.addEventListener('click', (e) => {
         if (counter % 2 == 0) {
             e.target.style.background = "blue" ;} 
             else {
-                e.target.style.background = "red" ;
+                e.target.style.background = "red" 
             }
-            console.log(counter++);
     })
-        counter++
+        
 })
 
 
