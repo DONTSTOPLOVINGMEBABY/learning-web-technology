@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Manipulation</title>
+</head>
+<body>
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .newsection {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #btn3 {
+            background-color: red;
+            border: 8px ;
+            border-color: black;
+        }
+
+    </style>
+
+
+
+    <h1>
+        THE TITLE OF YOUR WEBPAGE
+    </h1>
+    <div id="container"></div>
+
+    <div class="newsection">
+        <button onclick="alert('Hello World')">Click Me!</button>
+        <button id="btn">No, Click Me!</button>
+        <button id="last-btn">I'm telling you, click me...</button>
+        <button id="btn3">This one is more specific</button>
+    </div>
+
+    <script src="./dom-mainpulation.js"></script>
+</body>
+</html>

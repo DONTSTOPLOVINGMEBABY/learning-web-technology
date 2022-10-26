@@ -81,4 +81,26 @@ functionarguments(1, "Henry", ["a", "list"]);
 console.log(Math.min(45, 23, 76, 1, 2, -4)); 
 temperatures = [76, 78, 62, 54, 21, 54]; 
 console.log(Math.min(temperatures)); // Will return NAN because it can't take the min of an object. 
-// Use spread operator and it will access each individual element in the array and insert them like an argument
+// Use spread operator and it will access each individual element in the array and insert them like an 
+// individual arguments
+console.log(Math.min(...temperatures));
+console.log(temperatures); /* or */ console.log(...temperatures);
+//Use to combine arrays
+const parent = ["Sam", "Elisa"] ; 
+const kids = ["Henry", "Olivia"] ; 
+const family = [parent, kids]; console.log(family); 
+const family2 = [...parent, ...kids] ; console.log(family2);
+//Copy an Array into a new array
+//Arrays are reference types 
+const original_array = ["Potatoes", "Oranges", "Carrots"]; 
+const secondary_array = original_array;
+secondary_array.push("Beef") ; 
+console.log(original_array);
+const copies = [...original_array];
+copies.push("Hello dawg");
+console.log(original_array);
+console.log(copies);
+const places = {WinterPark: "Florida", LosAngeles: "California"};
+const faces = {Smiling: "Happy", Frowning: "Sad"};
+const combines = {...places, ...faces};
+console.log(combines)
