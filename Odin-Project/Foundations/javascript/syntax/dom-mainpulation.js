@@ -16,6 +16,16 @@ bigH.classList.add('theh1');
 bigH.textContent = "Hey I'm a blue h1";
 bigH.style.color = "blue";
 
+const watchmewhip = document.createElement('h3');
+watchmewhip.classList.add('class-watch-me-whip');
+watchmewhip.textContent = "Watch me whip";
+watchmewhip.style.color = "maroon";
+
+
+const watchmedis = document.createElement('h3');
+watchmedis.classList.add('class-watch-me-dis');
+watchmedis.textContent = "Now watch me dissapear";
+watchmedis.style.color = "maroon";
 
 
 const myDiv = document.createElement('div');
@@ -67,8 +77,40 @@ buttons.forEach((button) => {
 })
 
 
-
 container.appendChild(content);
 container.appendChild(para);
 container.appendChild(bigH);
+container.append(watchmewhip);
+container.insertBefore(watchmewhip, content); // will obey most recent insert, so it puts it before
 container.append(myDiv);
+
+//parentNode.insertBefore(newNode, referenceNode) inserts newNode into parentNode before referenceNode
+
+setTimeout( () => {
+    container.removeChild(watchmewhip); 
+    container.insertBefore(watchmedis, content);
+    setTimeout( () => {container.removeChild(watchmedis);}, 1500);
+}, 
+3000);
+
+
+let exampleGet = watchmedis.getAttribute('class');
+console.log(exampleGet);
+
+
+const paragraph_nodelist = document.querySelectorAll("p"); 
+paragraph_nodelist[2].style.backgroundColor = "red";
+paragraph_nodelist[2].style.fontWeight = "bolder";
+paragraph_nodelist[2].style.fontSize = "18px";
+
+let fontcounter = 16; 
+
+
+
+const paragraph_button = document.getElementById("fontbutton");
+paragraph_button.addEventListener('click', () => {paragraph_nodelist.forEach((node) => {
+    node.style.fontSize = `${fontcounter}px`; 
+    if (fontcounter < 42) {fontcounter += 1 ;}
+    else {fontcounter = 16};
+}) ;
+});

@@ -28,6 +28,16 @@
             border-color: black;
         }
 
+        .psection p {
+            margin-left: 12px;
+        }
+
+        .buttonforfont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
 
 
@@ -37,12 +47,27 @@
     </h1>
     <div id="container"></div>
 
+
+    <div class="psection">
+        <p>Here is a paragraph</p>
+        <p>Here is another paragraph</p>
+        <p>Again, anohter paragraph</p>
+        <p>A fourth paragraph</p> 
+    </div>
+
+    
+    <div class="buttonforfont">
+        <button id="fontbutton">Click me to make some font bigger</button>
+    </div>
+
+
     <div class="newsection">
         <button onclick="alert('Hello World')">Click Me!</button>
         <button id="btn">No, Click Me!</button>
         <button id="last-btn">I'm telling you, click me...</button>
         <button id="btn3">This one is more specific</button>
     </div>
+
 
     <script src="./dom-mainpulation.js"></script>
 </body>
