@@ -10,3 +10,6 @@
 [submodule "Odin-Project/Foundations/rock-paper-scissors-TOP"]
 	path = Odin-Project/Foundations/rock-paper-scissors-TOP
 	url = git@github.com:DONTSTOPLOVINGMEBABY/rock-paper-scissors-TOP.git
+[submodule "Odin-Project/Foundations/etch-a-sketch-TOP"]
+	path = Odin-Project/Foundations/etch-a-sketch-TOP
+	url = git@github.com:DONTSTOPLOVINGMEBABY/etch-a-sketch-TOP.git
