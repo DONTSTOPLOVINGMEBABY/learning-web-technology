@@ -13,3 +13,6 @@
 [submodule "Odin-Project/Foundations/etch-a-sketch-TOP"]
 	path = Odin-Project/Foundations/etch-a-sketch-TOP
 	url = git@github.com:DONTSTOPLOVINGMEBABY/etch-a-sketch-TOP.git
+[submodule "Odin-Project/Foundations/calculator-TOP"]
+	path = Odin-Project/Foundations/calculator-TOP
+	url = git@github.com:DONTSTOPLOVINGMEBABY/calculator-TOP.git
