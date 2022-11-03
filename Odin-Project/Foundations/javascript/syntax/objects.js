@@ -165,3 +165,20 @@ const newComments = [
     ...comments.slice(index + 1),
 ];
 console.log(newComments);
+
+
+
+/* These are just some random exmaples I'm working with */ 
+
+// Methods are nothing more than properties that hold function values. Here's a simple method:
+
+function echoName () {
+    console.log(`Hello, my name is ${this.name}, and I'm ${this.age}`);
+}
+
+let person1 = {name: "Henry", age: 22, echoName};
+let person2 = {name: "Ben", age: 22, echoName};
+
+person1.echoName(); person2.echoName();
+
+console.log(Object.getPrototypeOf(person1))
