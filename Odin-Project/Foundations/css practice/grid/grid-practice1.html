@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Practice</title>
+</head>
+<body>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: darkblue;
+        }
+
+        .calculator {
+            flex-shrink: 0;
+            height: 925.5px;
+            width: 506.5px;
+            background-color: grey;
+            padding: 24px;
+            border-radius: 25px;
+
+            display: grid;
+            gap: 1em;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+
+        .grid-col-span-2 {
+            grid-column: span 1/2;
+        }
+
+
+
+
+
+
+        .calculator > * {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+
+        .one {
+            background: red;
+        }
+        
+        .two {
+            background-color: darkgreen;
+        }
+
+        .three {
+            background-color: yellow;
+        }
+
+        .four {
+            background-color: darkmagenta;
+        }
+
+        .five {
+            background-color: hotpink;
+        }
+
+        .span-2-col {
+            grid-column: span 2;
+        }
+
+    </style>
+
+        <div class="calculator">
+            <div class="one span-2-col">1</div>
+            <div class="two span-2-col">2</div>
+            <div class="three">3</div>
+            <div class="four ">4</div>
+            <div class="five span-2-col">5</div>
+        </div>
+
+
+</body>
+</html>
