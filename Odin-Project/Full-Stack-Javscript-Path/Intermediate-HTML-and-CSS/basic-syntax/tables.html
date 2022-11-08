@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with Tables</title>
+    <link rel="stylesheet" href="./planet.css">
+</head>
+<body>
+    <table class="first-table">
+        <tr>
+            <th>First Header</th>
+            <th>Second Header</th>
+            <th colspan="2">Third Header</th>
+        </tr>
+        <tr>
+            <td>This is a data cell</td>
+            <td>This is also a data cell!</td>
+            <td rowspan="2">This it the third column</td>
+        </tr>
+        <tr>
+            <td><b>Hello there... You have to a third row in order to have the last
+                column span two rows.</b> 
+            </td>
+        </tr>
+    </table>
+
+    <h1>School timetable</h1>
+
+    <style>
+
+        body { 
+            height: 100vh;
+        }
+
+
+        .first-table, tr, th {
+            border: 1px solid black;
+        }
+
+        .second-table {
+            border: 2px solid black;
+            width: 100%;
+            height: 100%;
+            font-size: 30px;
+
+        }
+
+        tr, th, td {
+            border: 2px solid black;
+
+        }
+
+        
+        .schedule-table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30%;
+            width: 30%;
+        }
+
+    </style>
+
+    <div class="schedule-table">
+
+    <table class="second-table">
+    
+        <colgroup>
+            <col /> 
+            <col /> 
+            <col style="background-color: green;"/>
+            <col /> 
+            <col style="background-color: green;">
+            <col style="background-color: red; border: magenta solid 2px;"/>
+            <col />
+            <col />
+        </colgroup>
+
+        <tr>
+            <th></th>
+            <th>Mon</th>
+            <th>Tues</th>
+            <th>Wed</th>
+            <th>Thurs</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+        <tr>
+            <td>1st Period</td>
+            <td>English</td>
+            <td></td>
+            <td></td>
+            <td>German</td>
+            <td>Dutch</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2nd Period</td>
+            <td>English</td>
+            <td>English</td>
+            <td></td>
+            <td>German</td>
+            <td>Dutch</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3rd Period</td>
+            <td></td>
+            <td>German</td>
+            <td></td>
+            <td>German</td>
+            <td>Dutch</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4th Period</td>
+            <td></td>
+            <td>English</td>
+            <td></td>
+            <td>English</td>
+            <td>Dutch</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    </div>
+
+</body>
+</html>
