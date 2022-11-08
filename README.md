@@ -1,6 +1,6 @@
 # learning-web-technology
 
-This will be the repisotory that holds the code and resources I use to navigate beginnings in Javascript, HTML, CSS, and possibly many other web-technologies. I will be working my way through the ODIN project in the coming month(s). I believe that the structure of compiled resources and coursework combined with self-paced learning the ODIN Project will be a good fit. I know of someone who went through the program and saw success, so I am heeding their strategy. It also helps that it's free! :D. 
+This will be the repisotory that holds the code and resources I use to navigate beginnings in Javascript, HTML, CSS, and possibly many other web-technologies. I will be working my way through the ODIN project in the coming month(s). I believe that the structure of compiled resources and coursework combined with self-paced learning that the ODIN Project provides will be a good fit. I know of someone who went through the program and saw success, so I am heeding their strategy. It also helps that it's free! :D. 
 
 I will post updates as to where I am with the Odin Project Curriculum and other web-technologies I may be learning to this README. 
 
