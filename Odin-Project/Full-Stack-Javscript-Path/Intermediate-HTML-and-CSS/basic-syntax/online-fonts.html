@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Font Libraries</title>
+</head>
+<body>
+    
+
+    <div class="this_class">
+        <h1>Hello</h1>
+        <p>Here is another</p>
+        <h3>And another</h3>
+        <p>These are all using the Poor Story font</p>
+    </div>
+
+
+    <div class="second-class">
+
+        <h1>Hello, this is using Raleway</h1>
+        <p>I'm digging this!</p>
+
+    </div>
+
+
+    <div class="third">
+        <h1>One last one</h1>
+        <p>This one is using Bebas Neue</p>
+    </div>
+
+
+    <div class="this_class">
+        <p>These lines are spaced normally (really with just default spacing applied)</p>
+        <p>Second line for effect</p>
+    </div>
+
+
+
+    <div class="spaced-lines">
+        <p>These lines are spaced differently than the ones above</p>
+        <p>Have you noticed</p>
+    </div>
+
+    <div class="transform-shadow-ellipses this_class">
+        <h1>Using transform shadow and ellipses.</h1>
+        <p>No crazy line spacing or letter spacing</p>
+    </div>
+
+
+
+    <style>
+        /* @import url("https://fonts.googleapis.com/css?family=Poor+Story"); */
+
+        @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+        @import url("https://fonts.googleapis.com/css?family=Bebas Neue");
+
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            margin: 0;
+            text-align: center;
+            font-size: 3rem;
+            font-size: 3rem;
+            font-size: 3rem;
+            font-size: 3rem;
+        }
+
+
+
+
+        .this_class {
+            font-family: 'Poor Story';
+        }
+
+
+        .second-class {
+            font-family: "Raleway";
+            letter-spacing: 5rem;
+        }
+
+        .third {
+            font-family: "Bebas Neue";
+        }
+        
+        @font-face {
+            font-family: "Poor Story";
+            src: url(./PoorStory-Regular.ttf);
+        }
+
+        .spaced-lines {
+            font-family: 'Poor Story';
+            line-height: 400px;
+
+        }
+
+        .transform-shadow-ellipses {
+            text-transform: uppercase;
+            text-shadow:4rem;
+            text-shadow: 12px 12px red;
+
+        }
+        
+
+    </style>
+
+
+
+</body>
+</html>
