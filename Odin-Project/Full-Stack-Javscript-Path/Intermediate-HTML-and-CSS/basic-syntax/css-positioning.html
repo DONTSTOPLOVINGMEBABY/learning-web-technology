@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using CSS Positioning</title>
+</head>
+<body>
+    <p>Position Fixed</p>
+    <h2>Position absolute</h2>
+    <div class="one">
+        One
+        <h1>Position sticky!</h1>
+    </div>
+    <div class="two">
+        Two
+        <button onclick="window.open('./hello.html')"">Hello, Position Relative!</button>
+    </div>
+    <div class="three">
+        Three
+    </div>
+
+
+    <style>
+        body {
+            height: 300vh;
+            margin: 0;
+            font-family: "Poor Story";
+            font-size: 3rem;
+        }
+
+        .one, .two, .three {
+            height: 33.3%;
+        }
+
+        @font-face {
+            font-family: "Poor Story";
+            src: url("PoorStory-Regular.ttf");
+        }
+
+        .one {
+            background: red;
+        }
+
+        .two {
+            background-color: blue;
+        }
+
+        button {
+            position: relative;
+            top: 24px;
+            left: 48px;
+            height: 6rem;
+            width: fit-content;
+            padding: 24px;
+            border-radius: 25px;
+            background-color: black;
+            font-size: 2rem;
+            color: white;
+        }
+
+        button:active {
+            background-color: limegreen;
+        }
+
+        .three {
+            background-color: magenta;
+        }
+
+        p {
+            position: fixed;
+            bottom: 50%;
+            right: 33%;
+            width: 300px;
+            background-color: yellow;
+
+        }
+
+        h1 {
+            position: sticky;
+            top: 0px;
+            margin: 0;
+
+        }
+
+        h2 {
+            position: absolute;
+            top: 1000px;
+            left: 200px;
+        }
+
+    </style>
+
+</body>
+</html>

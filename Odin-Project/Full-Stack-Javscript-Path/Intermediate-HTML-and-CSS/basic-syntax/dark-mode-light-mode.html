@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark/Light Mode Example</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>You are viewing this in <span id="changetext">light</span>mode</h1>
+        <button id="thebutton">Change theme</button>
+    </div>
+
+    <style>
+        :root.dark {
+            --bg-color: black;
+            --border-btn: white;
+            --color-of-text: white;
+            --color-of-button: darkslategrey;
+        }
+
+        :root.light {
+            --bg-color: white;
+            --border-btn: black;
+            --color-of-text: black;
+            --color-of-button: red;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body, button {
+            color: var(--color-of-text);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            padding: 10px;
+        }
+
+        .changetext {
+            background-color: var(--color-of-button);
+            border: var(--border-btn);
+            font-size: 1.125rem;
+            padding: 10px 20px;
+        }
+
+        .changetext:hover {
+            cursor: pointer;
+        }
+
+        .changetext:focus {
+            outline: var(--border-btn);
+        }
+
+
+    </style>
+
+    <script>
+
+        function setTheme() {
+            const root = document.documentElement; 
+            const newTheme = root.className === 'dark' ? 'light' : 'dark'; 
+            root.className = newTheme; 
+
+            document.querySelector('.changetext').textContent = newTheme;
+        }
+
+        document.querySelector('#thebutton').addEventListener('click', setTheme);
+
+    </script>
+
+
+    
+</body>
+</html>

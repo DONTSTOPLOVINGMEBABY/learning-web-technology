@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with Advanced Selectors in HTML</title>
+</head>
+<body>
+    
+    <!-- <main class="parent">
+        <div class="child group1">H
+          <div class="grand-child group1">E</div>
+        </div>
+        <div class="child group2">N
+          <div class="grand-child group2">R</div>
+        </div>
+        <div class="child group3">Y
+          <div class="grand-child group3">Loves chicken</div>
+        </div>
+      </main>
+
+
+      <div class="parent2">
+        <div class="one">
+            <div class="one-2"></div>
+        </div>
+        <div class="two"></div>
+        <div class="three">
+            <div class="three-one"></div>
+        </div>
+      </div>
+
+      <button id="thisbutton">Click this</button>
+      <div class="hide">You should be able to see me when someone hovers</div>
+      <a id="link" href="">Nada</a>
+
+    <div class="onechild">1
+        <div class="twochild">2</div>
+        <div class="threechild">3</div>
+    </div> -->
+
+
+    <div class="one">
+
+        <div class="hello">
+            hello
+        </div>
+
+        <div class="goodbye">
+            goodbye
+        </div>
+
+
+    </div>
+
+
+      <style>
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        .parent2 {
+            background-color: blue;
+            height: 20vh;
+            width: 100%;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        div {
+            height: 5vh;
+            width: 100%;
+        }
+
+        #thisbutton:hover + .hide {
+            display: block;
+            color: red;
+        }
+
+
+        .group1 + div {
+            background-color: red;
+
+        }
+        
+        .child .group1 {
+            background-color: purple;
+
+        }
+
+        .child .group2 {
+            background-color: magenta;
+
+        }
+
+        .group2 + div {
+            background-color: black;
+
+        }
+        
+        .parent {
+            background-color: yellow;
+
+        }
+
+        #link:active {
+            background-color: lightgreen;
+        }
+
+
+        .onechild:first-child {
+        color: red;        
+        }
+
+        .one:first-child {
+            background: green;
+        }
+
+        .one:last-child {
+            background-color: magenta;
+        }
+
+      </style>
+
+
+
+
+
+</body>
+</html>
