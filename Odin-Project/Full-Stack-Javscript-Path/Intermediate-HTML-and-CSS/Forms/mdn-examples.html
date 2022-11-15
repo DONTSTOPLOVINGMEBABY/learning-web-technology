@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples from MDN</title>
+</head>
+<body>
+    
+    <form 
+    action="http://httpbin.org/post"
+    method="post">
+
+        <fieldset class="example1">
+            <legend>Contact</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email">
+            <label for="message">Message:</label>
+            <textarea rows="10" cols="40" id="message" name="message"></textarea>
+            <button type="submit" id="ex1button">SEND YOUR MESSAGE</button>
+        </fieldset>
+    </form>
+
+    <form class="example2"
+    action="http://httpbin.org/post"
+    method="post">
+
+        <label for="choose">Would you prefer a banana or a cherry?</label>
+        <input 
+            id="choose" 
+            name="i-like" 
+            required pattern="[Bb]anana|[Cc]herry"
+            minlength="2"
+            maxlength="6">
+        <button id="ex1button">SUBMIT</button>
+    
+    </form>
+    
+
+    <style>
+
+        .example1 input:hover, .example1 textarea:hover {
+            background: #E6E6E6;
+            border-color: #000;
+            border-radius: 5px;
+        }
+
+
+
+        body {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+
+        }
+        
+        .example1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+        }
+
+        .example2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+        }
+
+        
+
+
+        #ex1button {
+            margin-top: 12px;
+            height: 3rem;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+        }
+
+        #ex1button:active { border: 4px solid yellow;}
+
+        input:focus,
+        textarea:focus {
+        /* Additional highlight for focused elements */
+        border-color: #000;
+        }
+
+    </style>
+
+</body>
+</html>
