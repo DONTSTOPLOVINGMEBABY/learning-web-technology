@@ -10,10 +10,71 @@
 <body>
     
     <div class="left">
+        <div class="odin-image">
+            <img id="odin" src="../../FS-JS-Images/odin-logo.png" alt="odin-logo">
+            <p id="theodin">ODIN</p>
+        </div>
+        <div id="photo-credits">Photo by <a href="https://unsplash.com/@haliewestphoto">
+            Hallie West </a> on <a href="https://unsplash.com/">Unsplash</a></div>
     </div>
 
     <div class="right">
-    </div>
+        <div class="uppertext">
+            <h1>
+                This is not a real online service! You know you need something 
+                like this in your life to help you realize your deepest dreams. Sign up <i>now</i> to
+                get started.
+            </h1>
+            <h1>
+                You <i>know</i> you want to.
+            </h1>
+        </div>
+        <div class="form">
+            <form
+            action="http://httpbin.org/post"
+            method="post">
+                <fieldset>
+                    <legend>Let's do this!</legend>
+                        <div class="first-last">
+                            <div class="cell">
+                                <label for="first_name">First Name</label>
+                                <input type="text" id="first_name" name="first_name">
+                            </div>
+                            <div class="cell">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" id="last_name" name="last_name">
+                            </div>
+                        </div>  
+                        <div class="email-phone">
+                            <div class="cell">
+                                <label for="email">Email</label>
+                                <input type="email" id="email">
+                            </div>
+                            <div class="cell">
+                                <label for="phone-number">Phone number</label>
+                                <input type="text" id="phone-number">
+                            </div>
+                        </div>
+                        <div class="passwords">
+                            <div class="cell">
+                                <label for="password">Password</label>
+                                <input required type="password" id="password">
+                            </div>
+                            <div class="cell">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input required type="password" id="confirm-password">
+                            </div>
+                        </div>
+                </fieldset>
+                    <input id="submitbutton" type="submit" value="Create Account">
+                </div>
+                <div class="logIn">
+                    Already have an account? <a id="log-in-link" href="#">Log in</a>
+                </div>
+            </form>
 
+
+    <script src="./confirm-password.js"></script>
+    </div>
 </body>
 </html>
