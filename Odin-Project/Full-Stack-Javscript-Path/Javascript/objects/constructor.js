@@ -206,3 +206,24 @@ function Dog (name, age){
 const ory = new Dog("Ory", 14); 
 ory.update_counter(); ory.update_counter(); 
 console.log(ory.countnumber); 
+
+
+// Just more Constructor examples 
+
+function City (city, state) { 
+    this.city = city ; 
+    this.state = state ; 
+}
+
+function Repair_shop(name, revenue, cost) {
+    this.name = name; 
+    this.revenue = revenue ;
+    this.cost = cost ;
+    this.profit = revenue - cost ; 
+}
+
+Repair_shop.prototype = Object.create(City.prototype);
+
+const someplace = new Repair_shop("Big hanks tire repair", 123221, 69231); 
+someplace.city = "Winter Park"; someplace.state = "Florida"; 
+console.log(someplace.city, someplace.state, someplace.name, someplace.revenue, someplace.cost, someplace.profit);
