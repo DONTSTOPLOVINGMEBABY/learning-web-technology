@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,18 +46,20 @@
         </div>
         <div class="topbar">
             <form class="searchbar">
-                <label for="search">Search</label>
+                <label id="magnify-glass" for="search"><img src="./assets/magnify.png" alt="magnify-icon"></label>
                 <input type="text" id="search"></input>
             </form>
-            <div class="greeting-message-main">
-                <img></img>
-                <p>Hi there</p>
-                <p id="name">Morgan Oakley (@morgan)</p>
-            </div>
             <div class="greeting-message-corner">
-                <img></img>
-                <img></img>
+                <img id="bell" src="./assets/bell.png" alt="notification-icon"> 
+                <img id="profile-picture" src="./assets/gal-avatar.png" alt="Girl-Icon">
                 <p>Morgan Oakley</p>
+            </div>
+            <div class="greeting-message-main">
+                <img id="profile-picture" src="./assets/gal-avatar.png" alt="Girl-Icon">
+                <div class="seperate">
+                    <p id="big_greeting">Hi there,</p>
+                    <p id="name">Morgan Oakley (@morgan)</p>
+                </div>
             </div>
             <div class="top-buttons">
                 <button>New</button>
@@ -70,71 +72,101 @@
                 <p class="title">Super Cool Project</p>
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="project-icons">
+                    <img src="./assets/star.png" alt="star-icon">
+                    <img src="./assets/eye.png" alt="eye-icon">
+                    <img src="./assets/fork.png" alt="fork-icon">
+                </div>
             </div>
             <div class="project">
                 <p class="title">Less Cool Project</p>
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="project-icons">
+                    <img src="./assets/star.png" alt="star-icon">
+                    <img src="./assets/eye.png" alt="eye-icon">
+                    <img src="./assets/fork.png" alt="fork-icon">
+                </div>
             </div>
             <div class="project">
                 <p class="title">Impossible App</p>
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="project-icons">
+                    <img src="./assets/star.png" alt="star-icon">
+                    <img src="./assets/eye.png" alt="eye-icon">
+                    <img src="./assets/fork.png" alt="fork-icon">
+                </div>
             </div>
             <div class="project">
                 <p class="title">Easy Peasy App</p>
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="project-icons">
+                    <img src="./assets/star.png" alt="star-icon">
+                    <img src="./assets/eye.png" alt="eye-icon">
+                    <img src="./assets/fork.png" alt="fork-icon">
+                </div>
             </div>
             <div class="project">
                 <p class="title">Ad Blocker</p>
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="project-icons">
+                    <img src="./assets/star.png" alt="star-icon">
+                    <img src="./assets/eye.png" alt="eye-icon">
+                    <img src="./assets/fork.png" alt="fork-icon">
+                </div>
             </div>
             <div class="project">
                 <p class="title">Money Maker</p>
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="project-icons">
+                    <img src="./assets/star.png" alt="star-icon">
+                    <img src="./assets/eye.png" alt="eye-icon">
+                    <img src="./assets/fork.png" alt="fork-icon">
+                </div>
             </div>
         </div>
         <div class="announcements-and-trending">
-        <div class="announcements">
-            Announcements
-            <div class="announcement">
-                <p class="announce-title">Site Maintenance</p>
-                <p class="announce-text">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
-                    Vel elit scelerisque mauris pellentesque.</p>
+            <div class="announcements">
+                Announcements
+                <div class="announcement">
+                    <p class="announce-title">Site Maintenance</p>
+                    <p class="announce-text">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
+                        Vel elit scelerisque mauris pellentesque.</p>
+                </div>
+                <div class="announcement">
+                    <p class="announce-title">Community Share Day</p>
+                    <p class="announce-text">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
+                        Vel elit scelerisque mauris pellentesque.</p>
+                </div>
+                <div class="announcement">
+                    <p class="announce-title">Updated Privacy Policy</p>
+                    <p class="announce-text">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
+                        Vel elit scelerisque mauris pellentesque.</p>
+                </div>
             </div>
-            <div class="announcement">
-                <p class="announce-title">Community Share Day</p>
-                <p class="announce-text">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
-                    Vel elit scelerisque mauris pellentesque.</p>
+            <div class="trending">
+                <div class="trending-profile">
+                    <img></img>
+                    <p>@tegan<br><span class="grey">World Peace Builder</span></p>
+                </div>
+                <div class="trending-profile">
+                    <img></img>
+                    <p>@morgan<br><span class="grey">Super Cool Project</span></p>
+                </div>
+                <div class="trending-profile">
+                    <img></img>
+                    <p>@kendall<br><span class="grey">Life Changing App</span></p>
+                </div>
+                <div class="trending-profile">
+                    <img></img>
+                    <p>@alex<br><span class="grey">No traffic maker</span></p>
+                </div>
             </div>
-            <div class="announcement">
-                <p class="announce-title">Updated Privacy Policy</p>
-                <p class="announce-text">Pellentesque eu tincidunt tortor aliquam nulla facilisi cras. 
-                    Vel elit scelerisque mauris pellentesque.</p>
-            </div>
-        </div>
-        <div class="trending">
-            <div class="trending-profile">
-                <img></img>
-                <p>@tegan<br><span class="grey">World Peace Builder</span></p>
-            </div>
-            <div class="trending-profile">
-                <img></img>
-                <p>@morgan<br><span class="grey">Super Cool Project</span></p>
-            </div>
-            <div class="trending-profile">
-                <img></img>
-                <p>@kendall<br><span class="grey">Life Changing App</span></p>
-            </div>
-            <div class="trending-profile">
-                <img></img>
-                <p>@alex<br><span class="grey">No traffic maker</span></p>
-            </div>
-        </div>
-        
+        </div>        
 
     </div>
 
