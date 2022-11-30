@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Library</title>
+    <link rel="stylesheet" href="./style.css" class="css">
+</head>
+<body>
+    
+    <div class="add-form-button">
+        <button id="bring_up_form">Create New Book Entry</button>
+    </div>
+
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="exit" onclick="closeForm()">+</div>
+            <form action="">
+                <div class="title">
+                    <input type="text" id="title" required placeholder="Book Title">
+                </div>
+                <div class="author">
+                    <input type="text" id="author" required placeholder="Author">
+                </div>
+                <div class="page-number">
+                    <input type="number" id="page-number" placeholder="Number of Pages" required>
+                </div>
+                <div class="completed">
+                    <input type="radio" id="havent-started" name="completed" value="no" checked>
+                    <label for="no">Haven't Started</label>
+                    </br>
+                    <input type="radio" id="currently-reading" name="completed" value="reading">
+                    <label for="reading">Currently Reading</label>
+                    </br>
+                    <input type="radio" id="finished" name="completed" value="yes">
+                    <label for="yes">Already Read it</label>
+                    </br>
+                </div>
+                <button type="submit" id="add-book">Add Book</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <div class="everything-else">
+        <div class="books">
+            
+        </div>
+    </div>
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
