@@ -1,6 +1,5 @@
-const books_div = document.getElementsByClassName('book-list');
-
-
+let container = document.getElementsByClassName('everything-books');
+container = container[0]
 
 document.getElementById("bring_up_form").addEventListener('click', () => {
     document.querySelector('.bg-modal').style.display = 'flex'; 
@@ -9,6 +8,7 @@ document.getElementById("bring_up_form").addEventListener('click', () => {
 function closeForm() {
     document.querySelector('.bg-modal').style.display = 'none'; 
 }
+
 
 document.getElementById("add-book").addEventListener('click', (ev) => {
     ev.preventDefault();
@@ -25,30 +25,58 @@ document.getElementById("add-book").addEventListener('click', (ev) => {
     }
     closeForm() ; 
     addBookToLibrary(title.value, author.value, pages.value, which_completed);
-    console.log(myLibrary);
+    console.log(which_completed);
 })
 
 
-// function elementFromHtml(html) {
-//     const template = document.createElement("template"); 
-//     template.innerHTML = html.trim() ; 
-//     return template.content.firstElementChild; 
-// }
-
-// let hello = elementFromHtml(`
-// <ul>
-//             <li>Hello</li>
-//             <li>Hello my name is</li>
-//             <li>Okay, let's go</li>
-//         </ul>
-// `)
+function shrink_string(string) {
+    string = string.replace(/\s/g, '');
+    return string;
+}
 
 
-// books_div[0].appendChild(hello);
 
+function display_book (book) {
+
+    function elementFromHtml(html) {
+        const template = document.createElement("template"); 
+        template.innerHTML = html.trim() ; 
+        return template.content; 
+    }
+
+    let string = 
+        `
+        <p id="book-title"><i>${book.title}</i></p>
+        <p id="book-author">${book.author}</p>
+        <p id="book-pages">${book.pages}</p>
+        <button id="read-button">Read</button>
+        <button id="delete-button">Delete</button>
+        `
+
+    const parent_div = document.createElement('div') ;
+    parent_div.classList.add(`book`, `${shrink_string(book.title)}`);
+    string = elementFromHtml(string);
+    parent_div.append(string);
+
+
+    // if (book.completed == 'havent-started') {
+    //     read_button.style.backgroundColor = '#FF6525'
+    // }
+    // else if (book.completed == 'currently-reading'){
+
+    // }
+    // else if (book.completed == 'finished'){
+
+    // }
+
+
+    container.append(parent_div);
+    added_books.push(book.title);
+}
 
 
 let myLibrary = [] ;
+let added_books = [] ;
 
 
 function Book(title, author, pages, completed){
@@ -63,9 +91,12 @@ function addBookToLibrary(title, author, pages, completed) {
     myLibrary.push(pushBook);
 }
 
-const lotr = new Book("Lord of the Rings", "J. R. R. Tolkien", 1178, false); 
+const lotr = new Book("Lord of the Rings", "J. R. R. Tolkien", 1178, 'havent-started'); 
 const normal_people = new Book("Normal People", "Sally Rooney", 350, false); 
 const ninteen_84 = new Book("1984", "George Orwell", 312, false); 
 
 myLibrary.push(lotr, normal_people, ninteen_84);
 console.log(myLibrary);
+
+
+display_book(lotr);

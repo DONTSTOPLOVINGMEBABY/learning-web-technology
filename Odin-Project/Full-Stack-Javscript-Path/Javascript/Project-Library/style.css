@@ -9,6 +9,10 @@ body {
 
 }
 
+p {
+    margin: 0;
+}
+
 .add-form-button {
     width: 100vw;
     height: 15vh;
@@ -90,4 +94,52 @@ body {
 
 .modal-content form button:active {
     border-color: black;
+}
+
+.everything-books {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 85%;
+    justify-content: flex-start;
+    margin-left: 5%;
+}
+
+.everything-books .book {
+    display: flex;
+    font-weight: 700;
+    font-size: 18px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FDD3D3;
+    opacity: .8;
+    height: 215px;
+    width: 215px;
+    border-radius: 4px;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+#read-button {
+    width: 75%;
+    height: 36px;
+    border-radius: 15px;
+    border: none;
+    background-color: #62FF6B;
+    font-size: 18px;
+    cursor: pointer;
+
+}
+
+#delete-button {
+    width: 75%;
+    height: 36px;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#delete-button:hover {
+    background-color: red;
 }
