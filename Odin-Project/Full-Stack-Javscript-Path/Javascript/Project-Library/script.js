@@ -147,20 +147,5 @@ function addBookToLibrary(title, author, pages, completed) {
     return pushBook;
 }
 
-const lotr = new Book("Lord of the Rings", "J. R. R. Tolkien", 1178, 'havent-started'); 
-const normal_people = new Book("Normal People", "Sally Rooney", 350, 'completed'); 
-const ninteen_84 = new Book("1984", "George Orwell", 312, false); 
-
-myLibrary.push(lotr, normal_people, ninteen_84);
-console.log(myLibrary);
-
-
-display_book(lotr);
-display_book(lotr);
-display_book(lotr);
-display_book(lotr);
-display_book(lotr);
-display_book(lotr);
-
 
 
