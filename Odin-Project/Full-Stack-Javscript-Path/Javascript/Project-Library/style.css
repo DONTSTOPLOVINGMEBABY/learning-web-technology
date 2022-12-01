@@ -6,7 +6,7 @@ body {
     margin: 100vw;
     margin: 0;
     background-image: linear-gradient(blue, red);
-
+    
 }
 
 p {
@@ -60,6 +60,7 @@ p {
     background-color: white;
     border-radius: 4px;
     position: relative;
+    z-index: 1;
 }
 
 .modal-content form {
@@ -102,7 +103,7 @@ p {
     width: 100%;
     height: 85%;
     justify-content: flex-start;
-    margin-left: 5%;
+    align-content: flex-start;
 }
 
 .everything-books .book {
@@ -118,9 +119,10 @@ p {
     border-radius: 4px;
     justify-content: space-between;
     padding: 12px;
+    margin: 24px;
 }
 
-#read-button {
+.read-button {
     width: 75%;
     height: 36px;
     border-radius: 15px;
@@ -131,7 +133,7 @@ p {
 
 }
 
-#delete-button {
+.delete-button {
     width: 75%;
     height: 36px;
     border-radius: 15px;
@@ -140,6 +142,6 @@ p {
     cursor: pointer;
 }
 
-#delete-button:hover {
+.delete-button:hover {
     background-color: red;
 }

@@ -11,21 +11,36 @@ function closeForm() {
 
 
 document.getElementById("add-book").addEventListener('click', (ev) => {
-    ev.preventDefault();
     const title = document.getElementById('title'); 
     const author = document.getElementById('author'); 
     const pages = document.getElementById('page-number');
     const completed = document.getElementsByName('completed')
+    const form = document.getElementById(`the-form`);
     let which_completed = ''; 
 
-    for (let i = 0 ; i < completed.length ; i++) {
-        if (completed[i].checked) {
-            which_completed = completed[i].id;
-        }
+    if (check_if_already_displayed(title.value)){
+        title.setCustomValidity("Once a non-used title is supplied, form will submit");
     }
-    closeForm() ; 
-    addBookToLibrary(title.value, author.value, pages.value, which_completed);
-    console.log(which_completed);
+    else {
+        title.setCustomValidity("");
+    }
+
+    if (title.checkValidity() && author.checkValidity() && pages.checkValidity()) {
+        ev.preventDefault();
+        for (let i = 0 ; i < completed.length ; i++) {
+            if (completed[i].checked) {
+                which_completed = completed[i].id;
+            }
+        }
+        closeForm() ; 
+        const newBook = addBookToLibrary(title.value, author.value, pages.value, which_completed);
+        display_book(newBook);
+        title.value = ''; 
+        author.value = ''; 
+        pages.value = '';
+        return ; 
+    }
+
 })
 
 
@@ -34,6 +49,15 @@ function shrink_string(string) {
     return string;
 }
 
+function check_if_already_displayed(book_title){
+    for (let ctr = 0 ; ctr < displayed_books.length; ctr++){
+        let existing_book = shrink_string(displayed_books[ctr]).toLowerCase();
+        let new_book = shrink_string(book_title).toLowerCase(); 
+
+        if (existing_book == new_book) {return true} ;  
+    }
+    return false;
+}
 
 
 function display_book (book) {
@@ -48,35 +72,66 @@ function display_book (book) {
         `
         <p id="book-title"><i>${book.title}</i></p>
         <p id="book-author">${book.author}</p>
-        <p id="book-pages">${book.pages}</p>
-        <button id="read-button">Read</button>
-        <button id="delete-button">Delete</button>
+        <p id="book-pages">${book.pages} pages</p>
+        <button class="read-button" onclick="change_read_button(this.id)">Read</button>
+        <button class="delete-button" onclick="delete_book(this.id)">Delete</button>
         `
 
     const parent_div = document.createElement('div') ;
-    parent_div.classList.add(`book`, `${shrink_string(book.title)}`);
+    parent_div.classList.add(`book`);
+    parent_div.setAttribute('id', `k${shrink_string(book.title)}`);
     string = elementFromHtml(string);
     parent_div.append(string);
+    const read_button = Array.from(parent_div.childNodes)[6];
+    read_button.setAttribute(`id`, `b${shrink_string(book.title)}`)
+    const delete_button = Array.from(parent_div.childNodes)[8];
+    delete_button.setAttribute('id', `d${shrink_string(book.title)}`);
 
-
-    // if (book.completed == 'havent-started') {
-    //     read_button.style.backgroundColor = '#FF6525'
-    // }
-    // else if (book.completed == 'currently-reading'){
-
-    // }
-    // else if (book.completed == 'finished'){
-
-    // }
-
+    if (book.completed == 'havent-started') {
+        read_button.style.backgroundColor = '#FF6525' ;
+        read_button.textContent = `Haven't Started`;
+    }
+    else if (book.completed == 'currently-reading'){
+        read_button.style.backgroundColor = '#F0F125' ;
+        read_button.textContent = `Reading`;
+    }
+    else if (book.completed == 'finished'){
+        read_button.style.backgroundColor = '#62FF6B' ;
+        read_button.textContent = `Finished`; 
+    }
 
     container.append(parent_div);
-    added_books.push(book.title);
+    displayed_books.push(book.title);
 }
 
 
+function delete_book(clicked_id) {
+    const element = document.getElementById(clicked_id);
+    element.parentElement.remove();
+}
+
+function change_read_button(clicked_id) {
+    const read_button = document.getElementById(clicked_id);
+    
+    if (read_button.textContent == `Haven't Started`) {
+        read_button.style.backgroundColor = '#F0F125' ;
+        read_button.textContent = `Reading`;
+    }
+    else if (read_button.textContent == 'Reading') {
+        read_button.style.backgroundColor = '#62FF6B' ;
+        read_button.textContent = `Finished`; 
+    }
+    else if (read_button.textContent == 'Finished') {
+        read_button.style.backgroundColor = '#FF6525' ;
+        read_button.textContent = `Haven't Started`;
+    }
+}
+
+
+
+
 let myLibrary = [] ;
-let added_books = [] ;
+let displayed_books = [] ;
 
 
 function Book(title, author, pages, completed){
@@ -89,10 +144,11 @@ function Book(title, author, pages, completed){
 function addBookToLibrary(title, author, pages, completed) {
     const pushBook = new Book(title, author, pages, completed);
     myLibrary.push(pushBook);
+    return pushBook;
 }
 
 const lotr = new Book("Lord of the Rings", "J. R. R. Tolkien", 1178, 'havent-started'); 
-const normal_people = new Book("Normal People", "Sally Rooney", 350, false); 
+const normal_people = new Book("Normal People", "Sally Rooney", 350, 'completed'); 
 const ninteen_84 = new Book("1984", "George Orwell", 312, false); 
 
 myLibrary.push(lotr, normal_people, ninteen_84);
@@ -100,3 +156,11 @@ console.log(myLibrary);
 
 
 display_book(lotr);
+display_book(lotr);
+display_book(lotr);
+display_book(lotr);
+display_book(lotr);
+display_book(lotr);
+
+
+
