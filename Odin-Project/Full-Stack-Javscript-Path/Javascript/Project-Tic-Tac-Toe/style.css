@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Nerko One");
+
 body {
     margin: 0;
     height: 100vh;
@@ -7,11 +9,12 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #CACACA;
+    font-family: "Nerko One";
 }
 
 .board {
-    height: 40%;
-    width: 40%;
+    height: 500px;
+    width: 500px;
     background-color: white;
     border-radius: 25px;
     display: grid;
@@ -21,13 +24,33 @@ body {
 }
 
 .border-bottom {
-    border-bottom: black 10px solid;
+    border-bottom: black 8px solid;
 }
 
 .border-right {
-    border-right: black 10px solid;
+    border-right: black 8px solid;
 }
 
 .board-element {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120px;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    margin: 24px;
+    height: 100px;
+    width: 150px;
+    font-size: 24px;
+    background-color: white;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+button:active {
+    border: 1px solid yellow;
 }
