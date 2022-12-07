@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <div class="go-across-menu">
+        <ul>
+            <li><a href="./first-page.html">Home</a></li>
+            <li><a href="./menu.html">Menu</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+
+    <div class="rest-container">
+
+    
+    <div class="henrys-dinner-title">
+            <h1 id="full-blast">Henry's Amazing Diner</h1>
+    </div>
+
+
+    <div class="info">
+        <div class="article">
+            <h1>History</h1>
+            <p>Henry's diner was founded in 1939 by Henry Jacobs himself and has been committed
+                to serving the best damn omelette your sorry tongue will ever taste for over 83
+                years!</p>
+        </div>
+        <div class="article">
+            <h1>Directions</h1>
+            <p>We are located in the upper east side of the one and only Manhattan, NY NY right off 32nd and Broadway.</p> 
+        </div>
+        <div class="article">
+            <h1>Mission</h1>
+            <p id="bump">As part of our mission to supporting our proud NY community, Henry's Amazing Diner donates over thirty percent of all profits made to local and state charities with the goal of eliminating hunger!</p>
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            background-image: url("./Javascript/Project-Restaurant-Page/Nighthawks_by_Edward_Hopper_1942.jpg");
+        }
+
+        .go-across-menu {
+            height: 30vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .go-across-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            font-size: 36px;
+            
+        }
+
+        a {
+            color: white;
+        }
+
+    
+        .rest-container {
+            width: 100vw;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+
+        h1, p {
+            margin: 0;
+        }
+
+        .henrys-dinner-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: yellow;
+        }
+
+
+        .info {
+            display: flex;
+        }
+
+        .article {
+            background-color: rgba(255, 98, 98, .7);
+            height: 300px;
+            width: 300px;
+            font-size: 24px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 24px;
+            flex-direction: column;
+            position: relative;
+
+        }
+
+
+        .article h1 {
+            position: absolute;
+            top: 0;
+        }
+
+        #bump {
+            position: relative;
+            top: 10px;
+        }
+
+
+    </style>
+
+
+</body>
+</html>

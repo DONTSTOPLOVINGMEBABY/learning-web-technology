@@ -1,0 +1,31 @@
+{
+  "name": "project-restaurant-page",
+  "version": "1.0.0",
+  "description": "Small project as part of The Odin Project Curriculum to get practice with webpack, and manipulating the DOM using Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DONTSTOPLOVINGMEBABY/learning-web-technology.git#main"
+  },
+  "keywords": [
+    "Practice",
+    "IDK",
+    "TRYING",
+    "TO",
+    "GET",
+    "BETTER"
+  ],
+  "author": "Yours Truly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DONTSTOPLOVINGMEBABY/learning-web-technology/issues"
+  },
+  "homepage": "https://github.com/DONTSTOPLOVINGMEBABY/learning-web-technology/tree/main#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
