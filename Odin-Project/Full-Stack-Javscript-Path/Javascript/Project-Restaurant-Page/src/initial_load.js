@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-</head>
-<body class="menu">
+import greek_omelette from "./greek-omelette.jpg"
 
-    <div class="go-across-menu">
+let main_html = `
+<div class="go-across-menu">
         <ul>
-            <li><a href="./first-page.html">Home</a></li>
-            <li><a href="./menu.html">Menu</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a id="home" href="#">Home</a></li>
+            <li><a id="menu" href="#">Menu</a></li>
+            <li><a id="contact" href="#">Contact</a></li>
         </ul>
     </div>
 
@@ -21,7 +14,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -31,7 +24,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -41,7 +34,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -51,7 +44,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -61,7 +54,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -71,7 +64,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -81,7 +74,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -91,7 +84,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -101,7 +94,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -111,7 +104,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -121,7 +114,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -131,7 +124,7 @@
             <div class="item">
                 <h1>Greek Omelette</h1>
                 <div class="side-by-side">
-                    <img src="./Javascript/Project-Restaurant-Page/greek-omelette.jpg" alt="Omelette">
+                    <img id="post-image" src="./greek-omelette.jpg" alt="Omelette">
                     <div class="info">
                     <p id="price">7.99</p>
                     <p>This omelette is sure to delight with all of its feta cheese, onions, peppers, and ham!</p>
@@ -140,101 +133,26 @@
             </div>
         </div>
     </div>
-    
+`
 
 
-    <style>
+function elementFromHtml(html) {
+    const template = document.createElement("template"); 
+    template.innerHTML = html.trim() ; 
+    return template.content; 
+}
 
-    @import url("https://fonts.googleapis.com/css?family=Indie Flower");
 
-        body {
-            margin: 0;
-            height: 100vh;
-            width: 100vw;
-            align-items: center;
-            background-image: url("./Javascript/Project-Restaurant-Page/Nighthawks_by_Edward_Hopper_1942.jpg"); 
-        }
+function build_entire_menu_page(){
+    const element = document.getElementById('content');
+    let output = elementFromHtml(main_html);
+    element.append(output);
+    document.querySelectorAll('#post-image').forEach( (element) => {
+        element.src=greek_omelette;
+    })
+}
 
-        .go-across-menu {
-            height: 30vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
-        .go-across-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 3rem;
-            font-size: 36px;
-            
-        }
 
-        a {
-            color: white;
-        }
 
-        h1, p {
-            margin: 0;
-        }
-
-        .wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .menu {
-            width: 60%;
-            padding: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .item {
-            height: 275px;
-            width: 300px;
-            background-color: rgba(255, 255, 255, .9);
-            border-radius: 25px;
-            margin: 12px;
-            padding: 12px;
-            text-align: center;
-            font-family: "Indie Flower";
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .side-by-side {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .item img {
-            height: 200px;
-            margin: 0;
-            border-radius: 5px;
-        }
-
-        .side-by-side p {
-            font-size: 18px;
-        }
-
-        .side-by-side img {
-            margin-left: 4px;
-        }
-
-        #price {
-            font-size: 30px;
-        }
-
-    </style>
-
-</body>
-</html>
+export { build_entire_menu_page } 

@@ -1,0 +1,239 @@
+.body-menu {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    background-image: url('../images/background.jpg');
+}
+
+
+.go-across-menu {
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-across-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    font-size: 36px;
+    
+}
+
+a {
+    color: black;
+}
+
+h1, p {
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.menu {
+    width: 60%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item {
+    height: 275px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, .9);
+    border-radius: 25px;
+    margin: 12px;
+    padding: 12px;
+    text-align: center;
+    font-family: "Indie Flower";
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-by-side {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.item img {
+    height: 200px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.side-by-side p {
+    font-size: 18px;
+}
+
+.side-by-side img {
+    margin-left: 4px;
+}
+
+#price {
+    font-size: 30px;
+}
+
+.first-page{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("./Javascript/Project-Restaurant-Page/Nighthawks_by_Edward_Hopper_1942.jpg");
+}
+
+.go-across-menu {
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-across-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    font-size: 36px;
+    
+}
+
+
+.rest-container {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+h1, p {
+    margin: 0;
+}
+
+.henrys-dinner-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: yellow;
+}
+
+
+.info {
+    display: flex;
+}
+
+.article {
+    background-color: rgba(255, 98, 98, .7);
+    height: 300px;
+    width: 300px;
+    font-size: 24px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 24px;
+    flex-direction: column;
+    position: relative;
+
+}
+
+
+.article h1 {
+    position: absolute;
+    top: 0;
+}
+
+#bump {
+    position: relative;
+    top: 10px;
+}
+
+
+.contact {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    background-image: url("./Javascript/Project-Restaurant-Page/Nighthawks_by_Edward_Hopper_1942.jpg"); 
+}
+
+.go-across-menu {
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-across-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    font-size: 36px;
+    
+}
+
+
+.rest-content {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+fieldset {
+    border: none;
+    position: relative;
+    margin-left: 10%;
+}
+
+.first-last, .email-phone, .passwords {
+    display: flex;
+    gap: 3rem;
+}
+
+.form {
+    background-color: rgba(255, 255, 255, .8);
+    font-size: 1.125rem;
+    padding-top: 36px;
+    padding-bottom: 36px;
+    border-radius: 25px;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 12px;
+    font-size: 1.125rem;
+}
+
+#submitbutton {
+    background-color: #586D47;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    height: 4rem;
+    position: relative;
+    left: 10%;
+    margin: 14px;
+}

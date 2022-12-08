@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+<body class="contact">
+    <div class="go-across-menu">
+        <ul>
+            <li><a href="./first-page.html">Home</a></li>
+            <li><a href="./menu.html">Menu</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="rest-content">
+        <div class="form">
+            <form>
+                <fieldset>
+                        <div class="first-last">
+                            <div class="cell">
+                                <label for="first_name">First Name</label>
+                                <input type="text" id="first_name" name="first_name">
+                            </div>
+                            <div class="cell" id="move">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" id="last_name" name="last_name">
+                            </div>
+                        </div>  
+                        <div class="email-phone">
+                            <div class="cell">
+                                <label for="email">Email</label>
+                                <input type="email" id="email">
+                            </div>
+                            <div class="cell">
+                                <label for="phone-number">Phone number</label>
+                                <input type="text" id="phone-number">
+                            </div>
+                        </div>
+                </fieldset>
+                    <input id="submitbutton" type="submit" value="Contact">
+                </div>
+    </div>
+
+
+    <style>
+        .contact {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            background-image: url("./Javascript/Project-Restaurant-Page/Nighthawks_by_Edward_Hopper_1942.jpg"); 
+        }
+
+        .go-across-menu {
+            height: 30vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .go-across-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            font-size: 36px;
+            
+        }
+
+        a {
+            color: white;
+        }
+        
+        .rest-content {
+            width: 100vw;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        
+        fieldset {
+            border: none;
+            position: relative;
+            margin-left: 10%;
+        }
+
+        .first-last, .email-phone, .passwords {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .form {
+            background-color: rgba(255, 255, 255, .8);
+            font-size: 1.125rem;
+            padding-top: 36px;
+            padding-bottom: 36px;
+            border-radius: 25px;
+        }
+
+        input {
+            height: 30px;
+            width: 200px;
+            margin-bottom: 12px;
+            font-size: 1.125rem;
+        }
+
+        #submitbutton {
+            background-color: #586D47;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            height: 4rem;
+            position: relative;
+            left: 10%;
+            margin: 14px;
+        }
+    </style>
+
+</body>
+</html>
