@@ -118,6 +118,26 @@
                         </ul>
                     </div>
                     <div class="display-new-window">
+                        <form class="add-project-form">
+                            <div class="project-title">
+                                <input type="text" id="project-title" placeholder="Project Title">
+                            </div>
+                            <div class="project-description">
+                                <textarea id="description" placeholder="Project Description (optional)"></textarea>
+                            </div>
+                            <div class="project-date">
+                                <label for="project-date">Project Due Date</label>
+                                <input type="date" id="project-date">
+                            </div>
+                            <div class="priority">
+                                <input type="radio" id="low-priority" name="priority" value="low-priority">
+                                <label for="low-priority">Low Priority</label>
+                                <input type="radio" id="med-priority" name="priority" value="med-priority">
+                                <label for="med-priority">Medium Priority</label>
+                                <input type="radio" id="high-priority" name="priority" value="high-priority">
+                                <label for="high-priority">High Priority</label>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
