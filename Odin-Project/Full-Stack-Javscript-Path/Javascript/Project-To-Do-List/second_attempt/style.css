@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 
 
-
 body {
     margin: 0;
     font-family: "Raleway";
@@ -11,7 +10,8 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-color: #FF2500;
+    /* background-color: #FF2500; */
+    background-color: rgba(255, 37, 0, .5);
     /* background-color: rgba(0, 0, 0, .85) */
 }
 
@@ -83,7 +83,7 @@ h1 {
     font-weight: 700;
 }
 
-.sidebar li {
+.sidebar li, .modal-display-and-sidebar .sidebar-new-window li {
     margin-bottom: 18px;
     cursor: pointer;
 }
@@ -108,7 +108,7 @@ h1 {
     margin-top: 36px;
 }
 
-#no-project-create-project, #no-notes-create-notes, #no-list-create-list {
+#no-project-create-project, #no-notes-create-notes, #no-list-create-list, #add-new-entry-button {
     height: 50px;
     width: 200px;
     font-size: 24px;
@@ -119,9 +119,10 @@ h1 {
     border: none;
     color: white;
     box-shadow: 4px 4px 4px 1px darkslategray;
+    transition: all .3s ease;
 }
 
-#no-project-create-project:active, #no-notes-create-notes:active, #no-list-create-list:active {
+#no-project-create-project:active, #no-notes-create-notes:active, #no-list-create-list:active, #add-new-entry-button:active {
     /* border: black 2px solid; */
     height: 45px;
     width: 190px;
@@ -226,4 +227,80 @@ h1 {
 .display .build-note #note-contents {
     font-size: 1.25rem;
     line-height: 1.75rem;
+}
+
+
+
+.background-modal {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.modal {
+    width: 65%;
+    height: 65%;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar-new-window{
+    height: 10%;
+    background-color: rgba(0,97,0, 1);
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 2rem; 
+}
+
+
+
+.topbar-new-window .new-window-title {
+    margin-left: 36px;
+}
+
+.topbar-new-window .exit_button {
+    margin-right: 36px;
+    cursor: pointer;
+}
+
+.modal-display-and-sidebar {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-display-and-sidebar .sidebar-new-window {
+    height: 100%;
+    width: 30%;
+    border-bottom-left-radius: 5px;
+    font-size: 1.75rem;
+    background-color: #E7E7E7;
+}
+
+#sidebar-new-window-projects {
+    font-style: italic; 
+    
+    /* For making everything italic, it's probably best to label them all with one tag, collect 
+    them as a node list, deactivate them all, and then apply it to that one element. 
+    I think that's possible? Not sure */ 
+}
+ 
+.modal-display-and-sidebar .display-new-window {
+    height: 100%;
+    width: 70%;
+    border-bottom-right-radius: 5px;
 }
