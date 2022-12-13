@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="to-do-list">
+            <div class="topbar">
+                <div class="title">To Do List</div>
+                <div class="top-nav-bar">
+                    <ul>
+                        <li>+ Note</li>
+                        <li>+ List</li>
+                        <li>+ Project</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="navigation-menu">
+                    <ul>
+                        <li>Projects</li>
+                        <li>Lists</li>
+                        <li>Notes</li>
+                        <li>Show-All-To-Dos</li>
+                    </ul>
+                </div>
+                <div class="add-button">
+                    <button>New Entry</button>
+                </div>
+            </div>
+            <div class="display">
+
+                <!-- Everything Projects -->
+
+                <div class="empty-project">
+                    <p>You currently don't have any projects.</p>
+                    <button id="no-project-create-project">Make a Project</button>
+                </div>
+
+                <!-- Everything ToDos -->
+                
+                <div class="empty-todos">
+                    <p>You currently don't have any todos.</p>
+                    <button id="no-project-create-project">Make a Project</button>
+                </div>
+
+                <!-- Everything Lists -->
+
+                <div class="build-list">
+                    <ul>
+                        <li><span class="move-down">Hello</span>
+                            <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>     
+                            <li><span class="move-down">Hello</span>
+                                <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>                                                           
+                    </ul>
+                    <div class="bottom">
+                        <h1 id="title-of-list">title of list</h1>
+                        <button id="add-list-items" >Add items to List</button>
+                    </div>
+                </div>
+                <div class="empty-lists">
+                    <p>You currently don't have any lists.</p>
+                    <button id="no-list-create-list">Make a list</button>
+                </div>
+
+                <!-- Everything Notes -->
+
+                <div class="build-note">
+                    <h1 id="note-title">Lorem ipsum dolor</h1>
+                    <p id="note-contents">Lorem ipsum dolor sit amet. Ex recusandae maiores aut libero 
+                        cumque non aliquam esse in internos omnis. Quo maxime corrupti 
+                        et illo consequatur qui voluptates numquam At corporis quas sit 
+                        nihil totam sit consectetur quia et doloribus reprehenderit. Eos 
+                        quisquam quas At nulla illum ea omnis illo est facilis eaque.
+                        <br>
+                        <br>
+                        Ut explicabo excepturi est dolorem officiis est rerum consequuntur 
+                        ut provident quidem. Et repellat laudantium est itaque dicta et velit 
+                        nobis! Eos aperiam ullam quo sequi impedit nam dolorem quas!
+                        <br>
+                        <br>
+                        Nam corporis earum est sunt saepe id excepturi ducimus sit officia 
+                        reprehenderit. Aut voluptatem quia eum voluptate omnis in distinctio totam. 
+                        Qui sint voluptas qui placeat reiciendis in fuga accusamus non 
+                        voluptatem quia sed consequatur voluptas sed dolores atque.Lorem ipsum dolor sit amet. Ex recusandae maiores aut libero 
+                        cumque non aliquam esse in internos omnis. Quo maxime corrupti 
+                        et illo consequatur qui voluptates numquam At corporis quas sit 
+                        nihil totam sit consectetur quia et doloribus reprehenderit. Eos 
+                        quisquam quas At nulla illum ea omnis illo est facilis eaque.</p>
+                </div>
+                <div class="empty-notes">
+                    <p>You currently don't have any notes.</p>
+                    <button id="no-notes-create-notes">Make a Note</button>
+                </div>
+
+                 
+
+
+            </div>
+        </div>
+</body>
+</html>

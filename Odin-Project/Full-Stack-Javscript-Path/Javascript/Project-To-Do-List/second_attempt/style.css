@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+
+
+
+body {
+    margin: 0;
+    font-family: "Raleway";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #FF2500;
+    /* background-color: rgba(0, 0, 0, .85) */
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+
+.to-do-list {
+    height: 82.5vh;
+    width: 82.5vw;
+    background-color: white;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 20vw 62.5vw; 
+    grid-template-rows: 12vh 70.5vh; 
+    box-shadow: 12px 10px 10px 2px darkslategray;
+}
+
+.topbar {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    background-color: rgba(30, 0, 152, .9);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: white;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+}
+
+.topbar .title {
+    margin-left: 4rem;
+    font-size: 4rem;
+    font-family: "Pacifico";
+}
+
+.topbar .top-nav-bar ul {
+    display: flex;
+    gap: 2rem;
+    margin-right: 4rem;
+    font-size: 2rem;
+}
+
+.topbar .top-nav-bar li {
+    cursor: pointer;
+}
+
+.sidebar {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.75rem;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.sidebar li {
+    margin-bottom: 18px;
+    cursor: pointer;
+}
+
+.sidebar button {
+    margin-bottom: 36px;
+    margin-left: 24px;
+}
+
+.display {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: flex;
+}
+
+.display .empty-project, .display .empty-notes, .display .empty-todos, .display .empty-lists {
+    display: none;
+    justify-content: center;
+    font-size: 2rem;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 36px;
+}
+
+#no-project-create-project, #no-notes-create-notes, #no-list-create-list {
+    height: 50px;
+    width: 200px;
+    font-size: 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 24px;
+    background-color: #FF2500;
+    border: none;
+    color: white;
+    box-shadow: 4px 4px 4px 1px darkslategray;
+}
+
+#no-project-create-project:active, #no-notes-create-notes:active, #no-list-create-list:active {
+    /* border: black 2px solid; */
+    height: 45px;
+    width: 190px;
+}
+
+.display .build-list {
+    flex: 1;
+    display: none;
+    overflow: auto;
+    justify-content: space-between;
+    position: relative;
+}
+
+.display .build-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.display .build-list li::before {
+    /* list-style-image: url("./check.svg"); */
+    content: '';
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    background-size: 24px;
+    background-image: url("./check.svg");
+    cursor: pointer;
+}
+
+.display .build-list li {
+    display: flex;
+    font-size: 1.25rem;
+
+}
+
+.display .build-list .move-down {
+    margin-left: 12px;
+    margin-right: 12px;
+    cursor: default;
+}
+
+.display .build-list #delete-from-list {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+.display .build-list #add-list-items {
+    background-color: #FF2500;
+    font-size: 16px;
+    height: 30px;
+    border-radius: 25px;
+    width: 160px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 12px;
+}
+
+.bottom {
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.bottom #title-of-list {
+    font-family: "Pacifico";
+    font-weight: 100;
+}
+
+
+.display .build-list #add-list-items:active {
+    /* border: black 2px solid; */
+    height: 25px;
+    width: 150px;
+}
+
+.display .build-note {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    flex: 1;
+    overflow: auto;
+
+}
+
+.display .build-note #note-title {
+    font-family: "Pacifico";
+    margin-bottom: 12px;
+    font-size: 48px;
+    font-weight: 100;
+}
+
+.display .build-note #note-contents {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
