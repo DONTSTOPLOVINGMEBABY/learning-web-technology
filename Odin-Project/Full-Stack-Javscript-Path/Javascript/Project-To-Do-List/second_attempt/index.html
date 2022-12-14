@@ -96,11 +96,11 @@
                     <p>You currently don't have any notes.</p>
                     <button id="no-notes-create-notes">Make a Note</button>
                 </div>
-
-
-
             </div>
         </div>
+
+            <!-- Everything Related to the Modal -->
+
         <div class="background-modal">
             <div class="modal">
 
@@ -112,35 +112,60 @@
                 <div class="modal-display-and-sidebar">
                     <div class="sidebar-new-window">
                         <ul>
-                            <li id="sidebar-new-window-projects">Project</li>
+                            <li id="sidebar-new-window-projects">~Project</li>
                             <li id="sidebar-new-window-lists">List</li>
                             <li id="sidebar-new-window-notes">Note</li>
+                            <li id="sidebar-new-window-todo">Todo</li>
                         </ul>
                     </div>
                     <div class="display-new-window">
-                        <form class="add-project-form">
-                            <div class="project-title">
-                                <input type="text" id="project-title" placeholder="Project Title">
+                        <form class="add-project-form form">
+                                <input class="title-input" type="text" id="project-title-input" placeholder="Project Title">
+                                <textarea class="description-box" id="project-description-input" placeholder="Project Description (optional)"></textarea>
+                                <div class="due-dates">
+                                    <label for="project-date">Project Due Date</label>
+                                    <input class="add-margin" type="date" id="project-date-input">
+                                </div>
+                                <div class="center-submit-button">
+                                    <button id="submit-new-project">Submit new project</button>
+                                </div>
+                        </form>
+
+                        <form class="add-note-form form">
+                            <input class="title-input" type="text" id="note-title-input" placeholder="Note Title" required>
+                            <textarea class="description-box" id="note-description-input" placeholder="Write Away" required></textarea>
+                            <div class="center-submit-button">
+                                <button id="submit-new-note">Create Note</button>
                             </div>
-                            <div class="project-description">
-                                <textarea id="description" placeholder="Project Description (optional)"></textarea>
+                        </form>
+
+                        <form class="add-todo-form form">
+                            <div class="todo-title-select-project">
+                                <input class="title-input todo" type="text" id="note-title-input" placeholder="Todo Title" required>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Choose-Project</button>
+                                    <div class="dropdown-content">
+                                        <p>This</p>
+                                        <p>That</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="project-date">
-                                <label for="project-date">Project Due Date</label>
-                                <input type="date" id="project-date">
-                            </div>
-                            <div class="priority">
+                            <textarea class="description-box" id="todo-description-input" placeholder="Todo Description (optional)"></textarea>
+                            <div class="project-priorities">
                                 <input type="radio" id="low-priority" name="priority" value="low-priority">
-                                <label for="low-priority">Low Priority</label>
+                                <label class="checked-radio-box low" for="low-priority">Low Priority</label>
                                 <input type="radio" id="med-priority" name="priority" value="med-priority">
-                                <label for="med-priority">Medium Priority</label>
+                                <label class="med" for="med-priority">Medium Priority</label>
                                 <input type="radio" id="high-priority" name="priority" value="high-priority">
-                                <label for="high-priority">High Priority</label>
+                                <label class="high" for= high-priority">High Priority</label>
+                            </div>
+                            <div class="center-submit-button">
+                                <button id="submit-new-todo">Create Todo</button>
                             </div>
                         </form>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
 
