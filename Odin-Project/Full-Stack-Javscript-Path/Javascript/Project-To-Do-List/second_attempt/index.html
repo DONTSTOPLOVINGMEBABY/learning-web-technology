@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do-List</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
         <div class="to-do-list">
@@ -13,19 +14,19 @@
                 <div class="title">To Do List</div>
                 <div class="top-nav-bar">
                     <ul>
-                        <li>+ Note</li>
-                        <li>+ List</li>
-                        <li>+ Project</li>
+                        <li id="top-add-note">+ Note</li>
+                        <li id="top-add-list">+ List</li>
+                        <li id="top-add-project">+ Project</li>
                     </ul>
                 </div>
             </div>
             <div class="sidebar">
                 <div class="navigation-menu">
                     <ul>
-                        <li>Projects</li>
-                        <li>Lists</li>
-                        <li>Notes</li>
-                        <li>Show-All-To-Dos</li>
+                        <li id="nav-menu-projects">Projects</li>
+                        <li id="nav-menu-lists">Lists</li>
+                        <li id="nav-menu-notes">Notes</li>
+                        <li id="nav-menu-todos">Show-All-To-Dos</li>
                     </ul>
                 </div>
                 <div class="add-button">
@@ -58,8 +59,12 @@
                                 <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>                                                           
                     </ul>
                     <div class="bottom">
+                        <form>
+                            <input class="title-input" type="text" id="project-title-input" placeholder="Project Title">
+                            <button type="button" id="add-list-items" >Add items to List</button>
+                        </form>
                         <h1 id="title-of-list">title of list</h1>
-                        <button id="add-list-items" >Add items to List</button>
+                        
                     </div>
                 </div>
                 <div class="empty-lists">
@@ -103,7 +108,6 @@
 
         <div class="background-modal">
             <div class="modal">
-
                 <div class="topbar-new-window">
                     <div class="new-window-title">Add a
                         <span id="adding-new">Note</span></div>
@@ -130,7 +134,23 @@
                                     <button id="submit-new-project">Submit new project</button>
                                 </div>
                         </form>
-
+                        <form class="add-list-form form">
+                            <input class="title-input" type="text" id="list-title-input" placeholder="List Title" required>
+                            <div class="display-list">
+                                <ul>
+                                    <li>Hello</li>
+                                    <li>this</li>
+                                    <li>another thing</li>
+                                    <li>Hello</li>
+                                    <li>this</li>
+                                </ul>
+                            </div>
+                            <div class="bottom-container">
+                                <input class="title-input" type="text" id="add-to-list-input" placeholder="Enter Item to Add to List" required>
+                                <button type="button" id="add-to-list">Add to list</button>
+                                <button type="submit" id="create-list">Create-list</button>
+                            </div>
+                        </form>
                         <form class="add-note-form form">
                             <input class="title-input" type="text" id="note-title-input" placeholder="Note Title" required>
                             <textarea class="description-box" id="note-description-input" placeholder="Write Away" required></textarea>
@@ -138,10 +158,9 @@
                                 <button id="submit-new-note">Create Note</button>
                             </div>
                         </form>
-
                         <form class="add-todo-form form">
                             <div class="todo-title-select-project">
-                                <input class="title-input todo" type="text" id="note-title-input" placeholder="Todo Title" required>
+                                <input class="title-input todo" type="text" id="todo-title-input" placeholder="Todo Title" required>
                                 <div class="dropdown">
                                     <button class="dropbtn">Choose-Project</button>
                                     <div class="dropdown-content">
@@ -164,10 +183,10 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
 
+        <script src="./scripts/navigation.js"></script>
 </body>
 </html>

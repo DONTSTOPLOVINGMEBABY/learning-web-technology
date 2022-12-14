@@ -88,10 +88,13 @@ h1 {
     cursor: pointer;
 }
 
-.sidebar button {
-    margin-bottom: 36px;
-    margin-left: 24px;
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
 }
+
 
 .display {
     grid-row: 2/3;
@@ -189,7 +192,7 @@ h1 {
 .bottom {
     align-self: flex-end;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
 }
@@ -240,7 +243,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: none;
 }
 
 
@@ -249,7 +252,7 @@ h1 {
     height: 50%;
     background-color: white;
     border-radius: 5px;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -423,6 +426,67 @@ input[type="radio"]+label {
 
 /* End of Modal Code and adding to project */ 
 
+/* Begin code for adding List */ 
+
+.add-list-form {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.display-list {
+    height: 50%;
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    padding: 2%;
+}
+
+.display-list ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+
+.bottom-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 20%;
+}
+
+#add-to-list-input {
+    height: 50%;
+}
+
+#add-to-list, #create-list {
+    height: 70%;
+    width: 20%;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: all .3s ease;
+}
+
+#add-to-list:active, #create-list:active {
+    height: 65%;
+    width: 17%;
+}
+
+#add-to-list {
+    background-color: #408DCA;
+}
+
+#create-list {
+    background-color: #40CA53;
+}
+
+/* End code for adding list */ 
 
 
 /* Begin code for adding Note */ 
@@ -445,7 +509,7 @@ input[type="radio"]+label {
 /* Begin code for Adding ToDo*/ 
 
 .add-todo-form {
-    display: flex;
+    display: none;
     flex-direction: column;
     height: 100%;
     width: 100%;
@@ -459,7 +523,7 @@ input[type="radio"]+label {
     justify-content: space-around;
 }
 
-#note-title-input {
+#todo-title-input {
     height: 50%;
     width: 50%;
 }
@@ -524,4 +588,4 @@ input[type="radio"]+label {
     width: 25%;
 }
 
-/* Begin code for Adding ToDo*/ 
+/* End code for Adding ToDo*/ 
