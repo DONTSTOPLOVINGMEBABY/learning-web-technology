@@ -36,6 +36,12 @@ const nav_menu_lists = document.getElementById('nav-menu-lists') ;
 const nav_menu_notes = document.getElementById('nav-menu-notes') ; 
 const nav_menu_todos = document.getElementById('nav-menu-todos') ; 
 
+const modal_sidebar_project = document.getElementById("sidebar-new-window-projects") ; 
+const modal_sidebar_list = document.getElementById("sidebar-new-window-lists") ; 
+const modal_sidebar_notes = document.getElementById("sidebar-new-window-notes") ; 
+const modal_sidebar_todo = document.getElementById("sidebar-new-window-todo") ; 
+const modal_topbar_title = document.getElementById('adding-new') ; 
+
 
 const all_display_none_attributes = [
     empty_project_page, 
@@ -49,14 +55,55 @@ const all_display_none_attributes = [
     add_project_form, 
     add_list_form, 
     add_note_form, 
-    add_todo_form
+    add_todo_form, 
 ]
+
+const all_italic_menu_attributes = [
+    nav_menu_projects, 
+    nav_menu_lists, 
+    nav_menu_notes, 
+    nav_menu_todos, 
+    modal_sidebar_project, 
+    modal_sidebar_list, 
+    modal_sidebar_notes, 
+    modal_sidebar_todo, 
+]
+
+const all_modal_displays = [
+    add_project_form, 
+    add_list_form, 
+    add_note_form, 
+    add_todo_form, 
+]
+
 
 function toggle_all_displays_to_none () {
     for (let i = 0 ; i < all_display_none_attributes.length; i++) {
         all_display_none_attributes[i].style.display = "none" ; 
     }
 } 
+
+function toggle_all_menu_attributes_to_not_selected () {
+    for (let i = 0 ; i < all_italic_menu_attributes.length; i++){
+        all_italic_menu_attributes[i].style.fontStyle = "normal" ; 
+        let split_list = all_italic_menu_attributes[i].textContent.split('~') ; 
+        if (split_list.length > 1){
+            all_italic_menu_attributes[i].textContent = split_list[1]; 
+        }  
+    }
+}
+
+function add_italic_add_tilda (document_element) {
+    let string = document_element.textContent ; 
+    string = '~' + string ; 
+    document_element.textContent = string;
+    document_element.style.fontStyle = "italic" ; 
+}
+
+function highlight_menu_item (document_element) {
+    toggle_all_menu_attributes_to_not_selected() ;
+    add_italic_add_tilda(document_element) ; 
+}
 
 function on () {
     for (let i = 0 ; i < arguments.length ; i++){
@@ -74,22 +121,75 @@ function modal_on () {
     on(toggle_background_modal, toggle_modal);
 }
 
+function navigate_around_in_modal (document_element) {
+    for (let i = 0 ; i < all_modal_displays.length ; i++) {
+        all_modal_displays[i].style.display = "none"; 
+    }
+    document_element.style.display = "flex" ; 
+}
+
 function plus_note_button () {
     toggle_all_displays_to_none();
     modal_on() ;  
-    on(add_note_form)
+    switch_modal_to_note() ; 
 }
 
 function plus_list_button () {
     toggle_all_displays_to_none() ; 
     modal_on() ; 
-    on(add_list_form) ;
+    switch_modal_to_list() ; 
 }
 
 function plus_project_button() {
-    toggle_all_displays_to_none()
+    toggle_all_displays_to_none() ; 
     modal_on() ; 
-    on(add_project_form) ; 
+    switch_modal_to_project() ; 
+}
+
+function switch_modal_to_project() {
+    navigate_around_in_modal(add_project_form) ; 
+    highlight_menu_item(modal_sidebar_project) ;
+    modal_topbar_title.textContent = 'Project' ; 
+}
+
+function switch_modal_to_list () {
+    navigate_around_in_modal(add_list_form) ; 
+    highlight_menu_item(modal_sidebar_list) ; 
+    modal_topbar_title.textContent = 'List' ; 
+}
+
+function switch_modal_to_note () {
+    navigate_around_in_modal(add_note_form); 
+    highlight_menu_item(modal_sidebar_notes) ; 
+    modal_topbar_title.textContent = 'Note' ; 
+}
+
+function switch_modal_to_todo () {
+    navigate_around_in_modal(add_todo_form) ; 
+    highlight_menu_item(modal_sidebar_todo) ; 
+    modal_topbar_title.textContent = 'Todo' ; 
+}
+
+function switch_nav_to_projects () {
+
+}
+
+function switch_nav_to_lists() {
+
+}
+
+function switch_nav_to_notes() {
+
+}
+
+function switch_nav_to_todos() {
+
+}
+
+function new_entry_button_nav () {
+    toggle_all_displays_to_none() ; 
+    modal_on() ; 
+    switch_modal_to_project(); 
 }
 
 
@@ -98,28 +198,21 @@ function plus_project_button() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* all listeners that toggle modal */ 
+/* all listeners that toggle/invoke the modal */ 
 
 top_shortcut_note.addEventListener('click', () => { plus_note_button() }) ; 
-
 top_shortcut_list.addEventListener('click', () => { plus_list_button() }) ;
-
 top_shortcut_project.addEventListener('click', () => { plus_project_button() }) ;
-
 toggle_modal_exit.addEventListener('click', () => { off(toggle_modal, toggle_background_modal) }) ; 
+modal_sidebar_project.addEventListener('click', () => { switch_modal_to_project() }) ; 
+modal_sidebar_list.addEventListener('click', () => { switch_modal_to_list() }) ; 
+modal_sidebar_notes.addEventListener('click', () => { switch_modal_to_note() }) ; 
+modal_sidebar_todo.addEventListener('click', () => { switch_modal_to_todo() }) ; 
 
+/* all listeners for main-menu sidebar */
+
+nav_menu_projects.addEventListener('click', () => { switch_nav_to_projects() }) ; 
+nav_menu_lists.addEventListener('click', () => { switch_nav_to_lists() }) ; 
+nav_menu_lists.addEventListener('click', () => { switch_nav_to_notes() }) ; 
+nav_menu_todos.addEventListener('click', () => { switch_nav_to_todos() }) ; 
+button_add_new_entry.addEventListener('click', () => { new_entry_button_nav() }) ; 

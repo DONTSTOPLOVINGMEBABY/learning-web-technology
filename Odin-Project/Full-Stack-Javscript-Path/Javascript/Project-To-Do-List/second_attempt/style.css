@@ -38,6 +38,8 @@ h1 {
     grid-template-columns: 20vw 62.5vw; 
     grid-template-rows: 12vh 70.5vh; 
     box-shadow: 12px 10px 10px 2px darkslategray;
+    min-width: 830px;
+    min-height: 360p;
 }
 
 .topbar {
@@ -52,6 +54,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
+    min-width: 830px;
 }
 
 .topbar .title {
@@ -81,6 +84,8 @@ h1 {
     font-size: 1.75rem;
     justify-content: space-between;
     font-weight: 700;
+    overflow: auto;
+    min-width: 200px;
 }
 
 .sidebar li, .modal-display-and-sidebar .sidebar-new-window li {
@@ -100,6 +105,7 @@ h1 {
     grid-row: 2/3;
     grid-column: 2/3;
     display: flex;
+    min-width: 630px;
 }
 
 .display .empty-project, .display .empty-notes, .display .empty-todos, .display .empty-lists {
@@ -130,6 +136,96 @@ h1 {
     height: 45px;
     width: 190px;
 }
+
+/* Begin All styling for the show-all-frames */ 
+
+.show-all-notes, .show-all-projects, .show-all-lists {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    border-bottom-right-radius: 25px;
+    display: none;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+
+
+
+.notes-container-1, .notes-container-2, .notes-container-3, .projects-container-1, .projects-container-2, 
+.projects-container-3, .lists-container-1, .lists-container-2, .lists-container-3 {
+    width: 33%;
+}
+
+.display-note, .display-project, .display-all-lists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4%;
+    max-height: 60%;
+    overflow: scroll;
+    text-align: center; 
+    background-color: #F3F0F0;
+    margin: 8px;
+    border-radius: 25px;
+}
+
+.display-list-contents {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.display-list-contents li {
+    margin-bottom: 10px;
+}
+
+.title-and-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+}
+
+.note-title-and-icons .icons {
+    display: flex;
+    align-items: center;
+}
+
+.edit-pencil {
+    height: 16px;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.edit-pencil:hover {
+    opacity: 1;
+}
+
+.delete-icon {
+    transform: rotate(90deg);
+    font-size: 18px;
+    opacity: .5;
+}
+
+.delete-icon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.display-title {
+    font-weight: 700;
+    font-family: "Pacifico";
+}
+
+.display-project-due-date {
+    margin-top: 10px;
+}
+
+
+/* End all styling for the show all frames */ 
 
 .display .build-list {
     flex: 1;
@@ -254,6 +350,7 @@ h1 {
     border-radius: 5px;
     display: none;
     flex-direction: column;
+    min-height: 300px;
 }
 
 .topbar-new-window{
@@ -278,6 +375,12 @@ h1 {
 .topbar-new-window .exit_button {
     margin-right: 36px;
     cursor: pointer;
+    transform: rotate(90deg);
+    opacity: .5;
+}
+
+.topbar-new-window .exit_button:hover {
+    opacity: 1;
 }
 
 .modal-display-and-sidebar {
@@ -294,13 +397,6 @@ h1 {
     background-color: #E7E7E7;
 }
 
-#sidebar-new-window-projects {
-    font-style: italic; 
-    
-    /* For making everything italic, it's probably best to label them all with one tag, collect 
-    them as a node list, deactivate them all, and then apply it to that one element. 
-    I think that's possible? Not sure */ 
-}
 
 /*Contains generalized code for Adding in Modal and code specific for adding to Project */ 
 
@@ -450,7 +546,6 @@ input[type="radio"]+label {
     flex-wrap: wrap;
     gap: 2rem;
 }
-
 
 .bottom-container {
     display: flex;
