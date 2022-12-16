@@ -86,6 +86,7 @@ h1 {
     font-weight: 700;
     overflow: auto;
     min-width: 200px;
+    z-index: 1;
 }
 
 .sidebar li, .modal-display-and-sidebar .sidebar-new-window li {
@@ -155,6 +156,58 @@ h1 {
 .notes-container-1, .notes-container-2, .notes-container-3, .projects-container-1, .projects-container-2, 
 .projects-container-3, .lists-container-1, .lists-container-2, .lists-container-3 {
     width: 33%;
+}
+
+.display-todos {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    align-items: center;
+
+}
+
+.singular-todo {
+    background-color: #F3F0F0;
+    width: 98%;
+    height: 12%;
+    margin-top: 14px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.priority-color {
+    left: 0;
+    width: 12px;
+    height: 100%;
+    position: absolute;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.red {
+    background-color: #FF4646;
+}
+
+.yellow {
+    background-color: #FAFF46;
+}
+
+.green {
+    background-color: #46FF4A;
+}
+
+#big-delete {
+    font-size: 1.5rem;
+}
+
+#big-pencil {
+    height: 1.25rem;
 }
 
 .display-note, .display-project, .display-all-lists {
@@ -461,12 +514,12 @@ h1 {
     color: darkslategrey;
 }
 
-.due-dates {    display: flex;
+.due-dates {    
+    display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
     margin-left: 4px;
-
 }
 
 .due-dates .add-margin {
