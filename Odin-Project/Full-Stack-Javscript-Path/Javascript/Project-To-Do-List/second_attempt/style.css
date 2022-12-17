@@ -161,7 +161,7 @@ h1 {
 .display-todos {
     height: 100%;
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     overflow: auto;
     align-items: center;
@@ -393,6 +393,7 @@ h1 {
     justify-content: center;
     align-items: center;
     display: none;
+    z-index: 2;
 }
 
 
@@ -404,6 +405,7 @@ h1 {
     display: none;
     flex-direction: column;
     min-height: 300px;
+    z-index: 3;
 }
 
 .topbar-new-window{
@@ -448,6 +450,7 @@ h1 {
     border-bottom-left-radius: 5px;
     font-size: 1.75rem;
     background-color: #E7E7E7;
+    overflow: hidden;
 }
 
 

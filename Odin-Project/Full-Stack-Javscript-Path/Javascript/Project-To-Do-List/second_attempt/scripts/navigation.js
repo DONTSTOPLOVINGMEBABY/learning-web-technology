@@ -1,3 +1,7 @@
+import * as objects from "./objects.js"
+
+const all_todos = new objects.Aggregate_Todos() ; 
+
 const empty_project_page = document.getElementsByClassName('empty-project')[0]; 
 const empty_notes_page = document.getElementsByClassName('empty-notes')[0];
 const empty_todos_page = document.getElementsByClassName('empty-todos')[0]; 
@@ -193,6 +197,37 @@ function new_entry_button_nav () {
 }
 
 
+
+
+
+
+
+
+
+let this_thing = new objects.Note("Hello", "nice rock"); 
+console.log(this_thing);  
+
+let this_project = new objects.Project("Title", "Description", "3/2/21") ; 
+console.log(this_project) ; 
+
+let this_todo = new objects.To_Dos("Work", "Gotta work hard, idk", "3/22/12") ; 
+let another_todo = new objects.To_Dos("Henry", "Henry is here", "12/22/3221") ; 
+console.log(this_todo) ; 
+console.log(another_todo) ; 
+
+
+this_project.add_to_do(this_todo) ; 
+console.log(this_project.todos) ; 
+
+all_todos.add_to_do(this_todo) ;
+all_todos.add_to_do(another_todo) ;  
+console.log(all_todos.bucket_todos) ; 
+
+all_todos.delete_todo("Henry") ;
+console.log(all_todos.bucket_todos) ; 
+
+
+// For some reason delete_todo not deleting, need to figure out how to fix
 
 
 
