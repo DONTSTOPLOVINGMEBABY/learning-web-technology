@@ -30,6 +30,11 @@ class To_Dos {
         this.title = title ;
         this.description = description ; 
         this.due_date = due_date ; 
+        this.priority ;
+    }
+
+    set_priority (priority) {
+        this.priority = priority ; 
     }
 }
 

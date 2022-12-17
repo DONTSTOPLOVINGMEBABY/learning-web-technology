@@ -28,7 +28,6 @@ h1 {
     padding: 0;
 }
 
-
 .to-do-list {
     height: 82.5vh;
     width: 82.5vw;
@@ -101,7 +100,6 @@ h1 {
     height: 20%;
 }
 
-
 .display {
     grid-row: 2/3;
     grid-column: 2/3;
@@ -112,13 +110,17 @@ h1 {
 .display .empty-project, .display .empty-notes, .display .empty-todos, .display .empty-lists {
     display: none;
     justify-content: center;
+    height: 100%;
+    width: 100%;
     font-size: 2rem;
     flex-direction: column;
     align-items: center;
     margin-top: 36px;
 }
 
-#no-project-create-project, #no-notes-create-notes, #no-list-create-list, #add-new-entry-button, #submit-new-project, #submit-new-note, #submit-new-todo {
+#no-project-create-project, #no-notes-create-notes, #no-list-create-list, 
+#add-new-entry-button, #submit-new-project, #submit-new-note, #submit-new-todo, 
+#no-todos-create-todos {
     height: 50px;
     width: 200px;
     font-size: 24px;
@@ -152,6 +154,12 @@ h1 {
 
 
 
+#delete-from-list {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    
+}
 
 .notes-container-1, .notes-container-2, .notes-container-3, .projects-container-1, .projects-container-2, 
 .projects-container-3, .lists-container-1, .lists-container-2, .lists-container-3 {
@@ -177,7 +185,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 1.5rem;
+    font-size: 1rem;
     position: relative;
 }
 
@@ -223,6 +231,10 @@ h1 {
     border-radius: 25px;
 }
 
+.display-project ul {
+    padding: 0;
+}
+
 .display-list-contents {
     height: 100%;
     margin: 0;
@@ -232,6 +244,10 @@ h1 {
 
 .display-list-contents li {
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
 }
 
 .title-and-icons {
@@ -239,7 +255,6 @@ h1 {
     align-items: center;
     justify-content: space-around;
     width: 100%;
-
 }
 
 .note-title-and-icons .icons {
@@ -276,7 +291,6 @@ h1 {
 .display-project-due-date {
     margin-top: 10px;
 }
-
 
 /* End all styling for the show all frames */ 
 
@@ -317,12 +331,6 @@ h1 {
     margin-left: 12px;
     margin-right: 12px;
     cursor: default;
-}
-
-.display .build-list #delete-from-list {
-    height: 24px;
-    width: 24px;
-    cursor: pointer;
 }
 
 .display .build-list #add-list-items {

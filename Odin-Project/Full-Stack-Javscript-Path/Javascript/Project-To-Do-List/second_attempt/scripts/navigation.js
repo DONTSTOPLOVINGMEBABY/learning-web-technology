@@ -1,14 +1,19 @@
 import * as objects from "./objects.js"
 
-const all_todos = new objects.Aggregate_Todos() ; 
+const all_todos = new objects.Aggregate_Objects_Of_Same_Type() ;
+const all_projects = new objects.Aggregate_Objects_Of_Same_Type() ; 
+const all_notes = new objects.Aggregate_Objects_Of_Same_Type() ; 
+const all_lists = new objects.Aggregate_Objects_Of_Same_Type() ; 
 
 const empty_project_page = document.getElementsByClassName('empty-project')[0]; 
 const empty_notes_page = document.getElementsByClassName('empty-notes')[0];
 const empty_todos_page = document.getElementsByClassName('empty-todos')[0]; 
 const empty_lists_page = document.getElementsByClassName('empty-lists')[0]; 
 
-const build_list_page = document.getElementsByClassName('build-list')[0]; 
-const build_note_page = document.getElementsByClassName('build-note')[0];
+const show_all_projects_page = document.getElementsByClassName('show-all-projects')[0] ;
+const show_all_notes_page = document.getElementsByClassName('show-all-notes')[0] ; 
+const show_all_todos_page = document.getElementsByClassName('display-todos')[0] ; 
+const show_all_lists_page = document.getElementsByClassName('show-all-lists')[0] ; 
 
 const toggle_background_modal = document.getElementsByClassName('background-modal')[0]; 
 const toggle_modal = document.getElementsByClassName('modal')[0];
@@ -28,6 +33,7 @@ const button_no_project_create_project = document.getElementById('no-project-cre
 const button_add_list_items = document.getElementById('add-list-items');  
 const button_no_list_create_list = document.getElementById('no-list-create-list'); 
 const button_no_notes_create_notes = document.getElementById('no-notes-create-notes');
+const button_no_todo_create_todo = document.getElementById("no-todos-create-todos")
 const button_add_to_list = document.getElementById('add-to-list'); 
 
 const form_submit_new_project = document.getElementById('submit-new-project') ; 
@@ -52,8 +58,10 @@ const all_display_none_attributes = [
     empty_notes_page, 
     empty_todos_page, 
     empty_lists_page, 
-    build_list_page, 
-    build_note_page, 
+    show_all_projects_page, 
+    show_all_notes_page, 
+    show_all_todos_page, 
+    show_all_lists_page, 
     toggle_background_modal, 
     toggle_modal, 
     add_project_form, 
@@ -150,6 +158,12 @@ function plus_project_button() {
     switch_modal_to_project() ; 
 }
 
+function plus_todo_no_button () {
+    toggle_all_displays_to_none() ; 
+    modal_on() ; 
+    switch_modal_to_todo() ; 
+}
+
 function switch_modal_to_project() {
     navigate_around_in_modal(add_project_form) ; 
     highlight_menu_item(modal_sidebar_project) ;
@@ -175,19 +189,43 @@ function switch_modal_to_todo () {
 }
 
 function switch_nav_to_projects () {
-
+    toggle_all_displays_to_none() ; 
+    if (all_projects.bucket_objects.length == 0){
+        on(empty_project_page) ; 
+    }
+    else {
+        on(show_all_projects_page) ;
+    }
 }
 
 function switch_nav_to_lists() {
-
+    toggle_all_displays_to_none () ; 
+    if (all_lists.bucket_objects.length == 0){
+        on(empty_lists_page) ; 
+    }
+    else {
+        on(show_all_lists_page) ; 
+    }
 }
 
 function switch_nav_to_notes() {
-
+    toggle_all_displays_to_none () ; 
+    if (all_notes.bucket_objects.length == 0){
+        on(empty_notes_page) ; 
+    }
+    else {
+        on(show_all_notes_page) ; 
+    }
 }
 
 function switch_nav_to_todos() {
-
+    toggle_all_displays_to_none () ; 
+    if (all_todos.bucket_objects.length == 0){
+        on(empty_todos_page) ; 
+    }
+    else {
+        on(show_all_todos_page) ; 
+    }
 }
 
 function new_entry_button_nav () {
@@ -198,36 +236,19 @@ function new_entry_button_nav () {
 
 
 
+let this_string = "Henry" ;
+all_todos.add_object(this_string) ; 
+all_lists.add_object(this_string) ; 
+all_notes.add_object(this_string) ; 
+all_projects.add_object(this_string) ; 
 
 
 
 
 
 
-let this_thing = new objects.Note("Hello", "nice rock"); 
-console.log(this_thing);  
-
-let this_project = new objects.Project("Title", "Description", "3/2/21") ; 
-console.log(this_project) ; 
-
-let this_todo = new objects.To_Dos("Work", "Gotta work hard, idk", "3/22/12") ; 
-let another_todo = new objects.To_Dos("Henry", "Henry is here", "12/22/3221") ; 
-console.log(this_todo) ; 
-console.log(another_todo) ; 
 
 
-this_project.add_to_do(this_todo) ; 
-console.log(this_project.todos) ; 
-
-all_todos.add_to_do(this_todo) ;
-all_todos.add_to_do(another_todo) ;  
-console.log(all_todos.bucket_todos) ; 
-
-all_todos.delete_todo("Henry") ;
-console.log(all_todos.bucket_todos) ; 
-
-
-// For some reason delete_todo not deleting, need to figure out how to fix
 
 
 
@@ -248,6 +269,13 @@ modal_sidebar_todo.addEventListener('click', () => { switch_modal_to_todo() }) ;
 
 nav_menu_projects.addEventListener('click', () => { switch_nav_to_projects() }) ; 
 nav_menu_lists.addEventListener('click', () => { switch_nav_to_lists() }) ; 
-nav_menu_lists.addEventListener('click', () => { switch_nav_to_notes() }) ; 
+nav_menu_notes.addEventListener('click', () => { switch_nav_to_notes() }) ; 
 nav_menu_todos.addEventListener('click', () => { switch_nav_to_todos() }) ; 
 button_add_new_entry.addEventListener('click', () => { new_entry_button_nav() }) ; 
+
+/* All listeners for all no-project/notes etc. buttons */ 
+
+button_no_project_create_project.addEventListener('click', () => { plus_project_button() }) ; 
+button_no_list_create_list.addEventListener('click', () => { plus_list_button() }) ; 
+button_no_notes_create_notes.addEventListener('click', () => { plus_note_button() }) ; 
+button_no_todo_create_todo.addEventListener('click', () => { plus_todo_no_button() }) ; 

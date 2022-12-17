@@ -14,9 +14,9 @@
                 <div class="title">To Do List</div>
                 <div class="top-nav-bar">
                     <ul>
-                        <li id="top-add-note">+ Note</li>
-                        <li id="top-add-list">+ List</li>
                         <li id="top-add-project">+ Project</li>
+                        <li id="top-add-list">+ List</li>
+                        <li id="top-add-note">+ Note</li>
                     </ul>
                 </div>
             </div>
@@ -66,13 +66,14 @@
                 
                 <div class="empty-todos">
                     <p>You currently don't have any todos.</p>
-                    <button id="no-project-create-project">Make a Project</button>
+                    <button id="no-todos-create-todos">Make a Todo</button>
                 </div>
 
                 <div class="display-todos">
                     <div class="singular-todo">
                         <div class="priority-color red"></div>
                         <div class="to-do-title">Finish Math Homework</div>
+                        <div class="part-of-project">Project: This and That</div>
                         <div class="to-do-due-date">3/12/2022</div>
                         <img class="edit-pencil" id="big-pencil" src="./pencil-outline.svg" alt="pencil">
                         <div class="delete-icon" id="big-delete">x</div>
@@ -93,10 +94,14 @@
                                 <div class="delete-icon">x</div>
                             </div>
                             <ul class="display-list-contents">
-                                <li>something on the list</li>
-                                <li>another thing on the list</li>
-                                <li>one more thing?</li>
-                                <li>something on the list</li>
+                                <li>something on the list that is incredibly long 
+                                    <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>
+                                <li>another thing on the list
+                                    <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>
+                                <li>one more thing?
+                                    <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>
+                                <li>something on the list
+                                    <img id="delete-from-list" src="./delete.svg" alt="trash-can"></li>
                             </ul>
                         </div>
                     </div>
