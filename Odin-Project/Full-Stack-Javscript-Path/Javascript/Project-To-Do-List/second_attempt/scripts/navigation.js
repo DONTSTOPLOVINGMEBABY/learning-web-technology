@@ -1,5 +1,6 @@
 import * as objects from "./objects.js"
-
+import * as build_html from "./build_all_html.js"
+ 
 const all_todos = new objects.Aggregate_Objects_Of_Same_Type() ;
 const all_projects = new objects.Aggregate_Objects_Of_Same_Type() ; 
 const all_notes = new objects.Aggregate_Objects_Of_Same_Type() ; 
@@ -225,6 +226,7 @@ function switch_nav_to_todos() {
     }
     else {
         on(show_all_todos_page) ; 
+        build_html.make_toDos(all_todos.bucket_objects, show_all_todos_page) ; 
     }
 }
 
@@ -234,13 +236,6 @@ function new_entry_button_nav () {
     switch_modal_to_project(); 
 }
 
-
-
-let this_string = "Henry" ;
-all_todos.add_object(this_string) ; 
-all_lists.add_object(this_string) ; 
-all_notes.add_object(this_string) ; 
-all_projects.add_object(this_string) ; 
 
 
 
@@ -273,7 +268,7 @@ nav_menu_notes.addEventListener('click', () => { switch_nav_to_notes() }) ;
 nav_menu_todos.addEventListener('click', () => { switch_nav_to_todos() }) ; 
 button_add_new_entry.addEventListener('click', () => { new_entry_button_nav() }) ; 
 
-/* All listeners for all no-project/notes etc. buttons */ 
+/* All listeners for all make project/notes etc. when no such things exists buttons */ 
 
 button_no_project_create_project.addEventListener('click', () => { plus_project_button() }) ; 
 button_no_list_create_list.addEventListener('click', () => { plus_list_button() }) ; 

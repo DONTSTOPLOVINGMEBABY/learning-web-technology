@@ -70,14 +70,6 @@
                 </div>
 
                 <div class="display-todos">
-                    <div class="singular-todo">
-                        <div class="priority-color red"></div>
-                        <div class="to-do-title">Finish Math Homework</div>
-                        <div class="part-of-project">Project: This and That</div>
-                        <div class="to-do-due-date">3/12/2022</div>
-                        <img class="edit-pencil" id="big-pencil" src="./pencil-outline.svg" alt="pencil">
-                        <div class="delete-icon" id="big-delete">x</div>
-                    </div>
                 </div>
 
 
@@ -248,11 +240,11 @@
                             </div>
                             <textarea class="description-box" id="todo-description-input" placeholder="Todo Description (optional)"></textarea>
                             <div class="project-priorities">
-                                <input type="radio" id="low-priority" name="priority" value="low-priority">
+                                <input type="radio" id="low-priority" name="priority" value="red">
                                 <label class="checked-radio-box low" for="low-priority">Low Priority</label>
-                                <input type="radio" id="med-priority" name="priority" value="med-priority">
+                                <input type="radio" id="med-priority" name="priority" value="yellow">
                                 <label class="med" for="med-priority">Medium Priority</label>
-                                <input type="radio" id="high-priority" name="priority" value="high-priority">
+                                <input type="radio" id="high-priority" name="priority" value="green">
                                 <label class="high" for= high-priority">High Priority</label>
                             </div>
                             <div class="center-submit-button">
@@ -265,5 +257,6 @@
         </div>
 
         <script type="module" src="./scripts/navigation.js"></script>
+
 </body>
 </html>

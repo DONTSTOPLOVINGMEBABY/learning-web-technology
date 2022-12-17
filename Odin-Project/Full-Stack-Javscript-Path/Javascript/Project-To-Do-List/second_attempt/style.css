@@ -105,6 +105,7 @@ h1 {
     grid-column: 2/3;
     display: flex;
     min-width: 630px;
+    padding-bottom: 24px;
 }
 
 .display .empty-project, .display .empty-notes, .display .empty-todos, .display .empty-lists {
@@ -171,22 +172,42 @@ h1 {
     width: 100%;
     display: none;
     flex-direction: column;
-    overflow: auto;
-    align-items: center;
-
+    overflow: scroll;
+    align-items: center;    
 }
+
+.to-do-title, .part-of-project, .to-do-due-date, .hold-icons{
+    width: 35%;
+    height: 100%;
+    display: flex ; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.hold-icons, .to-do-due-date {
+    width: 7% ; 
+}
+
+.hold-icons {
+    margin-left: 24px;
+}
+
 
 .singular-todo {
     background-color: #F3F0F0;
     width: 98%;
     height: 12%;
+    min-height: 65px;
     margin-top: 14px;
     border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     font-size: 1rem;
     position: relative;
+    justify-content: space-evenly;
+    overflow: auto;
 }
 
 .priority-color {
@@ -266,6 +287,7 @@ h1 {
     height: 16px;
     cursor: pointer;
     opacity: .5;
+    margin-right: 24px;
 }
 
 .edit-pencil:hover {

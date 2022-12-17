@@ -26,11 +26,12 @@ class List {
 }
 
 class To_Dos {
-    constructor(title, description, due_date){
+    constructor(title, description, due_date, project, priority){
         this.title = title ;
         this.description = description ; 
         this.due_date = due_date ; 
-        this.priority ;
+        this.project = project ; 
+        this.priority = priority ; 
     }
 
     set_priority (priority) {
