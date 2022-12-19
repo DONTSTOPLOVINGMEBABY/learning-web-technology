@@ -191,7 +191,7 @@ function switch_modal_to_todo () {
 
 function switch_nav_to_projects () {
     toggle_all_displays_to_none() ; 
-    if (all_projects.bucket_objects.length == 0){
+    if (Object.keys(all_projects.bucket_objects).length == 0){
         on(empty_project_page) ; 
     }
     else {
@@ -201,7 +201,7 @@ function switch_nav_to_projects () {
 
 function switch_nav_to_lists() {
     toggle_all_displays_to_none () ; 
-    if (all_lists.bucket_objects.length == 0){
+    if (Object.keys(all_lists.bucket_objects).length == 0){
         on(empty_lists_page) ; 
     }
     else {
@@ -211,7 +211,7 @@ function switch_nav_to_lists() {
 
 function switch_nav_to_notes() {
     toggle_all_displays_to_none () ; 
-    if (all_notes.bucket_objects.length == 0){
+    if (Object.keys(all_notes.bucket_objects).length == 0){
         on(empty_notes_page) ; 
     }
     else {
@@ -221,12 +221,12 @@ function switch_nav_to_notes() {
 
 function switch_nav_to_todos() {
     toggle_all_displays_to_none () ; 
-    if (all_todos.bucket_objects.length == 0){
+    if (Object.keys(all_todos.bucket_objects).length == 0){
         on(empty_todos_page) ; 
     }
     else {
         on(show_all_todos_page) ; 
-        build_html.make_toDos(all_todos.bucket_objects, show_all_todos_page) ; 
+        build_html.make_toDos(all_todos, show_all_todos_page) ; 
     }
 }
 
@@ -238,7 +238,34 @@ function new_entry_button_nav () {
 
 
 
+let this_string = "Henry" ;
 
+let a_todo = new objects.To_Dos("Hello", "Small Description", "23/23/23", "Big Project", "green") ; 
+let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "23/23/23", "Bigger Project", "yellow") ; 
+let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "23/23/23", "Biggest Project", "yellow") ; 
+let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "12/12/1222", "Biggest Youtuber Ever", "red") ; 
+
+all_todos.add_object(a_todo) ; 
+all_todos.add_object(b_todo) ;
+all_todos.add_object(c_todo) ; 
+
+
+
+
+
+
+
+all_todos.add_object(a_todo) ; 
+all_todos.add_object(a_todo) ; 
+all_todos.add_object(a_todo) ; 
+all_todos.add_object(a_todo) ; 
+all_todos.add_object(a_todo) ; 
+all_todos.add_object(b_todo) ; 
+all_todos.add_object(c_todo) ; 
+all_todos.add_object(d_todo) ; 
+
+
+console.log(all_todos) ; 
 
 
 

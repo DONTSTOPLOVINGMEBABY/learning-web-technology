@@ -40,19 +40,27 @@ class To_Dos {
 }
 
 function Aggregate_Objects_Of_Same_Type () {
-    this.bucket_objects = [] ; 
+    this.bucket_objects = {} ; 
+    this.array_of_loaded_objects = {} ; 
+    this.array_of_objects = {} ; 
 
-    this.delete_object = function (name) {
-        for (let i = 0 ; i < this.bucket_objects.length ; i++){
-            if (this.bucket_objects[i].title == name.title){
-                this.bucket_objects.splice(i, i + 1) ;
-                break
-            }
-        }
+    this.delete_object = function (todo) {
+        let string = todo.project + '-' + todo.title ;
+        delete this.array_of_loaded_objects[todo.project] ; 
+        delete this.bucket_objects[todo.project] ; 
+        delete this.array_of_objects[string] ; 
     }
 
     this.add_object = function (object) {
-        this.bucket_objects.push(object) ; 
+        if (!this.bucket_objects[object.project]){
+            this.bucket_objects[object.project] = object.title ; 
+            let string = object.project + '-' + object.title ; 
+            this.array_of_objects[string] = object ; 
+        }
+    }
+
+    this.load_object = function (object) {
+        this.array_of_loaded_objects[object.project] = object.title ; 
     }
 }
 
