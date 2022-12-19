@@ -144,12 +144,12 @@ h1 {
 /* Begin All styling for the show-all-frames */ 
 
 .show-all-notes, .show-all-projects, .show-all-lists {
-    height: 100%;
+    height: 100%%;
     width: 100%;
     overflow: auto;
     border-bottom-right-radius: 25px;
     display: none;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -166,6 +166,7 @@ h1 {
 .projects-container-3, .lists-container-1, .lists-container-2, .lists-container-3 {
     width: 33%;
 }
+
 
 .display-todos {
     height: 100%;
@@ -245,7 +246,7 @@ h1 {
     align-items: center;
     padding: 4%;
     max-height: 60%;
-    overflow: scroll;
+    overflow: auto;
     text-align: center; 
     background-color: #F3F0F0;
     margin: 8px;
@@ -276,6 +277,11 @@ h1 {
     align-items: center;
     justify-content: space-around;
     width: 100%;
+}
+
+.note-delete-edit {
+    display: flex;
+    align-items: center;
 }
 
 .note-title-and-icons .icons {

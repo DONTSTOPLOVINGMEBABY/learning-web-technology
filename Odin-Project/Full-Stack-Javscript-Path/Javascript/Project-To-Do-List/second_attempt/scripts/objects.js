@@ -23,6 +23,18 @@ class List {
         this.title = title ; 
         this.list_items = [] ; 
     }
+
+    add_item_to_list = function (item) {
+        this.list_items.push(item) ; 
+    }
+
+    remove_item_from_list = function (item) {
+        for (let i = 0 ; i < list_items.length ; i++) {
+            if (this.list_items[i] == item){
+                this.list_items.splice(i, i + 1) ; 
+            }
+        }
+    }
 }
 
 class To_Dos {
@@ -39,29 +51,73 @@ class To_Dos {
     }
 }
 
-function Aggregate_Objects_Of_Same_Type () {
+
+function Aggregate_Objects_Of_Todo_Type () {
     this.bucket_objects = {} ; 
-    this.array_of_loaded_objects = {} ; 
+    this.array_of_loaded_objects = [] ; 
     this.array_of_objects = {} ; 
 
     this.delete_object = function (todo) {
-        let string = todo.project + '-' + todo.title ;
-        delete this.array_of_loaded_objects[todo.project] ; 
-        delete this.bucket_objects[todo.project] ; 
-        delete this.array_of_objects[string] ; 
+        delete this.bucket_objects[todo] ; 
+        delete this.array_of_objects[todo] ; 
+        for (let i = 0 ; i < this.array_of_loaded_objects.length ; i++) {
+            if (this.array_of_loaded_objects[i] == todo){
+                this.array_of_loaded_objects.splice(i, i + 1) ; 
+                break ; 
+            } 
+        }
     }
 
-    this.add_object = function (object) {
+    this.add_project = function (object) {
         if (!this.bucket_objects[object.project]){
-            this.bucket_objects[object.project] = object.title ; 
             let string = object.project + '-' + object.title ; 
+            this.bucket_objects[string] = object.title ; 
             this.array_of_objects[string] = object ; 
         }
     }
 
     this.load_object = function (object) {
-        this.array_of_loaded_objects[object.project] = object.title ; 
+        this.array_of_loaded_objects.push(object)
     }
+}
+
+
+function Aggregate_Objects_Of_Note_Type  () {
+    this.bucket_objects = {} ; 
+    this.loaded_objects = [] ; 
+
+    this.add_note = function (note) {
+        this.bucket_objects[note.title] = note.description 
+    }
+
+    this.delete_note = function (note_title) {
+        delete this.bucket_objects[note_title] ; 
+        this.loaded_objects = [] ; 
+    }
+
+    this.load_notes = function (note_title) {
+        this.loaded_objects.push(note_title) ;
+    }
+} 
+
+
+function Aggregate_Objects_Of_Same_Type () {
+    this.bucket_objects = {} ; 
+    this.loaded_objects = [] ; 
+
+    this.add_list = function (list) {
+        this.bucket_objects[list.title] = list.list_items ;  
+    }
+
+    this.delete_list = function (list_title) {
+        delete this.bucket_objects[list_title] ; 
+        this.loaded_objects = [] ; 
+    }
+
+    this.load_list = function (list_title) {
+        this.loaded_objects.push(list_title) ;
+    }
+
 }
 
 
@@ -70,5 +126,7 @@ export {
     Project, 
     List, 
     To_Dos, 
+    Aggregate_Objects_Of_Todo_Type, 
+    Aggregate_Objects_Of_Note_Type, 
     Aggregate_Objects_Of_Same_Type, 
 } ; 
