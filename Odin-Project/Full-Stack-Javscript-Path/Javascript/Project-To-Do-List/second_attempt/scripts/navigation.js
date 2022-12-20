@@ -2,9 +2,9 @@ import * as objects from "./objects.js"
 import * as build_html from "./build_all_html.js"
  
 const all_todos = new objects.Aggregate_Objects_Of_Todo_Type() ;
-const all_projects = new objects.Aggregate_Objects_Of_Same_Type() ; 
+const all_projects = new objects.Aggregate_Objects_Of_Project_Type() ; 
 const all_notes = new objects.Aggregate_Objects_Of_Note_Type() ; 
-const all_lists = new objects.Aggregate_Objects_Of_Same_Type() ; 
+const all_lists = new objects.Aggregate_Objects_Of_List_Type() ; 
 
 const empty_project_page = document.getElementsByClassName('empty-project')[0]; 
 const empty_notes_page = document.getElementsByClassName('empty-notes')[0];
@@ -193,16 +193,19 @@ function switch_modal_to_todo () {
 
 function switch_nav_to_projects () {
     toggle_all_displays_to_none() ; 
+    highlight_menu_item(nav_menu_projects) ;
     if (Object.keys(all_projects.bucket_objects).length == 0){
         on(empty_project_page) ; 
     }
     else {
         on(show_all_projects_page) ;
+        build_html.make_projects(all_projects, show_all_projects_page) ; 
     }
 }
 
 function switch_nav_to_lists() {
-    toggle_all_displays_to_none () ; 
+    toggle_all_displays_to_none () ;
+    highlight_menu_item(nav_menu_lists) ; 
     if (Object.keys(all_lists.bucket_objects).length == 0){
         on(empty_lists_page) ; 
     }
@@ -214,6 +217,7 @@ function switch_nav_to_lists() {
 
 function switch_nav_to_notes() {
     toggle_all_displays_to_none () ; 
+    highlight_menu_item(nav_menu_notes) ;
     if (Object.keys(all_notes.bucket_objects).length == 0){
         on(empty_notes_page) ; 
     }
@@ -225,6 +229,7 @@ function switch_nav_to_notes() {
 
 function switch_nav_to_todos() {
     toggle_all_displays_to_none () ; 
+    highlight_menu_item(nav_menu_todos) ;
     if (Object.keys(all_todos.bucket_objects).length == 0){
         on(empty_todos_page) ; 
     }
@@ -244,62 +249,57 @@ function new_entry_button_nav () {
 
 
 
+startup() ; 
 
 
 
 
-let this_string = "Henry" ;
-
-let a_todo = new objects.To_Dos("Hello", "Small Description", "23/23/23", "Big Project", "green") ; 
-let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "23/23/23", "Bigger Project", "yellow") ; 
-let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "23/23/23", "Biggest Project", "yellow") ; 
-let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "12/12/1222", "Biggest Youtuber Ever", "red") ; 
-let k_todo = new objects.To_Dos("Hi there", "nice to see you", "12/12/2222", "Biggest Youtuber Everr", "red");
-
-all_todos.add_project(a_todo) ; 
-all_todos.add_project(b_todo) ;
-all_todos.add_project(c_todo) ; 
-all_todos.add_project(k_todo) ; 
-
-
-let a_note = new objects.Note("Hello", `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
-
-Pulvinar mattis nunc sed blandit libero volutpat sed cras. Accumsan tortor posuere ac ut consequat semper viverra nam. Nibh nisl condimentum id venenatis a condimentum vitae. Viverra vitae congue eu consequat ac felis donec et odio. Velit laoreet id donec ultrices. Laoreet id donec ultrices tincidunt arcu non sodales neque. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci. Cursus eget nunc scelerisque viverra mauris. Nullam ac tortor vitae purus faucibus ornare suspendisse. In tellus integer feugiat scelerisque varius morbi enim nunc. Cras tincidunt lobortis feugiat vivamus. Neque ornare aenean euismod elementum nisi quis eleifend. Vestibulum lectus mauris ultrices eros in cursus. Diam phasellus vestibulum lorem sed. Pretium quam vulputate dignissim suspendisse in.`) ;
-let b_note = new objects.Note("Hi there" , `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
-`) ;   
-let c_note = new objects.Note("Helkasd", `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu .
-`) ; 
-let d_note = new objects.Note('ohmygoodness', `
-m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium`)
-let e_note = new objects.Note('heayyay', `
-m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
-let g_note = new objects.Note('hea', `
-m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
-
-
-all_notes.add_note(a_note) ; 
-all_notes.add_note(b_note) ; 
-all_notes.add_note(a_note) ; 
-all_notes.add_note(c_note) ; 
-all_notes.add_note(d_note) ; 
-all_notes.add_note(e_note) ; 
-all_notes.add_note(g_note) ;
 
 
 
-let first_list = new objects.List("Big List") ; 
-let second_list = new objects.List("Small List") ; 
-first_list.add_item_to_list("Hello") ;
-second_list.add_item_to_list("Welcome") ; 
-second_list.add_item_to_list("Nice Nice") ; 
-console.log(first_list)
-console.log(second_list) 
-all_lists.add_list(first_list) ; 
-all_lists.add_list(second_list) ; 
-console.log(all_lists) ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -334,4 +334,74 @@ button_no_notes_create_notes.addEventListener('click', () => { plus_note_button(
 button_no_todo_create_todo.addEventListener('click', () => { plus_todo_no_button() }) ; 
 
 
+
+function startup() {
+    
+    let this_string = "Henry" ;
+
+    let a_todo = new objects.To_Dos("Hello", "Small Description", "23/23/23", "Big Project", "green") ; 
+    let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "23/23/23", "Bigger Project", "yellow") ; 
+    let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "23/23/23", "Biggest Project", "yellow") ; 
+    let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "12/12/1222", "Biggest Youtuber Ever", "red") ; 
+    let k_todo = new objects.To_Dos("Hi there", "nice to see you", "12/12/2222", "Biggest Youtuber Everr", "red");
+
+    all_todos.add_todo(a_todo) ; 
+    all_todos.add_todo(b_todo) ;
+    all_todos.add_todo(c_todo) ; 
+    all_todos.add_todo(d_todo) ; 
+    all_todos.add_todo(k_todo) ; 
+
+
+    let a_note = new objects.Note("Hello", `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
+
+    Pulvinar mattis nunc sed blandit libero volutpat sed cras. Accumsan tortor posuere ac ut consequat semper viverra nam. Nibh nisl condimentum id venenatis a condimentum vitae. Viverra vitae congue eu consequat ac felis donec et odio. Velit laoreet id donec ultrices. Laoreet id donec ultrices tincidunt arcu non sodales neque. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci. Cursus eget nunc scelerisque viverra mauris. Nullam ac tortor vitae purus faucibus ornare suspendisse. In tellus integer feugiat scelerisque varius morbi enim nunc. Cras tincidunt lobortis feugiat vivamus. Neque ornare aenean euismod elementum nisi quis eleifend. Vestibulum lectus mauris ultrices eros in cursus. Diam phasellus vestibulum lorem sed. Pretium quam vulputate dignissim suspendisse in.`) ;
+    let b_note = new objects.Note("Hi there" , `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
+    `) ;   
+    let c_note = new objects.Note("Helkasd", `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu .
+    `) ; 
+    let d_note = new objects.Note('ohmygoodness', `
+    m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium`)
+    let e_note = new objects.Note('heayyay', `
+    m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
+    let g_note = new objects.Note('hea', `
+    m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
+
+
+    all_notes.add_note(a_note) ; 
+    all_notes.add_note(b_note) ; 
+    all_notes.add_note(a_note) ; 
+    all_notes.add_note(c_note) ; 
+    all_notes.add_note(d_note) ; 
+    all_notes.add_note(e_note) ; 
+    all_notes.add_note(g_note) ;
+
+
+
+    let first_list = new objects.List("Big List") ; 
+    let second_list = new objects.List("Small List") ; 
+    first_list.add_item_to_list("Hello") ;
+    second_list.add_item_to_list("Welcome") ; 
+    second_list.add_item_to_list("Nice Nice") ; 
+
+    all_lists.add_list(first_list) ; 
+    all_lists.add_list(second_list) ; 
+
+
+
+    let a_project = new objects.Project("This_Project", "Huge deal", "23/21/2322") ; 
+    let b_project = new objects.Project("That_Project", "Even bigger deal", "12/23/2022") ; 
+    a_project.add_to_do(a_todo.title) ; 
+    a_project.add_to_do(c_todo.title) ; 
+    b_project.add_to_do(d_todo.title) ; 
+
+    all_projects.add_project(a_project) ; 
+    all_projects.add_project(b_project) ; 
+    console.log(all_projects) ; 
+
+    switch_nav_to_projects() ; 
+
+}
 

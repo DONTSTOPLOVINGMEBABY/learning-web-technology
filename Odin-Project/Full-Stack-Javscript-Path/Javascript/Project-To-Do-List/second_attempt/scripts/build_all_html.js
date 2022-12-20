@@ -4,21 +4,131 @@ function elementFromHtml(html) {
     return template.content; 
 }
 
-function make_projects(list_of_projects, append_element) {} ; 
-function make_lists(list_of_lists, append_element) {
-    const notes_container_1 = document.getElementsByClassName('lists-container-1')[0] ; 
-    const notes_container_2 = document.getElementsByClassName('lists-container-2')[0] ;
-    const notes_container_3 = document.getElementsByClassName('lists-container-3')[0] ;  
-    const all_notes_container = [notes_container_1, notes_container_2, notes_container_3] ; 
+function get_sum_of_all_element_heights (element) {
+    let height = 0 ; 
+    element.childNodes.forEach( (child_node) => {
+        height += child_node.offsetHeight ; }) 
+    return height ; 
+}
 
-    function make_one_list (title, items_in_list) {
-        let singular_list = `
-        <div class="display-all-lists">
+function add_new_elements_evenly(container_1, container_2, container_3, all_blank_container, full_object, counter, html_element, object) {        
+    let container_1_height = get_sum_of_all_element_heights(container_1) ;  
+    let container_2_height = get_sum_of_all_element_heights(container_2) ; 
+    let container_3_height = get_sum_of_all_element_heights(container_3) ; 
+    if (container_1_height == container_2_height && container_2_height == container_3_height) {
+        all_blank_container[counter].append(html_element) ; 
+    } 
+    else if (container_1_height <= container_2_height && container_1_height <= container_3_height) {
+        container_1.append(html_element) ; 
+    }
+    else if (container_2_height <= container_1_height && container_2_height <= container_3_height) {
+        container_2.append(html_element) ; 
+    }
+    else {
+        container_3.append(html_element) ; 
+    }
+    counter += 1 ;
+    full_object.load(object) ; 
+
+}
+
+
+function make_projects(list_of_projects, append_element) {
+    const projects_container_1 = document.getElementsByClassName('projects-container-1')[0] ; 
+    const projects_container_2 = document.getElementsByClassName('projects-container-2')[0] ; 
+    const projects_container_3 = document.getElementsByClassName('projects-container-3')[0] ;
+    const all_projects_container = [ projects_container_1, projects_container_2, projects_container_3 ] ; 
+    
+    function make_one_project (title, todo_items, due_date) {
+        let singular_project = `
+        <div class="display-project" id="${title}">
             <div class="title-and-icons">
                 <p class="display-title">${title}</p>
                 <div class="hold-icons">
-                    <img class="edit-pencil" src="./pencil-outline.svg" alt="pencil">
-                    <div class="delete-icon">x</div>
+                    <img class="edit-pencil" id="project-pencil" src="./pencil-outline.svg" alt="pencil">
+                    <div class="delete-icon" id="project-exit"">x</div>
+                </div>
+            </div>
+            <p class="display-project-due-date"><span id="project-title-date">Due: ${due_date}</span></p>
+            <h3>Todos:</h3>
+            <ul class="display-project-todos"> 
+        `
+        for (let i = 0 ; i < todo_items.length ; i++) {
+            let make_project_todo_item = `<li>${todo_items[i]}</li>` ; 
+            singular_project += make_project_todo_item ; 
+        }
+        singular_project += `</ul></div>`
+        return elementFromHtml(singular_project) ; 
+    }
+
+    function activate_project_buttons () {
+        const project_exit = document.querySelectorAll("#project-exit") ; 
+        const project_pencil = document.querySelectorAll("#project-pencil") ; 
+
+        
+        function delete_project (element) {
+            let singular_project_element = element.parentElement.parentElement.parentElement ; 
+            list_of_projects.delete_project(singular_project_element.id) ; 
+            remove_all_project_elements() ; 
+            add_projects_to_display() ; 
+            
+        }
+
+
+        project_pencil.forEach( (element) => {
+            element.addEventListener('click', () => {
+                console.log('click') ; 
+            })
+        })
+
+        project_exit.forEach( (element) => {
+            element.addEventListener('click', () => {
+                delete_project(element) ; 
+            })
+        })
+        
+
+    }
+
+    function remove_all_project_elements () {
+        document.querySelectorAll("#project-exit").forEach( (element) => {
+            element.parentElement.parentElement.parentElement.remove() ; 
+        })
+    }
+
+
+    function add_projects_to_display () {
+
+        let counter = 0 ; 
+        for (let object in list_of_projects.bucket_objects){
+            if (!list_of_projects.loaded_objects.includes(object)) {
+            let html_project_element = make_one_project(list_of_projects.bucket_objects[object].title, 
+                list_of_projects.bucket_objects[object].todos, 
+                list_of_projects.bucket_objects[object].due_date) ; 
+            counter %= 3 ;
+            add_new_elements_evenly(projects_container_1, projects_container_2, projects_container_3, all_projects_container, list_of_projects, counter, html_project_element, object) ; 
+            }
+        }
+        activate_project_buttons() ; 
+    }
+    
+    add_projects_to_display() ; 
+} ;  
+
+function make_lists(list_of_lists, append_element) {
+    const lists_container_1 = document.getElementsByClassName('lists-container-1')[0] ; 
+    const lists_container_2 = document.getElementsByClassName('lists-container-2')[0] ;
+    const lists_container_3 = document.getElementsByClassName('lists-container-3')[0] ;  
+    const all_lists_container = [lists_container_1, lists_container_2, lists_container_3] ; 
+
+    function make_one_list (title, items_in_list) {
+        let singular_list = `
+        <div class="display-all-lists" id="${title}">
+            <div class="title-and-icons">
+                <p class="display-title">${title}</p>
+                <div class="hold-icons">
+                    <img class="edit-pencil" id="list-pencil" src="./pencil-outline.svg" alt="pencil">
+                    <div class="delete-icon" id="list-exit">x</div>
                 </div>
             </div>
             <ul class="display-list-contents">
@@ -34,15 +144,53 @@ function make_lists(list_of_lists, append_element) {
         return singular_list_html ;  
     } 
 
-    for (let object in list_of_lists.bucket_objects){
-        notes_container_1.append(make_one_list(object, list_of_lists.bucket_objects[object])) ; 
+    function activate_list_buttons () {
+        const list_edit_buttons = document.querySelectorAll("#list-pencil") ; 
+        const list_exit_buttons = document.querySelectorAll("#list-exit") ; 
+        const delete_item_from_list_icons = document.querySelectorAll("#delete-from-list") ; 
+
+        function delete_list (element) {
+            let singular_list_element = element.parentElement.parentElement.parentElement ; 
+            list_of_lists.delete_list(singular_list_element.id)  ;  
+            remove_all_list_elements() ; 
+            add_lists_to_display() ; 
+        }  
+
+        function remove_all_list_elements () {
+            document.querySelectorAll("#list-exit").forEach( (element) => {
+                element.parentElement.parentElement.parentElement.remove() ; 
+            })
+        }
+
+
+        list_edit_buttons.forEach( (element) => {
+            element.addEventListener('click', () => {
+                console.log("edit button") ; 
+            })
+        })
+
+        list_exit_buttons.forEach( (element) => {
+            element.addEventListener('click', () => {
+                delete_list(element) ; 
+            })
+        }) 
+
     }
 
-
-
+    function add_lists_to_display () {
+        let counter = 0 ; 
+        for (let object in list_of_lists.bucket_objects){
+            
+            if (!list_of_lists.loaded_objects.includes(object)) {
+                counter %= 3 ;
+                let the_html_list = (make_one_list(object, list_of_lists.bucket_objects[object])) ; 
+                add_new_elements_evenly(lists_container_1, lists_container_2, lists_container_3, all_lists_container, list_of_lists, counter, the_html_list, object ) ; 
+            }   
+        }
+        activate_list_buttons() ; 
+    }
+    add_lists_to_display() ; 
 } ; 
-
-
 
 
 function make_notes(all_notes_object, append_element) {
@@ -97,24 +245,10 @@ function make_notes(all_notes_object, append_element) {
         for (let this_object in all_notes_object.bucket_objects) {
             if (!all_notes_object.loaded_objects.includes(this_object)) {
             counter %= 3 ;  
-            let notes_container_1_height = get_sum_of_all_element_heights(notes_container_1) ;  
-            let notes_container_2_height = get_sum_of_all_element_heights(notes_container_2) ; 
-            let notes_container_3_height = get_sum_of_all_element_heights(notes_container_3) ; 
-            let note = make_one_note(this_object, all_notes_object.bucket_objects[this_object]) ;
-            let note_html = elementFromHtml(note) ; 
-            all_notes_object.load_notes(this_object) ;  
-            if (notes_container_1_height == notes_container_2_height && notes_container_2_height == notes_container_3_height) {
-                all_notes_container[counter].append(note_html) ; 
-            } 
-            else if (notes_container_1_height < notes_container_2_height && notes_container_1_height < notes_container_3_height) {
-                notes_container_1.append(note_html) ; 
-            }
-            else if (notes_container_2_height < notes_container_1_height && notes_container_2_height < notes_container_3_height) {
-                notes_container_2.append(note_html) ; 
-            }
-            else {
-                notes_container_3.append(note_html) ; 
-            }
+            let note = make_one_note(this_object, all_notes_object.bucket_objects[this_object]) ; 
+            note = elementFromHtml(note) ; 
+            add_new_elements_evenly(notes_container_1, notes_container_2, notes_container_3, all_notes_container, 
+                all_notes_object, counter, note, this_object) ; 
             counter += 1 ; 
             }
             
@@ -125,15 +259,6 @@ function make_notes(all_notes_object, append_element) {
     add_notes_to_display(); 
     
 } ; 
-
-
-function get_sum_of_all_element_heights (element) {
-    let height = 0 ; 
-    element.childNodes.forEach( (child_node) => {
-        height += child_node.offsetHeight ; 
-    }) 
-    return height ; 
-}
 
 function make_toDos(all_todos_object, append_element) {
 
@@ -183,7 +308,7 @@ function make_toDos(all_todos_object, append_element) {
         if (!list_of_added_items.includes(this_object)) {
             let append_todo = make_one_todo(todo.title, todo.due_date, todo.priority, todo.project, this_object) ; 
             append_element.append(append_todo) ; 
-            all_todos_object.load_object(this_object) ; 
+            all_todos_object.load(this_object) ; 
         }
     }
 
@@ -200,4 +325,5 @@ export {
     make_toDos,
     make_notes, 
     make_lists, 
+    make_projects, 
 }
