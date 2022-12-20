@@ -208,6 +208,7 @@ function switch_nav_to_lists() {
     }
     else {
         on(show_all_lists_page) ; 
+        build_html.make_lists(all_lists, show_all_lists_page) ; 
     }
 }
 
@@ -219,7 +220,6 @@ function switch_nav_to_notes() {
     else {
         on(show_all_notes_page) ; 
         build_html.make_notes(all_notes, show_all_notes_page) ; 
-        console.log(document.getElementsByClassName('show-all-notes')[0]) ; 
     }
 }
 

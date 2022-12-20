@@ -6,9 +6,40 @@ function elementFromHtml(html) {
 
 function make_projects(list_of_projects, append_element) {} ; 
 function make_lists(list_of_lists, append_element) {
-    
+    const notes_container_1 = document.getElementsByClassName('lists-container-1')[0] ; 
+    const notes_container_2 = document.getElementsByClassName('lists-container-2')[0] ;
+    const notes_container_3 = document.getElementsByClassName('lists-container-3')[0] ;  
+    const all_notes_container = [notes_container_1, notes_container_2, notes_container_3] ; 
 
-    function make_one_list () {}
+    function make_one_list (title, items_in_list) {
+        let singular_list = `
+        <div class="display-all-lists">
+            <div class="title-and-icons">
+                <p class="display-title">${title}</p>
+                <div class="hold-icons">
+                    <img class="edit-pencil" src="./pencil-outline.svg" alt="pencil">
+                    <div class="delete-icon">x</div>
+                </div>
+            </div>
+            <ul class="display-list-contents">
+        `
+        for (let i = 0 ; i < items_in_list.length ; i++){
+            let list_element_div = `<li>${items_in_list[i]}<img id="delete-from-list"
+            src="./delete.svg" alt="trash-can"></li>`
+            singular_list += list_element_div ; 
+        }
+        singular_list += `</ul></div>`
+    
+        let singular_list_html = elementFromHtml(singular_list) ;
+        return singular_list_html ;  
+    } 
+
+    for (let object in list_of_lists.bucket_objects){
+        notes_container_1.append(make_one_list(object, list_of_lists.bucket_objects[object])) ; 
+    }
+
+
+
 } ; 
 
 
@@ -34,14 +65,6 @@ function make_notes(all_notes_object, append_element) {
         </div>
         `
         return singular_note ; 
-    }
-
-    function get_sum_of_all_element_heights (element) {
-        let height = 0 ; 
-        element.childNodes.forEach( (child_node) => {
-            height += child_node.offsetHeight ; 
-        }) 
-        return height ; 
     }
 
     function activate_note_buttons (all_notes_object) {
@@ -104,6 +127,13 @@ function make_notes(all_notes_object, append_element) {
 } ; 
 
 
+function get_sum_of_all_element_heights (element) {
+    let height = 0 ; 
+    element.childNodes.forEach( (child_node) => {
+        height += child_node.offsetHeight ; 
+    }) 
+    return height ; 
+}
 
 function make_toDos(all_todos_object, append_element) {
 
@@ -169,4 +199,5 @@ function make_toDos(all_todos_object, append_element) {
 export {
     make_toDos,
     make_notes, 
+    make_lists, 
 }
