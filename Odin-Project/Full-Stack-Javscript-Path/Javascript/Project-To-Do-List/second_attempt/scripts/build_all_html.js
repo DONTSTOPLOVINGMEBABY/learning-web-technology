@@ -316,9 +316,11 @@ function make_toDos(all_todos_object, append_element) {
 
 }
 
-
-
-
+function add_list_item_to_modal_list (list_item_name, append_element) {
+    let list_item_string = `<li>${list_item_name}</li>` ; 
+    let html_list_string = elementFromHtml(list_item_string) ; 
+    append_element.append(html_list_string) ; 
+} 
 
 
 export {
@@ -326,4 +328,5 @@ export {
     make_notes, 
     make_lists, 
     make_projects, 
+    add_list_item_to_modal_list, 
 }

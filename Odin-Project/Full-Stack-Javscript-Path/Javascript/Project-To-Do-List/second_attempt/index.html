@@ -130,11 +130,11 @@
                     </div>
                     <div class="display-new-window">
                         <form class="add-project-form form">
-                                <input class="title-input" type="text" id="project-title-input" placeholder="Project Title">
+                                <input class="title-input" type="text" id="project-title-input" placeholder="Project Title" required>
                                 <textarea class="description-box" id="project-description-input" placeholder="Project Description (optional)"></textarea>
                                 <div class="due-dates">
                                     <label for="project-date">Project Due Date</label>
-                                    <input class="add-margin" type="date" id="project-date-input">
+                                    <input class="add-margin" type="date" id="project-date-input" required>
                                 </div>
                                 <div class="center-submit-button">
                                     <button id="submit-new-project">Submit new project</button>
@@ -143,16 +143,10 @@
                         <form class="add-list-form form">
                             <input class="title-input" type="text" id="list-title-input" placeholder="List Title" required>
                             <div class="display-list">
-                                <ul>
-                                    <li>Hello</li>
-                                    <li>this</li>
-                                    <li>another thing</li>
-                                    <li>Hello</li>
-                                    <li>this</li>
-                                </ul>
+                                <ul id="display-list-ul"></ul>
                             </div>
                             <div class="bottom-container">
-                                <input class="title-input" type="text" id="add-to-list-input" placeholder="Add Item to List" required>
+                                <input class="title-input" type="text" id="add-to-list-input" placeholder="Add Item to List">
                                 <button type="button" id="add-to-list">Add to list</button>
                                 <button type="submit" id="create-list">Create-list</button>
                             </div>

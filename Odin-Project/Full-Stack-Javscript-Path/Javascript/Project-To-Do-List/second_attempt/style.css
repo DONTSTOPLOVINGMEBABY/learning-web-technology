@@ -635,14 +635,14 @@ input[type="radio"]+label {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .display-list {
     height: 50%;
     flex: 1;
     display: flex;
-    overflow: auto;
+    overflow: scroll;
     padding: 2%;
 }
 

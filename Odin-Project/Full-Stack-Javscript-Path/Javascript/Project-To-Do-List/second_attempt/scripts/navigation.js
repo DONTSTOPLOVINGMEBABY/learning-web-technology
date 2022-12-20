@@ -1,6 +1,7 @@
 import * as objects from "./objects.js"
 import * as build_html from "./build_all_html.js"
- 
+import * as forms from "./forms.js" 
+  
 const all_todos = new objects.Aggregate_Objects_Of_Todo_Type() ;
 const all_projects = new objects.Aggregate_Objects_Of_Project_Type() ; 
 const all_notes = new objects.Aggregate_Objects_Of_Note_Type() ; 
@@ -35,7 +36,6 @@ const button_add_list_items = document.getElementById('add-list-items');
 const button_no_list_create_list = document.getElementById('no-list-create-list'); 
 const button_no_notes_create_notes = document.getElementById('no-notes-create-notes');
 const button_no_todo_create_todo = document.getElementById("no-todos-create-todos")
-const button_add_to_list = document.getElementById('add-to-list'); 
 
 const form_submit_new_project = document.getElementById('submit-new-project') ; 
 const form_create_list = document.getElementById('create-list') ; 
@@ -144,19 +144,16 @@ function navigate_around_in_modal (document_element) {
 }
 
 function plus_note_button () {
-    toggle_all_displays_to_none();
     modal_on() ;  
     switch_modal_to_note() ; 
 }
 
 function plus_list_button () {
-    toggle_all_displays_to_none() ; 
     modal_on() ; 
     switch_modal_to_list() ; 
 }
 
 function plus_project_button() {
-    toggle_all_displays_to_none() ; 
     modal_on() ; 
     switch_modal_to_project() ; 
 }
@@ -245,6 +242,95 @@ function new_entry_button_nav () {
     switch_modal_to_project(); 
 }
 
+function create_new_project (ev) {
+    const title_input = document.getElementById("project-title-input") ; 
+    const description_input = document.getElementById("project-description-input") ;
+    const due_date = document.getElementById("project-date-input") ; 
+
+    if (title_input.checkValidity() && due_date.checkValidity()) {
+        ev.preventDefault() ;
+        let new_project = new objects.Project(title_input.value, description_input.value, due_date.value) ; 
+        all_projects.add_project(new_project) ; 
+        switch_nav_to_projects() ; 
+        title_input.value = "" ; 
+        description_input.value = "" ; 
+        due_date.value = "" ; 
+   }
+}
+
+
+function create_new_list (ev) {
+    const title_input = document.getElementById("list-title-input") ; 
+    const display_list = document.getElementsByClassName("display-list")[0] ;
+    const add_to_list_input = document.getElementById("add-to-list-input") ; 
+    const display_list_ul = document.getElementById("display-list-ul") ; 
+    let added_items = [] ; 
+
+
+
+
+    document.getElementById('add-to-list').addEventListener('click', () => {
+        build_html.add_list_item_to_modal_list(add_to_list_input.value, display_list_ul) ;
+        added_items.push(add_to_list_input.value) 
+        add_to_list_input.value = "" ; 
+    })
+
+
+    if (title_input.checkValidity()) {
+        ev.preventDefault() ; 
+        let new_list = new objects.List(title_input) ; 
+        added_items.forEach( (item) => {new_list.add_item_to_list(item)}) ; 
+        console.log(new_list) ; 
+    }
+
+}
+
+function create_new_note(ev) {} 
+
+function create_new_todo (ev) {}
+
+
+
+
+
+
+/* all listeners that toggle/invoke the modal */ 
+
+top_shortcut_note.addEventListener('click', () => { plus_note_button() }) ; 
+top_shortcut_list.addEventListener('click', () => { plus_list_button() }) ;
+top_shortcut_project.addEventListener('click', () => { plus_project_button() }) ;
+toggle_modal_exit.addEventListener('click', () => { off(toggle_modal, toggle_background_modal) }) ; 
+modal_sidebar_project.addEventListener('click', () => { switch_modal_to_project() }) ; 
+modal_sidebar_list.addEventListener('click', () => { switch_modal_to_list() }) ; 
+modal_sidebar_notes.addEventListener('click', () => { switch_modal_to_note() }) ; 
+modal_sidebar_todo.addEventListener('click', () => { switch_modal_to_todo() }) ; 
+
+/* all listeners for main-menu sidebar */
+
+nav_menu_projects.addEventListener('click', () => { switch_nav_to_projects() }) ; 
+nav_menu_lists.addEventListener('click', () => { switch_nav_to_lists() }) ; 
+nav_menu_notes.addEventListener('click', () => { switch_nav_to_notes() }) ; 
+nav_menu_todos.addEventListener('click', () => { switch_nav_to_todos() }) ; 
+button_add_new_entry.addEventListener('click', () => { new_entry_button_nav() }) ; 
+
+/* All listeners for all make project/notes etc. when no such things exists buttons */ 
+
+button_no_project_create_project.addEventListener('click', () => { plus_project_button() }) ; 
+button_no_list_create_list.addEventListener('click', () => { plus_list_button() }) ; 
+button_no_notes_create_notes.addEventListener('click', () => { plus_note_button() }) ; 
+button_no_todo_create_todo.addEventListener('click', () => { plus_todo_no_button() }) ; 
+
+/* All listeners for modal buttons (create new project, create new list, etc) */ 
+
+form_submit_new_project.addEventListener('click', (ev) => { create_new_project(ev) }) ; 
+form_create_list.addEventListener('click', (ev) => { create_new_list(ev) }) ; 
+form_submit_new_note.addEventListener('click', (ev) => {}) ; 
+form_submit_new_todo.addEventListener('click', (ev) => {}) ; 
+
+
+
+
+
 
 
 
@@ -307,31 +393,13 @@ startup() ;
 
 
 
-/* all listeners that toggle/invoke the modal */ 
 
-top_shortcut_note.addEventListener('click', () => { plus_note_button() }) ; 
-top_shortcut_list.addEventListener('click', () => { plus_list_button() }) ;
-top_shortcut_project.addEventListener('click', () => { plus_project_button() }) ;
-toggle_modal_exit.addEventListener('click', () => { off(toggle_modal, toggle_background_modal) }) ; 
-modal_sidebar_project.addEventListener('click', () => { switch_modal_to_project() }) ; 
-modal_sidebar_list.addEventListener('click', () => { switch_modal_to_list() }) ; 
-modal_sidebar_notes.addEventListener('click', () => { switch_modal_to_note() }) ; 
-modal_sidebar_todo.addEventListener('click', () => { switch_modal_to_todo() }) ; 
 
-/* all listeners for main-menu sidebar */
 
-nav_menu_projects.addEventListener('click', () => { switch_nav_to_projects() }) ; 
-nav_menu_lists.addEventListener('click', () => { switch_nav_to_lists() }) ; 
-nav_menu_notes.addEventListener('click', () => { switch_nav_to_notes() }) ; 
-nav_menu_todos.addEventListener('click', () => { switch_nav_to_todos() }) ; 
-button_add_new_entry.addEventListener('click', () => { new_entry_button_nav() }) ; 
 
-/* All listeners for all make project/notes etc. when no such things exists buttons */ 
 
-button_no_project_create_project.addEventListener('click', () => { plus_project_button() }) ; 
-button_no_list_create_list.addEventListener('click', () => { plus_list_button() }) ; 
-button_no_notes_create_notes.addEventListener('click', () => { plus_note_button() }) ; 
-button_no_todo_create_todo.addEventListener('click', () => { plus_todo_no_button() }) ; 
+
+
 
 
 

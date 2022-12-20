@@ -6,7 +6,7 @@ class Note {
 }
 
 class Project { 
-    constructor(title, description, due_date){
+    constructor(title, description = "", due_date){
         this.title = title ;
         this.description = description ; 
         this.due_date = due_date ; 
