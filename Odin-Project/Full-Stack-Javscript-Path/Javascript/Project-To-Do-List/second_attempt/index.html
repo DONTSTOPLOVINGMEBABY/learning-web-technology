@@ -162,21 +162,23 @@
                             <div class="todo-title-select-project">
                                 <input class="title-input todo" type="text" id="todo-title-input" placeholder="Todo Title" required>
                                 <div class="dropdown">
-                                    <button class="dropbtn">Choose-Project</button>
-                                    <div class="dropdown-content">
-                                        <p>This</p>
-                                        <p>That</p>
+                                    <button type="button" class="dropbtn">Choose-Project</button>
+                                    <div class="dropdown-content" id="dropdown-todo">
                                     </div>
                                 </div>
                             </div>
                             <textarea class="description-box" id="todo-description-input" placeholder="Todo Description (optional)"></textarea>
+                            <div class="todo-due-date">
+                                <label for="todo-date">Todo Due Date</label>
+                                <input type="date" class="add-margin" id="todo-date-input" required>
+                            </div>
                             <div class="project-priorities">
-                                <input type="radio" id="low-priority" name="priority" value="red">
-                                <label class="checked-radio-box low" for="low-priority">Low Priority</label>
+                                <input type="radio" id="low-priority" name="priority" value="red" checked="checked">
+                                <label class="checked-radio-box green" id="low-priority-label" for="low-priority">Low Priority</label>
                                 <input type="radio" id="med-priority" name="priority" value="yellow">
-                                <label class="med" for="med-priority">Medium Priority</label>
+                                <label class="checked-radio-box" id="med-priority-label" for="med-priority">Medium Priority</label>
                                 <input type="radio" id="high-priority" name="priority" value="green">
-                                <label class="high" for= high-priority">High Priority</label>
+                                <label class="checked-radio-box" id="high-priority-label" for="high-priority">High Priority</label>
                             </div>
                             <div class="center-submit-button">
                                 <button id="submit-new-todo">Create Todo</button>
