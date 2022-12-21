@@ -150,7 +150,7 @@ h3 {
 /* Begin All styling for the show-all-frames */ 
 
 .show-all-notes, .show-all-projects, .show-all-lists {
-    height: 100%%;
+    height: 100%;
     width: 100%;
     overflow: auto;
     border-bottom-right-radius: 25px;
@@ -184,7 +184,7 @@ h3 {
 }
 
 .to-do-title, .part-of-project, .to-do-due-date, .hold-icons{
-    width: 35%;
+    width: 30%;
     height: 100%;
     display: flex ; 
     justify-content: center;
@@ -194,8 +194,12 @@ h3 {
 }
 
 
-.hold-icons, .to-do-due-date {
+.hold-icons {
     width: 7% ; 
+}
+
+.to-do-due-date {
+    width: 13%;
 }
 
 .hold-icons {
@@ -588,8 +592,17 @@ h3 {
 }
 
 .checked-radio-box {
-    background-color: red;
-    transition: all 1s ease;
+    transition: all .8s ease;
+}
+
+.todo-due-date {
+    display: flex ; 
+    width: 100%; 
+    justify-content: center;
+}
+
+#todo-date-input {
+    margin-left: 3%;
 }
 
 
@@ -643,14 +656,18 @@ input[type="radio"]+label {
     flex: 1;
     display: flex;
     overflow: scroll;
-    padding: 2%;
 }
+
 
 .display-list ul {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+}
+
+.modal-list-item {
+    height: fit-content;
 }
 
 .bottom-container {
@@ -736,6 +753,7 @@ input[type="radio"]+label {
     font-size: 1.25rem;
     border-radius: 5px;
     border: none;
+    min-width: 169px;
 }
   
   .dropdown {
@@ -770,7 +788,7 @@ input[type="radio"]+label {
 
 #todo-description-input {
     text-align: center;
-    height: 30%;
+    height: 20%;
 }
 
 #todo-description-input::placeholder {

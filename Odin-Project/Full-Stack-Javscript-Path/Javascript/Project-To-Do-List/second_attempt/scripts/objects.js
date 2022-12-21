@@ -16,6 +16,14 @@ class Project {
     add_to_do (todo) {
         this.todos.push(todo)
     }
+
+    remove_to_do (todo_title) {
+        for (let i = 0 ; i < this.todos.length ; i ++) {
+            if (this.todos[i] == todo_title){
+                this.todos.splice(i, i+1) ; 
+            }
+        }
+    }
 }
 
 class List {
@@ -29,7 +37,7 @@ class List {
     }
 
     remove_item_from_list = function (item) {
-        for (let i = 0 ; i < list_items.length ; i++) {
+        for (let i = 0 ; i < this.list_items.length ; i++) {
             if (this.list_items[i] == item){
                 this.list_items.splice(i, i + 1) ; 
             }
@@ -111,9 +119,11 @@ function Aggregate_Objects_Of_Note_Type  () {
 function Aggregate_Objects_Of_List_Type () {
     this.bucket_objects = {} ; 
     this.loaded_objects = [] ; 
+    this.whole_objects = {} ; 
 
     this.add_list = function (list) {
-        this.bucket_objects[list.title] = list.list_items ;  
+        this.bucket_objects[list.title] = list.list_items ;
+        this.whole_objects[list.title] = list ;   
     }
 
     this.delete_list = function (list_title) {
@@ -124,6 +134,14 @@ function Aggregate_Objects_Of_List_Type () {
     this.load = function (list_title) {
         this.loaded_objects.push(list_title) ;
     }
+
+    this.return_list_element = function (list_title) {
+        for (let a_list in this.whole_objects){
+            if (a_list == list_title) {
+                return this.whole_objects[a_list] ; 
+            }
+        }
+    } ; 
 
 }
 
@@ -143,6 +161,14 @@ function Aggregate_Objects_Of_Project_Type() {
 
     this.load = function (project_title) {
         this.loaded_objects.push(project_title) ;
+    }
+
+    this.return_project_element = function (project_title) {
+        for (let a_project in this.bucket_objects){
+            if (a_project == project_title){
+                return this.bucket_objects[a_project] ; 
+            }
+        }
     }
 }
 

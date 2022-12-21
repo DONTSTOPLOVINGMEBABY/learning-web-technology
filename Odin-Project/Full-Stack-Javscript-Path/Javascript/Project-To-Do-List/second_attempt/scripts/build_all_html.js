@@ -74,7 +74,6 @@ function make_projects(list_of_projects, append_element) {
             
         }
 
-
         project_pencil.forEach( (element) => {
             element.addEventListener('click', () => {
                 console.log('click') ; 
@@ -86,7 +85,6 @@ function make_projects(list_of_projects, append_element) {
                 delete_project(element) ; 
             })
         })
-        
 
     }
 
@@ -111,7 +109,8 @@ function make_projects(list_of_projects, append_element) {
         }
         activate_project_buttons() ; 
     }
-    
+    remove_all_project_elements() ; 
+    list_of_projects.loaded_objects = [] ; 
     add_projects_to_display() ; 
 } ;  
 
@@ -292,7 +291,7 @@ function make_notes(all_notes_object, append_element) {
     
 } ; 
 
-function make_toDos(all_todos_object, append_element) {
+function make_toDos(all_todos_object, append_element, all_projects_object) {
 
     let list_of_todos = all_todos_object.bucket_objects ; 
     let list_of_added_items = all_todos_object.array_of_loaded_objects ; 
@@ -319,10 +318,15 @@ function make_toDos(all_todos_object, append_element) {
         const all_to_do_exit_buttons = document.querySelectorAll("#big-delete") ; 
     
         function delete_button (element) {
+            console.log(all_projects_object) ; 
             let this_singular_todo = element.target.parentElement.parentElement ; 
             let project_name = this_singular_todo.id ; 
             all_todos_object.delete_object(project_name) ; 
+            let the_project_the_todo_belongs_to = all_projects_object.return_project_element(project_name.split("-")[0]) ; 
+            the_project_the_todo_belongs_to.remove_to_do(project_name.split("-")[1]) ; 
             this_singular_todo.remove() ; 
+            console.log(all_projects_object) ; 
+            
         }
     
         all_to_do_pencils.forEach( (element) => {

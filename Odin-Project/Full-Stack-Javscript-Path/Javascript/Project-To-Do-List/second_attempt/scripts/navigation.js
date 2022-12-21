@@ -1,6 +1,5 @@
 import * as objects from "./objects.js"
 import * as build_html from "./build_all_html.js"
-import * as forms from "./forms.js" 
   
 const all_todos = new objects.Aggregate_Objects_Of_Todo_Type() ;
 const all_projects = new objects.Aggregate_Objects_Of_Project_Type() ; 
@@ -237,7 +236,7 @@ function switch_nav_to_todos() {
     }
     else {
         on(show_all_todos_page) ; 
-        build_html.make_toDos(all_todos, show_all_todos_page) ; 
+        build_html.make_toDos(all_todos, show_all_todos_page, all_projects) ; 
     }
 }
 
@@ -346,6 +345,9 @@ function create_new_todo (ev) {
                 dropbtn.innerText, "red") ; 
         }
 
+        let corresponding_project = all_projects.return_project_element(dropbtn.innerText) ;
+        corresponding_project.add_to_do(new_todo.title) ; 
+
         all_todos.add_todo(new_todo) ; 
         switch_nav_to_todos() ; 
         title_input.value = "" ; 
@@ -382,7 +384,7 @@ function select_low_priority() {
 
 
 
-
+console.log(all_projects) ; 
 
 
 
@@ -443,7 +445,7 @@ console.log(all_lists.return_list_element("Big List"))
 
 
 
-
+console.log(all_projects) ; 
 
 
 
@@ -508,17 +510,14 @@ function startup() {
     
     let this_string = "Henry" ;
 
-    let a_todo = new objects.To_Dos("Hello", "Small Description", "23/23/23", "Big Project", "green") ; 
-    let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "23/23/23", "Bigger Project", "yellow") ; 
-    let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "23/23/23", "Biggest Project", "yellow") ; 
-    let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "12/12/1222", "Biggest Youtuber Ever", "red") ; 
-    let k_todo = new objects.To_Dos("Hi there", "nice to see you", "12/12/2222", "Biggest Youtuber Everr", "red");
+    let a_todo = new objects.To_Dos("Hello", "Small Description", "23/23/23", "This_Project", "green") ; 
+    let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "23/23/23", "That_Project", "yellow") ; 
+    let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "23/23/23", "That_Project", "yellow") ; 
+    let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "12/12/1222", "This_Project", "red") ; 
+    let k_todo = new objects.To_Dos("Hi there", "nice to see you", "12/12/2222", "That_Project", "red");
 
     all_todos.add_todo(a_todo) ; 
-    all_todos.add_todo(b_todo) ;
-    all_todos.add_todo(c_todo) ; 
-    all_todos.add_todo(d_todo) ; 
-    all_todos.add_todo(k_todo) ; 
+    all_todos.add_todo(b_todo) ; 
 
 
     let a_note = new objects.Note("Hello", `
@@ -563,8 +562,9 @@ function startup() {
     let a_project = new objects.Project("This_Project", "Huge deal", "23/21/2322") ; 
     let b_project = new objects.Project("That_Project", "Even bigger deal", "12/23/2022") ; 
     a_project.add_to_do(a_todo.title) ; 
-    a_project.add_to_do(c_todo.title) ; 
-    b_project.add_to_do(d_todo.title) ; 
+    a_project.add_to_do(b_todo.title) ; 
+    b_project.add_to_do(b_todo.title) ;
+    b_project.add_to_do(a_todo.title) ;  
 
     all_projects.add_project(a_project) ; 
     all_projects.add_project(b_project) ; 
