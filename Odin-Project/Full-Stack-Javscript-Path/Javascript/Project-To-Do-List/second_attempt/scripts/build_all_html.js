@@ -162,6 +162,22 @@ function make_lists(list_of_lists, append_element) {
             })
         }
 
+        function delete_one_element(element) {
+            let the_list = list_of_lists.return_list_element(element.parentElement.parentElement.parentElement.id) ;
+            let the_deleted_element = element.parentElement.textContent ; 
+            the_list.remove_item_from_list(the_deleted_element) ; 
+
+            if (the_list.list_items.length == 0) {
+                list_of_lists.delete_list(the_list.title) ; 
+            }
+            else {
+                list_of_lists.loaded_objects = [] ;
+            }
+            remove_all_list_elements() ; 
+            add_lists_to_display() ;
+ 
+        }
+
 
         list_edit_buttons.forEach( (element) => {
             element.addEventListener('click', () => {
@@ -174,6 +190,10 @@ function make_lists(list_of_lists, append_element) {
                 delete_list(element) ; 
             })
         }) 
+
+        delete_item_from_list_icons.forEach( (element) => {
+            element.addEventListener('click', () => { delete_one_element(element) }) ; 
+        })
 
     }
 
@@ -329,7 +349,7 @@ function make_toDos(all_todos_object, append_element) {
 }
 
 function add_list_item_to_modal_list (list_item_name, append_element) {
-    let list_item_string = `<li>${list_item_name}</li>` ; 
+    let list_item_string = `<li class="modal-list-item">${list_item_name}</li>` ; 
     let html_list_string = elementFromHtml(list_item_string) ; 
     append_element.append(html_list_string) ; 
 } 

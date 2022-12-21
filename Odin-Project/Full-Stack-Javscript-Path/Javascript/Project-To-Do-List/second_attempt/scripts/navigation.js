@@ -390,20 +390,6 @@ function select_low_priority() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* all listeners that toggle/invoke the modal */ 
 
 top_shortcut_note.addEventListener('click', () => { plus_note_button() }) ; 
@@ -453,6 +439,7 @@ startup() ;
 
 
 
+console.log(all_lists.return_list_element("Big List")) 
 
 
 
@@ -581,7 +568,6 @@ function startup() {
 
     all_projects.add_project(a_project) ; 
     all_projects.add_project(b_project) ; 
-    console.log(all_projects) ; 
 
     switch_nav_to_projects() ; 
 
