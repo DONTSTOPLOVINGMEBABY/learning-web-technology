@@ -79,6 +79,13 @@ function Aggregate_Objects_Of_Todo_Type () {
     this.load = function (object) {
         this.array_of_loaded_objects.push(object)
     }
+
+    this.check_if_todo_exists = function (name, project) {
+        for (let object in this.bucket_objects){
+            if (object.split('-')[0] == project && object.split('-')[1] == name) { return true }
+        }
+        return false ; 
+    }
 }
 
 
@@ -123,6 +130,7 @@ function Aggregate_Objects_Of_List_Type () {
 function Aggregate_Objects_Of_Project_Type() { 
     this.bucket_objects = {} ; 
     this.loaded_objects = [] ; 
+    this.loaded_dropdown_objects = [] ; 
 
     this.add_project = function (project) {
         this.bucket_objects[project.title] = project ;  
