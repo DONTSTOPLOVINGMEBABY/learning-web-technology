@@ -200,7 +200,7 @@ function make_notes(all_notes_object, append_element) {
     const all_notes_container = [notes_container_1, notes_container_2, notes_container_3]
     
     function make_one_note (title, description) {
-        const singular_note = `
+        let singular_note = `
         <div class="display-note" id="${title}">
             <div class="title-and-icons">
                 <p class="display-title">${title}</p>
@@ -209,9 +209,21 @@ function make_notes(all_notes_object, append_element) {
                 <div class="delete-icon" id="note-delete">x</div>
                 </div>
             </div>
-            <p class="display-note-contents">${description}</p>
+            `
+            
+        let description_cpy = '' ; 
+        for (let i = 0 ; i < description.length ; i++){
+            if (description[i] == "\n") {
+                description_cpy += '<br>' ; 
+            }
+            description_cpy += description[i] ; 
+        }
+
+        singular_note += `
+        <p class="display-note-contents">${description_cpy}</p>
         </div>
         `
+
         return singular_note ; 
     }
 
