@@ -7,6 +7,8 @@ const all_projects = new objects.Aggregate_Objects_Of_Project_Type() ;
 const all_notes = new objects.Aggregate_Objects_Of_Note_Type() ; 
 const all_lists = new objects.Aggregate_Objects_Of_List_Type() ; 
 
+const display = document.getElementsByClassName('display')[0] ; 
+
 const empty_project_page = document.getElementsByClassName('empty-project')[0]; 
 const empty_notes_page = document.getElementsByClassName('empty-notes')[0];
 const empty_todos_page = document.getElementsByClassName('empty-todos')[0]; 
@@ -53,8 +55,11 @@ const modal_sidebar_notes = document.getElementById("sidebar-new-window-notes") 
 const modal_sidebar_todo = document.getElementById("sidebar-new-window-todo") ; 
 const modal_topbar_title = document.getElementById('adding-new') ; 
 
-const display = document.getElementsByClassName('display')[0] ; 
-
+const low_priority_label = document.getElementById("low-priority-label") ; 
+const med_priority_label = document.getElementById("med-priority-label") ; 
+const high_priority_label = document.getElementById("high-priority-label") ;
+const dropbtn = document.getElementsByClassName("dropbtn")[0] ; 
+const dropdown_items = document.getElementById("dropdown-todo") ; 
 
 const all_display_none_attributes = [
     empty_project_page, 
@@ -237,7 +242,6 @@ function switch_nav_to_todos() {
 }
 
 function new_entry_button_nav () {
-    toggle_all_displays_to_none() ; 
     modal_on() ; 
     switch_modal_to_project(); 
 }
@@ -285,9 +289,109 @@ function create_new_list (ev) {
 
 }
 
-function create_new_note(ev) {} 
+function create_new_note(ev) {
+    const note_title = document.getElementById("note-title-input") ; 
+    const note_contents = document.getElementById("note-description-input") ; 
 
-function create_new_todo (ev) {}
+    if (note_title.checkValidity() && note_contents.checkValidity()){
+        ev.preventDefault() ; 
+        let new_note = new objects.Note(note_title.value, note_contents.value) ; 
+        all_notes.add_note(new_note) ; 
+        switch_nav_to_notes() ; 
+        note_title.value = "" ; 
+        note_contents.value = "" ; 
+    } 
+
+
+} 
+
+function create_new_todo (ev) {
+    const title_input = document.getElementById("todo-title-input") ; 
+    const todo_description = document.getElementById("todo-description-input") ;
+    const date_input = document.getElementById("todo-date-input") 
+    const low_priority = document.getElementById("low-priority") ; 
+    const med_priority = document.getElementById("med-priority") ; 
+    const high_priority = document.getElementById("high-priority") ; 
+    
+    if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project" && all_todos.check_if_todo_exists(title_input.value)) {
+        ev.preventDefault() ; 
+        alert("Todo with that title already belongs to that project. Select a different one!")
+    }
+
+    else if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText == "Choose-Project"){
+        ev.preventDefault() ;     
+        alert("Select a Project to associate todo with!")
+    }
+
+    else if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project"){
+        ev.preventDefault() ; 
+        let new_todo ; 
+
+        if (low_priority.checked) {
+            new_todo = new objects.To_Dos(title_input.value, todo_description.value, date_input.value, 
+                dropbtn.innerText, "green") ; 
+        }
+        else if (med_priority.checked) {
+            new_todo = new objects.To_Dos(title_input.value, todo_description.value, date_input.value, 
+                dropbtn.innerText, "yellow") ;
+        }
+        else {
+            new_todo = new objects.To_Dos(title_input.value, todo_description.value, date_input.value, 
+                dropbtn.innerText, "red") ; 
+        }
+
+        all_todos.add_todo(new_todo) ; 
+        switch_nav_to_todos() ; 
+        title_input.value = "" ; 
+        todo_description.value = "" ; 
+        date_input.value = "" ; 
+        select_low_priority() ; 
+        dropbtn.innerText= "Choose-Project" ; 
+    }  
+}
+
+function select_high_priority () {
+    low_priority_label.classList.remove("green") ; 
+    med_priority_label.classList.remove("yellow") ; 
+    high_priority_label.classList.remove("red")  ;
+    high_priority_label.classList.add("red") ; 
+} 
+
+function select_med_priority() {
+    low_priority_label.classList.remove("green") ; 
+    med_priority_label.classList.remove("yellow") ; 
+    high_priority_label.classList.remove("red")  ;
+    med_priority_label.classList.add("yellow") ; 
+}
+
+function select_low_priority() {
+    low_priority_label.classList.remove("green") ; 
+    med_priority_label.classList.remove("yellow") ; 
+    high_priority_label.classList.remove("red")  ;
+    low_priority_label.classList.add("green") ; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -303,7 +407,10 @@ toggle_modal_exit.addEventListener('click', () => { off(toggle_modal, toggle_bac
 modal_sidebar_project.addEventListener('click', () => { switch_modal_to_project() }) ; 
 modal_sidebar_list.addEventListener('click', () => { switch_modal_to_list() }) ; 
 modal_sidebar_notes.addEventListener('click', () => { switch_modal_to_note() }) ; 
-modal_sidebar_todo.addEventListener('click', () => { switch_modal_to_todo() }) ; 
+modal_sidebar_todo.addEventListener('click', () => { 
+    switch_modal_to_todo() 
+    build_html.display_projects_in_todo_dropdown(dropdown_items, dropbtn, all_projects) ;     
+}) ; 
 
 /* all listeners for main-menu sidebar */
 
@@ -320,13 +427,15 @@ button_no_list_create_list.addEventListener('click', () => { plus_list_button() 
 button_no_notes_create_notes.addEventListener('click', () => { plus_note_button() }) ; 
 button_no_todo_create_todo.addEventListener('click', () => { plus_todo_no_button() }) ; 
 
-/* All listeners for modal buttons (create new project, create new list, etc) */ 
+/* All listeners for submitting new projects/notes, etc. */ 
 
 form_submit_new_project.addEventListener('click', (ev) => { create_new_project(ev) }) ; 
 form_create_list.addEventListener('click', (ev) => { create_new_list(ev) }) ; 
-form_submit_new_note.addEventListener('click', (ev) => {}) ; 
-form_submit_new_todo.addEventListener('click', (ev) => {}) ; 
-
+form_submit_new_note.addEventListener('click', (ev) => { create_new_note(ev) }) ; 
+form_submit_new_todo.addEventListener('click', (ev) => { create_new_todo(ev) }) ; 
+low_priority_label.addEventListener('click', () => { select_low_priority() }) ; 
+med_priority_label.addEventListener('click', () => { select_med_priority() } ) ; 
+high_priority_label.addEventListener('click', () => { select_high_priority() }) ; 
 
 
 
@@ -438,10 +547,10 @@ function startup() {
     m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
 
 
-    all_notes.add_note(a_note) ; 
-    all_notes.add_note(b_note) ; 
-    all_notes.add_note(a_note) ; 
-    all_notes.add_note(c_note) ; 
+    // all_notes.add_note(a_note) ; 
+    // all_notes.add_note(b_note) ; 
+    // all_notes.add_note(a_note) ; 
+    // all_notes.add_note(c_note) ; 
     all_notes.add_note(d_note) ; 
     all_notes.add_note(e_note) ; 
     all_notes.add_note(g_note) ;
