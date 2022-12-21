@@ -334,6 +334,25 @@ function add_list_item_to_modal_list (list_item_name, append_element) {
     append_element.append(html_list_string) ; 
 } 
 
+function display_projects_in_todo_dropdown(drop_down_element, drop_button, all_projects) {
+
+    for (let object in all_projects.bucket_objects) {
+        if (!all_projects.loaded_dropdown_objects.includes(object)){
+            let new_element = `<p class="drop-down-item">${object}</p>` ; 
+            drop_down_element.append(elementFromHtml(new_element)) ;
+            all_projects.loaded_dropdown_objects.push(object) ;  
+        }
+    }
+    const all_drop_down_elements = document.querySelectorAll(".drop-down-item") ;
+
+    all_drop_down_elements.forEach( (thing) => {
+        thing.addEventListener('click', () => {
+            drop_button.innerText = thing.textContent ; 
+        })
+    } )
+}
+
+
 
 export {
     make_toDos,
@@ -341,4 +360,5 @@ export {
     make_lists, 
     make_projects, 
     add_list_item_to_modal_list, 
+    display_projects_in_todo_dropdown, 
 }
