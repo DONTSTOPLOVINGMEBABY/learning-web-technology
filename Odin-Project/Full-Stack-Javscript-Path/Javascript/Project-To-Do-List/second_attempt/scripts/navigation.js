@@ -34,7 +34,7 @@ const top_shortcut_project = document.getElementById('top-add-project');
 
 const button_add_new_entry = document.getElementById('add-new-entry-button') ;
 const button_no_project_create_project = document.getElementById('no-project-create-project');
-const button_add_list_items = document.getElementById('add-list-items');  
+const button_add_list_items = document.getElementById('add-to-list');  
 const button_no_list_create_list = document.getElementById('no-list-create-list'); 
 const button_no_notes_create_notes = document.getElementById('no-notes-create-notes');
 const button_no_todo_create_todo = document.getElementById("no-todos-create-todos")
@@ -265,29 +265,36 @@ function create_new_project (ev) {
 
 function create_new_list (ev) {
     const title_input = document.getElementById("list-title-input") ; 
-    const display_list = document.getElementsByClassName("display-list")[0] ;
-    const add_to_list_input = document.getElementById("add-to-list-input") ; 
-    const display_list_ul = document.getElementById("display-list-ul") ; 
-    let added_items = [] ; 
+    const all_modal_list_items = document.querySelectorAll(".modal-list-item") ; 
 
-
-
-
-    document.getElementById('add-to-list').addEventListener('click', () => {
-        build_html.add_list_item_to_modal_list(add_to_list_input.value, display_list_ul) ;
-        added_items.push(add_to_list_input.value) 
-        add_to_list_input.value = "" ; 
-    })
-
-
-    if (title_input.checkValidity()) {
+    if (title_input.checkValidity()) { 
         ev.preventDefault() ; 
-        let new_list = new objects.List(title_input) ; 
-        added_items.forEach( (item) => {new_list.add_item_to_list(item)}) ; 
-        console.log(new_list) ; 
-    }
 
+        let new_list = new objects.List(title_input.value) ; 
+        let new_set = new Set() ;
+
+        all_modal_list_items.forEach( (item) => {
+            new_set.add(item.textContent)
+        })
+
+        for (let item of new_set) { new_list.add_item_to_list(item) } 
+
+        all_lists.add_list(new_list) ; 
+        switch_nav_to_lists() ; 
+        title_input.value = '' ; 
+    }
 }
+
+function add_to_list_button () {
+    const display_list_ul = document.getElementById("display-list-ul") ; 
+    const title_input = document.getElementById("add-to-list-input") ; 
+
+    if (title_input.value != "") {
+        build_html.add_list_item_to_modal_list(title_input.value, display_list_ul) ;
+        title_input.value = "" ; 
+    }
+}
+
 
 function create_new_note(ev) {
     const note_title = document.getElementById("note-title-input") ; 
@@ -302,7 +309,6 @@ function create_new_note(ev) {
         note_contents.value = "" ; 
     } 
 
-
 } 
 
 function create_new_todo (ev) {
@@ -313,7 +319,7 @@ function create_new_todo (ev) {
     const med_priority = document.getElementById("med-priority") ; 
     const high_priority = document.getElementById("high-priority") ; 
     
-    if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project" && all_todos.check_if_todo_exists(title_input.value)) {
+    if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project" && all_todos.check_if_todo_exists(title_input.value, dropbtn.innerText)) {
         ev.preventDefault() ; 
         alert("Todo with that title already belongs to that project. Select a different one!")
     }
@@ -436,8 +442,7 @@ form_submit_new_todo.addEventListener('click', (ev) => { create_new_todo(ev) }) 
 low_priority_label.addEventListener('click', () => { select_low_priority() }) ; 
 med_priority_label.addEventListener('click', () => { select_med_priority() } ) ; 
 high_priority_label.addEventListener('click', () => { select_high_priority() }) ; 
-
-
+button_add_list_items.addEventListener('click', () => { add_to_list_button() }) ; 
 
 
 
