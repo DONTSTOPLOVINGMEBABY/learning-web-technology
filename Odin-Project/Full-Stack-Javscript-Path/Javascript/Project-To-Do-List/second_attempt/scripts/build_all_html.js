@@ -104,8 +104,6 @@ function make_projects(list_of_projects, append_element, list_of_todos, activate
 
     }
 
-
-
     function add_projects_to_display () {
 
         let counter = 0 ; 
@@ -197,7 +195,6 @@ function make_lists(list_of_lists, append_element, activate_edit_button) {
  
         }
 
-
         list_edit_buttons.forEach( (element) => {
             element.addEventListener('click', () => {
                 edit_list(element) ; 
@@ -213,7 +210,6 @@ function make_lists(list_of_lists, append_element, activate_edit_button) {
         delete_item_from_list_icons.forEach( (element) => {
             element.addEventListener('click', () => { delete_one_element(element) }) ; 
         })
-
     }
 
     function add_lists_to_display () {
@@ -325,7 +321,7 @@ function make_notes(all_notes_object, append_element, activate_edit_button) {
 function make_toDos(all_todos_object, append_element, all_projects_object, activate_edit_button) {
 
     let list_of_todos = all_todos_object.bucket_objects ; 
-    let list_of_added_items = all_todos_object.array_of_loaded_objects ; 
+    let list_of_added_items = []; 
     let array_of_objects = all_todos_object.array_of_objects ; 
 
     function make_one_todo (title, due_date, priority, project, aggregate_name){
@@ -369,6 +365,12 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
     
     }
 
+    
+
+    document.querySelectorAll("#big-delete").forEach((thing) => {
+        thing.parentElement.parentElement.remove() ; 
+    })
+
     for (let this_object in array_of_objects){
         let todo = array_of_objects[this_object] 
         if (!list_of_added_items.includes(this_object)) {
@@ -379,6 +381,7 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
     }
 
     make_to_do_buttons_function(all_todos_object, array_of_objects) ;  
+
 }
 
 function add_list_item_to_modal_list (list_item_name, append_element) {
