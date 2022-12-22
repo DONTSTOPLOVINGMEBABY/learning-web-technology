@@ -289,8 +289,8 @@ function switch_nav_to_todos() {
         on(empty_todos_page) ; 
     }
     else {
-        on(show_all_todos_page) ; 
-        build_html.make_toDos(all_todos, show_all_todos_page, all_projects, activate_edit_button_todo) ; 
+        on(show_all_todos_page) ;   
+        build_html.make_toDos(all_todos, show_all_todos_page, all_projects, activate_edit_button_todo, select_low_priority, select_med_priority, select_high_priority) ; 
     }
 }
 

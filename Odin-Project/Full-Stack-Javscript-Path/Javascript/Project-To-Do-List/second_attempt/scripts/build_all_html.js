@@ -318,7 +318,7 @@ function make_notes(all_notes_object, append_element, activate_edit_button) {
     
 } ; 
 
-function make_toDos(all_todos_object, append_element, all_projects_object, activate_edit_button) {
+function make_toDos(all_todos_object, append_element, all_projects_object, activate_edit_button, low_priority, med_priority, high_priority) {
 
     let list_of_todos = all_todos_object.bucket_objects ; 
     let list_of_added_items = []; 
@@ -354,9 +354,36 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
             console.log(all_projects_object) ; 
             
         }
+
+        function edit_todo (element) {
+            const title_input = document.getElementById("todo-title-input") ; 
+            const todo_description = document.getElementById("todo-description-input") ;
+            const date_input = document.getElementById("todo-date-input") 
+
+            let title = element.target.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent ;
+            let todo = all_todos_object.return_todo(title) ;
+            title_input.value = todo.title ; 
+            todo_description.value = todo.description ; 
+            date_input.value = todo.due_date ; 
+            if (todo.priority == "red"){
+                high_priority() ; 
+            }
+            else if (todo.priority == "yellow"){
+                med_priority() ; 
+            }
+            else {
+                low_priority(); 
+            }
+
+            /* 
+                1. I need to delete the todo from all_todos 
+                2. I need to delete the todo from the project it's associated with
+            */
+           activate_edit_button() ; 
+        }
     
         all_to_do_pencils.forEach( (element) => {
-            element.addEventListener('click', () => { console.log("Working for me") }) 
+            element.addEventListener('click', (element) => { edit_todo(element) }) ;  
         })
     
         all_to_do_exit_buttons.forEach( (element) => {
@@ -364,8 +391,6 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
         })
     
     }
-
-    
 
     document.querySelectorAll("#big-delete").forEach((thing) => {
         thing.parentElement.parentElement.remove() ; 

@@ -127,6 +127,14 @@ function Aggregate_Objects_Of_Todo_Type () {
         }
 
     }
+
+    this.return_todo = function (title) {
+        for (let k in this.array_of_objects){
+            if (this.array_of_objects[k].title == title){
+                return this.array_of_objects[k] ; 
+            } 
+        }
+    }
 }
 
 
