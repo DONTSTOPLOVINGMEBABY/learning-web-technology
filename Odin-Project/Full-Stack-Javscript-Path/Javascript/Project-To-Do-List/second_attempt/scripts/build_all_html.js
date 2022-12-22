@@ -359,6 +359,7 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
             const title_input = document.getElementById("todo-title-input") ; 
             const todo_description = document.getElementById("todo-description-input") ;
             const date_input = document.getElementById("todo-date-input") 
+            const dropbtn = document.getElementsByClassName("dropbtn")[0] ; 
 
             let title = element.target.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent ;
             let todo = all_todos_object.return_todo(title) ;
@@ -374,6 +375,7 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
             else {
                 low_priority(); 
             }
+            dropbtn.innerText = todo.project ; 
 
             /* 
                 1. I need to delete the todo from all_todos 
