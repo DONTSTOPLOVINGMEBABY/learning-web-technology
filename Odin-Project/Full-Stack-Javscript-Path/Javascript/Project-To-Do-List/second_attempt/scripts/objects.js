@@ -94,6 +94,39 @@ function Aggregate_Objects_Of_Todo_Type () {
         }
         return false ; 
     }
+
+    this.rename_project = function (old_project_title, new_project_title) {
+        
+        let temp ; 
+        let temp_k_j ; 
+        for (let k in this.bucket_objects){
+            temp = this.bucket_objects[k] ;
+            temp_k_j = k ; 
+            let string = k.split("-") ;
+            if (string[0] == old_project_title){
+                string[0] = new_project_title ; 
+                delete this.bucket_objects[temp_k_j] ; 
+            } 
+            k = string[0] + "-" + string[1] ;  
+            this.bucket_objects[k] = temp ; 
+        }
+        
+        for (let j in this.array_of_objects){
+            temp = this.array_of_objects[j] ; 
+            temp_k_j = j ; 
+            let string = j.split("-") ;
+            if (string[0] == old_project_title){
+                string[0] = new_project_title ; 
+                delete this.array_of_objects[temp_k_j] ; 
+            } 
+            j = string[0] + "-" + string[1] ;  
+            this.array_of_objects[j] = temp ;
+            if (string[0] == new_project_title){
+                this.array_of_objects[j].project = new_project_title ;
+            }  
+        }
+
+    }
 }
 
 
@@ -143,12 +176,15 @@ function Aggregate_Objects_Of_List_Type () {
         }
     } ; 
 
+
 }
 
 function Aggregate_Objects_Of_Project_Type() { 
     this.bucket_objects = {} ; 
     this.loaded_objects = [] ; 
     this.loaded_dropdown_objects = [] ; 
+    this.temp_bin = [] ;
+    this.old_name = "" ;  
 
     this.add_project = function (project) {
         this.bucket_objects[project.title] = project ;  
@@ -170,6 +206,17 @@ function Aggregate_Objects_Of_Project_Type() {
             }
         }
     }
+
+    this.load_items_into_temp_bin = function (temp_list_of_todos, old_name){
+        temp_list_of_todos.forEach( (todo) => {this.temp_bin.push(todo)})
+        this.old_name = old_name ; 
+    }
+
+    this.reset_temp_bin = function () {
+        this.temp_bin = [] ;
+        this.old_name = '';  
+    }
+
 }
 
 

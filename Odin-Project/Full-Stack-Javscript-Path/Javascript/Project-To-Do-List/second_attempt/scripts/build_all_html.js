@@ -33,7 +33,7 @@ function add_new_elements_evenly(container_1, container_2, container_3, all_blan
 }
 
 
-function make_projects(list_of_projects, append_element) {
+function make_projects(list_of_projects, append_element, list_of_todos, activate_edit_button) {
     const projects_container_1 = document.getElementsByClassName('projects-container-1')[0] ; 
     const projects_container_2 = document.getElementsByClassName('projects-container-2')[0] ; 
     const projects_container_3 = document.getElementsByClassName('projects-container-3')[0] ;
@@ -68,15 +68,31 @@ function make_projects(list_of_projects, append_element) {
         
         function delete_project (element) {
             let singular_project_element = element.parentElement.parentElement.parentElement ; 
-            list_of_projects.delete_project(singular_project_element.id) ; 
+            let the_project = list_of_projects.return_project_element(singular_project_element.id) ;
+            the_project.todos.forEach( (todo) => {list_of_todos.delete_object(`${singular_project_element.id}-${todo}`)} ) ; 
+            list_of_projects.delete_project(singular_project_element.id) ;  
             remove_all_project_elements() ; 
-            add_projects_to_display() ; 
-            
+            add_projects_to_display() ;    
+        }
+        
+        function edit_project (element) {
+            const title_input = document.getElementById("project-title-input") ; 
+            const description_input = document.getElementById("project-description-input") ;
+            const due_date_input = document.getElementById("project-date-input") ; 
+            let title = element.parentElement.previousSibling.previousSibling.textContent ; 
+            let the_project = list_of_projects.return_project_element(title) ; 
+            let description = the_project.description ; 
+            let due_date = the_project.due_date ; 
+            title_input.value = title; 
+            description_input.value = description ; 
+            due_date_input.value = due_date ; 
+            activate_edit_button() ;              
+            list_of_projects.load_items_into_temp_bin(the_project.todos, the_project.title) ; 
         }
 
         project_pencil.forEach( (element) => {
             element.addEventListener('click', () => {
-                console.log('click') ; 
+                edit_project(element) ;  
             })
         })
 
@@ -88,11 +104,6 @@ function make_projects(list_of_projects, append_element) {
 
     }
 
-    function remove_all_project_elements () {
-        document.querySelectorAll("#project-exit").forEach( (element) => {
-            element.parentElement.parentElement.parentElement.remove() ; 
-        })
-    }
 
 
     function add_projects_to_display () {
@@ -114,7 +125,7 @@ function make_projects(list_of_projects, append_element) {
     add_projects_to_display() ; 
 } ;  
 
-function make_lists(list_of_lists, append_element) {
+function make_lists(list_of_lists, append_element, activate_edit_button) {
     const lists_container_1 = document.getElementsByClassName('lists-container-1')[0] ; 
     const lists_container_2 = document.getElementsByClassName('lists-container-2')[0] ;
     const lists_container_3 = document.getElementsByClassName('lists-container-3')[0] ;  
@@ -148,18 +159,27 @@ function make_lists(list_of_lists, append_element) {
         const list_exit_buttons = document.querySelectorAll("#list-exit") ; 
         const delete_item_from_list_icons = document.querySelectorAll("#delete-from-list") ; 
 
+        function edit_list (element) {
+            const title_input = document.getElementById("list-title-input") ; 
+            const display_list_ul = document.getElementById("display-list-ul") ; 
+            title_input.value = '' ; 
+            remove_all_display_list(); 
+            let title = element.parentElement.previousSibling.previousSibling.textContent ; 
+            let the_list = list_of_lists.return_list_element(title) ; 
+            title_input.value = the_list.title ; 
+            the_list.list_items.forEach( (item) => {
+                let list_element_div = `<li class="modal-list-item">${item}</li>`
+                display_list_ul.append(elementFromHtml(list_element_div)) ; 
+            })
+            activate_edit_button(); 
+        }
+
         function delete_list (element) {
             let singular_list_element = element.parentElement.parentElement.parentElement ; 
             list_of_lists.delete_list(singular_list_element.id)  ;  
             remove_all_list_elements() ; 
             add_lists_to_display() ; 
         }  
-
-        function remove_all_list_elements () {
-            document.querySelectorAll("#list-exit").forEach( (element) => {
-                element.parentElement.parentElement.parentElement.remove() ; 
-            })
-        }
 
         function delete_one_element(element) {
             let the_list = list_of_lists.return_list_element(element.parentElement.parentElement.parentElement.id) ;
@@ -180,7 +200,7 @@ function make_lists(list_of_lists, append_element) {
 
         list_edit_buttons.forEach( (element) => {
             element.addEventListener('click', () => {
-                console.log("edit button") ; 
+                edit_list(element) ; 
             })
         })
 
@@ -212,7 +232,7 @@ function make_lists(list_of_lists, append_element) {
 } ; 
 
 
-function make_notes(all_notes_object, append_element) {
+function make_notes(all_notes_object, append_element, activate_edit_button) {
     const notes_container_1 = document.getElementsByClassName('notes-container-1')[0] ; 
     const notes_container_2 = document.getElementsByClassName('notes-container-2')[0] ;
     const notes_container_3 = document.getElementsByClassName('notes-container-3')[0] ;  
@@ -250,8 +270,7 @@ function make_notes(all_notes_object, append_element) {
         const all_delete_icons = document.querySelectorAll("#note-delete") ; 
         const all_edit_icons = document.querySelectorAll("#note-edit") ; 
 
-        function delete_note (element) {
-            
+        function delete_note (element) {    
             let singular_note = element.parentElement.parentElement.parentElement ; 
             console.log(singular_note.id)
             all_notes_object.delete_note(singular_note.id) 
@@ -259,16 +278,28 @@ function make_notes(all_notes_object, append_element) {
             add_notes_to_display() ; 
         }
 
+        function edit_note (element) {
+            const note_title = document.getElementById("note-title-input") ; 
+            const note_contents = document.getElementById("note-description-input") ; 
+            let title = element.parentElement.previousSibling.previousSibling.textContent ;  
+            let text = element.parentElement.parentElement.nextSibling.nextSibling.innerText ;
+            note_title.value = title ; 
+            note_contents.value = text ; 
+
+            all_notes_object.delete_note(title) ; 
+            activate_edit_button() ; 
+        }
+
+
         all_delete_icons.forEach( (element) => {
             element.addEventListener('click', () => { delete_note(element) })
         })
-    }
 
-    function remove_all_note_elements () {
-        document.querySelectorAll("#note-delete").forEach( (element) => {
-            element.parentElement.parentElement.parentElement.remove(); 
+        all_edit_icons.forEach( (element) => {
+            element.addEventListener('click', () => { edit_note(element) }) 
         })
     }
+
 
     function add_notes_to_display() {
     
@@ -291,7 +322,7 @@ function make_notes(all_notes_object, append_element) {
     
 } ; 
 
-function make_toDos(all_todos_object, append_element, all_projects_object) {
+function make_toDos(all_todos_object, append_element, all_projects_object, activate_edit_button) {
 
     let list_of_todos = all_todos_object.bucket_objects ; 
     let list_of_added_items = all_todos_object.array_of_loaded_objects ; 
@@ -318,7 +349,6 @@ function make_toDos(all_todos_object, append_element, all_projects_object) {
         const all_to_do_exit_buttons = document.querySelectorAll("#big-delete") ; 
     
         function delete_button (element) {
-            console.log(all_projects_object) ; 
             let this_singular_todo = element.target.parentElement.parentElement ; 
             let project_name = this_singular_todo.id ; 
             all_todos_object.delete_object(project_name) ; 
@@ -348,8 +378,7 @@ function make_toDos(all_todos_object, append_element, all_projects_object) {
         }
     }
 
-    make_to_do_buttons_function(all_todos_object, array_of_objects) ;
-
+    make_to_do_buttons_function(all_todos_object, array_of_objects) ;  
 }
 
 function add_list_item_to_modal_list (list_item_name, append_element) {
@@ -376,7 +405,29 @@ function display_projects_in_todo_dropdown(drop_down_element, drop_button, all_p
     } )
 }
 
+function remove_all_note_elements () {
+    document.querySelectorAll("#note-delete").forEach( (element) => {
+        element.parentElement.parentElement.parentElement.remove(); 
+    })
+}
 
+function remove_all_list_elements () {
+    document.querySelectorAll("#list-exit").forEach( (element) => {
+        element.parentElement.parentElement.parentElement.remove() ; 
+    })
+}
+
+function remove_all_project_elements () {
+    document.querySelectorAll("#project-exit").forEach( (element) => {
+        element.parentElement.parentElement.parentElement.remove() ; 
+    })
+}
+
+function remove_all_display_list () {
+    document.querySelectorAll(".modal-list-item").forEach( (item) => {
+        item.remove() ;
+    })
+}
 
 export {
     make_toDos,
@@ -385,4 +436,8 @@ export {
     make_projects, 
     add_list_item_to_modal_list, 
     display_projects_in_todo_dropdown, 
+    remove_all_note_elements, 
+    remove_all_list_elements, 
+    remove_all_project_elements, 
+    remove_all_display_list, 
 }

@@ -37,6 +37,10 @@ const button_add_list_items = document.getElementById('add-to-list');
 const button_no_list_create_list = document.getElementById('no-list-create-list'); 
 const button_no_notes_create_notes = document.getElementById('no-notes-create-notes');
 const button_no_todo_create_todo = document.getElementById("no-todos-create-todos")
+const button_edit_note = document.getElementById("edit-note") ; 
+const button_edit_list = document.getElementById("edit-list") ; 
+const button_edit_todo = document.getElementById("edit-todo") ; 
+const button_edit_project = document.getElementById("edit-project") ; 
 
 const form_submit_new_project = document.getElementById('submit-new-project') ; 
 const form_create_list = document.getElementById('create-list') ; 
@@ -95,6 +99,19 @@ const all_modal_displays = [
     add_todo_form, 
 ]
 
+const all_edit_buttons = [
+    button_edit_note, 
+    button_edit_list, 
+    button_edit_todo, 
+    button_edit_project, 
+]
+
+const all_submit_new_buttons = [
+    form_submit_new_project, 
+    form_create_list, 
+    form_submit_new_note, 
+    form_submit_new_todo, 
+]
 
 function toggle_all_displays_to_none () {
     for (let i = 0 ; i < all_display_none_attributes.length; i++) {
@@ -111,6 +128,43 @@ function toggle_all_menu_attributes_to_not_selected () {
         }  
     }
 }
+
+function activate_edit_button_project () {
+    activate_edit_button() ; 
+    switch_modal_to_project() ; 
+}
+
+function activate_edit_button_list () {
+    activate_edit_button() ; 
+    switch_modal_to_list() ; 
+}
+
+function activate_edit_button_note () {
+    activate_edit_button() ; 
+    switch_modal_to_note() ; 
+}
+
+function activate_edit_button_todo () {
+    activate_edit_button() ; 
+    switch_modal_to_todo() ; 
+}
+
+function activate_edit_button () {
+    modal_on() ; 
+    for(let i = 0 ; i < all_edit_buttons.length ; i++){
+        all_edit_buttons[i].style.display = "block" ; 
+        all_submit_new_buttons[i].style.display = "none" ; 
+    }
+}
+
+function deactivate_edit_button () {
+    for(let i = 0 ; i < all_edit_buttons.length ; i++){
+        all_edit_buttons[i].style.display = "none" ; 
+        all_submit_new_buttons[i].style.display = "block" ; 
+    }
+    off(toggle_background_modal, toggle_modal) ; 
+}
+
 
 function add_italic_add_tilda (document_element) {
     let string = document_element.textContent ; 
@@ -200,7 +254,7 @@ function switch_nav_to_projects () {
     }
     else {
         on(show_all_projects_page) ;
-        build_html.make_projects(all_projects, show_all_projects_page) ; 
+        build_html.make_projects(all_projects, show_all_projects_page, all_todos, activate_edit_button_project) ; 
     }
 }
 
@@ -212,7 +266,7 @@ function switch_nav_to_lists() {
     }
     else {
         on(show_all_lists_page) ; 
-        build_html.make_lists(all_lists, show_all_lists_page) ; 
+        build_html.make_lists(all_lists, show_all_lists_page, activate_edit_button_list) ; 
     }
 }
 
@@ -224,7 +278,7 @@ function switch_nav_to_notes() {
     }
     else {
         on(show_all_notes_page) ; 
-        build_html.make_notes(all_notes, show_all_notes_page) ; 
+        build_html.make_notes(all_notes, show_all_notes_page, activate_edit_button_note) ; 
     }
 }
 
@@ -236,7 +290,7 @@ function switch_nav_to_todos() {
     }
     else {
         on(show_all_todos_page) ; 
-        build_html.make_toDos(all_todos, show_all_todos_page, all_projects) ; 
+        build_html.make_toDos(all_todos, show_all_todos_page, all_projects, activate_edit_button_todo) ; 
     }
 }
 
@@ -252,12 +306,23 @@ function create_new_project (ev) {
 
     if (title_input.checkValidity() && due_date.checkValidity()) {
         ev.preventDefault() ;
-        let new_project = new objects.Project(title_input.value, description_input.value, due_date.value) ; 
+        let new_project = new objects.Project(title_input.value, description_input.value, due_date.value) ;
+        if (all_projects.temp_bin.length != 0){
+            all_projects.temp_bin.forEach( (element) => {
+                new_project.add_to_do(element) ; 
+            })
+        }
+        all_projects.delete_project(all_projects.old_name) ; 
         all_projects.add_project(new_project) ; 
+        all_todos.rename_project(all_projects.old_name, title_input.value) ; 
         switch_nav_to_projects() ; 
         title_input.value = "" ; 
         description_input.value = "" ; 
         due_date.value = "" ; 
+        deactivate_edit_button() ; 
+        all_projects.reset_temp_bin(); 
+        console.log(all_projects) ; 
+        console.log(all_todos) ; 
    }
 }
 
@@ -281,6 +346,7 @@ function create_new_list (ev) {
         all_lists.add_list(new_list) ; 
         switch_nav_to_lists() ; 
         title_input.value = '' ; 
+        deactivate_edit_button() ; 
     }
 }
 
@@ -306,6 +372,7 @@ function create_new_note(ev) {
         switch_nav_to_notes() ; 
         note_title.value = "" ; 
         note_contents.value = "" ; 
+        deactivate_edit_button() ; 
     } 
 
 } 
@@ -379,13 +446,21 @@ function select_low_priority() {
     low_priority_label.classList.add("green") ; 
 }
 
+function make_sure_list_form_is_clean () {
+    const title_input = document.getElementById("list-title-input") ; 
+    title_input.value = '' ; 
+    build_html.remove_all_display_list(); 
+}
 
-
-
-
-
-console.log(all_projects) ; 
-
+function make_sure_project_form_is_clean () {
+    const title_input = document.getElementById("project-title-input") ; 
+    const description_input = document.getElementById("project-description-input") ;
+    const due_date_input = document.getElementById("project-date-input") ; 
+    all_projects.reset_temp_bin() ; 
+    title_input.value = '' ; 
+    description_input.value = '' ; 
+    due_date_input.value = '' ; 
+}
 
 
 
@@ -397,7 +472,11 @@ console.log(all_projects) ;
 top_shortcut_note.addEventListener('click', () => { plus_note_button() }) ; 
 top_shortcut_list.addEventListener('click', () => { plus_list_button() }) ;
 top_shortcut_project.addEventListener('click', () => { plus_project_button() }) ;
-toggle_modal_exit.addEventListener('click', () => { off(toggle_modal, toggle_background_modal) }) ; 
+toggle_modal_exit.addEventListener('click', () => { 
+    off(toggle_modal, toggle_background_modal) 
+    make_sure_list_form_is_clean() ;     
+    make_sure_project_form_is_clean() ; 
+}) ; 
 modal_sidebar_project.addEventListener('click', () => { switch_modal_to_project() }) ; 
 modal_sidebar_list.addEventListener('click', () => { switch_modal_to_list() }) ; 
 modal_sidebar_notes.addEventListener('click', () => { switch_modal_to_note() }) ; 
@@ -421,7 +500,7 @@ button_no_list_create_list.addEventListener('click', () => { plus_list_button() 
 button_no_notes_create_notes.addEventListener('click', () => { plus_note_button() }) ; 
 button_no_todo_create_todo.addEventListener('click', () => { plus_todo_no_button() }) ; 
 
-/* All listeners for submitting new projects/notes, etc. */ 
+/* All listeners for submitting new/editing existing projects/notes, etc. */ 
 
 form_submit_new_project.addEventListener('click', (ev) => { create_new_project(ev) }) ; 
 form_create_list.addEventListener('click', (ev) => { create_new_list(ev) }) ; 
@@ -431,7 +510,23 @@ low_priority_label.addEventListener('click', () => { select_low_priority() }) ;
 med_priority_label.addEventListener('click', () => { select_med_priority() } ) ; 
 high_priority_label.addEventListener('click', () => { select_high_priority() }) ; 
 button_add_list_items.addEventListener('click', () => { add_to_list_button() }) ; 
+button_edit_note.addEventListener('click', (ev) => { 
+    all_notes.loaded_objects = [] ; 
+    build_html.remove_all_note_elements() ; 
+    create_new_note(ev) ; 
+}) ;  
+button_edit_list.addEventListener('click', (ev) => { 
+    all_lists.loaded_objects = [] ; 
+    build_html.remove_all_list_elements() ; 
+    create_new_list(ev)
+    build_html.remove_all_display_list() ; 
+ }) ; 
+button_edit_todo.addEventListener('click', () => { console.log("Hello") }) ; 
+button_edit_project.addEventListener('click', (ev) => { 
 
+    build_html.remove_all_project_elements() ; 
+    create_new_project(ev) ; 
+}) ; 
 
 
 
@@ -440,35 +535,7 @@ button_add_list_items.addEventListener('click', () => { add_to_list_button() }) 
 startup() ; 
 
 
-
-console.log(all_lists.return_list_element("Big List")) 
-
-
-
 console.log(all_projects) ; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -510,15 +577,17 @@ function startup() {
     
     let this_string = "Henry" ;
 
-    let a_todo = new objects.To_Dos("Hello", "Small Description", "23/23/23", "This_Project", "green") ; 
-    let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "23/23/23", "That_Project", "yellow") ; 
-    let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "23/23/23", "That_Project", "yellow") ; 
-    let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "12/12/1222", "This_Project", "red") ; 
-    let k_todo = new objects.To_Dos("Hi there", "nice to see you", "12/12/2222", "That_Project", "red");
+    let a_todo = new objects.To_Dos("Hello", "Small Description", "2022-12-13", "This_Project", "green") ; 
+    let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "2022-12-14", "This_Project", "yellow") ; 
+    let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "2022-12-15", "That_Project", "yellow") ; 
+    let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "2022-12-16", "That_Project", "red") ; 
+    let k_todo = new objects.To_Dos("Hi there", "nice to see you", "2022-12-17", "That_Project", "red");
 
     all_todos.add_todo(a_todo) ; 
     all_todos.add_todo(b_todo) ; 
-
+    all_todos.add_todo(c_todo) ; 
+    all_todos.add_todo(d_todo) ; 
+  
 
     let a_note = new objects.Note("Hello", `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
@@ -559,12 +628,12 @@ function startup() {
 
 
 
-    let a_project = new objects.Project("This_Project", "Huge deal", "23/21/2322") ; 
-    let b_project = new objects.Project("That_Project", "Even bigger deal", "12/23/2022") ; 
+    let a_project = new objects.Project("This_Project", "Huge deal", "2322-12-13") ; 
+    let b_project = new objects.Project("That_Project", "Even bigger deal", "2322-12-14") ; 
     a_project.add_to_do(a_todo.title) ; 
     a_project.add_to_do(b_todo.title) ; 
-    b_project.add_to_do(b_todo.title) ;
-    b_project.add_to_do(a_todo.title) ;  
+    b_project.add_to_do(c_todo.title) ; 
+    b_project.add_to_do(d_todo.title) ; 
 
     all_projects.add_project(a_project) ; 
     all_projects.add_project(b_project) ; 
@@ -572,4 +641,5 @@ function startup() {
     switch_nav_to_projects() ; 
 
 }
+
 
