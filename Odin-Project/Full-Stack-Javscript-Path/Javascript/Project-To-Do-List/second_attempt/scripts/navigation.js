@@ -385,6 +385,7 @@ function create_new_todo (ev) {
     const med_priority = document.getElementById("med-priority") ; 
     const high_priority = document.getElementById("high-priority") ; 
     
+
     if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project" && all_todos.check_if_todo_exists(title_input.value, dropbtn.innerText)) {
         ev.preventDefault() ; 
         alert("Todo with that title already belongs to that project. Select a different one!")
@@ -466,7 +467,6 @@ function make_sure_project_form_is_clean () {
 
 
 
-
 /* all listeners that toggle/invoke the modal */ 
 
 top_shortcut_note.addEventListener('click', () => { plus_note_button() }) ; 
@@ -481,8 +481,13 @@ modal_sidebar_project.addEventListener('click', () => { switch_modal_to_project(
 modal_sidebar_list.addEventListener('click', () => { switch_modal_to_list() }) ; 
 modal_sidebar_notes.addEventListener('click', () => { switch_modal_to_note() }) ; 
 modal_sidebar_todo.addEventListener('click', () => { 
+    build_html.display_projects_in_todo_dropdown(dropdown_items, dropbtn, all_projects) ;   
+    if (Array.from(document.querySelectorAll(".drop-down-item")).length == 0) {
+        alert("You need to create a project before you can add a Todo") ; 
+        switch_modal_to_project() ; 
+        return ; 
+    }
     switch_modal_to_todo() 
-    build_html.display_projects_in_todo_dropdown(dropdown_items, dropbtn, all_projects) ;     
 }) ; 
 
 /* all listeners for main-menu sidebar */

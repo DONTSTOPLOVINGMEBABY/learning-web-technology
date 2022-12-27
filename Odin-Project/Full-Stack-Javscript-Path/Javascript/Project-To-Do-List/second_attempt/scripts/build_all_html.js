@@ -71,6 +71,7 @@ function make_projects(list_of_projects, append_element, list_of_todos, activate
             let the_project = list_of_projects.return_project_element(singular_project_element.id) ;
             the_project.todos.forEach( (todo) => {list_of_todos.delete_object(`${singular_project_element.id}-${todo}`)} ) ; 
             list_of_projects.delete_project(singular_project_element.id) ;  
+            remove_projects_in_todo_dropdown() ; 
             remove_all_project_elements() ; 
             add_projects_to_display() ;    
         }
@@ -360,6 +361,7 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
             const todo_description = document.getElementById("todo-description-input") ;
             const date_input = document.getElementById("todo-date-input") 
             const dropbtn = document.getElementsByClassName("dropbtn")[0] ; 
+            const dropdown_todo = document.getElementById("dropdown-todo") ; 
 
             let title = element.target.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent ;
             let todo = all_todos_object.return_todo(title) ;
@@ -435,6 +437,12 @@ function display_projects_in_todo_dropdown(drop_down_element, drop_button, all_p
     } )
 }
 
+function remove_projects_in_todo_dropdown (all_projects){
+    document.querySelectorAll('.drop-down-item').forEach( (element) => {
+        element.remove() ; 
+    })
+}
+
 function remove_all_note_elements () {
     document.querySelectorAll("#note-delete").forEach( (element) => {
         element.parentElement.parentElement.parentElement.remove(); 
@@ -470,4 +478,5 @@ export {
     remove_all_list_elements, 
     remove_all_project_elements, 
     remove_all_display_list, 
+    remove_projects_in_todo_dropdown, 
 }

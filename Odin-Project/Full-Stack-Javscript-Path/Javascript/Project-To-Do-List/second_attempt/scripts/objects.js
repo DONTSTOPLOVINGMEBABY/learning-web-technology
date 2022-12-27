@@ -201,6 +201,7 @@ function Aggregate_Objects_Of_Project_Type() {
     this.delete_project = function (project_title) {
         delete this.bucket_objects[project_title] ; 
         this.loaded_objects = [] ; 
+        this.loaded_dropdown_objects = [] ; 
     }
 
     this.load = function (project_title) {
