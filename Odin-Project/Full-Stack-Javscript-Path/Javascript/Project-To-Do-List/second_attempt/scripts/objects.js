@@ -65,7 +65,11 @@ function Aggregate_Objects_Of_Todo_Type () {
     this.array_of_loaded_objects = [] ; 
     this.array_of_objects = {} ; 
 
-    this.delete_object = function (todo) {
+    this.delete_object = function (todo, project_name=false) {
+        if (project_name){
+            let string = project_name + "-" + todo ; 
+            todo = string ; 
+        }
         delete this.bucket_objects[todo] ; 
         delete this.array_of_objects[todo] ; 
         for (let i = 0 ; i < this.array_of_loaded_objects.length ; i++) {
@@ -226,6 +230,18 @@ function Aggregate_Objects_Of_Project_Type() {
         this.old_name = '';  
     }
 
+    this.edit_todo = function (project_title, old_todo_name, new_todo_name) {
+        for (let project in this.bucket_objects){
+            if (project == project_title){
+                for (let i = 0 ; i < this.bucket_objects[project].todos.length ; i++){
+                    if (this.bucket_objects[project].todos[i] == old_todo_name){
+                        this.bucket_objects[project].todos.splice(i, i + 1) ; 
+                        this.bucket_objects[project].todos.push(new_todo_name) ; 
+                    } 
+                }
+            }
+        }
+    }
 }
 
 

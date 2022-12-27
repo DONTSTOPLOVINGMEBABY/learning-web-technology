@@ -362,6 +362,10 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
             const date_input = document.getElementById("todo-date-input") 
             const dropbtn = document.getElementsByClassName("dropbtn")[0] ; 
             const dropdown_todo = document.getElementById("dropdown-todo") ; 
+            const low_priority_check = document.getElementById("low-priority") ; 
+            const med_priority_check = document.getElementById("med-priority") ; 
+            const high_priority_check = document.getElementById("high-priority") ;   
+    
 
             let title = element.target.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent ;
             let todo = all_todos_object.return_todo(title) ;
@@ -370,20 +374,19 @@ function make_toDos(all_todos_object, append_element, all_projects_object, activ
             date_input.value = todo.due_date ; 
             if (todo.priority == "red"){
                 high_priority() ; 
+                high_priority_check.checked = true ; 
             }
             else if (todo.priority == "yellow"){
                 med_priority() ; 
+                med_priority_check.checked = true ; 
             }
             else {
                 low_priority(); 
+                low_priority_check.checked = true ; 
             }
             dropbtn.innerText = todo.project ; 
-
-            /* 
-                1. I need to delete the todo from all_todos 
-                2. I need to delete the todo from the project it's associated with
-            */
-           activate_edit_button() ; 
+            all_projects_object.old_name = title ; 
+            activate_edit_button() ; 
         }
     
         all_to_do_pencils.forEach( (element) => {

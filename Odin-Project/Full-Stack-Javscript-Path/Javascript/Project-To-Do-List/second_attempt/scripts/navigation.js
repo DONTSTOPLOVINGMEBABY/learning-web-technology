@@ -377,16 +377,18 @@ function create_new_note(ev) {
 
 } 
 
-function create_new_todo (ev) {
+function create_new_todo (ev, edit=false) {
     const title_input = document.getElementById("todo-title-input") ; 
     const todo_description = document.getElementById("todo-description-input") ;
     const date_input = document.getElementById("todo-date-input") 
     const low_priority = document.getElementById("low-priority") ; 
     const med_priority = document.getElementById("med-priority") ; 
-    const high_priority = document.getElementById("high-priority") ; 
+    const high_priority = document.getElementById("high-priority") ;   
     
+    if (edit) {all_todos.delete_object(all_projects.old_name, dropbtn.innerText)} ;  
 
-    if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project" && all_todos.check_if_todo_exists(title_input.value, dropbtn.innerText)) {
+    if (title_input.checkValidity() && date_input.checkValidity() && dropbtn.innerText != "Choose-Project" && all_todos.check_if_todo_exists(title_input.value, dropbtn.innerText)
+    && !edit) {
         ev.preventDefault() ; 
         alert("Todo with that title already belongs to that project. Select a different one!")
     }
@@ -408,13 +410,18 @@ function create_new_todo (ev) {
             new_todo = new objects.To_Dos(title_input.value, todo_description.value, date_input.value, 
                 dropbtn.innerText, "yellow") ;
         }
-        else {
+        else if (high_priority.checked) {
             new_todo = new objects.To_Dos(title_input.value, todo_description.value, date_input.value, 
                 dropbtn.innerText, "red") ; 
         }
 
         let corresponding_project = all_projects.return_project_element(dropbtn.innerText) ;
         corresponding_project.add_to_do(new_todo.title) ; 
+        
+        if (edit) {
+            all_projects.edit_todo(dropbtn.innerText, all_projects.old_name, title_input.value) ;
+            all_projects.reset_temp_bin() ;
+        }
 
         all_todos.add_todo(new_todo) ; 
         switch_nav_to_todos() ; 
@@ -423,6 +430,10 @@ function create_new_todo (ev) {
         date_input.value = "" ; 
         select_low_priority() ; 
         dropbtn.innerText= "Choose-Project" ; 
+        low_priority.checked = true ; 
+        med_priority.checked = false ; 
+        high_priority.checked = false ; 
+        deactivate_edit_button() ; 
     }  
 }
 
@@ -526,9 +537,11 @@ button_edit_list.addEventListener('click', (ev) => {
     create_new_list(ev)
     build_html.remove_all_display_list() ; 
  }) ; 
-button_edit_todo.addEventListener('click', () => { console.log("Hello") }) ; 
-button_edit_project.addEventListener('click', (ev) => { 
+button_edit_todo.addEventListener('click', (ev) => { 
+    create_new_todo(ev, true) ; 
 
+}) ; 
+button_edit_project.addEventListener('click', (ev) => { 
     build_html.remove_all_project_elements() ; 
     create_new_project(ev) ; 
 }) ; 
