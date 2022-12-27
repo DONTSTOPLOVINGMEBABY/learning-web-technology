@@ -187,8 +187,6 @@ function Aggregate_Objects_Of_List_Type () {
             }
         }
     } ; 
-
-
 }
 
 function Aggregate_Objects_Of_Project_Type() { 

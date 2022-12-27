@@ -550,114 +550,68 @@ button_edit_project.addEventListener('click', (ev) => {
 
 
 
-startup() ; 
 
-
-console.log(all_projects) ; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+startup() ;
 function startup() {
-    
-    let this_string = "Henry" ;
 
-    let a_todo = new objects.To_Dos("Hello", "Small Description", "2022-12-13", "This_Project", "green") ; 
-    let b_todo = new objects.To_Dos("Hello, wassup", "Small Description", "2022-12-14", "This_Project", "yellow") ; 
-    let c_todo = new objects.To_Dos("Hello My Friend", "Small Description", "2022-12-15", "That_Project", "yellow") ; 
-    let d_todo = new objects.To_Dos("Hi there", "Nice to see you", "2022-12-16", "That_Project", "red") ; 
-    let k_todo = new objects.To_Dos("Hi there", "nice to see you", "2022-12-17", "That_Project", "red");
-
+    let a_todo = new objects.To_Dos("Buy Wood Planks", "Small Description", "2022-12-13", "Build Treehouse", "green") ; 
+    let b_todo = new objects.To_Dos("Get Nails", "Small Description", "2022-12-14", "Build Treehouse", "yellow") ; 
+    let c_todo = new objects.To_Dos("Build Ladder", "Small Description", "2022-12-14", "Build Treehouse", "yellow") ; 
+    let d_todo = new objects.To_Dos("Learn Mechanics", "Small Description", "2022-12-15", "Learn Physics", "yellow") ; 
+    let e_todo = new objects.To_Dos("Study Laws of Motion", "Nice to see you", "2022-12-16", "Learn Physics", "red") ; 
+    let f_todo = new objects.To_Dos("Explore new topics", "nice to see you", "2022-12-17", "Learn Physics", "red");
     all_todos.add_todo(a_todo) ; 
     all_todos.add_todo(b_todo) ; 
     all_todos.add_todo(c_todo) ; 
     all_todos.add_todo(d_todo) ; 
+    all_todos.add_todo(e_todo) ; 
+    all_todos.add_todo(f_todo) ; 
   
-
-    let a_note = new objects.Note("Hello", `
+    let a_note = new objects.Note("Lorem ipsum dolor et", `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
-
     Pulvinar mattis nunc sed blandit libero volutpat sed cras. Accumsan tortor posuere ac ut consequat semper viverra nam. Nibh nisl condimentum id venenatis a condimentum vitae. Viverra vitae congue eu consequat ac felis donec et odio. Velit laoreet id donec ultrices. Laoreet id donec ultrices tincidunt arcu non sodales neque. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci. Cursus eget nunc scelerisque viverra mauris. Nullam ac tortor vitae purus faucibus ornare suspendisse. In tellus integer feugiat scelerisque varius morbi enim nunc. Cras tincidunt lobortis feugiat vivamus. Neque ornare aenean euismod elementum nisi quis eleifend. Vestibulum lectus mauris ultrices eros in cursus. Diam phasellus vestibulum lorem sed. Pretium quam vulputate dignissim suspendisse in.`) ;
-    let b_note = new objects.Note("Hi there" , `
+    let b_note = new objects.Note("Lorem ipsum dolor tu" , `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu consequat ac felis donec. Velit euismod in pellentesque massa placerat duis. A diam sollicitudin tempor id eu nisl nunc mi. Sapien eget mi proin sed libero enim sed. Proin libero nunc consequat interdum. Arcu dui vivamus arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Sodales ut eu sem integer vitae justo eget magna. Id aliquet lectus proin nibh nisl.
     `) ;   
-    let c_note = new objects.Note("Helkasd", `
+    let c_note = new objects.Note("Lorem ipsum dolor su", `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Bibendum neque egestas congue quisque egestas diam in arcu. Lobortis mattis aliquam faucibus purus in massa tempor. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Purus ut faucibus pulvinar elementum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Gravida neque convallis a cras semper auctor. Eu .
     `) ; 
-    let d_note = new objects.Note('ohmygoodness', `
+    let d_note = new objects.Note('Lorem ipsum dolor mi', `
     m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque eleifend donec pretium`)
-    let e_note = new objects.Note('heayyay', `
+    let e_note = new objects.Note('Lorem ipsum dolor le', `
     m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
-    let g_note = new objects.Note('hea', `
+    let f_note = new objects.Note('Lorem ipsum dolor dwa', `
     m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Ultrices neque ornare aenean euismod. Phasellus faucibus scelerisque`)
 
-
-    // all_notes.add_note(a_note) ; 
-    // all_notes.add_note(b_note) ; 
-    // all_notes.add_note(a_note) ; 
-    // all_notes.add_note(c_note) ; 
+    all_notes.add_note(a_note) ; 
+    all_notes.add_note(b_note) ; 
+    all_notes.add_note(c_note) ; 
     all_notes.add_note(d_note) ; 
     all_notes.add_note(e_note) ; 
-    all_notes.add_note(g_note) ;
+    all_notes.add_note(f_note) ; 
 
-
-
-    let first_list = new objects.List("Big List") ; 
-    let second_list = new objects.List("Small List") ; 
-    first_list.add_item_to_list("Hello") ;
-    second_list.add_item_to_list("Welcome") ; 
-    second_list.add_item_to_list("Nice Nice") ; 
+    let first_list = new objects.List("Grocery List") ; 
+    let second_list = new objects.List("Packing List") ;
+    let third_list = new objects.List("Personal Goals") ;  
+    first_list.list_items = ["Carrots", "Potatoes", "Chips", "Sweets", "Ground Beef", "Detergent", "Turkey"
+    , "Ice Cream", "Coffee", "Challots", "Milk", "Cookies"] ; 
+    second_list.list_items = ["Shirt", "Shoes", "Belt", "Socks"] ; 
+    third_list.list_items = ["Get in shape", "Get good grades", "Become WebDev Master", 
+    "Learn Java", "Improve Knowledge of Algorithms"] ; 
 
     all_lists.add_list(first_list) ; 
     all_lists.add_list(second_list) ; 
+    all_lists.add_list(third_list) ; 
 
-
-
-    let a_project = new objects.Project("This_Project", "Huge deal", "2322-12-13") ; 
-    let b_project = new objects.Project("That_Project", "Even bigger deal", "2322-12-14") ; 
+    let a_project = new objects.Project("Build Treehouse", "Huge deal", "2023-1-30") ; 
+    let b_project = new objects.Project("Learn Physics", "Even bigger deal", "2023-6-15") ; 
     a_project.add_to_do(a_todo.title) ; 
     a_project.add_to_do(b_todo.title) ; 
-    b_project.add_to_do(c_todo.title) ; 
-    b_project.add_to_do(d_todo.title) ; 
-
+    a_project.add_to_do(c_todo.title) ; 
+    b_project.add_to_do(d_todo.title) ;
+    b_project.add_to_do(e_todo.title) ; 
+    b_project.add_to_do(f_todo.title) ;  
     all_projects.add_project(a_project) ; 
     all_projects.add_project(b_project) ; 
-
     switch_nav_to_projects() ; 
-
 }
-
-
