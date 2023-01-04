@@ -18,4 +18,4 @@ I probably won't be adding any more features to the application. At some point I
 
 <br> 
 
-You can find the site live here => [Todo List Demo (Henry Jacobs)]("https://henryjacobs.us/top-projects/project-to-do-list/index")
+You can find the site live here => [Todo List Demo]("https://henryjacobs.us/top-projects/project-to-do-list/index")
