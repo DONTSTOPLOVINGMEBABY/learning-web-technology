@@ -1,0 +1,41 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    height: 30%;
+    width: 45%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+.slider img {
+    width: 600px;
+    height: 400px;
+}
+
+#left, #right {
+    height: 36px;
+    width: 36px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* #left {
+    left: 48px;
+}
+
+#right {
+    right: 48px;
+} */
