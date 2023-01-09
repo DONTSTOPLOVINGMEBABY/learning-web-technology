@@ -1,0 +1,63 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background: linear-gradient(#1C92EF, #042F52);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.form {
+    background-color: #F3F9FF;
+    height: 50%;
+    width: 45%;
+    border-radius: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.form input, .form select {
+    margin-bottom: 12px;
+}
+
+.cell {
+    display: flex;
+}
+
+.cell input {
+    position: relative;
+}
+
+.cell p {
+    position: relative;
+    left: 48px
+}
+
+#email:invalid, #zip-code:invalid {
+    background-color: #FF0000 ; 
+    opacity: .75;
+}
+
+#email:valid, #zip-code:valid {
+    background-color: #14B800 ;
+    opacity: .75; 
+}
+
+
