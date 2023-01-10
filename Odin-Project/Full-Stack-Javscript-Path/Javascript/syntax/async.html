@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Async</title>
+</head>
+<body>
+    <h1>Practice using ASYNC and AWAIT</h1>
+
+    <img src="#">
+    <img id="one" src="#">
+    <img id="two" src="#" alt="">
+
+
+    <script>
+        let the_giphy_key = `RDA4uvVeNErolpIUntqeQ6BEcRvXQGcz`
+        let keyword ; 
+        const img = document.querySelector('img');
+        let url ;
+        
+        async function getCats () {
+            keyword = `cat` ; 
+            url = `https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}`
+            fetch(url, 
+            {mode: 'cors'})
+            .then( function(response){
+                return response.json() ; 
+            })
+            .then( function(response){
+                img.src=response.data.images.original.url ; 
+            })
+        }
+
+        async function getMuffin () {
+            keyword = `muffin`
+            url = `https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}` ; 
+            const img2 = document.getElementById("two") ; 
+
+            const response = await fetch(url, {mode: 'cors'}) ; 
+            response.json().then( function(response){
+                img2.src = response.data.images.original.url ; 
+            })
+        }
+
+        async function getSquiggly() {
+            keyword = `squiggly` ; 
+            url = `https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}` ; 
+            const img3 = document.getElementById("one") ; 
+
+            const response = await fetch(url, {mode: 'cors'}) ; 
+            const squiggly_data = await response.json() ; 
+
+            img3.src = squiggly_data.data.images.original.url ; 
+        }
+
+        
+        getCats() ; 
+        getMuffin() ; 
+        getSquiggly() ; 
+
+        /* 
+        function do_this_for_me_real_quick(keyword="nice") {
+            fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}`, {
+                mode: "cors" 
+            })
+            .then (
+                function (response) {
+                    return response.json() ; 
+                }
+            )
+            .then( function(response){
+                url = response.data.images.original.url ;
+                img.src = url ;  
+            })
+        }
+        */ 
+    </script>
+</body>
+</html>

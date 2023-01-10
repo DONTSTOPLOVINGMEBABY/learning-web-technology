@@ -29,16 +29,18 @@
         let the_giphy_key = `RDA4uvVeNErolpIUntqeQ6BEcRvXQGcz`
 
         let url ; 
-
+        let q ; 
         let k = fetch('https://api.openweathermap.org/data/2.5/weather?q=London&APPID=d4a3dde5d3d322a5762dbb30b8d5d340')
         .then( function(response) {
             console.log(response)
             console.log(response.json());
+            console.log("Hello")
         })
         .catch( function (err) {
             console.log(err) ; 
         })
 
+        
         function do_this_for_me_real_quick(keyword="nice") {
             fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}`, {
                 mode: "cors" 
