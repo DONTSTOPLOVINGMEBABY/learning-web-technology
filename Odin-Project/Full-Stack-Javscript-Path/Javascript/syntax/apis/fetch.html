@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work w APIs</title>
+</head>
+<body>
+    <h1>Working with Fetch and other things</h1>
+    <h1>If it takes a while to submit a new query, keep clicking query and eventually it will
+        work
+    </h1>
+
+    <img src="#">
+
+    <button id="new_image" style="display: flex;">Click me 4 new image!</button>
+
+    <form>
+        <label for="search">Enter new meme search word</label>
+        <input type="text" id="search" name="search">
+        <button id="new-word">Query!</button>
+    </form>
+
+    <script>
+
+        const img = document.querySelector('img');
+
+        let the_giphy_key = `RDA4uvVeNErolpIUntqeQ6BEcRvXQGcz`
+
+        let url ; 
+
+        let k = fetch('https://api.openweathermap.org/data/2.5/weather?q=London&APPID=d4a3dde5d3d322a5762dbb30b8d5d340')
+        .then( function(response) {
+            console.log(response)
+            console.log(response.json());
+        })
+        .catch( function (err) {
+            console.log(err) ; 
+        })
+
+        function do_this_for_me_real_quick(keyword="nice") {
+            fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}`, {
+                mode: "cors" 
+            })
+            .then (
+                function (response) {
+                    return response.json() ; 
+                }
+            )
+            .then( function(response){
+                url = response.data.images.original.url ;
+                img.src = url ;  
+            })
+        }
+
+        do_this_for_me_real_quick() ; 
+        document.getElementById("new_image").addEventListener('click', ()=> {
+            do_this_for_me_real_quick() ; 
+        })
+
+        document.getElementById("new-word").addEventListener('click', (ev)=>{
+            ev.preventDefault() ; 
+            if (document.getElementById("search").value.length > 0){
+                do_this_for_me_real_quick(document.getElementById("search").value)
+            }
+            document.getElementById("search").value = "" ; 
+        })
+
+
+    </script>
+
+</body>
+</html>

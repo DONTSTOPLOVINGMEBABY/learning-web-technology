@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises in JS</title>
+</head>
+<body>
+    
+    <script>
+
+        function delay(time) {
+            return new Promise( function(resolve, reject){
+                setTimeout(resolve, time) ; 
+            }) ; 
+        }
+
+        delay(100)
+        .then( function STEP2(){
+            console.log("Step 2 after 100 ms") ; 
+            return delay( 2000 ) ; 
+        } )
+        .then( function STEP3(){
+            console.log("step 3 (after another 200mos") ; 
+        } )
+        .then ( function STEP4(){
+            console.log("step 3 (next job)") ; 
+            return delay(500) ; 
+        } )
+        .then ( function Henry() {
+            console.log("Hello there") ; 
+        } )
+
+        //lets see how promises/thens are chained together? 
+
+        let first_promise = Promise.resolve( 42 ) ; 
+
+        let k = first_promise.then(
+            function fulfilled (message) {
+                console.log(message.toLowerCase()) ; 
+            }, 
+            function rejected (error) {
+                console.log("You don't see anything here")
+            })
+
+        k.then( 
+            function works () {
+                console.log("Works?") ; 
+            }, 
+            function broken () {
+                console.log("Really doesn't work!")
+            }
+         )
+
+         first_promise.then(
+        
+         function fulfilled (message) {
+                console.log(message.toLowerCase()) ; 
+            }, 
+            function rejected (error) {
+                console.log("You don't see anything here")
+            }
+         
+        ).catch( () => {console.log("Caught red handed!")} )
+
+        
+
+    </script>
+
+</body>
+</html>
