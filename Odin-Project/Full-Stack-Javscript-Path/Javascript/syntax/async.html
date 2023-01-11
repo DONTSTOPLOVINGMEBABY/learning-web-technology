@@ -61,20 +61,24 @@
         getSquiggly() ; 
 
         /* 
-        function do_this_for_me_real_quick(keyword="nice") {
-            fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${the_giphy_key}&s=${keyword}`, {
-                mode: "cors" 
-            })
-            .then (
-                function (response) {
-                    return response.json() ; 
-                }
-            )
-            .then( function(response){
-                url = response.data.images.original.url ;
-                img.src = url ;  
-            })
-        }
+        Definitions from Wes Bos that help understand promises 
+
+        Promises kick off of the process of getting something (get request, fetch, etc), and we 'only' come back to that thing when it's time to deal with the data.    
+
+        Promises work by immediately returning a promise, and then what you do inside of that promise when things is either resolve the promise if that goes well or reject if it doesn't go well. 
+
+        Async Await is a new syntax for working with promises. 
+        
+            We make a function by tagging with async and inside of that function, we put the await keyword inside each of the functions that are asynchronous. This will pause the async function until the promise resolves. 
+
+        
+        
+        **** const firstPromise = axios.get("httrequest.com") 
+        **** const secondPromise = axios.get("httpsecondrequest.com") ; 
+        ****
+        **** const [first, second] = await Promise.all( [firstPromise, secondPromise] ) ; 
+
+        This will send out both get requests and wait until both are finished to continue, but it won't do it sequentially, where it has to wait for one to finish in order for it to call the other. 
         */ 
     </script>
 </body>
