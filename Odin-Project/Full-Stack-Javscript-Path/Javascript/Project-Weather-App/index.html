@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="display">
+
+        <div class="top">
+            <div class="left">
+                <div class="display-item">Temperature</div>
+                <div class="display-item">Max-Temperature</div>
+                <div class="display-item">Min-Temperature</div>
+                <div class="display-item">Humidity</div>
+                <div class="display-item">Wind Direction</div>
+                <div class="display-item">Wind Speed</div>
+            </div>
+            <div class="right">
+                <div id="current-temp"></div>
+                <div id="max-temp"></div>
+                <div id="min-temp"></div>
+                <div id="humidity"></div>
+                <div id="wind-direction"></div>
+                <div id="wind-speed"></div>
+            </div>
+        </div>
+            <form id="form">
+                <input placeholder="Enter City" type="text" id="location-input" name="location-input">
+                <button type="submit" id="search-city">Search City's Weather</button> 
+            </form>
+            <div class="bottom">
+                <div id="city-name">London</div>
+                <div id="city-time"></div>
+            </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
