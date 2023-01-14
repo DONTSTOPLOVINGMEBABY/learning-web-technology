@@ -82,10 +82,22 @@ def merge(array, p, q, r):
         array[k] = right[j]
         j += 1 
         k += 1 
-    print("Yas")
 
 
-this_array = [1, 45, 55, 66, 3, 22, 44, 55] 
-merge(this_array, 0, 1, 3) 
-print(this_array) 
+def merge_sort(a, p, r):
+    if (p >= r):
+        return
+    q = (p + r) // 2 
+    merge_sort(a, p, q) 
+    merge_sort(a, q + 1, r) 
+    merge(a, p, q, r)
 
+
+first_array = [1, 45, 55, 66, 3, 22, 44, 55] 
+second_array = [1000, 22, 11, 55, 223, 55, 88, 66432, 234, 3443, -1]
+print("first_array before merge_sort:", first_array)
+print("second_array before merge_sort:", second_array) 
+merge_sort(first_array, 0, len(first_array) - 1)
+merge_sort(second_array, 0, len(second_array) - 1)  
+print("first_array after merge_sort", first_array) 
+print("second_array after merge_sort", second_array)  

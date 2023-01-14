@@ -97,9 +97,11 @@ function Merge_Sort(a, p, r){
 }
 
 
-let odd_array = [2, 5, 1, 3, 2, 4, 3] ; 
-let even_array = [2, 1, 6, 3, 2, 6, -1, 4] ;
+let first_array = [1, 45, 55, 66, 3, 22, 44, 55] ; 
+let odd_array = second_array = [1000, 22, 11, 55, 223, 55, 88, 66432, 234, 3443, -1] ; 
+console.log("first_array before merge_sort:", first_array) ; 
+console.log("second_array before merge_sort:", second_array) ; 
+Merge_Sort(first_array, 0, first_array.length - 1) ; 
 Merge_Sort(odd_array, 0, odd_array.length - 1) ; 
-Merge_Sort(even_array, 0, even_array.length - 1) ; 
-console.log(odd_array) ; 
-console.log(even_array) ; 
+console.log("first_array after merge_sort:", first_array) ; 
+console.log("second_array after merge_sort:", second_array) ; 
