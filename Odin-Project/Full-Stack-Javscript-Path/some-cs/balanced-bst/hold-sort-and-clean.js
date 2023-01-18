@@ -59,6 +59,19 @@ function Merge_Sort(a, p, r){
     Merge(a, p, q, r) ; 
 }
 
+const prettyPrint = (node, prefix = '', isLeft = true) => {
+    if (node.right !== null) {
+      prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+    }
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+    if (node.left !== null) {
+      prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    }   
+}
+
+
+
 module.exports = {
-    cleanDuplicates_and_sort, 
+    cleanDuplicates_and_sort,
+    prettyPrint, 
 } ; 
