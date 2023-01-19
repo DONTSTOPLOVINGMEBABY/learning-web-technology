@@ -16,7 +16,18 @@ function Queue () {
     }
 }
 
+function Stack () {
+    this.the_stack = [] ; 
+
+    // use JS push and pop methods for push/pop operations
+
+    this.stack_length = function () {
+        return this.the_stack.length ; 
+    }
+    
+}
 
 module.exports = {
     Queue , 
+    Stack, 
 }

@@ -1,5 +1,5 @@
 const clean = require('./hold-sort-and-clean')
-const queue = require('./hold-queue') ; 
+const queue = require('./hold-queue-stack') ; 
 
 /* 
 1. Set The middle element of the array as root.
@@ -27,6 +27,16 @@ function Node (data) {
 
 function Tree (array) {
     this.root = buildTree(array, 0, array.length - 1)
+}
+
+function set_root(array, value){array.data = value} 
+
+function print_array(array){
+    let string = '' ;
+    for (let i = 0 ; i < array.length ; i++){ 
+        string += `${array[i]} `
+    }
+    return string ; 
 }
 
 function buildTree (array, start, end){
@@ -97,7 +107,6 @@ function delete_routine(root, key){
             root.left = left ; 
             root.left.left = old_left ; 
             root.right = root.right.right ; 
-            // Add so it works with all structures ; 
             return ; 
         }
     } 
@@ -168,105 +177,183 @@ function levelOrder (root, cb = null) {
     if (root == null){return}
     let q = new queue.Queue ; 
     q.Enqueue(root) ; 
-    q.Enqueue(null) ; 
     let print_string = "" ; 
+    let return_array = [ [] , [] ] ;   // Make an array to return two different arrays of data
+    let total = 0 ; 
 
-    while (q.len() > 1) {
+    while (q.len() >= 1) {
         let curr = q.Dequeue() ; 
-
         if (curr == null){ q.Enqueue(null) }
 
         else {
-            if (curr.left){q.Enqueue(curr.left)}
+            if (curr[0].left != null){q.Enqueue(curr[0].left)}
             
-            if (curr.right){q.Enqueue(curr.right)}
+            if (curr[0].right != null){q.Enqueue(curr[0].right)}
 
-            print_string += `${curr.data} `
+            print_string += `${curr[0].data} `
+            return_array[0].push(curr[0].data)     // Store node data in first array 
+            return_array[1].push(curr[0])          // Store nodes in second array
+            total += 1 ;
+        }
+
+    }
+    return_array.push(total)
+    if (cb){cb()}
+    else {return return_array}
+}
+
+function in_order (root, cb = null) {
+    let array = levelOrder(root) ;
+    if (cb){ 
+        for (let i = 0 ; i < array[1].length ; i++){
+            cb(array[1][i]) ; 
         }
     }
-    console.log(print_string) ; 
-    if (cb){cb()}
+    return "No call back given" ; 
 }
 
 
+function pre_order (root, cb = null){
+    if (root == null) {return} 
+    let stack = new queue.Stack() ; 
+    let return_array = [ [] , [] ]
+ 
+    let curr = root ; 
 
-// let test_array = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1048, 2048, 4096, 8192, 16384] 
-let test_array = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1048, 2048, 4096, 8192, 16384]
-let use_this_array = clean.cleanDuplicates_and_sort(test_array) ; 
-let this_thing = new Tree(use_this_array) ; 
-const root = this_thing["root"] ; 
+    while (stack.stack_length() > 0 || curr != null){
 
-function set_root(array, value){
-    array.data = value ; 
+        while (curr != null){
+            return_array[0].push(curr.data) ; 
+            return_array[1].push(curr) ; 
+            
+            if (curr.right != null){stack.the_stack.push(curr.right)}
+            
+            curr = curr.left ; 
+    
+        }
+
+        if (stack.stack_length() > 0){
+            curr = stack.the_stack.pop() ; 
+        } 
+    }
+    if (cb){
+        for (let i = 0 ; i < return_array[1].length ; i++){
+            cb(return_array[1][i])
+        }
+    }
+    return return_array ; 
 }
 
-levelOrder(root)
+function post_order (root, cb=null){
+    if (root == null){return}
+    let stack = new queue.Stack() ;
+    let return_array = [ [], [] ] 
 
+    let curr = root ; 
 
+    while(stack.stack_length() > 0 || curr != null){
 
+        while (curr != null){
+            return_array[0].push(curr.data) ;  
+            return_array[1].push(curr) ; 
 
+            if (curr.left != null){stack.the_stack.push(curr.left)} 
 
+            curr = curr.right ; 
+        }
 
+        if (stack.stack_length() > 0) {curr = stack.the_stack.pop()} 
+    }
+    if (cb){
+        for (let i = 0 ; i < return_array[1].length ; i++){
+            cb(return_array[1][i])
+        }
+    }
+    return return_array ; 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function try_delete () {
-    clean.prettyPrint(root) ; 
-    console.log("\n\n")
-    delete_routine(root, 128) ;
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 2048) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 8192) ; 
-    insert(root, 4097) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 16384) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 4097) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 512) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 8) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 4096) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
-    delete_routine(root, 64) ; 
-    clean.prettyPrint(root)
-    console.log("\n\n")
 }
+
+function height (node){
+    if (node == null) {return 0}
+    else {
+        let left_depth = height(node.left) ; 
+        let right_depth = height(node.right) ;
+
+        if (left_depth > right_depth){ return left_depth + 1 }
+        else { return right_depth + 1 }
+    }
+}
+
+function isBalanced (root) {
+    let left, right ; 
+    if (root.left){  left = levelOrder(root.left)[2] }  
+    if (root.right){ right = levelOrder(root.right)[2] }      
+    if (left == right || right == left - 1 || left == right - 1){return true}
+    else {return false}
+}
+
+function rebalance(root){
+    let new_array = levelOrder(root)[0] ;
+    new_array = clean.cleanDuplicates_and_sort(new_array) ; 
+    let new_tree = buildTree(new_array, 0, new_array.length - 1) ; 
+    let new_nodes = levelOrder(new_tree)[1]
+    root.data = new_tree.data ;
+    root.left = new_tree.left ; 
+    root.right = new_tree.right ;  
+    for (let i = 0 ; i < new_nodes.length ; i++){
+        let element = find(root, new_nodes[i].data) ;
+        element.left = new_nodes[i].left ; 
+        element.right = new_nodes[i].right ;  
+    }
+}
+
+
+// Initialize array with 12 random numbers 0 - 20000 
+// Remove Duplicates (if any) and Sort List from Least
+// to Greatest using Merge-Sort
+let array = [] 
+for (let i = 0 ; i < 12 ; i++){
+    array.push(Math.round(Math.random() * 20001, 0)) ; 
+}
+array = clean.cleanDuplicates_and_sort(array) ; 
+
+
+// Initialize and Print BST 
+const binary_search_tree = new Tree(array) ; 
+const root = binary_search_tree["root"] ; 
+console.log("\n") ; 
+clean.prettyPrint(root) ; 
+console.log("Is BST balanced? ", isBalanced(root)) ; 
+console.log("\n\n") ; 
+
+
+// Print In-Order & Pre-Order & Post-Order 
+console.log(`In-Order: ${print_array(levelOrder(root)[0])}`) ; 
+console.log(`Pre-Order: ${print_array(pre_order(root)[0])}`) ; 
+console.log(`Post-Order: ${print_array(post_order(root)[0])}`) ; 
+console.log("\n\n") ;
+
+
+// Purposefully unbalance tree
+for (let i = 0 ; i < 20 ; i++){
+    let add_to_tree = Math.round(Math.random() * 20001, 0) ; 
+    insert(root, add_to_tree) ;  
+} 
+clean.prettyPrint(root) ; 
+console.log("Is tree balanced? ", isBalanced(root)) ; 
+console.log("Height of Deepest Element (root): ", height(root)) ; 
+console.log("\n\n") ; 
+
+
+// Rebalance the Tree 
+rebalance(root) ; 
+clean.prettyPrint(root) ; 
+console.log("IS tree balanced? ", isBalanced(root)) ; 
+console.log("\n\n") ; 
+
+
+// Reprint In-order, Pre-order, and Post-order
+console.log(`In-Order: ${print_array(levelOrder(root)[0])}`) ; 
+console.log(`Pre-Order: ${print_array(pre_order(root)[0])}`) ; 
+console.log(`Post-Order: ${print_array(post_order(root)[0])}`) ; 
+console.log("\n") ;
