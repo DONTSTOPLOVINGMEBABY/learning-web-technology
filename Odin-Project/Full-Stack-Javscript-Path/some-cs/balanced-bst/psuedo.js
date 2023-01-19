@@ -65,10 +65,15 @@ function insert(root, key){
 function delete_routine(root, key){
     if (!find(root, key)){return false}
     if (root["data"] == key){
-        let left = root.left ; 
+        let old_left = root.left ; 
+        let left = root.right.left ; 
         let right = root.right ; 
-        root = right ; 
+        let data = right.data; 
+        set_root(root, data); 
         root.left = left ; 
+        root.left.left = old_left ; 
+        root.right = root.right.right ; 
+        // Add so it works with all structures ; 
         return ; 
     } 
     function delete_node(root, key, old=null){
@@ -141,7 +146,15 @@ let use_this_array = clean.cleanDuplicates_and_sort(test_array) ;
 let this_thing = new Tree(use_this_array) ; 
 const root = this_thing["root"] ; 
 
+function set_root(array, value){
+    array.data = value ; 
+}
+
 clean.prettyPrint(root)
+console.log("\n\n")
 delete_routine(root, 128) ;
+clean.prettyPrint(root)
+console.log("\n\n")
+delete_routine(root, 2048) ; 
 clean.prettyPrint(root)
 console.log("\n\n")
