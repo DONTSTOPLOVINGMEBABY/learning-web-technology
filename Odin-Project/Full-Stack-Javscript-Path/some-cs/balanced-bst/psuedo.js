@@ -1,5 +1,5 @@
 const clean = require('./hold-sort-and-clean')
-
+const queue = require('./hold-queue') ; 
 
 /* 
 1. Set The middle element of the array as root.
@@ -65,16 +65,41 @@ function insert(root, key){
 function delete_routine(root, key){
     if (!find(root, key)){return false}
     if (root["data"] == key){
-        let old_left = root.left ; 
-        let left = root.right.left ; 
-        let right = root.right ; 
-        let data = right.data; 
-        set_root(root, data); 
-        root.left = left ; 
-        root.left.left = old_left ; 
-        root.right = root.right.right ; 
-        // Add so it works with all structures ; 
-        return ; 
+        if (root.right != null && root.right.left == null && root.right.right == null){
+            let data = root.right.data ; 
+            set_root(root, data) ; 
+            root.right = null ; 
+            return ;
+        }
+        if (root.right == null){
+            if (root.left.right == null)
+            {
+                let data = root.left.data ; ; 
+                set_root(root, data) ; 
+                let left = root.left.left ; 
+                root.left = left ; 
+                return ; 
+            }
+            if (root.left.right){
+                let data = root.left.right.data ; 
+                let hold_left = root.left ; 
+                set_root(root, data) ; 
+                root.left.right = null ; 
+                return ; 
+            }
+        }
+        else {
+            let old_left = root.left ; 
+            let left = root.right.left ; 
+            let right = root.right ; 
+            let data = right.data; 
+            set_root(root, data); 
+            root.left = left ; 
+            root.left.left = old_left ; 
+            root.right = root.right.right ; 
+            // Add so it works with all structures ; 
+            return ; 
+        }
     } 
     function delete_node(root, key, old=null){
         if (root.data < key){delete_node(root.right, key, root)} 
@@ -139,6 +164,31 @@ function delete_routine(root, key){
     delete_node(root, key)
 }
 
+function levelOrder (root, cb = null) {
+    if (root == null){return}
+    let q = new queue.Queue ; 
+    q.Enqueue(root) ; 
+    q.Enqueue(null) ; 
+    let print_string = "" ; 
+
+    while (q.len() > 1) {
+        let curr = q.Dequeue() ; 
+
+        if (curr == null){ q.Enqueue(null) }
+
+        else {
+            if (curr.left){q.Enqueue(curr.left)}
+            
+            if (curr.right){q.Enqueue(curr.right)}
+
+            print_string += `${curr.data} `
+        }
+    }
+    console.log(print_string) ; 
+    if (cb){cb()}
+}
+
+
 
 // let test_array = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1048, 2048, 4096, 8192, 16384] 
 let test_array = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1048, 2048, 4096, 8192, 16384]
@@ -150,11 +200,73 @@ function set_root(array, value){
     array.data = value ; 
 }
 
-clean.prettyPrint(root)
-console.log("\n\n")
-delete_routine(root, 128) ;
-clean.prettyPrint(root)
-console.log("\n\n")
-delete_routine(root, 2048) ; 
-clean.prettyPrint(root)
-console.log("\n\n")
+levelOrder(root)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function try_delete () {
+    clean.prettyPrint(root) ; 
+    console.log("\n\n")
+    delete_routine(root, 128) ;
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 2048) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 8192) ; 
+    insert(root, 4097) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 16384) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 4097) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 512) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 8) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 4096) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+    delete_routine(root, 64) ; 
+    clean.prettyPrint(root)
+    console.log("\n\n")
+}
