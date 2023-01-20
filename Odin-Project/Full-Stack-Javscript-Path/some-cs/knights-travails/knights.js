@@ -1,6 +1,6 @@
 // Come up with way to represent the board 
 // Find a way to get all possible moves from a given point
-// Develop a heuristic that scores moves that get you closer to the goal higher? 
+// Do BFS on all possible trees until node is reached 
 
 function Node (data) {
     this.data = data; 
@@ -32,64 +32,6 @@ function check_goal (move, goal) {
     return false ; 
 }
 
-
-
-
-console.log(generate_moves([4, 4]))
-console.log(generate_moves([0, 0]))
-console.log(generate_moves([7, 7]))
-
-
-
-/* 
-    let goal_move = [x, x] ; 
-    let current_move = [10, 10] ; //something that will never pass
-    let all_moves = []
-    while not check_goal(goal_move, current_move) {
-        all_moves = generate_moves(current_node) ; 
-
-        while (all_moves.length > 0){
-            move = all_moves[0] ; 
-            if (move == goal_move):
-                current_move = move ; 
-                break ; 
-            move = move[1:]
-        }
-}
-*/ 
-
-function run(start_state, goal_state) { 
-    let current_node = new Node(start_state) ; 
-    let all_moves ; 
-    let all_nodes = [current_node] ; 
-    let counter = 0 ; 
-    while (!check_goal(current_node.data, goal_state)){
-        all_moves = generate_moves(current_node.data) ; 
-        console.log("Holder")
-        while (all_moves.length > 0){
-            let first = all_moves.splice(0, 1) ; 
-            let node = new Node(first) ; 
-            node.parent = current_node ;
-            all_nodes.push(node) ;  
-            if (node.data == goal_state){
-                current_node = node ;
-                break 
-            }
-        }
-        counter += 1 ;
-        current_node = all_nodes[counter]
-        console.log("Second holder")
-    }
-    return current_node ; 
-}
-
-let answer = run([3, 4], [4, 4]) ; 
-
-
-
-
-
-
 function print_board (move) {
     console.log("\n")
     for (let i = 0 ; i < 8 ; i++){
@@ -115,3 +57,79 @@ function print_board (move) {
 }
 
 
+function run_bfs(start_state, goal_state) { 
+    let current_node = new Node(start_state) ; 
+    current_node.parent = "root" ; 
+    let all_moves ; 
+    let all_nodes = [current_node] ; 
+    let counter = 0 ; 
+    while (!check_goal(current_node.data, goal_state)){
+        all_moves = generate_moves(current_node.data) ; 
+        while (all_moves.length > 0){
+            let first = all_moves.splice(0, 1)[0] ; 
+            let node = new Node(first) ; 
+            node.parent = current_node ;
+            all_nodes.push(node) ;  
+        }
+        counter += 1 ;
+        current_node = all_nodes[counter] ; 
+    }
+    console.log(`Correct node was number ${counter} in the Queue, and ${all_nodes.length} were generated.`)
+    return current_node ; 
+}
+
+function print_answer_path(node, starting_node) {
+    let reverse = [], return_array = [] ; 
+    while (node.parent != 'root'){
+        reverse.push(node.data) ; 
+        node = node.parent ; 
+    }
+    reverse.push(node.data)
+    for (let i = reverse.length - 1; i >= 0 ; i--){
+        return_array.push(reverse[i]) ; 
+    }
+    return return_array ; 
+}
+
+function call_bfs_and_print (start, finish) {
+    let return_path = run_bfs(start, finish) ; 
+    let answer = print_answer_path(return_path, start) ; 
+    answer.map(print_board)
+    console.log(answer) ; 
+}
+
+call_bfs_and_print([0, 0], [4, 4])
+
+
+/* 
+    let goal_move = [x, x] ; 
+    let current_move = [10, 10] ; //something that will never pass
+    let all_moves = []
+    while not check_goal(goal_move, current_move) {
+        all_moves = generate_moves(current_node) ; 
+
+        while (all_moves.length > 0){
+            move = all_moves[0] ; 
+            if (move == goal_move):
+                current_move = move ; 
+                break ; 
+            move = move[1:]
+        }
+}
+*/ 
+
+/* 
+
+function run_bfs (start_state, goal_state){
+    current_node = new Node(start_state) ; 
+    current_node.parent = "root" ; 
+    all_moves ; 
+    all_nodes = [current_node] ; 
+    counter = 0 ; 
+
+    while current_node.data != goal :
+        
+
+}
+
+*/
