@@ -74,7 +74,7 @@ function run_bfs(start_state, goal_state) {
         counter += 1 ;
         current_node = all_nodes[counter] ; 
     }
-    console.log(`Correct node was number ${counter} in the Queue, and ${all_nodes.length} were generated.`)
+    console.log(`Correct node was number ${counter+1} in the Queue, and ${all_nodes.length} were generated.`)
     return current_node ; 
 }
 
