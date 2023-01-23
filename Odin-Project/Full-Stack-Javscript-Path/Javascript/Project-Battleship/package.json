@@ -1,0 +1,18 @@
+{
+  "name": "project-battleship",
+  "version": "1.0.0",
+  "description": "Fun lil battelship game",
+  "main": "battleship.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch *.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
