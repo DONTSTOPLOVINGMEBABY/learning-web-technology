@@ -37,6 +37,7 @@ class App extends Component {3
           <input type="text" 
           placeholder='add something to list'
           onChange={this.handle_text_change} 
+          value={this.state.input_string}
           />
           <button onClick={this.button_function}>Click to Add</button>
           <Overview hello={this.state.tasks_array}></Overview>
