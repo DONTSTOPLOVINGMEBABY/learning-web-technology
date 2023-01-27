@@ -24,7 +24,8 @@ class App extends Component {
         id: this.state.task.id,  
       }, 
     }) ; 
-  } ; 
+  
+  console.log(e)} ; 
 
 
   onSubmitTask = (e) => {
