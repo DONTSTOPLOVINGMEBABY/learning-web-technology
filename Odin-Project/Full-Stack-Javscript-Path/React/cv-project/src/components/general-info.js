@@ -2,7 +2,7 @@ import React ,{Component} from "react" ;
 import "../styles/General-Info.css" ; 
 
 
-class General_Info extends Component {
+class GeneralInfo extends Component {
     constructor(props){
         super(props) ; 
     }
@@ -10,40 +10,45 @@ class General_Info extends Component {
 
     render () {
 
-        const {try_function} = this.props; 
+        const {
+            pass, 
+            name_value,
+            email_value, 
+            phone_value, 
+            birth_day_value} = this.props; 
 
         return (
             <div className="sub-container">
-                <div>
-                    <label htmlFor="name">Test </label>
+                <div className="cell">
+                    <label htmlFor="name">Name </label>
                     <input 
                     type="text"
                     id="name"
-                    onChange = {try_function} 
-                    //value={update_from_object} 
+                    onChange = {pass} 
+                    value={name_value} 
                     />
                     <label htmlFor="email">Email</label>
                     <input 
                     type="email" 
                     id="email"
-                    //onChange = {samefunction?}
-                    //value={update_from_object}
+                    onChange = {pass}
+                    value={email_value}
                     />
                 </div>
-                <div>
-                    <label htmlFor="phone-number">Phone Number</label>
+                <div className="cell">
+                    <label htmlFor="phone">Phone Number</label>
                     <input 
                     type="text"
-                    id="phone-number"
-                    // onChange={try_function}
-                    //value= {update_from_object}
+                    id="phone"
+                    onChange={pass}
+                    value= {phone_value}
                     />
-                    <label htmlFor="Birth-Day">Birth Day</label>
+                    <label htmlFor="birth_day">Birth Day</label>
                     <input 
                     type="date"
-                    id="phone-number"
-                    // onChange={try_function}
-                    //value= {update_from_object}
+                    id="birth_day"
+                    onChange={pass}
+                    value= {birth_day_value}
                     />
                 </div>
             </div>
@@ -52,4 +57,4 @@ class General_Info extends Component {
 }
 
 
-export default General_Info  
+export default GeneralInfo  

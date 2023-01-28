@@ -2,7 +2,7 @@ import React ,{Component} from "react" ;
 import "../styles/Educational-Exp.css"
 
 
-class Educational_Experience extends Component {
+class EducationalExperience extends Component {
     constructor(props){
         super(props) ; 
     }
@@ -10,38 +10,45 @@ class Educational_Experience extends Component {
 
     render () {
 
+        const {
+            pass, 
+            school_value, 
+            degree_value, 
+            graduation_year_value, 
+            minors_value} = this.props ; 
+
         return (
             <div className="sub-container">
-                <div>
-                    <label htmlFor="school-name">School Name</label>
+                <div className="cell">
+                    <label htmlFor="school">School Name</label>
                     <input 
+                    onChange = {pass}
+                    value = {school_value}
                     type="text"
-                    id="school-name"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    id="school"
                     />
-                    <label htmlFor="diploma-title">Degree Received</label>
+                    <label htmlFor="degree">Degree Received</label>
                     <input 
+                    onChange = {pass}
+                    value = {degree_value}
                     type="text"
-                    id="diploma-title"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    id="degree"
                     />
                 </div>
-                <div>
-                    <label htmlFor="graduation-year">Year Graduated</label>
+                <div className="cell">
+                    <label htmlFor="graduation_year">Year Graduated</label>
                     <input 
-                    type="text"
-                    id="graduation-year"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    onChange = {pass}
+                    value = {graduation_year_value}
+                    type="number"
+                    id="graduation_year"
                     />
                     <label htmlFor="minors">Specializations/Minors</label>
                     <input 
+                    onChange = {pass}
+                    value = {minors_value}
                     type="text"
                     id="minors"
-                    //onChange = {something}
-                    //value = {someObject's data}
                     />
                 </div>
             </div>
@@ -50,4 +57,4 @@ class Educational_Experience extends Component {
 }
 
 
-export default Educational_Experience  
+export default EducationalExperience  

@@ -2,7 +2,7 @@ import React ,{Component} from "react" ;
 import "../styles/Practical-Exp.css"
 
 
-class Practical_Experience extends Component {
+class PracticalExperience extends Component {
     constructor(props){
         super(props) ; 
     }
@@ -10,38 +10,45 @@ class Practical_Experience extends Component {
 
     render () {
 
+        const {
+            pass, 
+            company_value, 
+            position_value, 
+            start_date_value, 
+            end_date_value} = this.props ; 
+
         return (
             <div className="sub-container">
-                <div>
-                    <label htmlFor="company-name">Company Name</label>
+                <div className="cell">
+                    <label htmlFor="company">Company Name</label>
                     <input 
                     type="text"
-                    id="company-name"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    id="company"
+                    onChange = {pass}
+                    value = {company_value}
                     />
-                    <label htmlFor="Position Title">Position Title</label>
+                    <label htmlFor="position">Position Title</label>
                     <input 
                     type="text"
-                    id="Position Title"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    id="position"
+                    onChange = {pass}
+                    value = {position_value}
                     />
                 </div>
-                <div>
-                    <label htmlFor="position-start-date">Start Date</label>
+                <div className="cell">
+                    <label htmlFor="start_date">Start Date</label>
                     <input 
-                    type="text"
-                    id="position-start-date"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    type="date"
+                    id="start_date"
+                    onChange = {pass}
+                    value = {start_date_value}
                     />
-                    <label htmlFor="position-end-date">Position End Date</label>
+                    <label htmlFor="end_date">Position End Date</label>
                     <input 
-                    type="text"
-                    id="position-end-date"
-                    //onChange = {something}
-                    //value = {someObject's data}
+                    type="date"
+                    id="end_date"
+                    onChange = {pass}
+                    value = {end_date_value}
                     />
                 </div>
             </div>
@@ -50,4 +57,4 @@ class Practical_Experience extends Component {
 }
 
 
-export default Practical_Experience
+export default PracticalExperience
