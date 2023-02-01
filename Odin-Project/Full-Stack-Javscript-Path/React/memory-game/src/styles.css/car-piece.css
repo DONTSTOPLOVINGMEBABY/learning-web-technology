@@ -1,0 +1,29 @@
+.car-piece {
+    height: 250px;
+    width: 250px;
+    background-color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 700;
+    font-family: "Roboto Slab";
+    margin: 18px;
+}
+
+.car-piece:hover {
+    transform: scale(1.05) ;
+}
+
+.size-picture {
+    height: 80%;
+    width: 80%;
+}
+
+.car-title {
+    font-size: 1.75rem;
+}

@@ -30,11 +30,19 @@ function NavBar (props) {
             <div className="title">
                 The Car Brand Memory Game 
             </div>
+            <div className="score">
+                <div id="current-score">Current Score: {props.score.current_score}</div>
+                <div id="high-score">High Score: {props.score.high_score}</div>
+            </div>
             <ul className="choose-level">
-                <li onClick={adjustBeginner} id="beginner" className="level activeBeginner">Beginner</li>
-                <li onClick={adjustBeginner} id="intermediate" className="level">Intermediate</li>
-                <li onClick={adjustBeginner} id="advanced" className="level">Advanced</li>
-                <li onClick={adjustBeginner} id="impossible" className="level">Impossible</li>
+                <div>
+                    <li onClick={adjustBeginner} id="beginner" className="level activeBeginner">Beginner</li>
+                    <li onClick={adjustBeginner} id="intermediate" className="level">Intermediate</li>
+                </div>
+                <div>
+                    <li onClick={adjustBeginner} id="advanced" className="level">Advanced</li>
+                    <li onClick={adjustBeginner} id="impossible" className="level">Impossible</li>
+                </div>
             </ul>
         </div> 
     ) ; 

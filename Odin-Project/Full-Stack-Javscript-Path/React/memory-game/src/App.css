@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto Slab");
 
 body {
   background-color: #032626;
@@ -19,5 +20,14 @@ body {
   width: 100%;
   display: grid;
   grid-template-rows: 80px 1fr 80px;
+}
+
+.game {
+  grid-row: 2/3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
 }
 
