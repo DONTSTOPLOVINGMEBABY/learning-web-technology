@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react"
 import './App.css';
 import NavBar from './components/nav-bar';
 import Game from "./components/the-game";
+import CarPiece from "./components/car-piece";
+
+
 
 function App() {
 
@@ -17,11 +20,23 @@ function App() {
     high_score: 0, 
   })
 
+  const [seenCars, setSeenCars] = useState([])
+
 
   return (
     <div className='main'>
-      <NavBar levelStatus={levelStatus} setLevelStatus={setLevelStatus}/>
-      <Game levelStatus={levelStatus} />
+      <NavBar 
+      levelStatus={levelStatus} 
+      setLevelStatus={setLevelStatus}
+      score={score}/>
+      <Game 
+      levelStatus={levelStatus}
+      current_score={score.current_score}
+      high_score = {score.high_score}
+      setScore={setScore}
+      score = {score}
+      seenCars={seenCars}
+      setCars={setSeenCars}/>
     </div> 
   ) ; 
 
