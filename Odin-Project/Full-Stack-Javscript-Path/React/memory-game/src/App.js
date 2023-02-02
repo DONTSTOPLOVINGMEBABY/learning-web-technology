@@ -3,10 +3,15 @@ import './App.css';
 import NavBar from './components/nav-bar';
 import Game from "./components/the-game";
 import Footer from "./components/footer";
-
-
+import { Helmet } from "react-helmet";
 
 function App() {
+  <Helmet>
+    <meta charSet="utf-8"/>
+    <title>Car Memory Game</title>
+    <meta name="description" content="Memory Game Application"/>
+  </Helmet>
+
 
   const [levelStatus, setLevelStatus] = useState({
     beginner: true, 
