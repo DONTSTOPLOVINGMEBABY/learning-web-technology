@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import './App.css';
 import NavBar from './components/nav-bar';
 import Game from "./components/the-game";
-import CarPiece from "./components/car-piece";
+import Footer from "./components/footer";
 
 
 
@@ -37,6 +37,7 @@ function App() {
       score = {score}
       seenCars={seenCars}
       setCars={setSeenCars}/>
+      <Footer />
     </div> 
   ) ; 
 

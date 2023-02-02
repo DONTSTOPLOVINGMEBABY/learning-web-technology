@@ -21,13 +21,13 @@ function Game(props) {
         else if (props.levelStatus.advanced){
             temp_array=return_x_shuffled_elements(glob1, 15) 
         }
-        else {temp_array=return_x_shuffled_elements(glob1, 20)}
+        else {temp_array=return_x_shuffled_elements(glob1, 19)}
         setObjectKeys( (prevState) =>[
             ...temp_array, 
         ])
-    }, [])
+    }, [props.levelStatus])
 
-    
+
     const mix = (e) => {
         setObjectKeys(shuffleArray(object_keys)) ; 
         update_score(e) ; 
@@ -68,13 +68,14 @@ function Game(props) {
 
     return (
         <div className="game">
-            {object_keys.map( (thing) => {
+            {object_keys.map( (key) => {
+                console.log(key)
                 return <div>
                     <CarPiece 
                     handle_click={mix}
-                    picture={glob2[thing]}
-                    brandName={thing}
-                    key={thing}
+                    picture={glob2[key]}
+                    brandName={key}
+                    key={key}
                     />
                 </div>
             })}

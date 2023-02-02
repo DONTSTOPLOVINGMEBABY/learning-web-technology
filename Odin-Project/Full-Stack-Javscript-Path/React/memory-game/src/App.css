@@ -19,7 +19,8 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 80px 1fr 80px;
+  grid-template-rows: 80px 1fr 60px;
+  min-width: 1150px;
 }
 
 .game {
@@ -31,3 +32,9 @@ body {
   padding: 15px;
 }
 
+.footer {
+  background-color: #292929;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
