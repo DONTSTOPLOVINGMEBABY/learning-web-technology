@@ -4,13 +4,13 @@ import "../styles.css/footer.css"
 
 function Footer (props) {
 
-    document.getElementById("github-logo").addEventListener('click', ()=>{
-        window.open("https://www.github.com/DONTSTOPLOVINGMEBABY") 
-    })
+    function openGithub() {
+        window.open("https://www.github.com/DONTSTOPLOVINGMEBABY") ; 
+    }
 
     return (
         <div className="footer">
-            <img id="github-logo" src={GithubLogo} alt="github logo"/>Henry Jacobs &#169;
+            <img id="github-logo" onClick={openGithub} src={GithubLogo} alt="github logo"/>Henry Jacobs &#169;
         </div>
     )
 }
