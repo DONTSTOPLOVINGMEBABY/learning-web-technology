@@ -22,12 +22,13 @@ body {
 
 .store-welcome {
   position: absolute; 
-  top: 25%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: "Anton";
   font-size: 4rem;
+  transition: ease-in-out 1s;
 }
 
 
@@ -39,10 +40,13 @@ body {
   color: white;
   font-family: "Anton";
   font-size: 4rem;
+  transition: ease-in-out 1s;
+  margin-top: 24px;
 }
 
 .Enter-store:hover {
   background-color: black;
   cursor: pointer;
+  transition: none;
 }
 
