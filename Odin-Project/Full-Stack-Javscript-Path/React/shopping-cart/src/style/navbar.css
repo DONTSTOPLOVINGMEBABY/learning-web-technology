@@ -1,0 +1,53 @@
+.navbar {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    border-bottom: solid black 5px;
+}
+
+.title {
+    font-family: "Anton";
+    font-size: 3rem;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search {
+    height: 30px;
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    font-size: 1.2rem;
+}
+
+#search:focus {
+    transition: .4s;
+    border-color: black;
+}
+
+#search-icon {
+    height: 25px;
+    cursor: pointer;
+}
+
+.hold-cart-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#cart-icon {
+    height: 25px;
+}
+
+.cart-icon-text {
+    font-weight: 700;
+}

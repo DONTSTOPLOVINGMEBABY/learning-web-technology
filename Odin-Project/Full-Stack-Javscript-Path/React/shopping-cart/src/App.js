@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './App.css';
+import { useNavigate } from 'react-router-dom';
 import {background_images} from "./utils/wallpapers"
 import Background from './components/background';
 import WelcomeMessage from './components/welcome-message';
@@ -13,19 +13,17 @@ const top_colors = [
   "#96C640", 
 ]
 
-
-
-
 function App() {
   
   const [background, setBackground] = useState(background_images[0]) ; 
   const [fontColor, setFontColor] = useState(top_colors[0]) ; 
   const [counter, setCounter] = useState(0) ; 
+  let navigate = useNavigate() ; 
 
   useEffect( () =>{
     const interval = setInterval( () =>{
       setCounter( (counter + 1) % background_images.length) ; 
-    }, 5000) ;
+    }, 4000) ;
     return () => clearInterval(interval) ; 
   }, [counter]) ; 
 
@@ -34,11 +32,6 @@ function App() {
     setFontColor(top_colors[counter]) ; 
   }, [counter]) ; 
   
-  const click_button = () => {
-    console.log("Hi there") ; 
-  }
-  
-  
   return (
     <div id='HomePage'>
       <Background image={background}/> 
@@ -46,7 +39,7 @@ function App() {
       color={fontColor}
       />
       <EnterStore 
-      onClick={click_button}
+      onClick={() => navigate("/shop-page")}
       color={fontColor}/>
     </div>
     )
