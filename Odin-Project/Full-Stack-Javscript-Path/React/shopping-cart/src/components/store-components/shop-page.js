@@ -11,7 +11,7 @@ function ShopPage () {
     const [searchString, setSearchString] = useState("") ; 
     const [searchedObject, setSearchedObjects] = useState({...all_games_object}) ; 
     const [searchedArray, setSearchedArray] = useState([...all_games_list]) ; 
-    const [cart, setCart] = useState([]) ; 
+    const [cart, setCart] = useState([]) ;  
 
     const update_search_bar = (e) => {
         let string = e.target.value ; 
