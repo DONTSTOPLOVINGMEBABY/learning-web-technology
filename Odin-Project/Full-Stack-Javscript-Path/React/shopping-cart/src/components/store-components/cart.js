@@ -8,6 +8,18 @@ function Cart (props) {
     const [fullTotal, setFullTotal] = useState("") ; 
     const [cartEmpty, setCartEmpty] = useState(true) ; 
 
+    const delete_cart_item = (e) => {
+        let temp = props.cart_items ; 
+        for (let i = 0 ; i < temp.length ; i++){
+            if (temp[i] == e.target.textContent){
+                temp.splice(i, i + 1) ;
+                console.log("Hi") 
+                break
+            }
+        }
+        props.set_cart_items([...temp]) ; 
+    }
+
     useEffect( () => {
         if (props.cart_items.length > 0){setCartEmpty(true)}
         else {setCartEmpty(false)}
@@ -35,17 +47,17 @@ function Cart (props) {
                 </div> } 
                 { !cartEmpty ? null : <div className="items-in-cart">
                     <div className="cart-items">
-                    {props.cart_items.map( (cart_item) =>{
+                    {props.cart_items.map( (cart_item, index) =>{
                         return ( 
-                        <div className="cart-item">
+                        <div onClick={delete_cart_item} key={index} className="cart-item">
                             {cart_item}
                         </div> ) 
                     })}
                     </div>
                     <div className="cart-prices">
-                    {props.cart_items.map( (cart_item) =>{
+                    {props.cart_items.map( (cart_item, index) =>{
                         return ( 
-                        <div className="cart-price">
+                        <div key={index} className="cart-price">
                             ${props.game_prices[cart_item]}
                         </div> ) 
                     })} 

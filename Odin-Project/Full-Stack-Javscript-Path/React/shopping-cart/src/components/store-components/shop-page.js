@@ -47,8 +47,6 @@ function ShopPage () {
         console.log(cart)
     }, [cart]) ; 
 
-
-
     return (
         <div className="shop-page">
             <NavBar 
@@ -74,6 +72,7 @@ function ShopPage () {
             total={totalPrice}
             tax={tax}
             cart_items={cart}
+            set_cart_items={setCart}
             modal={modal} 
             toggle_modal={toggle_modal}
             game_prices={game_prices}

@@ -13,7 +13,7 @@
 
 .modal-content {
     height: 600px;
-    width: 400px;
+    width: 410px;
     margin-right: 20px;
     background-color: white;
     position: fixed;
@@ -55,6 +55,15 @@
 
 .cart-item, .cart-price {
     margin-bottom: 8px;
+}
+
+.cart-item:hover {
+    color: red;
+    transform: scale(1.1);
+    font-weight: 700;
+    transition: ease-in .01s;
+    cursor: pointer; 
+    text-decoration: line-through;
 }
 
 .proceed-to-checkout {
