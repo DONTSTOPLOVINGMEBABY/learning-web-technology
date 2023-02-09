@@ -50,7 +50,7 @@ function ShopPage () {
                     )
                 })}
             </div>
-            <Cart />
+            {/* <Cart /> */}
             <Footer /> 
         </div>
     )

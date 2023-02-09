@@ -44,6 +44,10 @@
     cursor: pointer;
 }
 
+.hold-cart-icon:hover {
+    transform: scale(1.05);
+}
+
 #cart-icon {
     height: 25px;
 }
