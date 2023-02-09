@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from "react";
-import NavBar from "./nav-bar";
-import Footer from "../footer";
-import Product from "./product";
-import Cart from "./cart";
-import "../../style/shop.css"
-import { all_games_object, all_games_list, game_prices } from "../../utils/all-game-utilities";
+import NavBar from "./components/store-components/nav-bar";
+import Footer from "./footer";
+import Product from "./components/store-components/product";
+import Cart from "./components/store-components/cart";
+import "./style/shop.css"
+import { all_games_object, all_games_list, game_prices } from "./utils/all-game-utilities";
 
 
 function ShopPage () {
     const tax = .0600
     const [searchString, setSearchString] = useState("") ; 
-    const [searchedObject, setSearchedObjects] = useState({...all_games_object}) ; 
+    const [searchedObject] = useState({...all_games_object}) ; 
     const [searchedArray, setSearchedArray] = useState([...all_games_list]) ; 
     const [cart, setCart] = useState([]) ;  
     const [totalPrice, setTotalPrice] = useState(0) ; 

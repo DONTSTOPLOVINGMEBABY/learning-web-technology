@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
 import {background_images} from "./utils/wallpapers"
-import Background from './components/background';
-import WelcomeMessage from './components/welcome-message';
-import EnterStore from './components/enter-store';
+import Background from './components/front-page-components/background';
+import WelcomeMessage from './components/front-page-components/welcome-message';
+import EnterStore from './components/front-page-components/enter-store';
 
 const top_colors = [
   "#FFFFFF", 

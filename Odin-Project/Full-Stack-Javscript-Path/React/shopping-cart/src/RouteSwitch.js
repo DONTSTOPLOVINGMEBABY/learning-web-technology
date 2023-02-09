@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom" ;
 import App from "./App"
-import Background from "./components/background";
-import ShopPage from "./components/store-components/shop-page";
+import Background from "./components/front-page-components/background";
+import ShopPage from "./shop-page";
 
 const RouteSwitch = () => {
     return (

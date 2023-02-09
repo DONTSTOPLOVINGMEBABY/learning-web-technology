@@ -1,6 +1,6 @@
 import React from "react";
-import GithubLogo from "../assets/icons/github-logo.svg"
-import "../style/footer.css"
+import GithubLogo from "./assets/icons/github-logo.svg"
+import "./style/footer.css"
 
 function Footer (props) {
 
