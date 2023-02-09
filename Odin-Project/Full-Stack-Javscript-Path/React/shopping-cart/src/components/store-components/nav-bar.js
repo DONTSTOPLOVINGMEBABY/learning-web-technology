@@ -18,7 +18,7 @@ function NavBar(props) {
                 value={props.searchString}/>
                 <label htmlFor="search"><img id="search-icon" src={search_icon} alt="Search Icon"/></label>
             </div>
-            <div className="hold-cart-icon">
+            <div className="hold-cart-icon" onClick={props.toggle_modal}>
                 <img id="search-icon" src={shopping_bag} alt="Shopping Bag Icon"/>
                 <div className="cart-icon-text">Cart</div>
             </div>

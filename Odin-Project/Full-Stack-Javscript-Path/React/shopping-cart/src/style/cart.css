@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    transition: ease-in-out 3s;
+    transition: ease-in-out 1s;
 }
 
 .overlay {
@@ -12,10 +12,94 @@
 }
 
 .modal-content {
-    height: 50vh;
+    height: 600px;
     width: 400px;
+    margin-right: 20px;
     background-color: white;
     position: fixed;
-    top: 20%;
+    top: 200px;
     right: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.your-cart-title {
+    font-size: 2rem;
+    font-family: "Anton";
+    height: 50px;
+}
+
+.items-in-cart {
+    display: flex;
+    width: 100%;
+    justify-content: space-around; 
+    align-items: center;
+    font-size: 1.125rem;
+    flex: 1 ; 
+    overflow: auto;
+}
+
+.no-items-in-cart {
+    flex: 1;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.35rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.cart-item, .cart-price {
+    margin-bottom: 8px;
+}
+
+.proceed-to-checkout {
+    height: 75px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculate-total {
+    display: flex;
+    height: 100px;
+    font-size: 1.25rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.total-prices, .total-titles {
+    display: flex;
+    flex-direction: column;
+}
+
+.total-titles {
+    margin-right: 25px;
+}
+
+
+#checkout-btn {
+    height: 50px;
+    width: 275px;
+    font-size: 1.5rem;
+    background-color: #FFD814;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#checkout-btn:hover {
+    transform: scale(1.05);
+    transition: ease-in .1s;
+}
+
+#checkout-btn:active {
+    background-color: red;
+    transform: scale(.95); 
 }
