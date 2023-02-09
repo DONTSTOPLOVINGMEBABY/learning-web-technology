@@ -55,6 +55,7 @@ function ShopPage () {
             onChange={update_search_bar}
             searchString={searchString} 
             toggle_modal={toggle_modal}
+            cart_items={cart}
             />
             <div className="products">
                 {searchedArray.map( (key) => {
