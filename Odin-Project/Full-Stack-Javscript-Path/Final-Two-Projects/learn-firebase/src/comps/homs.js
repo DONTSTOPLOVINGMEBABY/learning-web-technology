@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import {firestore} from "../firebase"
-import { addDoc, collection } from "@firebase/firestore";
+import { addDoc, collection, getDocs,  } from "@firebase/firestore";
 
 function Home () {
 
@@ -10,6 +10,7 @@ function Home () {
     const handleSave = async(e) => {
         e.preventDefault() ; 
         console.log(messageRef.current.value)
+        if (messageRef.current.value.replace('/\s/g', '') == ''){return}
 
         let data = {
             message: messageRef.current.value, 
@@ -22,12 +23,22 @@ function Home () {
         }
     }
 
+    const logAllQueries = async (e) => {
+        const querySnapshot = await getDocs(collection(firestore, "messages")) ; 
+        querySnapshot.forEach( (doc) => {
+            console.log(doc)
+            console.log(`${doc.id} => ${doc.data()}`);
+            console.log(doc.data())
+        }) 
+    }
+
 
     return <div>
         <form onSubmit={handleSave}>
               <label>Enter something insightful</label>
               <input type="text" ref={messageRef} />
               <button type="submit">Save</button>
+              <button onClick={logAllQueries}>Log all queries in Collection</button>
         </form>  
     </div>
 }
