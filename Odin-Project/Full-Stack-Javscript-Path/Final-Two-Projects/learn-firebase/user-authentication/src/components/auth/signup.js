@@ -21,24 +21,14 @@ function SignUp(props) {
 
           <h2 className="fw-bold mb-5">Sign up now</h2>
 
-          <MDBRow>
-            <MDBCol col='6'>
-              <MDBInput wrapperClass='mb-4' label='First name' id='form1' type='text'/>
-            </MDBCol>
 
-            <MDBCol col='6'>
-              <MDBInput wrapperClass='mb-4' label='Last name' id='form1' type='text'/>
-            </MDBCol>
-          </MDBRow>
 
-          <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'/>
-          <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
+          <MDBInput wrapperClass='mb-4' label='Username' id='form1' type='text' ref={props.username}/>
+          <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email' ref={props.email}/>
+          <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password' ref={props.password}/>
+          <MDBInput wrapperClass='mb-4' label='Confirm Password' id='form1' type='password' ref={props.confirm_password}/>
 
-          <div className='d-flex justify-content-center mb-4'>
-            <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
-          </div>
-
-          <MDBBtn className='w-100 mb-4' size='md'><a onClick={props.changeSignUp} href="#!">Register</a></MDBBtn>
+          <MDBBtn onClick={props.signup_account} className='w-100 mb-4' size='md'>Sign Up</MDBBtn>
           <div className="text-center">
 
             <p>or sign up with:</p>
@@ -58,6 +48,8 @@ function SignUp(props) {
             <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
               <MDBIcon fab icon='github' size="sm"/>
             </MDBBtn>
+
+            <p>Already have an account? <a onClick={props.changeSignUp} href="">Login</a></p>
 
           </div>
 
