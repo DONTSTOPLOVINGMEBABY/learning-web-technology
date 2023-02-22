@@ -1,0 +1,25 @@
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    flex-wrap: wrap;
+}
+
+.video-thumbnail {
+    margin-left: 100px;
+    cursor: pointer; 
+    width: 300px;
+    height: 174px;
+}
+
+.video-thumbnail:hover {
+    transition: .3s ease-in-out;
+    transform: scale(1.2);
+}
+
+#make-video-bigger {
+    width: 300px;
+    height: 174px;
+}
