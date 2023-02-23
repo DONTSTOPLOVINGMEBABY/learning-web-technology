@@ -1,0 +1,154 @@
+
+.header {
+    height: 56px;
+    background-color: var(--background-color) ;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    justify-content: space-between;
+}
+
+.main-logo {
+    width: 145px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#youtube-icon {
+    height: 34px ;
+    width: 34px;
+    margin-right: 3px;
+}
+
+#youtube-text {
+    color: white;
+    font-weight: 700;
+}
+
+
+.search-container {
+    flex: 0 1 624px;
+    display: flex;
+}
+
+.search:focus-within{
+    border: 1px solid #1A62B9;
+    border-radius: 40px 0 0 40px ;
+}
+
+.search {
+    height: 40px;
+    background-color: var(--search-bar-color) ; 
+    border-radius: 40px 0 0 40px;
+    border: #303030 2px solid;
+    padding: 0px 4px 0px 16px ; 
+    caret-color: #f1f1f1;
+    flex: 0 1 540px;
+}
+
+#search-input {
+    background-color: var(--search-bar-color);
+    border: none;
+    height: 95%;
+    width: 95%;
+    margin-left: 8px;
+    font-size: larger;
+    color: #f1f1f1;
+}
+
+#search-input:focus {
+    outline: none;
+}
+
+.search-icon-container {
+    flex: 0 1 64px;
+    background-color: var(--search-bar-color) ; 
+    border: #303030 2px solid; 
+    border-radius: 0 40px 40px 0 ;
+    border-left: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-icon {
+    height: 24px;
+    width: 24px;
+    opacity: .9;
+}
+
+
+.login {
+    height: 36px;
+    min-width: 102.1px;
+    border-radius: 25px;
+    border: 2px solid #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#sign-in-text {
+    color: #3DA6FF;
+    font-weight: 600;
+    font-family: "Roboto";
+    font-size: 15px;
+}
+
+#profile-svg {
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+}
+
+.logged-in {
+    min-width: 225px ; 
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+
+
+.wrap-icon {
+    height: 40px;
+    width: 40px ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .05s ease-in;
+    margin-right: 12px;
+}
+
+.wrap-icon:hover {
+    background-color: #272727;
+}
+
+#upload-video-icon {
+    height: 24px;
+    width: 24px;
+}
+
+#notifications-bell-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.profile, #profile-picture-header {
+    height: 32px;
+    width: 32px;
+}
+
+#profile-picture-header {
+    border-radius: 50%;
+    cursor: pointer;
+}
