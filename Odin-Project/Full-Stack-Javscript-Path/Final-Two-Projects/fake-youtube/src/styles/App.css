@@ -10,3 +10,9 @@ body {
     width: 100vw;
     background-color: var(--background-color);
 }
+
+.HomePage {
+    width: 100%;
+    height: calc(100vh - 56px);
+    display: flex;
+}

@@ -1,6 +1,6 @@
 import "../../styles/homepage.css"
 import Category from "./sidebar-comps/category"
-import sidebar_images from "../utils/sidebar-images"
+import {sidebar_images} from "../utils/import-image-objects"
 import default_profile from "../assets/default-profile-picture.svg" 
 
 const temporararily_hold_7_items = new Array(7).fill(true);  
@@ -73,6 +73,12 @@ function SideBar () {
                 icon={sidebar_images.planes_icon}
                 text="Planes"
                 /> 
+            </div>
+            <div className="miscallenous-sidebar category-border">
+                <Category 
+                icon={sidebar_images.about_icon}
+                text="About"
+                />
             </div>
         </div>
     )

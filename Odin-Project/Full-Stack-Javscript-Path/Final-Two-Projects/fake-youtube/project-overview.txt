@@ -62,5 +62,34 @@ Functionalities
 
 Current ToDos 
 --------------
-- Design sidebar
-- 
+- Design sidebar and mini-sidebar for nonsigned in Users
+-
+
+
+
+Database Functions
+-------------------
+- When User is first created
+
+    user : {
+        uploads : [],  # bucket of links 
+        watching_history: [], #set of links, duplicates means move that particular video to the top of list 
+        avatar: url , 
+        subscriptions: [], # bucket of other usernames
+        likes: [], 
+        playlists : {
+            watch_later : none, 
+            favorites: none, 
+        }, 
+    }
+
+- When a user uploads a video
+
+    video_name+uploading_user : {
+        category : string, 
+        video_url : string, 
+        title: string, 
+    }
+
+- Video Object 
+    

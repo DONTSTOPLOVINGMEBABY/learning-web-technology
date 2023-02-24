@@ -10,6 +10,9 @@ import memes_icon from "../assets/meme-icon.svg"
 import music_icon from "../assets/music.svg" 
 import palm_tree_icon from "../assets/palm-tree.svg" 
 import planes_icon from "../assets/plane.svg"
+import about_icon from "../assets/about-icon.svg"
+import profile_icon from "../assets/login-profile.svg"
+import login_profile_white_icon from "../assets/login-profile-white.svg"
 
 const sidebar_images = {
     home_icon: home_icon, 
@@ -24,6 +27,15 @@ const sidebar_images = {
     music_icon: music_icon, 
     palm_tree_icon: palm_tree_icon, 
     planes_icon: planes_icon, 
+    about_icon: about_icon, 
+
 }
 
-export default sidebar_images
+const mini_sidebar_icons = {
+    home_icon: home_icon, 
+    subscriptions_icon: subscriptions_icon, 
+    profile_icon: login_profile_white_icon, 
+    about_icon: about_icon, 
+}
+
+export {sidebar_images, mini_sidebar_icons} 
