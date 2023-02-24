@@ -56,4 +56,11 @@ Functionalities
     1. Search
         - User should be able to search entire video library and receive live updates under search bar with results. 
         - Perhaps use a regex that cuts out capitals and puncutation to match search results with what user inputs 
-    
+
+
+
+
+Current ToDos 
+--------------
+- Design sidebar
+- 
