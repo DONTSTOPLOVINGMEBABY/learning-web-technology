@@ -1,0 +1,17 @@
+1. Firestore 
+
+    - Firestore is divided up into documents and collections 
+    
+    Documents
+        - Documents are made up of key-value pairs and are very similar to JSON or dictionaries, which are referred to as fields in Firestore. 
+        - Maps are smaller JSON objects embedded in a key-value pair, almost like a sub-field if you will 
+
+    Collections
+        - They are collections of documents. 
+        - Like a hash or a dictionary, where each of the values are always going to be some kind of document.
+            1. Collections can only conatin documents
+            2. Can only be 1mb in size 
+            3. Cannot contain another document. documents can point to other subcollections, but not other documents directly. 
+
+
+            
