@@ -4,6 +4,7 @@
   "description": "template for mdb-react-ui-kit",
   "private": true,
   "dependencies": {
+    "firebase": "^9.17.1",
     "mdb-react-ui-kit": "5.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
