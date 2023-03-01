@@ -16,7 +16,7 @@ function Header(props) {
         <div className="header">
             <MainLogo/>
             <Search />
-            { !user ? <Login/> : <LoggedIn/>} 
+            { !user.logged_in ? <Login/> : <LoggedIn/>} 
         </div> 
     ) 
 }

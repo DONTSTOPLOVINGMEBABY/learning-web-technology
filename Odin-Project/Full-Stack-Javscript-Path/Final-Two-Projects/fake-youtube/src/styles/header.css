@@ -152,4 +152,62 @@
 #profile-picture-header {
     border-radius: 50%;
     cursor: pointer;
+} 
+
+
+
+/* EVERYTHING RELATED TO THE MODAL HERE
+   PLEASE MOVE ME ONCE SOMETHING BETTER IS FOUND!
+*/ 
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 15, 15, .9);
+    cursor: pointer;
+    z-index: 10;
 }
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 11;
+    height: 400px;
+    width: 500px;
+    cursor:default ; 
+}
+
+.modal-title {
+    font-size: 24px;
+}
+
+
+.finish-setting-up {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+}
+
+#agreement {
+    font-family: "Roboto";
+    cursor: pointer;
+}
+
+#create-account-button {
+    width: 100px;
+    height: 50px;
+}
+
+
+
+
+/* END MODAL */ 
