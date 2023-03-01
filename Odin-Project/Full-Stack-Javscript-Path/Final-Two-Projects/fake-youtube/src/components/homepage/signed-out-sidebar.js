@@ -1,6 +1,5 @@
 import "../../styles/homepage.css"
 import Category from "./sidebar-comps/category"
-import {sidebar_images} from "../utils/import-image-objects"
 import Login from "../header/login"
 import {AboutCategory} from "./sidebar-comps/miscallenous-section"
 import { ExploreCategories } from "./sidebar-comps/explore-categories-section"

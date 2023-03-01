@@ -1,5 +1,5 @@
 import Category from "./category";
-import { sidebar_profile_related_links_images } from "../../utils/import-image-objects";
+import { sidebar_profile_related_links_images } from "../../utils/export-image-objects";
 
 function ProfileRelatedLinks () {
     return (

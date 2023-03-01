@@ -1,4 +1,4 @@
-import { mini_sidebar_icons } from "../utils/import-image-objects"
+import { mini_sidebar_icons } from "../utils/export-image-objects"
 import MiniCategory from "./sidebar-comps/mini-category"
 
 function MiniSideBar () {

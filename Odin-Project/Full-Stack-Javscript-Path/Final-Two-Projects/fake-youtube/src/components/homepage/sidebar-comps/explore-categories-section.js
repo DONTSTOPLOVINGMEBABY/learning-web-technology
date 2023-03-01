@@ -1,5 +1,5 @@
 import Category from "./category";
-import { category_sidebar_images } from "../../utils/import-image-objects";
+import { category_sidebar_images } from "../../utils/export-image-objects";
 
 function ExploreCategories () {
     return (

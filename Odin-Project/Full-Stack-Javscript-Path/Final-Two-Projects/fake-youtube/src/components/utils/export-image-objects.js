@@ -14,21 +14,8 @@ import about_icon from "../assets/about-icon.svg"
 import profile_icon from "../assets/login-profile.svg"
 import login_profile_white_icon from "../assets/login-profile-white.svg"
 
-const sidebar_images = {
-    home_icon: home_icon, 
-    subscriptions_icon : subscriptions_icon, 
-    history_icon: history_icon, 
-    likes_icon: likes_icon, 
-    your_videos_icon: your_videos_icon, 
-    clock_icon: clock_icon, 
-    arrow_over_icon: arrow_over_icon, 
-    user_upload_icons: user_upload_icons, 
-    memes_icon: memes_icon, 
-    music_icon: music_icon, 
-    palm_tree_icon: palm_tree_icon, 
-    planes_icon: planes_icon, 
-    about_icon: about_icon, 
-
+const subscriptions_section_images = {
+    arrow_over_icon : arrow_over_icon, 
 }
 
 const mini_sidebar_icons = {
@@ -38,4 +25,36 @@ const mini_sidebar_icons = {
     about_icon: about_icon, 
 }
 
-export {sidebar_images, mini_sidebar_icons} 
+const miscallenous_sidebar_images = {
+    about_icon : about_icon, 
+}
+
+const category_sidebar_images = {
+    user_upload_icons : user_upload_icons, 
+    music_icon : music_icon, 
+    memes_icon : memes_icon, 
+    palm_tree_icon : palm_tree_icon, 
+    planes_icon : planes_icon, 
+}
+
+const general_nav_sidebar_images = {
+    home_icon: home_icon, 
+    subscriptions_icon: subscriptions_icon, 
+}
+
+const sidebar_profile_related_links_images = {
+    history_icon : history_icon, 
+    your_videos_icon : your_videos_icon, 
+    clock_icon : clock_icon, 
+    likes_icon : likes_icon, 
+}
+
+
+export {
+    subscriptions_section_images,  
+    mini_sidebar_icons, 
+    miscallenous_sidebar_images, 
+    category_sidebar_images, 
+    general_nav_sidebar_images, 
+    sidebar_profile_related_links_images, 
+} 

@@ -1,5 +1,5 @@
 import Category from "./category";
-import { general_nav_sidebar_images } from "../../utils/import-image-objects";
+import { general_nav_sidebar_images } from "../../utils/export-image-objects";
 
 function GeneralNavSection () {
     return (

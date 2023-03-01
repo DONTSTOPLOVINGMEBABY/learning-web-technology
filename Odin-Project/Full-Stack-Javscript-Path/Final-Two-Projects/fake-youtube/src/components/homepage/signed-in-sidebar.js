@@ -1,6 +1,6 @@
 import "../../styles/homepage.css"
 import Category from "./sidebar-comps/category"
-import {sidebar_images} from "../utils/import-image-objects"
+import {subscriptions_section_images} from "../utils/export-image-objects"
 import default_profile from "../assets/default-profile-picture.svg"
 import { GeneralNavSection } from "./sidebar-comps/general-nav-section"
 import { AboutCategory } from "./sidebar-comps/miscallenous-section"
@@ -28,7 +28,7 @@ function SideBar () {
                     />)  
                 })}
                 <Category 
-                    icon={sidebar_images.arrow_over_icon}
+                    icon={subscriptions_section_images.arrow_over_icon}
                     text="All Subscriptions"
                 /> 
             </div>
