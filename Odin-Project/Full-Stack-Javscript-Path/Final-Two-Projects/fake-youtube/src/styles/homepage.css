@@ -1,5 +1,5 @@
 
-.sidebar { 
+.sidebar , .signed-out-sidebar { 
     height: calc(100% - 24px) ; 
     width: 240px;
     padding: 12px;
@@ -26,6 +26,10 @@
 
 @media (max-width: 1320px) {
     .sidebar {
+        display: none;
+    }
+
+    .signed-out-sidebar {
         display: none;
     }
     
@@ -63,7 +67,8 @@
     margin-right: 24px;
 }
 
-.sidebar-profile-related-links, .subscriptions, .display-categories, .miscallenous-sidebar {
+.sidebar-profile-related-links, .subscriptions, .display-categories, .miscallenous-sidebar, 
+.sign-in-informational {
     margin-top: 12px;
     padding-top: 12px;
 }
@@ -98,3 +103,15 @@
     font-size: 7px;
 }
 
+.sign-in-informational {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+#sign-in-message-sidebar {
+    margin-bottom: 6px;
+}
