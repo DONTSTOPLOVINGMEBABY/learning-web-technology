@@ -1,4 +1,4 @@
-import DisplayVideos from './components/homepage/display-videos';
+import DisplayVideos from "./components/homepage/display-video-comps/display-videos";
 import "./styles/homepage.css"
 
 function HomePage() {

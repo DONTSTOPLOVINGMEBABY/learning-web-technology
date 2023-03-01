@@ -1,5 +1,4 @@
-import "../../styles/homepage.css"
-
+import "../../../styles/homepage.css"
 function DisplayVideos () {
     return (
         <div className="display-videos">
