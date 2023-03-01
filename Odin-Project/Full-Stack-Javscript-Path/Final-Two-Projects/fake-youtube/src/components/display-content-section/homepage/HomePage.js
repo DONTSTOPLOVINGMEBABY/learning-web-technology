@@ -1,5 +1,5 @@
-import DisplayVideos from "./components/homepage/display-video-comps/display-videos";
-import "./styles/homepage.css"
+import DisplayVideos from "../display-video-comps/display-videos";
+import "../../../styles/homepage.css"
 
 function HomePage() {
   return (

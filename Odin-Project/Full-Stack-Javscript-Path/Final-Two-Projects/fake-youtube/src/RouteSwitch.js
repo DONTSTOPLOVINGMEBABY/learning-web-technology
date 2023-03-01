@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom" ;
 import Header from "./components/header/header";
-import HomePage from "./HomePage";
+import HomePage from "./components/display-content-section/homepage/HomePage";
 import SideBar from "./components/sidebar/signed-in-sidebar";
 import MiniSideBar from "./components/sidebar/mini-sidebar";
 import SignedOutSideBar from "./components/sidebar/signed-out-sidebar";
@@ -10,7 +10,13 @@ import './styles/App.css';
 
 const RouteSwitch = () => {
 
-    const [user, setUser] = useState(true) ; 
+    const [user, setUser] = useState({
+        logged_in : false, 
+        first_name : null, 
+        last_name : null, 
+        profile_url : null, 
+        uid : null, 
+    }) ; 
     const userValue = useMemo(() => ({user, setUser}), [user, setUser])
 
     return (
@@ -18,7 +24,7 @@ const RouteSwitch = () => {
             <userContext.Provider value={userValue}>
                 <Header />
                 <div className="HomePage">
-                    { user ? 
+                    { user.logged_in ? 
                     <> <SideBar/> <MiniSideBar/> </> : 
                     <> <SignedOutSideBar /> <MiniSideBar /> </>
                     }

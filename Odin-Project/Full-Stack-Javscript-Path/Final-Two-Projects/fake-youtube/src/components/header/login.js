@@ -19,6 +19,7 @@ const make_first_time_user = (channel_name, first, last, uid, profile_url = prof
             likes: [], 
             history: [], 
             subscriptions: [], 
+            uploads: [], 
         }
     }
 }
