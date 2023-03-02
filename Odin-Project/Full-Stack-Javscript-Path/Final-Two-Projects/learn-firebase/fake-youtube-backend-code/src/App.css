@@ -1,0 +1,31 @@
+.channel-cell {
+    display: flex;
+
+}
+
+.channel-cell > * {
+    margin-right: 6px;
+}
+
+#display-taken-message {
+    display: none;
+    color: red; 
+}
+
+.video-container {
+    width: 90%;
+    max-width: 1000px;
+}
+
+video {
+    width: 100%;
+}
+
+.display-content {
+    height: 100vh;
+    width: 100vw ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
