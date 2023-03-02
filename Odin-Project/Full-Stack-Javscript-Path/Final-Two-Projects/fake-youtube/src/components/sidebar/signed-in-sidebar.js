@@ -6,7 +6,8 @@ import { GeneralNavSection } from "./sidebar-comps/general-nav-section"
 import { AboutCategory } from "./sidebar-comps/miscallenous-section"
 import { ExploreCategories} from "./sidebar-comps/explore-categories-section" 
 import { ProfileRelatedLinks } from "./sidebar-comps/profile-related-links-section"
-const temporararily_hold_7_items = new Array(7).fill(true);  
+const temporararily_hold_7_items = new Array(7).fill(true); 
+ 
 
 
 function SideBar () {

@@ -13,12 +13,23 @@ const make_first_time_user = (channel_name, first, last, uid, profile_url = prof
         last_name: last, 
         channel_name: channel_name, 
         avatar: profile_url, 
+        subscribers : 0, 
+        total_channel_views: 0, 
         playlists: {
             watch_later: [], 
             favorites: [], 
             likes: [], 
             history: [], 
-            subscriptions: [], 
+            subscriptions: [
+                "Cinematic Masterpiece", 
+                "Dope House", 
+                "Everything Planes", 
+                "House of Memes", 
+                "Meditation Zone", 
+                "Meditative Music", 
+                "Meme Powerhouse", 
+                "Tranquil Scenes", 
+            ], 
             uploads: [], 
         }
     }

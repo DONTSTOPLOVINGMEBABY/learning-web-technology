@@ -4,6 +4,7 @@ import HomePage from "./components/display-content-section/homepage/HomePage";
 import SideBar from "./components/sidebar/signed-in-sidebar";
 import MiniSideBar from "./components/sidebar/mini-sidebar";
 import SignedOutSideBar from "./components/sidebar/signed-out-sidebar";
+import Single from "./pages/single";
 import { useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
 import './styles/App.css';
@@ -30,6 +31,7 @@ const RouteSwitch = () => {
                     }
                     <Routes>
                         <Route exact path="/" element={<HomePage/>}/>
+                        <Route exact path="/rock" element={<Single/>}/>
                     </Routes>
                 </div>
             </userContext.Provider>
