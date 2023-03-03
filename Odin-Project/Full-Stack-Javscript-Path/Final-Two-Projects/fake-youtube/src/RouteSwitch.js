@@ -5,7 +5,7 @@ import SideBar from "./components/sidebar/signed-in-sidebar";
 import MiniSideBar from "./components/sidebar/mini-sidebar";
 import SignedOutSideBar from "./components/sidebar/signed-out-sidebar";
 import Single from "./pages/single";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
 import './styles/App.css';
 
@@ -17,8 +17,14 @@ const RouteSwitch = () => {
         last_name : null, 
         profile_url : null, 
         uid : null, 
+        channel_name: null, 
     }) ; 
     const userValue = useMemo(() => ({user, setUser}), [user, setUser])
+
+    useEffect( () => {
+        const data = localStorage.getItem("login-info") ; 
+        if (data) {setUser(JSON.parse(data))} ; 
+    }, [])
 
     return (
         <BrowserRouter>
