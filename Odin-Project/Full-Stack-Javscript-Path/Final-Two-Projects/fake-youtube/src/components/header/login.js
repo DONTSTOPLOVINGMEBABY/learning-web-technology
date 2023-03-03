@@ -6,6 +6,7 @@ import { GithubAuthProvider, signInWithPopup } from "@firebase/auth";
 import {collection, setDoc, doc, query, where, getDocs} from "@firebase/firestore" ; 
 
 
+
 const make_first_time_user = (channel_name, first, last, uid, profile_url = profile_svg) => {
     return {
         uid : uid, 
@@ -57,8 +58,12 @@ function Login () {
         await setDoc( doc(firestore, "users", user.uid), make_first_time_user(
             channel_name.current.value, user.first_name, user.last_name, user.uid, user.profile_url
         ))
-        setUser({...user, logged_in : true}) ; 
+        const update_user_login_information = {...user, logged_in : true, channel_name : channel_name.current.value}
+        setUser(update_user_login_information) ; 
         toggle_modal() ; 
+        setUser(update_user_login_information) ; 
+        console.log(update_user_login_information) ; 
+        localStorage.setItem("login-info", JSON.stringify(update_user_login_information)) ; 
     }
 
     const primary_login_function = async () => {
@@ -71,26 +76,31 @@ function Login () {
             const check_if_account_exists = query(users_collection, where("uid", "==", `${uid}`))
             const exists_snapshot = await getDocs(check_if_account_exists) ; 
             if (exists_snapshot.size == 0) {
-                setUser({
+                const update_user_login_information = {
                     logged_in : false, 
                     uid : uid, 
                     profile_url: avatar, 
                     first_name : first, 
                     last_name : last,  
-                })
+                }
+                setUser(update_user_login_information) ; 
                 toggle_modal () ; 
             }
             else {
-                setUser({
+                const update_user_login_information = {
                     logged_in : true, 
                     uid : uid, 
                     profile_url: avatar, 
                     first_name : first, 
-                    last_name : last,  
-                })
+                    last_name : last,
+                    channel_name: exists_snapshot.docs[0].data().channel_name,  
+                }
+                setUser(update_user_login_information) ; 
+                localStorage.setItem("login-info", JSON.stringify(update_user_login_information)) ; 
             }
         } catch (error) {
             alert("failed to login via github") ;
+            console.log(error)
         }
     }
 
