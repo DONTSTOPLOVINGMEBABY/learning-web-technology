@@ -3,14 +3,22 @@ import notifications_bell from "../assets/notifications-bell.svg"
 import default_profile_picture from "../assets/default-profile-picture.svg"
 import { useContext, useState, useRef, useEffect } from "react"
 import { userContext } from "../utils/contexts"
+import { profile_dropdown } from "../utils/export-image-objects"
+import Category from "../sidebar/sidebar-comps/category"
 
 
 function LoggedIn () {
 
     const {user, setUser} = useContext(userContext) ; 
-    const [profile, setProfile] = useState(true) ; 
+    const [profile, setProfile] = useState(false) ; 
 
     const activate_profile = () => {setProfile(!profile)}  ;
+
+    const logout = () => {
+        localStorage.removeItem("login-info") ; 
+        setUser({logged_in : false})
+    }
+
 
     return (
         <div className="logged-in">
@@ -37,7 +45,10 @@ function LoggedIn () {
                         </div>
                     </div>
                     <div className="category-border menu-options">
-                        
+                        <div className="profile-dropdown-cell logout" onClick={logout}>   
+                            <img className="profile-dropdown-icon" src={profile_dropdown.logout_icon} alt="logout"/>
+                            <div>Logout</div>
+                        </div>
                     </div> 
                 </div>
             </> 

@@ -13,6 +13,8 @@ import planes_icon from "../assets/plane.svg"
 import about_icon from "../assets/about-icon.svg"
 import profile_icon from "../assets/login-profile.svg"
 import login_profile_white_icon from "../assets/login-profile-white.svg"
+import logout_icon from "../assets/logout.svg"
+
 
 const subscriptions_section_images = {
     arrow_over_icon : arrow_over_icon, 
@@ -49,6 +51,10 @@ const sidebar_profile_related_links_images = {
     likes_icon : likes_icon, 
 }
 
+const profile_dropdown = {
+    logout_icon : logout_icon, 
+    your_videos_icon: your_videos_icon, 
+}
 
 export {
     subscriptions_section_images,  
@@ -57,4 +63,5 @@ export {
     category_sidebar_images, 
     general_nav_sidebar_images, 
     sidebar_profile_related_links_images, 
+    profile_dropdown, 
 } 

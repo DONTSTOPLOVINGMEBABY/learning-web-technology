@@ -156,6 +156,70 @@
 
 
 
+.account-navigation {
+    position: absolute;
+    height: 400px;
+    width: 300px;
+    background-color: #282828;
+    right: 18px;
+    top: 56px;
+    border-radius: 25px;
+    padding: 16px;
+    color: white;
+    font: "Roboto";
+    font-size: 18px;
+   
+}
+
+#account-nav-profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; 
+    margin-right: 16px;
+    
+}
+
+.account-navigation-user-info {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.category-border {
+    border-top: 1px solid #3F3F3F;
+}
+
+.profile-category {
+    width: 100%;
+
+}
+
+.profile-dropdown-cell {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    padding-top: 12px;
+    align-items: center;
+    cursor: pointer; 
+}
+
+
+.profile-dropdown-icon {
+    height: 30px;
+    width: 30px;
+    margin-right: 16px;
+    
+}
+
+.profile-dropdown-cell:hover {
+    background-color: #272727;
+}
+
+
+
+
+
 /* EVERYTHING RELATED TO THE MODAL HERE
    PLEASE MOVE ME ONCE SOMETHING BETTER IS FOUND!
 */ 
