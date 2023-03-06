@@ -1,4 +1,4 @@
-import "../../styles/homepage.css"
+import "../../styles/sidebar.css"
 import Category from "./sidebar-comps/category"
 import {subscriptions_section_images} from "../utils/export-image-objects"
 import default_profile from "../assets/default-profile-picture.svg"

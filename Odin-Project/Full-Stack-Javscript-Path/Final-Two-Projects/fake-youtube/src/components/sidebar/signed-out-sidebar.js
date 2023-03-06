@@ -1,4 +1,4 @@
-import "../../styles/homepage.css"
+import "../../styles/sidebar.css"
 import Category from "./sidebar-comps/category"
 import Login from "../header/login"
 import {AboutCategory} from "./sidebar-comps/miscallenous-section"
