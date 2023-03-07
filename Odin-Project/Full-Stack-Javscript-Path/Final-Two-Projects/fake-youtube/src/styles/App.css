@@ -1,6 +1,7 @@
 :root {
     --background-color: #0f0f0f ; 
     --search-bar-color: #121212 ; 
+    --preview-video-sub-info: #AAAAAA ; 
 }
 
 body {

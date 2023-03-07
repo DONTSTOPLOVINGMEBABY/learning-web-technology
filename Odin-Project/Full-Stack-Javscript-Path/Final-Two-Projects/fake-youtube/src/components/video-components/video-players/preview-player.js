@@ -15,7 +15,6 @@ function PreviewPlayer (props) {
     const grab_profile_photo = async () => {
         const profile_reference = ref(storage, channelInfo.avatar) ; 
         const link = await getDownloadURL(profile_reference) ;
-        console.log(link) ;  
         setProfileURL(link) ; 
     }
 

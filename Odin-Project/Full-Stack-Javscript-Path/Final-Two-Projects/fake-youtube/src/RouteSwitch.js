@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom" ;
 import Header from "./components/header/header";
-import HomePage from "./components/display-content-section/homepage/HomePage";
+import HomePage from "./components/video-components/HomePage";
 import SideBar from "./components/sidebar/signed-in-sidebar";
 import MiniSideBar from "./components/sidebar/mini-sidebar";
 import SignedOutSideBar from "./components/sidebar/signed-out-sidebar";

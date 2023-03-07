@@ -1,117 +1,72 @@
-
-.sidebar , .signed-out-sidebar { 
-    height: calc(100% - 24px) ; 
-    width: 240px;
-    padding: 12px;
-    color: white;
-    overflow: scroll;
+.Home {
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.display-videos {
-    height: 100%;
-    flex: 1 ;
-    border: 4px solid #59DEFF;;
+.home-page-player {
+    max-height: 259px;
+    max-width: 362.25px;
+    flex: 1;
+    min-height: 200px;
+    min-width: 230px;
+    transition: .2s ease-in;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 25px;
 }
 
-.mini-sidebar {
-    height: 296px;
-    width: 72px;
-    display: none;
+.video-container {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    color: white;
-    font-size: 11px;
+    border-radius: 25px 25px 0 0;
 }
 
-@media (max-width: 1320px) {
-    .sidebar {
-        display: none;
-    }
-
-    .signed-out-sidebar {
-        display: none;
-    }
-    
-    .mini-sidebar {
-        display: flex;
-    }
+.video {
+    width: 100%;
 }
 
-@media (max-width: 790px) {
-    .mini-sidebar {
-        display: none;
-    }
-}
-
-.category {
-    display: flex;
-    width: 204px;
-    height: 46px;
-    color: white;
-    align-items: center;
-    padding: 0 12px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .05s ease-in;
-    border-radius: 25px 25px 25px 25px ; 
-}
-
-.category:hover, .mini-category:hover {
+.home-page-player:hover {
+    transform: scale(1.2);
     background-color: #272727;
 }
 
-.sidebar-icon {
-    height: 24px;
-    width: 24px;
-    margin-right: 24px;
+.other-information {
+    color: var(--preview-video-sub-info);
 }
 
-.sidebar-profile-related-links, .subscriptions, .display-categories, .miscallenous-sidebar, 
-.sign-in-informational {
-    margin-top: 12px;
-    padding-top: 12px;
+.video-information {
+    padding: 12px;
+    display: flex;
+    margin: 12px 0 4px 0 ; 
 }
 
-.category-border {
-    border-top: 1px solid #3F3F3F;
+#profile-photo {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
 }
 
-.sidebar-subtitle {
-    font-weight: lighter;
+.video-title {
+    font-weight: 700;
     font-size: 16px;
-    padding: 6px 12px 4px;
-    margin: 0;
-}
-
-.mini-category {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 74px ;
-    width: 64px; 
-    padding: 16px 0 14px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.mini-category-icon {
-    height: 24px;
-    width: 24px;
+    color: white;
     margin-bottom: 6px;
-    font-size: 7px;
 }
 
-.sign-in-informational {
+.channel-name:hover {
+    color: white;
+}
+
+.group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
 }
 
-#sign-in-message-sidebar {
-    margin-bottom: 6px;
+.upload-date {
+    margin-left: 3px;
 }
