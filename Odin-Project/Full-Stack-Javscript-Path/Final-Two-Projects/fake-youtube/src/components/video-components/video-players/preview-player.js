@@ -1,6 +1,7 @@
 import { firestore, storage } from "../../../firebase/firebase";
 import {doc, getDocs, getDoc, collection, query, where} from "@firebase/firestore" 
 import { useEffect, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { ref, getDownloadURL } from "firebase/storage";
 
 
@@ -10,7 +11,8 @@ function PreviewPlayer (props) {
     const [channelInfo, setChannelInfo] = useState(null) ; 
     const [profileURL, setProfileURL] = useState(null) ; 
     const [uploadTimeDifferece, setUploadTimeDifference] = useState(null) ; 
-    const videoRef = useRef() ; 
+    const videoRef = useRef() ;
+    const navigate = useNavigate() ;  
 
     const grab_profile_photo = async () => {
         const profile_reference = ref(storage, channelInfo.avatar) ; 
@@ -42,12 +44,23 @@ function PreviewPlayer (props) {
         setChannelInfo(data) ; 
     }
 
+    const load_video = () => {
+    
+        navigate(`/video-player/${channelInfo.channel_name}#${videoInformation.title.split(".")[0]}`, { state : {
+            video_information: videoInformation, 
+            channel_information : channelInfo, 
+            video_time : videoRef.current.currentTime ,
+            download_url : props.video,  
+        }})
+    }
+
+
     const playVideo = () => {
-        videoRef.current.play() ; 
+        if (props.play){videoRef.current.play()}
     }
 
     const pauseVideo = () => {
-        videoRef.current.pause() ;
+        if (props.play){videoRef.current.pause()}
     }
 
     useEffect( () => {
@@ -63,23 +76,23 @@ function PreviewPlayer (props) {
 
 
     return (
-        <div className={props.className} onMouseEnter={playVideo} onMouseLeave={pauseVideo}>
+        <div className={props.className} onMouseEnter={playVideo} onMouseLeave={pauseVideo} onClick={load_video}>
             {  profileURL ? <>
-                <div className="video-container">
-                    <video className="video" ref={videoRef} muted>
+                <div className={props.main_container}>
+                    <video className={props.video_class} ref={videoRef} muted>
                         <source src={props.video} type="video/mp4"/>
                     </video>
                 </div>
-                <div className="video-information">
-                    <div className="profile-picture">
-                        <img id="profile-photo" src={profileURL} alt="avatar"/>
+                <div className={props.video_information}>
+                    <div className={props.profile_picture}>
+                        <img id={props.profile_photo} src={profileURL} alt="avatar"/>
                     </div>
-                    <div className="other-information">
-                        <div className="video-title">{videoInformation.title.split(".")[0]}</div>
-                        <div className="channel-name">{videoInformation.creator}</div>
-                        <div className="group">
-                            <div className="views">{videoInformation.view_count} views &#183; </div>
-                            <div className="upload-date"> {uploadTimeDifferece} days ago</div>
+                    <div className={props.other_information}>
+                        <div className={props.video_title}>{videoInformation.title.split(".")[0]}</div>
+                        <div className={props.video_channel}>{videoInformation.creator}</div>
+                        <div className={props.group}>
+                            <div className={props.views}>{videoInformation.view_count} views &#183; </div>
+                            <div className={props.date}> {uploadTimeDifferece} days ago</div>
                         </div>
                     </div>
                 </div>

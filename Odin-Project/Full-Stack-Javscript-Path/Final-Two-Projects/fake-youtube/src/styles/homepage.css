@@ -4,16 +4,15 @@
 }
 
 .home-page-player {
-    max-height: 259px;
-    max-width: 362.25px;
-    flex: 1;
-    min-height: 200px;
-    min-width: 230px;
+    height: 320px;
+    width: 362.25px;
     transition: .2s ease-in;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     border-radius: 25px;
+    margin-right: 12px;
+    margin-top: 12px;
 }
 
 .video-container {
@@ -35,38 +34,43 @@
     background-color: #272727;
 }
 
-.other-information {
+.channel-video-information-homepage {
     color: var(--preview-video-sub-info);
 }
 
-.video-information {
+.video-information-main {
     padding: 12px;
     display: flex;
     margin: 12px 0 4px 0 ; 
 }
 
-#profile-photo {
+#profile-photo-homepage-player {
     height: 40px;
     width: 40px;
     border-radius: 50%;
     margin-right: 12px;
 }
 
-.video-title {
+.other-information-homepage {
+    color: var(--preview-video-sub-info);
+}
+
+.video-title-homepage {
     font-weight: 700;
     font-size: 16px;
     color: white;
     margin-bottom: 6px;
 }
 
-.channel-name:hover {
+.channel-name-homepage:hover {
     color: white;
 }
 
-.group {
+.group-homepage {
     display: flex;
+    margin-top: 4px;
 }
 
-.upload-date {
+.upload-date-homepage {
     margin-left: 3px;
 }

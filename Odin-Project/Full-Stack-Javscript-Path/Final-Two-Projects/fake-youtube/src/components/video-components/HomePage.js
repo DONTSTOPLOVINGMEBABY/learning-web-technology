@@ -11,6 +11,11 @@ function HomePage() {
   const [cheapUrl, setCheapUrl] = useState(null) ; 
 
   const [allURLs, setallURLs] = useState([]) ; 
+  const [allNames, setAllNames] = useState([]) ; 
+  const [urlsAndNames, setUrlsAndNames] = useState({}) ;
+  
+  const load_number_of_videos = 10 ; 
+
 
   const one_time = async () => {
     const temp_names = [] ; 
@@ -22,43 +27,61 @@ function HomePage() {
       temp_names.push(data.id.replace(/_/g, '/'))
     }) 
     
-    while (final_names.length < 10){
+    while (final_names.length < load_number_of_videos){
       let random_number = Math.floor(Math.random() * (temp_names.length - 1)) ; 
-      final_names.push(temp_names[random_number]) ; 
+      if (!final_names.includes(temp_names[random_number])) 
+      {final_names.push(temp_names[random_number])}
+    } 
+
+    const get_all_urls = async () => {
+      try {
+        const results = await Promise.all(
+          final_names.map( async (item) => {
+            let single_ref = ref(storage, item) ; 
+            let url = await getDownloadURL(single_ref) ;   
+            return url ; 
+          })
+        )
+        return results ; 
+      } catch (error) {
+        console.log(error) ; 
+      }
     }
-    const temp = [] ; 
-    Promise.all(final_names.map( async (item) => {
-      let single_ref = ref(storage, item) ; 
-      let url = await getDownloadURL(single_ref) ; 
-      temp.push(url) ; 
-    }))
+
+    const urls_and_names = {} ; 
+    const all_download_urls = await get_all_urls() ;
+    final_names.map( (name, index) => {urls_and_names[all_download_urls[index]] = name}) 
+    setallURLs(all_download_urls) ; 
+    setUrlsAndNames(urls_and_names) ; 
+    setAllNames(final_names) ; 
   }
 
   useEffect( () => {
     one_time() ; 
-    return_url() ; 
+    // return_url() ; 
   }, [])
-
-  const return_url = async () => {
-    const url = await getDownloadURL(cheap_video) ; 
-    setCheapUrl(url) ; 
-  }
-
-  useEffect( () => {
-    console.log(allURLs) ; 
-    console.log(allURLs.length) ; 
-  }, [allURLs])
-
 
   return (
     <div className="HomePage Home">
-      { cheapUrl ? 
-        <PreviewPlayer 
-        className="home-page-player"
-        video={cheapUrl} 
-        title="Uploads/Everything Planes/Crazy plane landing.mp4"
-        /> : null }
-       
+       { allURLs.length >= 2 && Object.keys(urlsAndNames).length >= 2 ? allURLs.map( (url, index) => { 
+        return ( <PreviewPlayer 
+          className="home-page-player"
+          main_container="video-container"
+          video_class="video"
+          video_information="video-information-main"
+          profile_picture="profile-picture-main"
+          profile_photo="profile-photo-homepage-player" 
+          other_information="other-information-homepage"
+          video_title="video-title-homepage"
+          video_channel="channel-name-homepage"
+          group="group-homepage"
+          views="views-homepage"
+          date="upload-date-homepage"
+          play={false}
+          video={url} 
+          title={urlsAndNames[url]}
+          /> )
+       }) : null}
     </div>
     
   );
