@@ -1,0 +1,24 @@
+.PlayVideo {
+    justify-content: center;
+}
+
+#play-big-video {
+    width: 92%;
+}
+
+.left-side {
+    max-width: 1300px;
+    width: 82%;
+}
+
+.big-video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.right-side {
+    height: calc(100vh - 56px);
+    width: 402px;
+    background-color: magenta;
+}
