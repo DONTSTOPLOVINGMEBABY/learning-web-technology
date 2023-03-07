@@ -36,15 +36,7 @@ const RouteSwitch = () => {
                     <> <SignedOutSideBar /> <MiniSideBar /> </>
                     }
                     <Routes>
-                        <Route exact path="/" element={<HomePage 
-                        main_container="video-container"
-                        video_class="video"
-                        video_information="video-information-main"
-                        profile_picture="profile-picture-main"
-                        profile_photo="profile-photo-homepage-player" 
-                        channel_video_information="channel-video-information-homepage"
-                        video_title="video-title-homepage"
-                        />}/>
+                        <Route exact path="/" element={<HomePage/>}/>
                         <Route exact path="/video-player/:id" element={<PlayVideo/>}/>
                     </Routes>
                 </div>
