@@ -4,7 +4,16 @@
     width: 240px;
     padding: 12px;
     color: white;
-    overflow: scroll;
+    overflow: auto;
+}
+
+::-webkit-scrollbar , ::-webkit-scrollbar-corner {
+    background-color: #272727 ; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: black;
+    
 }
 
 .display-videos {

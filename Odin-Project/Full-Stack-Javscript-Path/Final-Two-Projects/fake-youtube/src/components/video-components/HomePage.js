@@ -1,17 +1,13 @@
 import "../../styles/homepage.css"
 import PreviewPlayer from "./video-players/preview-player";
 import { storage, firestore } from "../../firebase/firebase";
-import {doc, getDocs, getDoc, collection, query, where} from "@firebase/firestore" 
-import {ref, uploadBytes, listAll, getDownloadURL} from "firebase/storage" 
+import { getDocs, collection} from "@firebase/firestore" 
+import {ref, getDownloadURL} from "firebase/storage" 
 import { useEffect, useState } from "react";
 
 function HomePage() {
 
-  const cheap_video = ref(storage, "Uploads/Everything Planes/Crazy plane landing.mp4")
-  const [cheapUrl, setCheapUrl] = useState(null) ; 
-
-  const [allURLs, setallURLs] = useState([]) ; 
-  const [allNames, setAllNames] = useState([]) ; 
+  const [allURLs, setallURLs] = useState([]) ;  
   const [urlsAndNames, setUrlsAndNames] = useState({}) ;
   
   const load_number_of_videos = 10 ; 
@@ -20,7 +16,6 @@ function HomePage() {
   const one_time = async () => {
     const temp_names = [] ; 
     const final_names = [] ; 
-    const refs = [] ; 
     const videos = collection(firestore, "videos") ; 
     const docsnap = (await getDocs(videos)).docs ; 
     docsnap.forEach( (data) => {
@@ -53,7 +48,6 @@ function HomePage() {
     final_names.map( (name, index) => {urls_and_names[all_download_urls[index]] = name}) 
     setallURLs(all_download_urls) ; 
     setUrlsAndNames(urls_and_names) ; 
-    setAllNames(final_names) ; 
   }
 
   useEffect( () => {

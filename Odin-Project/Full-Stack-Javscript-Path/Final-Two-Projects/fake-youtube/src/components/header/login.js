@@ -51,7 +51,6 @@ function Login () {
 
     const loginFunction = async (e) => {
         e.preventDefault() ; 
-        console.log("Hello") ; 
         const channel_query = query(users_collection, where("channel_name", "==", `${channel_name.current.value}`))
         const querySnapshot = await getDocs(channel_query) ; 
         if (querySnapshot.size != 0) {alert("Channel name already taken") ; return}
@@ -61,8 +60,7 @@ function Login () {
         const update_user_login_information = {...user, logged_in : true, channel_name : channel_name.current.value}
         setUser(update_user_login_information) ; 
         toggle_modal() ; 
-        setUser(update_user_login_information) ; 
-        console.log(update_user_login_information) ; 
+        setUser(update_user_login_information) ;  
         localStorage.setItem("login-info", JSON.stringify(update_user_login_information)) ; 
     }
 
