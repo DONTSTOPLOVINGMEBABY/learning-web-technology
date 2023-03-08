@@ -3,14 +3,13 @@ import { storage, firestore } from "../../firebase/firebase";
 import {doc, getDocs, getDoc, collection, query, where} from "@firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage";
 import PreviewPlayer from "./video-players/preview-player";
-
 import { useEffect, useState } from "react";
 import "../../styles/play-video.css"
 
 function PlayVideo () {
 
     const [sideVideos, setSideVideos] = useState([]) ; 
-    const [sideVideoObject, setSideVideoObject] = useState({}) 
+    const [sideVideoObject, setSideVideoObject] = useState({}) ; 
     const location = useLocation() ;  
 
     const channel_information = location.state.channel_information ; 
@@ -44,7 +43,7 @@ function PlayVideo () {
                 return await getDownloadURL(download_ref) ; 
             })
         )
-        
+        // Lob it all into an object
         let names_and_links_object = {} ; 
         all_together.map( (name, index) => {
             names_and_links_object[name] = download_links[index] ; 
@@ -56,16 +55,9 @@ function PlayVideo () {
 
     useEffect( () => {
         load_side_videos() ;
+        console.log(video_information)
+        console.log(channel_information)
     }, [])
-
-    useEffect( () => {
-        console.log(sideVideos) ; 
-    }, [sideVideos])
-
-    useEffect( () => {
-        console.log(sideVideoObject) ; 
-    }, [sideVideoObject])
-
     
     return (
         <div className="HomePage PlayVideo">
@@ -74,6 +66,13 @@ function PlayVideo () {
                     <video id="play-big-video" controls>
                         <source src={download_url} type="video/mp4"/>
                     </video>
+                </div>
+                <div id="video-descriptions">
+                    <div className="description-title">{video_information.title.split(".")[0]}</div>
+                    <div className="description-status-bar">
+                        <div className="status-bar-left"></div>
+                        <div className="status-bar-right"></div>
+                    </div>
                 </div>
             </div>
             <div className="right-side">

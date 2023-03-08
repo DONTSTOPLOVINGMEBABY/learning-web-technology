@@ -12,6 +12,7 @@
 .PlayVideo {
     justify-content: center;
     padding-top: 24px;
+    color: white;
 }
 
 #play-big-video {
@@ -93,4 +94,8 @@
 
 .play-video-sidebar-date {
     margin-left: 3px;
+}
+
+#video-descriptions {
+    padding: 0 4% 0 4%;
 }

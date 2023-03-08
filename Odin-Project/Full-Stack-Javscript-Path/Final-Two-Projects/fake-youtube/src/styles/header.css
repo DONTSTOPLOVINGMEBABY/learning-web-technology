@@ -177,6 +177,7 @@
     color: white;
     font: "Roboto";
     font-size: 18px;
+    z-index: 50;
    
 }
 
