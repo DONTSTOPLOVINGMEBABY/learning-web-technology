@@ -15,9 +15,11 @@ function PreviewPlayer (props) {
     const navigate = useNavigate() ;  
 
     const grab_profile_photo = async () => {
-        const profile_reference = ref(storage, channelInfo.avatar) ; 
-        const link = await getDownloadURL(profile_reference) ;
-        setProfileURL(link) ; 
+        if (channelInfo) {        
+            const profile_reference = ref(storage, channelInfo.avatar) ; 
+            const link = await getDownloadURL(profile_reference) ;
+            setProfileURL(link)  
+        }
     }
 
     const calculate_date_difference = () => {
@@ -52,7 +54,8 @@ function PreviewPlayer (props) {
             video_time : videoRef.current.currentTime ,
             download_url : props.video,  
         }})
-    }
+        window.location.reload() ; 
+    }  
 
 
     const playVideo = () => {

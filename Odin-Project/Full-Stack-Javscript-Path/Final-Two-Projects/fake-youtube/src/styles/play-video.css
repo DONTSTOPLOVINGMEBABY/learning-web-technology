@@ -1,5 +1,17 @@
+@media screen and (max-width: 1000px) {
+    .right-side {
+        display: none;
+    }
+
+    #specific {
+        width: 95%;
+    }
+}
+
+
 .PlayVideo {
     justify-content: center;
+    padding-top: 24px;
 }
 
 #play-big-video {
@@ -15,10 +27,70 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .right-side {
     height: calc(100vh - 56px);
     width: 402px;
-    background-color: magenta;
+}
+
+.play-video-main-class {
+    width: 402px;
+    height: 113px;
+    display: flex;
+    color: white;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.play-video-main-container {
+    min-width: 201px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.play-video-video {
+    width: 100%;
+    max-width: 201px;
+    border-radius: 25px;
+}
+
+
+.play-video-profile-picture {
+    display: none;
+}
+
+.play-video-other-information {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px 8px 12px;
+    color: #A7A7A7;
+}
+
+.play-video-title {
+    height: 40px;
+    margin: 0 0 4px 0;
+    overflow: hidden;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.play-video-channel:hover {
+    color: white;
+}
+
+.play-video-group {
+    display: flex;
+    margin-top: 6px;
+}
+
+.play-video-sidebar-date {
+    margin-left: 3px;
 }
