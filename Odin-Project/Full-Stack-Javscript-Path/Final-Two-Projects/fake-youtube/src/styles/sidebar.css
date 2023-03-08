@@ -22,6 +22,11 @@
     border: 4px solid #59DEFF;;
 }
 
+.sidebar {
+    position: sticky;
+    top: 56px;
+}
+
 .mini-sidebar {
     height: 400px;
     width: 72px;

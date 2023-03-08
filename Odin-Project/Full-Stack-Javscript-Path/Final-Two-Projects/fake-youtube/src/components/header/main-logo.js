@@ -17,7 +17,7 @@ function MainLogo () {
     const trigger_menu = () => {
         if (!isActive) {
             document.getElementsByClassName("sidebar")[0].style.display = "none" ; 
-            document.getElementsByClassName("mini-sidebar")[0].style.display = "block" ;
+            document.getElementsByClassName("mini-sidebar")[0].style.display = "flex" ;
             setActive() ; 
         }
         else {

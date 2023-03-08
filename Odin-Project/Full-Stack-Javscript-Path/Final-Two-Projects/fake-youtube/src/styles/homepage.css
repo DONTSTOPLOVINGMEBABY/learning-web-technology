@@ -1,6 +1,7 @@
 .Home {
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 24px;
 }
 
 .home-page-player {

@@ -47,8 +47,6 @@ function SideBar () {
         }) 
         setSubscribedChannels(subscribers)
         setSubscribedProfileChannels(temp_object) ; 
-        console.log(subscribers) ; 
-        console.log(temp_object) ;
     }
 
     useEffect( () => {
