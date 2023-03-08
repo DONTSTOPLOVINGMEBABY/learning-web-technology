@@ -51,8 +51,7 @@ function HomePage() {
   }
 
   useEffect( () => {
-    one_time() ; 
-    // return_url() ; 
+    one_time() ;  
   }, [])
 
   return (
@@ -74,6 +73,7 @@ function HomePage() {
           play={false}
           video={url} 
           title={urlsAndNames[url]}
+          key={url}
           /> )
        }) : null}
     </div>

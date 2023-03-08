@@ -1,7 +1,6 @@
 import "../../styles/sidebar.css"
 import Category from "./sidebar-comps/category"
 import {subscriptions_section_images} from "../utils/export-image-objects"
-import default_profile from "../assets/default-profile-picture.svg"
 import { GeneralNavSection } from "./sidebar-comps/general-nav-section"
 import { AboutCategory } from "./sidebar-comps/miscallenous-section"
 import { ExploreCategories} from "./sidebar-comps/explore-categories-section" 
@@ -10,10 +9,7 @@ import { useState, useContext, useEffect } from "react"
 import { userContext } from "../utils/contexts"
 import { getDocs, collection, query, where, doc, getDoc } from "@firebase/firestore" 
 import { firestore, storage } from "../../firebase/firebase"
-import { getDownloadURL, ref } from "firebase/storage"
-const temporararily_hold_7_items = new Array(7).fill(true); 
-
-
+import { getDownloadURL, ref } from "firebase/storage" 
 
 
 function SideBar () {
