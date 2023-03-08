@@ -30,7 +30,7 @@ const RouteSwitch = () => {
         <BrowserRouter>
             <userContext.Provider value={userValue}>
                 <Header />
-                <div className="HomePage">
+                <div className="simple"> 
                     { user.logged_in ? 
                     <> <SideBar/> <MiniSideBar/> </> : 
                     <> <SignedOutSideBar /> <MiniSideBar /> </>

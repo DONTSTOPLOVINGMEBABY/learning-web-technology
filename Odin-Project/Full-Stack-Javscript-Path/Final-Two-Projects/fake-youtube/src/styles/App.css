@@ -16,4 +16,9 @@ body {
     width: 100%;
     height: calc(100vh - 56px);
     display: flex;
+    overflow: auto;
+}
+
+.simple {
+    display: flex;
 }

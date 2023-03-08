@@ -10,7 +10,7 @@ function HomePage() {
   const [allURLs, setallURLs] = useState([]) ;  
   const [urlsAndNames, setUrlsAndNames] = useState({}) ;
   
-  const load_number_of_videos = 10 ; 
+  const load_number_of_videos = 16 ; 
 
 
   const one_time = async () => {

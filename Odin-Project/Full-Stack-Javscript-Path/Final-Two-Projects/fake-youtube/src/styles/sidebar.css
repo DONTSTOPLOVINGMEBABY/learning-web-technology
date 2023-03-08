@@ -1,6 +1,6 @@
 
 .sidebar , .signed-out-sidebar { 
-    height: calc(100% - 24px) ; 
+    height: calc(100vh - 80px) ; 
     width: 240px;
     padding: 12px;
     color: white;
