@@ -14,6 +14,7 @@ import about_icon from "../assets/about-icon.svg"
 import profile_icon from "../assets/login-profile.svg"
 import login_profile_white_icon from "../assets/login-profile-white.svg"
 import logout_icon from "../assets/logout.svg"
+import menu_icon from "../assets/menu.svg" 
 
 
 const subscriptions_section_images = {
