@@ -55,7 +55,7 @@
 
 .category {
     display: flex;
-    width: 204px;
+    max-width: 204px;
     height: 46px;
     color: white;
     align-items: center;
@@ -63,6 +63,7 @@
     font-size: 15px;
     cursor: pointer;
     transition: .05s ease-in;
+    overflow: hidden;
     border-radius: 25px 25px 25px 25px ; 
 }
 
