@@ -23,7 +23,7 @@
 }
 
 .mini-sidebar {
-    height: 296px;
+    height: 400px;
     width: 72px;
     display: none;
     justify-content: center;
@@ -31,6 +31,9 @@
     flex-direction: column;
     color: white;
     font-size: 11px;
+    padding-left: 4px;
+    position: sticky;
+    top: 56px;
 }
 
 @media (max-width: 1320px) {
