@@ -23,8 +23,7 @@ function SideBar () {
         const docRef = doc(firestore, "users", user.uid) ; 
         const user_data = await getDoc(docRef) ; 
         const subscribers = user_data.data().playlists.subscriptions  ; 
-       
-
+        
         const profile_photos_links = await Promise.all( 
             subscribers.map( async (sub) => {
               const subRef = doc(firestore, "users", sub) ; 

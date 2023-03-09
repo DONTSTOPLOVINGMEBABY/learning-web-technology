@@ -2,14 +2,17 @@ import { useLocation } from "react-router-dom"
 import { storage, firestore } from "../../firebase/firebase";
 import {doc, getDocs, getDoc, collection, query, where} from "@firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage";
-import PreviewPlayer from "./video-players/preview-player";
+import PreviewPlayer from "./preview-player";
+import Subscribe from "../content-interaction-components/subscribe";
+import LikeDislike from "../content-interaction-components/like-dislike";
 import { useEffect, useState } from "react";
 import "../../styles/play-video.css"
 
 function PlayVideo () {
 
     const [sideVideos, setSideVideos] = useState([]) ; 
-    const [sideVideoObject, setSideVideoObject] = useState({}) ; 
+    const [sideVideoObject, setSideVideoObject] = useState({}) ;
+    const [profileUrl, setProfileUrl] = useState(null) ;  
     const location = useLocation() ;  
 
     const channel_information = location.state.channel_information ; 
@@ -27,7 +30,9 @@ function PlayVideo () {
         const docsnap = (await getDocs(videos_collection)).docs ; 
         docsnap.forEach( (data) => {
           rest_videos.push(data.id.replace(/_/g, '/'))
-        }) 
+        })
+        hold_category_videos = hold_category_videos.filter(item => item.split("/")[2] != `${video_information.title}`)
+
         while (hold_category_videos.length + all_videos.length < 10){
             let random_number = Math.floor(Math.random() * (rest_videos.length - 1)) ; 
             if (!all_videos.includes(rest_videos[random_number]) && !hold_category_videos.includes(rest_videos[random_number]) && 
@@ -53,10 +58,17 @@ function PlayVideo () {
         setSideVideoObject(names_and_links_object)
     }
 
+    const grab_profile = async ( ) => {
+        let profileRef = ref(storage, channel_information.avatar) ; 
+        let url = await getDownloadURL(profileRef) ;
+        setProfileUrl(url)
+    }
+
     useEffect( () => {
         load_side_videos() ;
-        console.log(video_information)
+        grab_profile() ; 
         console.log(channel_information)
+        console.log()
     }, [])
     
     return (
@@ -69,14 +81,29 @@ function PlayVideo () {
                 </div>
                 <div id="video-descriptions">
                     <div className="description-title">{video_information.title.split(".")[0]}</div>
-                    <div className="description-status-bar">
-                        <div className="status-bar-left"></div>
-                        <div className="status-bar-right"></div>
+                    <div className="description-lower-half">
+                        <div id="owner">
+                            <div id="owner-info">
+                                <img id="owner-profile-picture" src={profileUrl} alt="Profile-Picture" />
+                                <div id="owner-name-sub-count">
+                                    <div id="owner-name">{channel_information.channel_name}</div>
+                                    <div id="owner-sub-count">{channel_information.subscribers} subscribers</div>
+                                </div>
+                            </div>
+                            <Subscribe current_channel={channel_information.channel_name}/> 
+                        </div>
+                        <div id="lower-half-right">
+                            <div id="lower-half-right-inner">
+                                <LikeDislike 
+                                title={video_information.title} 
+                                /> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos && false && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"

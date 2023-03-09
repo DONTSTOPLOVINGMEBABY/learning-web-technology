@@ -1,4 +1,4 @@
-import { firestore, storage } from "../../../firebase/firebase";
+import { firestore, storage } from "../../firebase/firebase";
 import {doc, getDocs, getDoc, collection, query, where} from "@firebase/firestore" 
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
