@@ -20,6 +20,7 @@ const make_first_time_user = (channel_name, first, last, uid, profile_url = prof
             watch_later: [], 
             favorites: [], 
             likes: [], 
+            dislikes: [], 
             history: [], 
             subscriptions: [
                 "Cinematic Masterpiece", 
