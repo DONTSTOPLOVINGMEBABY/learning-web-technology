@@ -97,5 +97,154 @@
 }
 
 #video-descriptions {
-    padding: 0 4% 0 4%;
+    padding: 0 4% 0 4%; 
 }
+
+.description-title {
+    font-family: "Youtube Sans, Roboto";
+    font-size: 22px;
+    line-height: 20px;
+    font-weight: 600;
+    margin: 16px 0 12px 0 ;
+}
+
+.description-lower-half {
+    display: flex;
+}
+
+#owner {
+    margin: 6px 6px 0 0;
+    width: calc(50% - 6px);
+    display: flex;
+    align-items: center;
+}
+
+#owner-info {
+    display: flex;
+    margin-right: 24px;
+}
+
+#owner-profile-picture {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+#owner-name {
+    font-family: "Raleway, Arial, Sans Seriff";
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+}
+
+#owner-name-sub-count {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 14px;
+    color: #AAAAAA;
+}
+
+
+#lower-half-right {
+    flex: 1 1 auto;
+    margin-top: 6px;
+}
+
+#lower-half-right-inner {
+    margin-left: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* Subscribe-Button Styling */
+
+.subscribe-button {
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-family: "Roboto";
+}
+
+
+#subscribed-button {
+    background-color: #3D3D3E;
+    width: 150px;
+    height: 36px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#subscribed-button:hover {
+    background-color: #272727 ; 
+}
+
+#subscribe-button {
+    background-color: rgb(241,241,241); 
+    width: 94px;
+    height: 36px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* End Subscribe Button Styling */
+
+/* Shared between Both */
+
+
+/* Like-Dislike Button Styling */
+
+#like-dislike-buttons-container {
+    width: 136px;
+    height: 35px;
+    display: flex;
+}
+
+.button-interact {
+    background-color: #3D3D3E;
+    cursor: pointer ; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#like-button {
+    height: 100%;
+    width: 61%;
+    border-radius: 25px 0 0px 25px;
+    border: none;
+    border-right: 1px solid #666667;
+}
+
+#dislike-button {
+    height: 100%;
+    width: 39%;
+    border-radius: 0 25px 25px 0;
+    border: none;
+}
+
+.like-button-icon-interact {
+    height: 26px;
+    width: 26px;
+}
+
+.button-hover:hover {
+    background-color: #272727;
+}
+
+#number-of-likes {
+    margin-left: 7px;
+    font-size: 18px;
+    color: white;
+    font-family: "Roboto, Raleway";
+    font-weight: 500;
+}
+
+/* End Like-Dislike Button Styling */
