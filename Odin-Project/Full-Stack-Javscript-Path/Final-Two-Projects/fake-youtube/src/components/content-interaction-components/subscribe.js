@@ -1,4 +1,4 @@
-import {doc, getDocs, getDoc, collection, query, where, updateDoc, arrayRemove, arrayUnion} from "@firebase/firestore"
+import {doc, updateDoc, arrayRemove, arrayUnion} from "@firebase/firestore"
 import { useEffect, useState, useContext } from "react"
 import { firestore } from "../../firebase/firebase"
 import { userContext } from "../utils/contexts";
