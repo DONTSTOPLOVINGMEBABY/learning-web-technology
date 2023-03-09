@@ -36,10 +36,12 @@ function SideBar () {
             })
          )
 
+         setUser({...user, subscribers: subscribers}) ; 
+
          // Only show 7 subscriptions
-         if (profile_photos_links.length > 7){
-            profile_photos_links.splice(7, profile_photos_links.length) ; 
-        }
+        //  if (profile_photos_links.length > 8){
+        //     profile_photos_links.splice(7, profile_photos_links.length) ; 
+        // }
 
         const temp_object = {}
         profile_photos_links.map( (link, index) => {
@@ -49,9 +51,12 @@ function SideBar () {
         setSubscribedProfileChannels(temp_object) ; 
     }
 
+
     useEffect( () => {
         get_subscribers() ; 
     }, [])
+
+
 
     return (
         <div className="sidebar">
