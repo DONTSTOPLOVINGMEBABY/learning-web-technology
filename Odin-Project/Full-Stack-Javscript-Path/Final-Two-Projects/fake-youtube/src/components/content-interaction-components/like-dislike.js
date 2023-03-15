@@ -21,26 +21,30 @@ function LikeDislike (props) {
     const [videoTitleOnServer, setVideoTitleOnServer] = useState() ; 
 
     const get_initial_data = async () => {
-        const userRef = doc(firestore, "users", user.uid) ;
+        if (user.uid) {
+            const userRef = doc(firestore, "users", user.uid) ;
+            const user_data = await getDoc(userRef) ;
+            const disliked = user_data.data().playlists.dislikes.includes(video_title_on_server) ; 
+            const liked = user_data.data().playlists.likes.includes(video_title_on_server) ;
+            if (disliked) {setDisliked(true)} ; 
+            if (liked) {setLiked(true)} ;  
+            setuserRef(userRef) ;
+        }
+        
         const videoCollection = collection(firestore, "videos") ; 
         const videoQuery = query(videoCollection, where("title", "==", props.title))
         const videoQuerySnapshot = await getDocs(videoQuery) ; 
         const video_title_on_server = videoQuerySnapshot.docs[0].id ; 
         const likes = videoQuerySnapshot.docs[0].data().likes ; 
         const videoRef = doc(firestore, "videos", video_title_on_server) ;  
-        const user_data = await getDoc(userRef) ;
-        const disliked = user_data.data().playlists.dislikes.includes(video_title_on_server) ; 
-        const liked = user_data.data().playlists.likes.includes(video_title_on_server) ;
         
-        if (disliked) {setDisliked(true)} ; 
-        if (liked) {setLiked(true)} ;  
         setVideoRef(videoRef) ; 
-        setuserRef(userRef) ;
         setLikes(likes) ; 
         setVideoTitleOnServer(video_title_on_server) ; 
     }
 
     const like = async () => {  
+        if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
         setDisliked(false) ; 
         if (!liked && !disliked) {
             setLikes(likes + 1) ;
@@ -77,6 +81,7 @@ function LikeDislike (props) {
     }
 
     const dislike = async () => {
+        if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
         setLiked(false) ; 
         if (!disliked & !liked) {
             setDisliked(true) ; 
