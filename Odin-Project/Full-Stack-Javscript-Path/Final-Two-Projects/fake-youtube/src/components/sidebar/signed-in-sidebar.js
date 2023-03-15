@@ -10,6 +10,7 @@ import { userContext } from "../utils/contexts"
 import { getDocs, collection, query, where, doc, getDoc } from "@firebase/firestore" 
 import { firestore, storage } from "../../firebase/firebase"
 import { getDownloadURL, ref } from "firebase/storage" 
+import Logout from "./sidebar-comps/logout"
 
 
 function SideBar () {
@@ -86,6 +87,7 @@ function SideBar () {
             </div>
             <div className="miscallenous-sidebar category-border">
                 <AboutCategory/>
+                <Logout />
             </div>
         </div>
     )
