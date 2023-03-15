@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 import { storage, firestore } from "../../firebase/firebase";
-import {doc, getDocs, getDoc, collection, query, where} from "@firebase/firestore"
+import {doc, getDocs, getDoc, collection, query, where, updateDoc, increment} from "@firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage";
 import PreviewPlayer from "./preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
@@ -14,6 +14,7 @@ function PlayVideo () {
     const [sideVideoObject, setSideVideoObject] = useState({}) ;
     const [profileUrl, setProfileUrl] = useState(null) ;  
     const location = useLocation() ;  
+    const [pageURL, setPageURL] = useState() ; 
 
     const channel_information = location.state.channel_information ; 
     const video_information = location.state.video_information ; 
@@ -64,18 +65,24 @@ function PlayVideo () {
         setProfileUrl(url)
     }
 
+    const update_video_view_count = async () => {
+        let string = `Uploads_${video_information.creator}_${video_information.title}` ; 
+        let video_doc = doc(firestore, "videos", string) ; 
+        await updateDoc( video_doc, {
+            "view_count" : increment(1), 
+        })
+    }
+
     useEffect( () => {
         load_side_videos() ;
         grab_profile() ; 
-        console.log(channel_information)
-        console.log()
     }, [])
-    
+
     return (
         <div className="HomePage PlayVideo">
             <div id="specific" className="left-side">
                 <div className="big-video-container">
-                    <video id="play-big-video" controls>
+                    <video id="play-big-video" controls onPlay={update_video_view_count}>
                         <source src={download_url} type="video/mp4"/>
                     </video>
                 </div>
@@ -103,7 +110,7 @@ function PlayVideo () {
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos && false && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos &&  false && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"
