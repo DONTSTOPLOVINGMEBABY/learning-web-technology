@@ -5,7 +5,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 import PreviewPlayer from "./preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../../styles/play-video.css"
 
 function PlayVideo () {
@@ -14,7 +14,11 @@ function PlayVideo () {
     const [sideVideoObject, setSideVideoObject] = useState({}) ;
     const [profileUrl, setProfileUrl] = useState(null) ;  
     const location = useLocation() ;  
-    const [pageURL, setPageURL] = useState() ; 
+    
+    const description_and_views = useRef() ; 
+    const description_content = useRef() ; 
+    const show_more_button = useRef() ; 
+    const [showMoreLess, setShowMoreLess] = useState(false) ; 
 
     const channel_information = location.state.channel_information ; 
     const video_information = location.state.video_information ; 
@@ -73,6 +77,27 @@ function PlayVideo () {
         })
     }
 
+    const expand_description_section = () => {
+        if (!showMoreLess) {
+            description_content.current.style.height = "auto" ; 
+            let readjust = description_content.current.offsetHeight ; 
+            if (readjust > 39) {
+                description_and_views.current.style.height = `${readjust + 75 - 19}px` ; 
+            }
+            else {
+                description_content.current.style.height = "19px" ; 
+                description_and_views.current.style.height = "75px" 
+            }
+            show_more_button.current.innerHTML = "Show Less"
+        }
+        else {
+            description_content.current.style.height = "19px" ; 
+            description_and_views.current.style.height = "75px" ; 
+            show_more_button.current.innerHTML = "Show More"
+        }
+        setShowMoreLess(!showMoreLess)
+    }
+
     useEffect( () => {
         load_side_videos() ;
         grab_profile() ; 
@@ -106,6 +131,14 @@ function PlayVideo () {
                                 /> 
                             </div>
                         </div>
+                    </div>
+                    <div id="description-and-views" ref={description_and_views} onClick={expand_description_section}>
+                        <div className="views-and-upload-date">
+                            <div id="views">{video_information.view_count + 1} views</div>
+                            <div id="upload-date-description">{video_information.upload_date}</div>
+                        </div>
+                        <div id="description-content" ref={description_content}>{video_information.description}</div>
+                        <div id="expand-button" ref={show_more_button}>Show More</div>
                     </div>
                 </div>
             </div>

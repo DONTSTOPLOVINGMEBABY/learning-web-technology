@@ -159,6 +159,44 @@
     align-items: center;
 }
 
+#description-and-views {
+    width: calc(100% - 24px);
+    height: 75px;
+    background-color: #272727;
+    margin-top: 24px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 12px;
+}
+
+#description-and-views:hover {
+    background-color: #3D3D3E;
+}
+
+#views {
+    margin-right: 8px;
+}
+
+.views-and-upload-date {
+    display: flex;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+#description-content {
+    height: 19px;
+    overflow: hidden;
+}
+
+#expand-button {
+    margin-top: 8px;
+    font-family: "Arial" ;
+    color: white;
+}
+
+#description-and-views:hover > #expand-button {
+    font-weight: 700;
+}
 
 
 /* Subscribe-Button Styling */
