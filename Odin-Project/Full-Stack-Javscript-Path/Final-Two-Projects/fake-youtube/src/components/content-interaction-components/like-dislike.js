@@ -21,6 +21,14 @@ function LikeDislike (props) {
     const [videoTitleOnServer, setVideoTitleOnServer] = useState() ; 
 
     const get_initial_data = async () => {
+
+        const videoCollection = collection(firestore, "videos") ; 
+        const videoQuery = query(videoCollection, where("title", "==", props.title))
+        const videoQuerySnapshot = await getDocs(videoQuery) ; 
+        const video_title_on_server = videoQuerySnapshot.docs[0].id ; 
+        const likes = videoQuerySnapshot.docs[0].data().likes ; 
+        const videoRef = doc(firestore, "videos", video_title_on_server) ;  
+
         if (user.uid) {
             const userRef = doc(firestore, "users", user.uid) ;
             const user_data = await getDoc(userRef) ;
@@ -30,13 +38,6 @@ function LikeDislike (props) {
             if (liked) {setLiked(true)} ;  
             setuserRef(userRef) ;
         }
-        
-        const videoCollection = collection(firestore, "videos") ; 
-        const videoQuery = query(videoCollection, where("title", "==", props.title))
-        const videoQuerySnapshot = await getDocs(videoQuery) ; 
-        const video_title_on_server = videoQuerySnapshot.docs[0].id ; 
-        const likes = videoQuerySnapshot.docs[0].data().likes ; 
-        const videoRef = doc(firestore, "videos", video_title_on_server) ;  
         
         setVideoRef(videoRef) ; 
         setLikes(likes) ; 
