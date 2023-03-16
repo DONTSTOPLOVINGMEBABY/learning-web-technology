@@ -1,7 +1,7 @@
 .Home {
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 24px;
+    /* padding-top: 24px; */
 }
 
 .home-page-player {
@@ -32,7 +32,7 @@
 }
 
 .home-page-player:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
     background-color: #272727;
 }
 
