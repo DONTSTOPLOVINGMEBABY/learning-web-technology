@@ -3,6 +3,7 @@ import { firestore } from "../../firebase/firebase"
 import { useState, useEffect, useContext, useRef } from "react"
 import { userContext } from "../utils/contexts";
 import "../../styles/play-video.css"
+import logged_out_profile_icon from "../assets/login-profile-white.svg" ; 
 
 function CreateAComment (props) {
 
@@ -34,6 +35,7 @@ function CreateAComment (props) {
     }
 
     const submitComment = async () => {
+        if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
         let videoDocRef = doc(firestore, "videos", props.video_title) ; 
         let now = new Date() ; 
         now = now.getTime() ; 
@@ -51,7 +53,7 @@ function CreateAComment (props) {
     return (
         <div id="create-a-comment">
             <div id="top-section-create-comment">
-                <img id="comment-profile-avatar" src={user.profile_url} alt="Profile Picture"/> 
+                <img id="comment-profile-avatar" src={user.profile_url ? user.profile_url : logged_out_profile_icon } alt="Profile Picture"/> 
                 <input id="comment-input" type="text" ref={commentInput} onChange={enter_comment} placeholder="Leave a comment..."/>
             </div>
             <div id="submit-comment-button-set">
