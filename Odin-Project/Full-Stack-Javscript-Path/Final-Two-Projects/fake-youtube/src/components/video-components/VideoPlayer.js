@@ -5,6 +5,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 import PreviewPlayer from "./preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
+import CreateAComment from "../content-interaction-components/make-a-comment";
 import { useEffect, useState, useRef } from "react";
 import "../../styles/play-video.css"
 
@@ -140,10 +141,13 @@ function PlayVideo () {
                         <div id="description-content" ref={description_content}>{video_information.description}</div>
                         <div id="expand-button" ref={show_more_button}>Show More</div>
                     </div>
+                    <div id="comments">
+                        <CreateAComment video_title={`Uploads_${video_information.creator}_${video_information.title}`}/> 
+                    </div>
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos &&  false && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos && false && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"
