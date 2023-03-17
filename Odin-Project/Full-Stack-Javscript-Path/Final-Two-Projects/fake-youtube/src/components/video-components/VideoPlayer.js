@@ -6,7 +6,7 @@ import PreviewPlayer from "./preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
 import CreateAComment from "../content-interaction-components/make-a-comment";
-import Comments from "../content-interaction-components/comments";
+import Comment from "../content-interaction-components/comment";
 import { useEffect, useState, useRef } from "react";
 import "../../styles/play-video.css"
 
@@ -23,11 +23,12 @@ function PlayVideo () {
     const show_more_button = useRef() ; 
     const [showMoreLess, setShowMoreLess] = useState(false) ; 
 
-    const channel_information = location.state.channel_information ; 
-    const video_information = location.state.video_information ; 
+    const [channel_information, setChannel_information] = useState(location.state.channel_information) ; 
+    const [video_information, setVideo_information] = useState(location.state.video_information) ; 
     const video_time = location.state.video_time ; 
     const download_url = location.state.download_url ; 
-    const [comments, setComments] = useState(video_information.comments) ;  
+    const [comments, setComments] = useState() ; 
+    const [commentKeys, setCommentKeys] = useState() 
     const [views, setViews] = useState(video_information.view_count) ; 
 
     const load_side_videos = async () => { 
@@ -104,10 +105,20 @@ function PlayVideo () {
         setShowMoreLess(!showMoreLess)
     }
 
+    const load_comments = async () => {
+        let video_ref = doc(firestore, "videos", `Uploads_${video_information.creator}_${video_information.title}`) ; 
+        let video_data =  (await getDoc(video_ref)).data() ; 
+        console.log(video_data) ; 
+        setComments(video_data.comments) ; 
+        setCommentKeys(Object.keys(video_data.comments)) ; 
+    }
+
     useEffect( () => {
         load_side_videos() ;
         grab_profile() ; 
+        load_comments() ; 
     }, [])
+    
 
     return (
         <div className="HomePage PlayVideo">
@@ -148,9 +159,15 @@ function PlayVideo () {
                     </div>
                     <div id="comments">
                         <CreateAComment video_title={`Uploads_${video_information.creator}_${video_information.title}`} 
-                         setComments={setComments} comments={comments}/> 
-                        <Comments comments={comments} setComments={setComments}
-                        video_title={`Uploads_${video_information.creator}_${video_information.title}`}/> 
+                         setComments={setComments} comments={comments} setCommentKeys={setCommentKeys} commentKeys={commentKeys}
+                         video_information={video_information} setVideo_information={setVideo_information}/> 
+                        {commentKeys && comments ? <div id="load-all-comments">
+                            { commentKeys.map( (commentKey) => {
+                                return (<Comment comment={comments[commentKey]} setComments={setComments} key={commentKey}
+                                    video_title={`Uploads_${video_information.creator}_${video_information.title}`}
+                                    commentKey={commentKey}/>)
+                            })} </div>
+                        : null } 
                     </div>
                 </div>
             </div>

@@ -32,7 +32,8 @@ function CreateAComment (props) {
             replies : [], 
             users_profile_id : avatar, 
             users_name : name, 
-            users_who_have_liked : [],
+            users_who_have_liked_this : [], 
+            users_who_have_disliked_this: [], 
         }
     }
 
@@ -52,6 +53,14 @@ function CreateAComment (props) {
         commentInput.current.value = '' ; 
         let temp_comments = props.comments ; 
         props.setComments({...temp_comments, ...{[`${user.uid}_${now}`] : comment}}) ; 
+        props.setCommentKeys([`${user.uid}_${now}`, ...props.commentKeys,]) ; 
+        props.setVideo_information( prevState => ({
+            ...prevState, 
+            comments : {
+                ...{[`${user.uid}_${now}`] : comment}, 
+                ...prevState.comments, 
+            }
+        }))
     }
 
     return (
