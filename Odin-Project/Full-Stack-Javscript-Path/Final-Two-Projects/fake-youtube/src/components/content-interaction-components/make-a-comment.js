@@ -14,7 +14,6 @@ function CreateAComment (props) {
     const enter_comment = () => {
         let string = commentInput.current.value.trimStart() ; 
         if (string){
-            console.log(string); 
             setActiveComment(true) ; 
         }
         else { 
@@ -23,7 +22,7 @@ function CreateAComment (props) {
         }
     }
 
-    const make_new_comment = (userid, date, comment) => {
+    const make_new_comment = (userid, date, comment, avatar, name) => {
         return {
             uid : userid, 
             date : date, 
@@ -31,6 +30,9 @@ function CreateAComment (props) {
             likes : 0, 
             dislikes : 0, 
             replies : [], 
+            users_profile_id : avatar, 
+            users_name : name, 
+            users_who_have_liked : [],
         }
     }
 
@@ -39,7 +41,7 @@ function CreateAComment (props) {
         let videoDocRef = doc(firestore, "videos", props.video_title) ; 
         let now = new Date() ; 
         now = now.getTime() ; 
-        let comment = make_new_comment(user.uid, now, commentInput.current.value.trim()) ; 
+        let comment = make_new_comment(user.uid, now, commentInput.current.value.trim(), user.profile_url, `${user.first_name} ${user.last_name}`) ; 
         let old_comments = (await getDoc(videoDocRef)).data()["comments"] ;
         await updateDoc( videoDocRef, {
             "comments" : {
@@ -48,6 +50,8 @@ function CreateAComment (props) {
             }
         })
         commentInput.current.value = '' ; 
+        let temp_comments = props.comments ; 
+        props.setComments({...temp_comments, ...{[`${user.uid}_${now}`] : comment}}) ; 
     }
 
     return (

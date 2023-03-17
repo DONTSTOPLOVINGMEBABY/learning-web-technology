@@ -50,8 +50,6 @@ function Comments (props) {
             uid : userid, 
             date : date, 
             comment : comment, 
-            likes : 0, 
-            dislikes : 0, 
             users_profile_id : avatar, 
             users_name : name, 
         }
@@ -67,9 +65,16 @@ function Comments (props) {
         await updateDoc( comment_ref, {
             [address_for_union] : {[`${user.uid}_${now}`] : reply_comment}, 
         })
+        replyInput.current.value = '' ; 
+        // Use props.setState to update comment replies
     }
 
+    const like_a_comment = async () => {
 
+    }
+
+    // Going to need to map over and create individual comment components, and individual reply components. 
+    
 
 
     // useEffect( () => {

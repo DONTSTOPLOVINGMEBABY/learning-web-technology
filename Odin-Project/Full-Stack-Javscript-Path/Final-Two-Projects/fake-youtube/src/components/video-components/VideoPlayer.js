@@ -15,6 +15,7 @@ function PlayVideo () {
     const [sideVideos, setSideVideos] = useState([]) ; 
     const [sideVideoObject, setSideVideoObject] = useState({}) ;
     const [profileUrl, setProfileUrl] = useState(null) ;  
+    
     const location = useLocation() ;  
     
     const description_and_views = useRef() ; 
@@ -27,6 +28,7 @@ function PlayVideo () {
     const video_time = location.state.video_time ; 
     const download_url = location.state.download_url ; 
     const [comments, setComments] = useState(video_information.comments) ;  
+    const [views, setViews] = useState(video_information.view_count) ; 
 
     const load_side_videos = async () => { 
         let hold_category_videos = [], rest_videos = [], all_videos = [] ;  
@@ -78,6 +80,7 @@ function PlayVideo () {
         await updateDoc( video_doc, {
             "view_count" : increment(1), 
         })
+        setViews(views + 1) ; 
     }
 
     const expand_description_section = () => {
@@ -137,7 +140,7 @@ function PlayVideo () {
                     </div>
                     <div id="description-and-views" ref={description_and_views} onClick={expand_description_section}>
                         <div className="views-and-upload-date">
-                            <div id="views">{video_information.view_count + 1} views</div>
+                            <div id="views">{views} views</div>
                             <div id="upload-date-description">{video_information.upload_date}</div>
                         </div>
                         <div id="description-content" ref={description_content}>{video_information.description}</div>
