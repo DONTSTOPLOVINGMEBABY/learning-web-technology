@@ -2,6 +2,7 @@ import {doc, getDoc, collection, getDocs, updateDoc, increment, arrayRemove, arr
 import { useEffect, useRef, useState, useContext } from "react";
 import { firestore } from "../../firebase/firebase"
 import { userContext } from "../utils/contexts";
+import { like, dislike } from "./like-dislike-a-comment";
 import "../../styles/play-video.css"
 import notActiveLikeButton from "../assets/not-active-like.svg"
 import notActiveDislikeButton from "../assets/not-active-dislike.svg"
@@ -10,7 +11,7 @@ import activeDislikeButton from "../assets/active-dislike.svg"
 
 function Comments (props) {
 
-
+    const [likes, setLikes] = useState(props.comment.likes)
     const [liked, setLiked] = useState(false) ; 
     const [disliked, setDisliked] = useState(false) ; 
     const [activeReply, setActiveReply] = useState(false) ; 
@@ -21,7 +22,15 @@ function Comments (props) {
 
     const activate_comment_reply = () => {if (!activeReply) {setActiveReply(true)}}
     const deactive_comment_reply = () => {setActiveReply(false)} ; 
-    
+
+    const check_if_liked_or_disliked = () => {
+        if (props.comment.users_who_have_liked_this.includes(user.uid)){
+            setLiked(true) ; 
+        }
+        if (props.comment.users_who_have_disliked_this.includes(user.uid)){
+            setDisliked(true) 
+        }
+    }
 
     const pretty_print_date = (timestring) => {
         const date = new Date(timestring); 
@@ -49,6 +58,8 @@ function Comments (props) {
             users_name : name, 
             users_who_have_liked_this : [], 
             users_who_have_disliked_this: [], 
+            likes : 0, 
+            dislikes : 0, 
         }
     }
 
@@ -65,6 +76,10 @@ function Comments (props) {
         replyInput.current.value = '' ; 
     }
 
+    useEffect( () => {
+        check_if_liked_or_disliked() ; 
+    }, [])
+
     
     return (
         <div className="individual-comment">
@@ -79,11 +94,16 @@ function Comments (props) {
                 </div>
                 <div className="like-reply-to-comment">
                     <div className="interact-element-styling-comments margin-right-comment-like-button">
-                        <img id="like-dislike-comment" src={ liked ? activeLikeButton : notActiveLikeButton }/>
-                        <span id="comment-likes">{props.comment.likes}</span>
+                        <img id="like-dislike-comment" src={ liked ? activeLikeButton : notActiveLikeButton }
+                        onClick={ () => like(setLiked, liked, user, setDisliked, disliked, likes, setLikes, props.video_title, 
+                            props.commentKey, false)}
+                        />
+                        <span id="comment-likes">{likes}</span>
                     </div>
                     <div className="interact-element-styling-comments">
-                        <img id="like-dislike-comment" src={ disliked ? activeDislikeButton : notActiveDislikeButton }/>
+                        <img id="like-dislike-comment" src={ disliked ? activeDislikeButton : notActiveDislikeButton }
+                        onClick={ () => dislike(setLiked, liked, user, setDisliked, disliked, likes, setLikes, props.video_title, 
+                            props.commentKey, false)}/>
                     </div>
                     <button onClick={activate_comment_reply} id="reply-to-comment-button">Reply</button>
                     {activeReply ? 
@@ -100,6 +120,3 @@ function Comments (props) {
 
 export default Comments
 
-/* 
-
-*/
