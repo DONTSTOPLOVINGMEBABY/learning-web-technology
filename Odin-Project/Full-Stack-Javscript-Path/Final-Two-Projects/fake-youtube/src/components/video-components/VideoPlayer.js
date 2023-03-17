@@ -6,6 +6,7 @@ import PreviewPlayer from "./preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
 import CreateAComment from "../content-interaction-components/make-a-comment";
+import Comments from "../content-interaction-components/comments";
 import { useEffect, useState, useRef } from "react";
 import "../../styles/play-video.css"
 
@@ -25,6 +26,7 @@ function PlayVideo () {
     const video_information = location.state.video_information ; 
     const video_time = location.state.video_time ; 
     const download_url = location.state.download_url ; 
+    const [comments, setComments] = useState(video_information.comments) ;  
 
     const load_side_videos = async () => { 
         let hold_category_videos = [], rest_videos = [], all_videos = [] ;  
@@ -142,7 +144,10 @@ function PlayVideo () {
                         <div id="expand-button" ref={show_more_button}>Show More</div>
                     </div>
                     <div id="comments">
-                        <CreateAComment video_title={`Uploads_${video_information.creator}_${video_information.title}`}/> 
+                        <CreateAComment video_title={`Uploads_${video_information.creator}_${video_information.title}`} 
+                         setComments={setComments} comments={comments}/> 
+                        <Comments comments={comments} setComments={setComments}
+                        video_title={`Uploads_${video_information.creator}_${video_information.title}`}/> 
                     </div>
                 </div>
             </div>
