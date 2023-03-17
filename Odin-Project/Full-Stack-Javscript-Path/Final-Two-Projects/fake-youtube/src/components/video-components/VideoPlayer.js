@@ -168,6 +168,7 @@ function PlayVideo () {
                                     commentKey={commentKey}/>)
                             })} </div>
                         : null } 
+                        <div id="buffer-height-between-last-comment"></div>
                     </div>
                 </div>
             </div>

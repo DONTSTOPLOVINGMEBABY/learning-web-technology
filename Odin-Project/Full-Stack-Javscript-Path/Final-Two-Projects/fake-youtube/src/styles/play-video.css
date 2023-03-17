@@ -197,9 +197,6 @@
     font-weight: 700;
 }
 
-#comments {
-    margin-top: 12px;
-}
 
 
 /* Subscribe-Button Styling */
@@ -294,6 +291,11 @@
 
 #comments {
     height: 300px;
+    margin-top: 12px;
+}
+
+#buffer-height-between-last-comment {
+    height: 1px;
 }
 
 #create-a-comment {
@@ -362,10 +364,12 @@
 #load-all-comments {
     margin-top: 32px;
     padding: 0 12px 0 12px;
+    /* margin: 0 0 50px 0 ; */
 }
 
 .individual-comment {
     display: flex;
+    margin: 0 0 40px 0;
 }
 
 .comments-likes-and-replies {
@@ -401,7 +405,6 @@
 
 .like-reply-to-comment {
     display: flex;
-    margin-top: 12px;
     align-items: center;
     height: 50px;
 }
