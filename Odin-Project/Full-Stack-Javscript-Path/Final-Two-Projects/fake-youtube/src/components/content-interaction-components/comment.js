@@ -3,11 +3,14 @@ import { useEffect, useRef, useState, useContext } from "react";
 import { firestore } from "../../firebase/firebase"
 import { userContext } from "../utils/contexts";
 import { like, dislike } from "./like-dislike-a-comment";
+import ReplyToComment from "./reply-to-comment";
 import "../../styles/play-video.css"
 import notActiveLikeButton from "../assets/not-active-like.svg"
 import notActiveDislikeButton from "../assets/not-active-dislike.svg"
 import activeLikeButton from "../assets/active-like.svg"
 import activeDislikeButton from "../assets/active-dislike.svg"
+import downArrow from "../assets/down-arrow.svg" ; 
+import upArrow from "../assets/up-arrow.svg" ; 
 
 function Comments (props) {
 
@@ -16,12 +19,17 @@ function Comments (props) {
     const [disliked, setDisliked] = useState(false) ; 
     const [activeReply, setActiveReply] = useState(false) ; 
     const [activeInput, setActiveInput] = useState(false) ; 
+    const [numberReplies, setNumberReplies] = useState(0) ; 
+    const [replyPlural, setReplyPlural] = useState(false) ; 
+    const [showReplies, setShowReplies] = useState(false) ; 
+    const [holdReplies, setHoldReplies] = useState(props.comment.replies) ; 
     const {user, setUser} = useContext(userContext) ; 
 
     const replyInput = useRef() ; 
 
     const activate_comment_reply = () => {if (!activeReply) {setActiveReply(true)}}
     const deactive_comment_reply = () => {setActiveReply(false)} ; 
+    const activate_replies = () => {setShowReplies(!showReplies)} ; 
 
     const check_if_liked_or_disliked = () => {
         if (props.comment.users_who_have_liked_this.includes(user.uid)){
@@ -68,16 +76,32 @@ function Comments (props) {
         let reply_comment = make_reply(user.uid, now, 
             replyInput.current.value, user.profile_url, `${user.first_name} ${user.last_name}`)
         let comment_ref = doc(firestore, "videos", props.video_title) ; 
-        let comment_doc = await getDoc(comment_ref) ; 
-        let address_for_union = `comments.${comment_title_on_server}.replies`
+        let comment_doc2 = (await getDoc(comment_ref)).data()
+        let comment_doc = comment_doc2.comments[`${props.commentKey}`].replies ; 
+        console.log(comment_doc) ; 
         await updateDoc( comment_ref, {
-            [address_for_union] : {[`${user.uid}_${now}`] : reply_comment}, 
+            [`comments.${comment_title_on_server}.replies`] : {
+                [`${user.uid}_${now}`] : reply_comment, 
+                ...comment_doc, 
+            }
         })
+        
+        setHoldReplies({...comment_doc, [`${user.uid}_${now}`] : reply_comment})
+
+        setNumberReplies(numberReplies + 1) ; 
         replyInput.current.value = '' ; 
+        setActiveInput(false) ; 
+    }
+
+    const check_number_of_replies = () => {
+        let number_replies = Object.keys(holdReplies).length ; 
+        setNumberReplies(number_replies) ; 
+        if (number_replies > 1){setReplyPlural(true)}
     }
 
     useEffect( () => {
         check_if_liked_or_disliked() ; 
+        check_number_of_replies() ; 
     }, [])
 
     
@@ -114,6 +138,22 @@ function Comments (props) {
                             <button onClick={deactive_comment_reply} id="cancel-reply-to-comment-button">Cancel</button>} 
                         </div> : null}
                 </div>
+                { numberReplies ? 
+                <div className="comment-replies">
+                    { !showReplies ? <button className="load-replies-button" onClick={activate_replies}>
+                        <img className="load-replies-button-down-arrow" src={downArrow} alt="down-arrow"/>
+                        {numberReplies} {replyPlural ? "replies" : "reply"} 
+                    </button> : null }
+                    { showReplies && Object.keys(holdReplies).map( (reply) => {
+                        return <ReplyToComment key={reply} video_title={props.video_title}
+                        replyKey={reply} reply={holdReplies[reply]} commentKey={props.commentKey}/>
+                    })}
+                     { showReplies ? <button className="load-replies-button" onClick={activate_replies}>
+                        <img className="load-replies-button-down-arrow" src={upArrow} alt="down-arrow"/>
+                        {numberReplies} {replyPlural ? "replies" : "reply"} 
+                    </button> : null }
+                </div>
+                : null } 
             </div>
         </div>
     )
