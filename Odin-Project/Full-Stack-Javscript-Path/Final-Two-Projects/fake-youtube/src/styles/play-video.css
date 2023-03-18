@@ -472,5 +472,44 @@
     flex: 1;
 }
 
+.load-replies-button {
+    width: 98px;
+    height: 36px;
+    background-color: var(--background-color);
+    border: none;
+    border-radius: 25px;
+    color: #3DA6FF;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.load-replies-button:hover {
+    background-color: #253950;
+}
+
+.load-replies-button:active {
+    background-color: #3C4D62;
+}
+
+.load-replies-button-down-arrow {
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+}
+
+.comment-replies {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.comment-reply {
+    display: flex;
+    margin-top: 12px;
+}
 
 /* End Comments Components Syling */ 
