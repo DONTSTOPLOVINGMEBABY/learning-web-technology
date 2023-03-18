@@ -1,5 +1,5 @@
 import "../../styles/homepage.css"
-import PreviewPlayer from "./preview-player";
+import PreviewPlayer from "./video-components/preview-player";
 import { storage, firestore } from "../../firebase/firebase";
 import { getDocs, collection} from "@firebase/firestore" 
 import {ref, getDownloadURL} from "firebase/storage" 

@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom"
 import { storage, firestore } from "../../firebase/firebase";
 import {doc, getDocs, getDoc, collection, query, where, updateDoc, increment} from "@firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage";
-import PreviewPlayer from "./preview-player";
+import PreviewPlayer from "./video-components/preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
 import CreateAComment from "../content-interaction-components/make-a-comment";
@@ -173,7 +173,7 @@ function PlayVideo () {
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos && false && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"

@@ -1,10 +1,10 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom" ;
 import Header from "./components/header/header";
-import HomePage from "./components/video-components/HomePage";
+import HomePage from "./components/pages/HomePage";
 import SideBar from "./components/sidebar/signed-in-sidebar";
 import MiniSideBar from "./components/sidebar/mini-sidebar";
 import SignedOutSideBar from "./components/sidebar/signed-out-sidebar";
-import PlayVideo from "./components/video-components/VideoPlayer";
+import PlayVideo from "./components/pages/VideoPlayer";
 import { useEffect, useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
 import './styles/App.css';
