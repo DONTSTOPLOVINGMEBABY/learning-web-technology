@@ -77,8 +77,7 @@
     margin: 0 0 4px 0;
     overflow: hidden;
     font-weight: 700;
-    display: flex;
-    align-items: center;
+    
     color: white;
 }
 
@@ -291,7 +290,7 @@
 
 #comments {
     height: 300px;
-    margin-top: 12px;
+    margin-top: 24px;
 }
 
 #buffer-height-between-last-comment {

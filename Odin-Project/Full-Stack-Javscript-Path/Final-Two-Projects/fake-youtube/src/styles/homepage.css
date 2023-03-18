@@ -7,7 +7,7 @@
 .home-page-player {
     height: 274px;
     flex: 1 1 320px;
-    max-width: 350px;
+    max-width: 330px;
     transition: .2s ease-in;
     display: flex;
     flex-direction: column;
