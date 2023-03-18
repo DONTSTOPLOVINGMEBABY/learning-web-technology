@@ -8,12 +8,12 @@
 }
 
 ::-webkit-scrollbar , ::-webkit-scrollbar-corner {
-    background-color: #272727 ; 
+    background-color: #3E4346; 
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: black;
-    
+    background-color: #242424 ;
+    border-radius: 25px;
 }
 
 .display-videos {
