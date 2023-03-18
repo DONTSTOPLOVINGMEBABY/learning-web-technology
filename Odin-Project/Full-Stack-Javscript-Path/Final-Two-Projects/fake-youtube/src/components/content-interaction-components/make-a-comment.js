@@ -29,7 +29,7 @@ function CreateAComment (props) {
             comment : comment, 
             likes : 0, 
             dislikes : 0, 
-            replies : [], 
+            replies : {}, 
             users_profile_id : avatar, 
             users_name : name, 
             users_who_have_liked_this : [], 
