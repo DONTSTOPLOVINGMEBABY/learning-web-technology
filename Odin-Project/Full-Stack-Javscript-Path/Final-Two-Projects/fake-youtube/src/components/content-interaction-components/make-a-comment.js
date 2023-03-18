@@ -67,7 +67,8 @@ function CreateAComment (props) {
         <div id="create-a-comment">
             <div id="top-section-create-comment">
                 <img id="comment-profile-avatar" src={user.profile_url ? user.profile_url : logged_out_profile_icon } alt="Profile Picture"/> 
-                <input id="comment-input" type="text" ref={commentInput} onChange={enter_comment} placeholder="Leave a comment..."/>
+                <input id="comment-input" type="text" ref={commentInput} onChange={enter_comment} 
+                autoComplete="off" placeholder="Leave a comment..."/>
             </div>
             <div id="submit-comment-button-set">
                 { activeComment ? 

@@ -108,7 +108,8 @@ function Comments (props) {
                     <button onClick={activate_comment_reply} id="reply-to-comment-button">Reply</button>
                     {activeReply ? 
                         <div className="active-comment-reply">
-                            <input id="comment-reply" type="text" ref={replyInput} onChange={enter_reply} placeholder="Leave a Reply..."/>
+                            <input id="comment-reply" type="text" ref={replyInput} onChange={enter_reply} 
+                            placeholder="Leave a Reply..." autoComplete="off"/>
                             { activeInput ? <button onClick={ () => reply_to_comment(props.commentKey)} id="send-reply-to-comment">Comment</button> : 
                             <button onClick={deactive_comment_reply} id="cancel-reply-to-comment-button">Cancel</button>} 
                         </div> : null}
