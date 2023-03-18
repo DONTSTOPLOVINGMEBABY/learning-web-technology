@@ -2,15 +2,16 @@ import {doc, updateDoc, increment, arrayRemove, arrayUnion} from "@firebase/fire
 import { firestore } from "../../firebase/firebase";
 
 
-const like = async (setLiked, liked, user, 
-    setDisliked, disliked, likes, setLikes, video_name_on_server, commentKey, reply=false) => {  
+const like = async (setLiked, liked, user, setDisliked, 
+    disliked, likes, setLikes, video_name_on_server, commentKey, reply=false, replyKey=null) => {  
 
     if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
     setDisliked(false) ; 
     let videoRef = doc(firestore, "videos", video_name_on_server) ; 
     let path ; 
     if (!reply) { path = `comments.${commentKey}` }
-    else { path = false } // make this work for reply 
+    else { path = `comments.${commentKey}.replies.${replyKey}` } // make this work for reply 
+    console.log(path) ; 
     if (!liked && !disliked) {
         setLikes(likes + 1) ;
         setLiked(true) ;        
@@ -39,15 +40,15 @@ const like = async (setLiked, liked, user,
     }       
 }
 
-const dislike = async (setLiked, liked, user, 
-    setDisliked, disliked, likes, setLikes, video_name_on_server, commentKey, reply=false) => {
+const dislike = async (setLiked, liked, user, setDisliked, 
+    disliked, likes, setLikes, video_name_on_server, commentKey, reply=false, replyKey = null) => {
     
     if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
     setLiked(false) ; 
     let videoRef = doc(firestore, "videos", video_name_on_server) ; 
     let path ; 
     if (!reply) { path = `comments.${commentKey}` }
-    else { path = false } // make this work for reply 
+    else { path = `comments.${commentKey}.replies.${replyKey}` } // make this work for reply 
     if (!disliked & !liked) {
         setDisliked(true) ; 
         await updateDoc(videoRef, {
