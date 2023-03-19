@@ -14,11 +14,27 @@ function PreviewPlayer (props) {
     const videoRef = useRef() ;
     const navigate = useNavigate() ;  
 
+    const default_channels = [
+        "Cinematic Masterpiece", 
+        "Dope House", 
+        "Everything Planes", 
+        "House of Memes", 
+        "Meditation Zone", 
+        "Meditative Music",
+        "Meme Powerhouse", 
+        "Tranquil Scenes", 
+    ]
+
     const grab_profile_photo = async () => {
-        if (channelInfo) {        
-            const profile_reference = ref(storage, channelInfo.avatar) ; 
-            const link = await getDownloadURL(profile_reference) ;
-            setProfileURL(link)  
+        if (default_channels.includes(channelInfo.channel_name)){
+            if (channelInfo) {        
+                const profile_reference = ref(storage, channelInfo.avatar) ; 
+                const link = await getDownloadURL(profile_reference) ;
+                setProfileURL(link)  
+            } 
+        } 
+        else {
+            setProfileURL(channelInfo.avatar) 
         }
     }
 
@@ -39,8 +55,16 @@ function PreviewPlayer (props) {
     }
 
     const get_channel_information = async (channel_name) => {
-        const users_collection = collection(firestore, "users") ; 
-        const query1 = query(users_collection, where("channel_name", "==", `${channel_name}`)) ; 
+        let query1 ; 
+        if (default_channels.includes(channel_name)){
+            const users_collection = collection(firestore, "users") ; 
+            query1 = query(users_collection, where("channel_name", "==", `${channel_name}`)) ; 
+        }
+        else {
+            const users_collection = collection(firestore, "users") ; 
+            query1 = query(users_collection, where("uid", "==", `${channel_name}`)) ; 
+        }
+        
         let data = await getDocs(query1) ; 
         data = data.docs[0].data() ; 
         setChannelInfo(data) ; 
