@@ -97,7 +97,7 @@ function PreviewPlayer (props) {
     }, [])
 
     useEffect( () => {
-        grab_profile_photo() ; 
+        if (channelInfo){grab_profile_photo()}
         calculate_date_difference() ; 
     }, [channelInfo])
 
