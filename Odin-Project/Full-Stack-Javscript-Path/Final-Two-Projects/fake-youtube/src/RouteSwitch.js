@@ -5,6 +5,8 @@ import SideBar from "./components/sidebar/signed-in-sidebar";
 import MiniSideBar from "./components/sidebar/mini-sidebar";
 import SignedOutSideBar from "./components/sidebar/signed-out-sidebar";
 import PlayVideo from "./components/pages/VideoPlayer";
+import ChannelPage from "./components/pages/channel_page";
+import UploadAVideo from "./components/pages/upload-a-video";
 import { useEffect, useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
 import './styles/App.css';
@@ -38,6 +40,8 @@ const RouteSwitch = () => {
                     <Routes>
                         <Route exact path="/" element={<HomePage/>}/>
                         <Route exact path="/video-player/:id" element={<PlayVideo/>}/>
+                        <Route exact path="/individual-channel/:id" element={<ChannelPage/>}/>
+                        <Route exact path="/upload-video" element={<UploadAVideo/>}/>
                     </Routes>
                 </div>
             </userContext.Provider>
