@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=YOAeBSCkArA&ab_channel=PedroTech
 import './App.css';
 import storage from './firebase';
 import { useState, useEffect } from 'react';
-import {ref, uploadBytes, listAll, getDownloadURL} from "firebase/storage" 
+import {ref, uploadBytes, listAll, getDownloadURL, uploadBytesResumable} from "firebase/storage" 
 import { v4 } from 'uuid';
 
 function App() {
@@ -18,12 +18,13 @@ function App() {
   const uploadImage = async () => {
     if (imageUpload == null){return} 
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`) ; 
-    try {
-    await uploadBytes(imageRef, imageUpload) ;
-    alert("File did in fact upload") ; 
-    } catch {
-      alert("File failed to upload") ; 
-    }
+    const uploadTask = uploadBytesResumable(imageRef, imageUpload) ; 
+
+    uploadTask.on( 'state_changed', (snapshot) =>{
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log(progress) ; 
+    })
+
   }
 
   useEffect( () => {
