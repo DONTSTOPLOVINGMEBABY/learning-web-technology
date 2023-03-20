@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom" ;
+import {BrowserRouter, Routes, Route, HashRouter} from "react-router-dom" ;
 import Header from "./components/header/header";
 import HomePage from "./components/pages/HomePage";
 import SideBar from "./components/sidebar/signed-in-sidebar";
@@ -29,7 +29,7 @@ const RouteSwitch = () => {
     }, [])
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <userContext.Provider value={userValue}>
                 <Header />
                 <div className="simple"> 
@@ -45,7 +45,7 @@ const RouteSwitch = () => {
                     </Routes>
                 </div>
             </userContext.Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
