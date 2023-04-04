@@ -1,0 +1,27 @@
+Common Front End Skills :
+--------------------------
+HTML
+CSS
+JavaScript
+Communicating with APIs (Application Programming Interfaces)
+Front-end web frameworks like Angular.js or React.js
+Cross-browser optimization
+Knowledge of user experience (UX) design for websites or web apps
+
+
+Common Back End Skills
+--------------------------
+Programming in a back-end language (Python, Java, PHP, or JavaScript)
+Building and maintaining APIs
+Back-end frameworks like Flask or Django
+SQL (Structured Query Language)
+Knowledge of database management systems
+Common algorithms and data structures
+Basic server management
+
+
+Full Stack Frameworks 
+--------------------------
+MEAN: MongoDB, Express, Angular, and Node
+LAMP: Linux, Apache, MySQL, and PHP/Python
+JAMstack: JavaScript, APIs, and Markup
