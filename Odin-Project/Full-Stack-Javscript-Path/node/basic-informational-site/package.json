@@ -1,0 +1,14 @@
+{
+  "name": "hanks-land-of-wonders",
+  "version": "1.0.0",
+  "description": "you have to love it here in hank's land of wonders",
+  "main": "express-version.js",
+  "scripts": {
+    "test": "run"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
