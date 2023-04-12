@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <% messages.forEach( (message) => { %>
+      <h1><%= message.user %></h1>
+      <h1><%= message.text %></h1>
+      <h1>You joined : <%= message.added %></h1>
+    <% }) %>
+      <h1>Visit new <a href="/new">here</a></h1>
+  </body>
+</html>
+
