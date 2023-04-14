@@ -1,0 +1,23 @@
+{
+  "name": "inventory-application-top",
+  "version": "1.0.0",
+  "description": "A simple inventory application using express. Created as part of The Odin Project's Full Stack Javascript Curriculum",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon bin/startup"
+  },
+  "author": "yours truly",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22"
+  }
+}

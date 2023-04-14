@@ -1,0 +1,7 @@
+1. Load a controller in as the main that shows the total of all products 
+
+2. Write the models for the database 
+
+3. Load the database with fake data
+
+4. Learn some bootstrap along the way
