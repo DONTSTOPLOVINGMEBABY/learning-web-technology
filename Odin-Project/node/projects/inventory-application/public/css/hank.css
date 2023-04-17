@@ -20,3 +20,51 @@ ul, li {
 li {
     margin-bottom: 12px;
 }
+
+.middle_me_please {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.up {
+    margin-top: 20px;
+}
+
+#down {
+    margin-bottom: 40px;
+}
+
+.list-product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#cell {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cell-text {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 24px;
+    width: 50%;
+    text-align: center;
+}

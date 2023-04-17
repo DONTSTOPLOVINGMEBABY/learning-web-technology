@@ -1,0 +1,21 @@
+extends format 
+
+block content 
+
+    div.vertical 
+        h1=data[0].name
+        div#cell 
+            div.cell-text Description 
+            div.cell-text=data[0].description
+        div#cell 
+            div.cell-text Price 
+            div.cell-text $!{data[0].price}
+        div#cell 
+            div.cell-text Number In Stock 
+            div.cell-text=data[0].numberInStock    
+
+    h3
+        a(href=`/drums/${data[0]._id}/update`) Update this product
+    h3 
+        a(href=`/drums/${data[0]._id}/delete`) Delete this product
+    

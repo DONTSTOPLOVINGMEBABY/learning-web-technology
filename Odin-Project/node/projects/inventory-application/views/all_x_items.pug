@@ -1,0 +1,10 @@
+extends format 
+
+block content 
+
+    div.middle_me_please
+        h1 All !{data.items[0].type}
+            ul.up 
+                each item in data.items 
+                    li
+                        a(href=`/${item.type}/${item._id}`)=item.name

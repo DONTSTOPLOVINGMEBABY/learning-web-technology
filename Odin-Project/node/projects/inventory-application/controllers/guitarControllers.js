@@ -1,6 +1,28 @@
 const Guitar = require("../models/guitars")
-const Drum = require("../models/drums")
-const Category = require("../models/category")
-const Tamberine = require("../models/tamberines")
-const async = require("async")
 
+exports.get_all_guitars = async (req, res) => {
+    try { 
+        const all_guitars = await Guitar.find({})
+
+        res.render("all_x_items", {
+            title : "Guitars", 
+            data : {
+                items : all_guitars, 
+            }
+        }) 
+    } catch (error) {
+        res.send(error)
+        console.log(error)
+    }
+}
+
+exports.get_guitar = async (req, res) => {
+    try {    
+        const the_guitar = await Guitar.find({ _id : req.params.id })
+
+        res.render("guitar", {data : the_guitar})
+
+    } catch (error) {
+        console.log(error)
+    }
+}

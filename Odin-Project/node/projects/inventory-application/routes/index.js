@@ -10,5 +10,16 @@ router.get('/', categoriesController.index)
 
 router.get(`/categories/:id`, categoriesController.show_products_in_categories)
 
+router.get('/Drums', drumsController.get_all_drums)
+
+router.get('/Guitars', guitarsController.get_all_guitars)
+
+router.get('/Tamberines', tamberineController.get_all_tamberines)
+
+router.get('/Drums/:id', drumsController.get_drum)
+
+router.get('/Guitars/:id', guitarsController.get_guitar)
+
+router.get('/Tamberines/:id', tamberineController.get_tamberine)
 
 module.exports = router

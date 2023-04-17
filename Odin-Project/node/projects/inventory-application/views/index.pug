@@ -5,9 +5,15 @@ block content
 
     h3 Number of Specific Items
     ul 
-        li #[strong Guitars] !{data.guitar_count}
-        li #[strong Drums] !{data.drum_count}
-        li #[strong Tamberines] !{data.tamberine_count}
+        li 
+            a(href="/guitars") Guitars 
+            span !{data.guitar_count} total
+        li 
+            a(href="/drums") Drums 
+            span !{data.drum_count} total
+        li 
+            a(href="/tamberines") Tamberines 
+            span !{data.tamberine_count} total
     
     h3 Click the Categories of Products You'd Like to View
     ul.categories-list 
