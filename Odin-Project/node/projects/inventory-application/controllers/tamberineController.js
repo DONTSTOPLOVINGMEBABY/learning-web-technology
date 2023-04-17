@@ -26,3 +26,12 @@ exports.get_tamberine = async (req, res) => {
         console.log(error)
     }
 }
+
+exports.delete = async (req, res) => {
+    try {
+        await Tamberine.findByIdAndDelete(req.params.id)
+        res.render("success")
+    } catch (error) {
+        console.log(error)
+    }
+}

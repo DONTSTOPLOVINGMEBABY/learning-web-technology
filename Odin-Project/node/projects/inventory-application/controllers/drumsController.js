@@ -26,3 +26,12 @@ exports.get_drum = async (req, res) => {
         console.log(error)
     }
 }
+
+exports.delete = async (req, res) => {
+    try {
+        await Drums.findByIdAndDelete(req.params.id)
+        res.render("success")
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -22,4 +22,10 @@ router.get('/Guitars/:id', guitarsController.get_guitar)
 
 router.get('/Tamberines/:id', tamberineController.get_tamberine)
 
+router.get('/Drums/:id/delete', drumsController.delete)
+
+router.get('/Guitars/:id/delete', guitarsController.delete)
+
+router.get('/Tamberines/:id/delete', tamberineController.delete)
+
 module.exports = router
