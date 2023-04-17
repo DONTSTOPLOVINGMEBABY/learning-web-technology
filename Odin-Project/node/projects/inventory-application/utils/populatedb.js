@@ -1,10 +1,10 @@
 const dotenv = require("dotenv")
 dotenv.config()
 
-const Category = require("./models/category")
-const Drums = require("./models/drums")
-const Guitars = require("./models/guitars")
-const Tamberines = require("./models/tamberines")
+const Category = require("../models/category")
+const Drums = require("../models/drums")
+const Guitars = require("../models/guitars")
+const Tamberines = require("../models/tamberines")
 
 const categories = []
 const drums = []
