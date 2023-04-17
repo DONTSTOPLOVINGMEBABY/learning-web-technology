@@ -10,6 +10,7 @@ const GuitarSchema = new Schema({
     category : [ {type: Schema.Types.ObjectId,  ref : "Category"} ], 
     isElectric : { type : Boolean, required: true }, 
     isAcoustic : { type: Boolean, required: true }, 
+    type: { type: String, required : true }, 
 })
 
 GuitarSchema.virtual("url").get( () => {

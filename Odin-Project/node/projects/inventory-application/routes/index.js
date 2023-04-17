@@ -8,7 +8,7 @@ const categoriesController = require("../controllers/categoriesController")
 
 router.get('/', categoriesController.index) 
 
-router.get(`categories/:id`, categoriesController.show_products_in_categories)
+router.get(`/categories/:id`, categoriesController.show_products_in_categories)
 
 
 module.exports = router

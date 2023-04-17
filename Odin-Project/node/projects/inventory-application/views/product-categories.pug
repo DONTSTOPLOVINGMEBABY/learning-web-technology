@@ -1,0 +1,13 @@
+extends format 
+
+block content
+
+    each piece in data 
+        if piece.length > 0
+            h2
+                a(href=`/${piece[0].type}`)=piece[0].type
+            each item in piece
+                ul
+                    li 
+                        a(href=`/${item.type}/${item.id}`)= item.name 
+    

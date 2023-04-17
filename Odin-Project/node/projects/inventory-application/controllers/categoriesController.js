@@ -31,7 +31,23 @@ exports.index = async (req, res) => {
 }
 
 exports.show_products_in_categories = async (req, res) => {
-    
+    try {
+        const guitars_with_category_x = Guitar.find({category : req.params.id}).exec()
+        const tamberines_with_category_x = Tamberine.find({category : req.params.id}).exec()
+        const drums_with_category_x = Drum.find({category : req.params.id}).exec()
+        let [guitars, tamberines, drums] = await Promise.all([guitars_with_category_x, tamberines_with_category_x, drums_with_category_x])
+
+        res.render("product-categories", {
+            data : {
+                guitars : guitars, 
+                tamberines : tamberines, 
+                drums: drums, 
+            }
+        })
+
+    } catch (error){
+        console.log(error)
+    }
 }
 
 

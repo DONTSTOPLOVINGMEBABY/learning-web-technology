@@ -1,10 +1,10 @@
 const dotenv = require("dotenv")
 dotenv.config()
 
-const Category = require("../models/category")
-const Drums = require("../models/drums")
-const Guitars = require("../models/guitars")
-const Tamberines = require("../models/tamberines")
+const Category = require("./models/category")
+const Drums = require("./models/drums")
+const Guitars = require("./models/guitars")
+const Tamberines = require("./models/tamberines")
 
 const categories = []
 const drums = []
@@ -43,7 +43,7 @@ async function createCategory (name) {
 }
 
 async function createDrum(name, description, price, numInStock, category){
-    setDrum = { name: name, description : description, price: price, numberInStock : numInStock }
+    setDrum = { name: name, description : description, price: price, numberInStock : numInStock, type: "Drums" }
 
     if (category) { setDrum.category = category }
 
@@ -54,7 +54,7 @@ async function createDrum(name, description, price, numInStock, category){
 } 
 
 async function createGuitar (name, description, price, numInStock, category, isElectric, isAcoustic) {
-    const setGuitar = { name : name, description: description, price: price, numberInStock: numInStock, isElectric: isElectric, isAcoustic : isAcoustic }
+    const setGuitar = { name : name, description: description, price: price, numberInStock: numInStock, isElectric: isElectric, isAcoustic : isAcoustic, type : "Guitars"}
     if (category) {setGuitar.category = category}
 
     const guitar = new Guitars(setGuitar)
@@ -64,7 +64,7 @@ async function createGuitar (name, description, price, numInStock, category, isE
 }
 
 async function createTamberine(name, description, price, numInStock, category, isPadded) {
-    const setTamberine = { name : name, description: description, price: price, numberInStock: numInStock, isPadded : isPadded }
+    const setTamberine = { name : name, description: description, price: price, numberInStock: numInStock, isPadded : isPadded, type : "Tamberines"}
     if (category) {setTamberine.category = category}
 
     const tamberine = new Tamberines(setTamberine)

@@ -9,6 +9,7 @@ const TamberineSchema = new Schema({
     numberInStock : { type: Number, required: true }, 
     category : [ {type: Schema.Types.ObjectId,  ref : "Category"} ], 
     isPadded : { type: Boolean, required: true }, 
+    type: { type: String, required : true }, 
 })
 
 

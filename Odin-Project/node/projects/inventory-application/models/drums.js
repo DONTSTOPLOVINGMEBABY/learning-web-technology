@@ -7,7 +7,8 @@ const DrumSchema = new Schema({
     description: { type: String, required: true, maxLength : 1000 }, 
     price : { type : Number, required: true }, 
     numberInStock : { type: Number, required: true }, 
-    category : [ {type: Schema.Types.ObjectId,  ref : "Category"} ]
+    category : [ {type: Schema.Types.ObjectId,  ref : "Category"} ], 
+    type: { type: String, required : true }
 })
 
 
