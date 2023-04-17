@@ -10,8 +10,10 @@
   "author": "yours truly",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.4",
     "bootstrap": "^5.2.3",
     "express": "^4.18.2",
+    "http-errors": "^2.0.0",
     "luxon": "^3.3.0",
     "mongoose": "^7.0.3",
     "pug": "^3.0.2"

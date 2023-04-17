@@ -1,0 +1,17 @@
+extends format  
+
+block content
+    h1 Hank's Amazing Music Store
+
+    h3 Number of Specific Items
+    ul 
+        li #[strong Guitars] !{data.guitar_count}
+        li #[strong Drums] !{data.drum_count}
+        li #[strong Tamberines] !{data.tamberine_count}
+    
+    h3 Click the Categories of Products You'd Like to View
+    ul.categories-list 
+        each category in data.categories
+            li
+                a(href=`/categories/${category.id}`)= category.name  
+        
