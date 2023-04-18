@@ -47,7 +47,6 @@ exports.createNew = async (req, res) => {
                 categories : categories, 
             }
         })
-
     } catch (err) {
         console.log(err)
         res.render("error")
@@ -59,7 +58,7 @@ exports.update = async (req, res) => {
         let drum_info = await Drums.findById(req.params.id) 
         let categories = await Category.find({}, {name : 1})
 
-        res.render("update-drum", {
+        res.render("update-tamberine", {
             data : { 
                 drum_info : drum_info, 
                 categories : categories, 

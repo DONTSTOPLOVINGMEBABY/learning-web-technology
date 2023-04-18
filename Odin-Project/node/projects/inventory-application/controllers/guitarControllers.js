@@ -35,3 +35,11 @@ exports.delete = async (req, res) => {
         console.log(error)
     }
 }
+
+exports.createNew = async (req, res) => {
+
+}
+
+exports.postUpdate = async (req, res) => {
+
+}
