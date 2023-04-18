@@ -1,0 +1,36 @@
+extends format 
+
+block content 
+    h1 Update Tamberine Item
+
+    form(action='' method="POST")#adjust-forms 
+        div.form-cell
+            label(for=`name`) Name 
+            input(type="text" name="name" value=`${data.guitar_info.name}` placeholder="Name" required)
+        div.form-cell
+            label(for=`description`) Description 
+            textarea(type="text" name="description" placeholder="Description" id='description-textarea' required)  #{data.guitar_info.description}
+        div.form-cell
+            label(for=`price`) Price
+            input(type="number" name="price" value=`${data.guitar_info.price}` placeholder="Price" required)
+        div.form-cell
+            label(for=`category`) Category 
+            select(id='categories-select' name='category' required)
+                each category in data.categories 
+                    if (category._id == data.guitar_info.category)
+                        option(value=category.id selected)=category.name
+                    else
+                        option(value=category.id)=category.name
+        div.form-cell
+            label(for="number_in_stock") Number In Stock
+            input(type="number" name="number_in_stock" id="number_in_stock" placeholder="Number in stock" value=`${data.guitar_info.numberInStock}` required)
+        div.form-cell
+            label(for=`isElectric`) isElectric
+            input(type='checkbox' id='isElectric' name='isElectric' checked)
+        div.form-cell
+            label(for=`isAcoustic`) isAcoustic
+            input(type='checkbox' id='isAcoustic' name='isAcoustic' checked)
+        div.wrap-button
+            button(type="submit") Submit Form
+        
+        

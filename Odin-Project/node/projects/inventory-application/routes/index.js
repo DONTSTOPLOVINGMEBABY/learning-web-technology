@@ -24,9 +24,9 @@ router.get('/Tamberines/createTamberine', tamberineController.createNew)
 
 router.post('/Tamberines/createTamberine', tamberineController.postUpdate)
 
-router.get('/Guitars/createGuitars', guitarsController.createNew)
+router.get('/Guitars/createGuitar', guitarsController.createNew)
 
-router.post('/Guitars/createGuitars', guitarsController.postUpdate)
+router.post('/Guitars/createGuitar', guitarsController.postUpdate)
 
 router.get('/Drums/:id', drumsController.get_drum)
 
@@ -48,9 +48,9 @@ router.get('/Tamberines/:id/update', tamberineController.update)
 
 router.post('/Tamberines/:id/update', tamberineController.postUpdate)
 
-// router.get('/Drums/:id/update', drumsController.update)
+router.get('/Guitars/:id/update', guitarsController.update)
 
-// router.post('/Drums/:id/update', drumsController.postUpdate)
+router.post('/Guitars/:id/update', guitarsController.postUpdate)
 
 
 
