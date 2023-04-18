@@ -51,4 +51,3 @@ exports.show_products_in_categories = async (req, res) => {
 }
 
 
-

@@ -13,8 +13,8 @@ const TamberineSchema = new Schema({
 })
 
 
-TamberineSchema.virtual("url").get( () => {
-    return `/tamberines/${this._id}`
+TamberineSchema.virtual("url").get( function (){
+    return `/Tamberines/${this._id}`
 })
 
 module.exports = mongoose.model("Tamberine", TamberineSchema)

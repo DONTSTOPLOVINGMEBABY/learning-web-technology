@@ -12,8 +12,8 @@ const DrumSchema = new Schema({
 })
 
 
-DrumSchema.virtual("url").get( () => {
-    return `/drums/${this._id}`
+DrumSchema.virtual("url").get(function () {
+    return `/Drums/${this._id}`
 })
 
 module.exports = mongoose.model("Drum", DrumSchema)

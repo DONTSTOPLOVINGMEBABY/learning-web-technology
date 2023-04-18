@@ -10,7 +10,7 @@ const CategorySchema = new Schema({
     }
 })
 
-CategorySchema.virtual("url").set( () => {
+CategorySchema.virtual("url").set( function (){
     return `/categories/${this.name}`
 })
 

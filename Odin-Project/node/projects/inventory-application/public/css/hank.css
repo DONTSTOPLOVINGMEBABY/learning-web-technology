@@ -68,3 +68,34 @@ li {
     width: 50%;
     text-align: center;
 }
+
+.form-cell {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px
+}
+
+.form-cell > label { 
+    margin-right: 12px;
+}
+
+.form-cell > input, .form-cell > textarea, .form-cell > select {
+    width: 50%;
+}
+
+.form-cell > textarea {
+    height: 100px;
+}
+
+.wrap-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form > button {
+    width: 300px ; 
+}

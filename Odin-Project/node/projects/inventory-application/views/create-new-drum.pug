@@ -1,0 +1,27 @@
+extends format 
+
+block content 
+    h1 Update Drum Item
+
+    form(action='' method="POST")#adjust-forms 
+        div.form-cell
+            label(for=`name`) Name 
+            input(type="text" name="name" placeholder="Name" required)
+        div.form-cell
+            label(for=`description`) Description 
+            textarea(type="text" name="description" placeholder="Description" id='description-textarea' required) 
+        div.form-cell
+            label(for=`price`) Price
+            input(type="number" name="price" placeholder="Price" required)
+        div.form-cell
+            label(for=`category`) Category 
+            select(id='categories-select' name='category' required)
+                each category in data.categories
+                    option(value=category.id)=category.name
+        div.form-cell
+            label(for="number_in_stock") Number In Stock
+            input(type="number" name="number_in_stock" id="number_in_stock" placeholder="Number in stock" required)
+        div.wrap-button
+            button(type="submit") Submit Form
+        
+        

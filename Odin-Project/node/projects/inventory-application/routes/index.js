@@ -16,6 +16,10 @@ router.get('/Guitars', guitarsController.get_all_guitars)
 
 router.get('/Tamberines', tamberineController.get_all_tamberines)
 
+router.get('/Drums/createDrum', drumsController.createNew)
+
+router.post('/Drums/createDrum', drumsController.postUpdate)
+
 router.get('/Drums/:id', drumsController.get_drum)
 
 router.get('/Guitars/:id', guitarsController.get_guitar)
@@ -27,5 +31,11 @@ router.get('/Drums/:id/delete', drumsController.delete)
 router.get('/Guitars/:id/delete', guitarsController.delete)
 
 router.get('/Tamberines/:id/delete', tamberineController.delete)
+
+router.get('/Drums/:id/update', drumsController.update)
+
+router.post('/Drums/:id/update', drumsController.postUpdate)
+
+
 
 module.exports = router

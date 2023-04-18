@@ -20,8 +20,6 @@ async function main() {
 
 app.set('view engine', 'pug')
 
-
-
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

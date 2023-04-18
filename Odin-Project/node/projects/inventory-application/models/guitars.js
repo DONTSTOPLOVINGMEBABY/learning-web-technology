@@ -13,8 +13,8 @@ const GuitarSchema = new Schema({
     type: { type: String, required : true }, 
 })
 
-GuitarSchema.virtual("url").get( () => {
-    return `/guitars/${this._id}`
+GuitarSchema.virtual("url").get( function (){
+    return `/Guitars/${this._id}`
 })
 
 module.exports = mongoose.model("Guitar", GuitarSchema)
