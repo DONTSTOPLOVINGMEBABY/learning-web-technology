@@ -1,4 +1,8 @@
 const {body, validationResult} = require('express-validator')
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs")
 const User = require("../models/users")
 
 exports.launch = async (req, res) => {
@@ -74,7 +78,11 @@ exports.POST_sign_up = async (req, res) => {
         }
         else {
             try {
-                await newUser.save()
+                bcrypt.hash(newUser.password, 10, async (err, hashedPassword) => {
+                    if (err){next(err)}
+                    newUser.password = hashedPassword
+                    await newUser.save()
+                })
                 res.render("signup")
             } catch (error) {
                 console.log(error)
