@@ -9,6 +9,8 @@ router.get("/", login_signup.launch)
 
 router.get("/login", login_signup.GET_sign_in)
 
+router.post("/login", login_signup.POST_sign_in)
+
 router.get("/signup", login_signup.GET_sign_up)
 
 router.post("/signup", login_signup.POST_sign_up)
