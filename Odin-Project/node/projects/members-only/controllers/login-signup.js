@@ -12,12 +12,22 @@ exports.launch = async (req, res) => {
     }
 }
 
+exports.GET_welcome = async (req, res) => {
+    try {
+        res.render("welcome")
+    } catch (error) {
+        res.render("error")
+        console.log(error)
+    }
+}
+
+
 exports.GET_sign_in = async (req, res) => {
     res.render("login")
 }
 
 exports.POST_sign_in = passport.authenticate('local', {
-    successRedirect : '/', 
+    successRedirect : '/welcome', 
     failureRedirect : '/login'
 })
 
