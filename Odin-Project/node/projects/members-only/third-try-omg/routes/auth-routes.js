@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router() 
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+const {ensureAuthenticated, forwardAuthenticated, forwardIsUser} = require("../.config/auth")
+
 
 const signup_login = require("../controllers/signup-login")
 

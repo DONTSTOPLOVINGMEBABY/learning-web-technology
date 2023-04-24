@@ -10,8 +10,7 @@ module.exports = {
     forwardAuthenticated: function(req, res, next) {
       if (!req.isAuthenticated()) {
         return next();
-      }
-      res.redirect('/');      
+      } 
     }, 
     forwardIsUser : async function (req, res, next) {
       const user = await User.findById(req.user._conditions._id)
@@ -19,6 +18,6 @@ module.exports = {
         return res.redirect("/")
       }
       next()
-    }
+    },
 };
   
