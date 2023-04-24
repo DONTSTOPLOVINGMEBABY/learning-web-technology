@@ -1,0 +1,28 @@
+extends format 
+
+block additionalStyles 
+    link(rel="stylesheet" href="/css/welcome.css")
+
+block content
+
+    div#welcome-screen
+        h1.welcome-message.first Welcome to the totally secret club!
+        
+        h1.welcome-message The secret to join is somewhere on this page! 
+
+        button#hint Hint
+
+        h1#thehint Check the DOM!
+
+        form(action='' method="POST")#secret-form
+            div.form-cell
+                label(for="secret-login")#shift-right Enter Secret Key
+                input(type="text" name="secret" id="secret-login")
+            button(type="submit") Enter!
+
+        p#message COPY THIS FOR SECRET: "CAMP ROCK IS A GREAT MOVIE"
+
+        
+        
+        script(src="/js/welcome.js")
+
