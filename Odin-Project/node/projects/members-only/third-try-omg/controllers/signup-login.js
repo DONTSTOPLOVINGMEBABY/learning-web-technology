@@ -79,8 +79,6 @@ exports.POST_sign_up = async (req, res) => {
             try {
                 const hashedPassword = await bcrypt.hash(req.body.password, 10)
                 newUser.password = hashedPassword 
-                console.log(hashedPassword)
-                console.log(newUser)
                 newUser.save()
                 res.redirect("login")
             } catch (error) {

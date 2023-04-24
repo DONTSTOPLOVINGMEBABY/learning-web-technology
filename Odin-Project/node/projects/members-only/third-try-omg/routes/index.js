@@ -6,6 +6,6 @@ const messages_controller = require('../controllers/messages')
 
 router.get("/", ensureAuthenticated, messages_controller.launch)
 
-router.get("/welcome", messages_controller.get_welcome)
+router.get("/welcome", forwardIsUser, messages_controller.get_welcome)
 
 module.exports = router

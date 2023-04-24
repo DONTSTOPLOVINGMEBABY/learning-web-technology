@@ -15,8 +15,7 @@ module.exports = {
     }, 
     forwardIsUser : async function (req, res, next) {
       const user = await User.findById(req.user._conditions._id)
-      console.log(user)
-      if (user.isUser){
+      if (user.isMember){
         return res.redirect("/")
       }
       next()
