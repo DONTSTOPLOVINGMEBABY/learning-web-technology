@@ -20,7 +20,7 @@ exports.GET_sign_up = async (req, res) => {
 }
 
 
-exports.POST_sign_up = async (req, res) => {
+exports.POST_sign_up = async (req, res, next) => {
     try {
         await body("firstName", "You must enter a valid first name")
             .trim()
@@ -67,6 +67,7 @@ exports.POST_sign_up = async (req, res) => {
                 acc[error.path] = error;
                 return acc;
             }, {})
+            console.log(error_object)
             res.render("signup", {
                 data : {
                     error: error_object, 
@@ -75,12 +76,36 @@ exports.POST_sign_up = async (req, res) => {
             })
         }
         else {
-            console.log("hello")
             try {
-                const hashedPassword = await bcrypt.hash(req.body.password, 10)
-                newUser.password = hashedPassword 
-                newUser.save()
-                res.redirect("login")
+                const queryExistingUser = await User.findOne({ $or : [ {email : newUser.email}, {username : newUser.username} ] })
+                if (queryExistingUser){
+                    console.log("No!")
+                    let error_object = {}
+                    if (queryExistingUser.email == newUser.email){
+                        newUser.email = ""
+                        error_object["email_taken"] = {
+                            msg : "This email is taken, choose another one"
+                        }
+                    }
+                    if (queryExistingUser.username == newUser.username){
+                        newUser.username = ""
+                        error_object["username_taken"] = {
+                            msg : "This username is taken, choose another one"
+                        }
+                    }
+                    res.render("signup", {
+                        data : {
+                            error: error_object, 
+                            newUser : newUser, 
+                        }
+                    })
+                }
+                else { 
+                    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+                    newUser.password = hashedPassword 
+                    newUser.save()
+                    res.redirect("login")
+                }
             } catch (error) {
                 res.redirect("/auth/signup")
             }

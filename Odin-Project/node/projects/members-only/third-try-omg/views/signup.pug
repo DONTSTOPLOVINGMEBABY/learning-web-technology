@@ -5,7 +5,7 @@ block content
     if data 
         form(action='' id="sign-up-form" method="POST" onsubmit="submitForm(event)")
             div.form-cell
-                label(for="First-Name")  
+                label(for="First-Name") First Name 
                 input(type="text" required id="firstname-login-input" name="firstName" value=`${data.error.firstName ? "" : data.newUser.firstName}`)
                 if data.error.firstName
                     span#error-form-msg=data.error.firstName.msg
@@ -20,11 +20,15 @@ block content
                 value=`${data.error.email ? "" : data.newUser.email}`)
                 if data.error.email
                     span#error-form-msg=data.error.email.msg
+                if data.error.email_taken 
+                    span#error-form-msg=data.error.email_taken.msg
             div.form-cell
                 label(for="username") Username 
                 input(type="text" required id="username-login-input" name="username" value=`${data.error.username ? "" : data.newUser.username}`) 
                 if data.error.username
                     span#error-form-msg=data.error.username.msg
+                if data.error.username_taken 
+                    span#error-form-msg=data.error.username_taken.msg
             div.form-cell
                 label(for="password-login-input") Password 
                 input(type="password" required id="password-login-input" name="password") 

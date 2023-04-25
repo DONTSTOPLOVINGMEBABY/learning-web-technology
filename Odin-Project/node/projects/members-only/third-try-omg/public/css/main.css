@@ -6,3 +6,7 @@ body {
     display: none;
     color: red;
 }
+
+#error-form-msg {
+    margin-left: 12px;
+}
