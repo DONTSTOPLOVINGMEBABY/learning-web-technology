@@ -14,15 +14,18 @@ block content
 
         h1#thehint Check the DOM!
 
-        form(action='' method="POST")#secret-form
+        div#wrong-secret THATS THE WRONG SECRET
+
+        form(action='' method="POST" id="secret-form" onsubmit="submitForm(event)")
             div.form-cell
                 label(for="secret-login")#shift-right Enter Secret Key
                 input(type="text" name="secret" id="secret-login")
             button(type="submit") Enter!
+            
 
         p#message COPY THIS FOR SECRET: "CAMP ROCK IS A GREAT MOVIE"
 
         
         
-        script(src="/js/welcome.js")
+        script(defer src="/js/welcome.js")
 

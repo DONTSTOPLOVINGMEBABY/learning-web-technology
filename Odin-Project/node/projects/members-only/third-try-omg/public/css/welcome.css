@@ -41,3 +41,10 @@ body {
 #hint, #thehint {
     display: none;
 }
+
+#wrong-secret { 
+    display: none;
+    margin-left: 6px;
+    color: red;
+    font-size: 5rem;
+}

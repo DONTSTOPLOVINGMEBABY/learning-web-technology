@@ -37,6 +37,7 @@ block content
             div.form-cell
                 label(for="confirm-password-login-input") Confirm Password 
                 input(type="password" required id="confirm-password-login-input" name="confirm_password") 
+                span#wrong-password Passwords must match  
                 if data.error.confirm_password
                     span#error-form-msg=data.error.confirm_password.msg
             button#login-button Sign Up!
