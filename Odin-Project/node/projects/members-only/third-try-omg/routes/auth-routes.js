@@ -2,22 +2,26 @@ const express = require('express')
 const router = express.Router() 
 const bcrypt = require('bcrypt')
 const passport = require('passport')
-const {ensureAuthenticated, forwardAuthenticated, forwardIsUser} = require("../.config/auth")
+const {checkLoggedIn, hasAccount} = require("../.config/auth")
+
 
 
 const signup_login = require("../controllers/signup-login")
 
-router.get('/login', signup_login.GET_sign_in)
+router.get('/login', checkLoggedIn, signup_login.GET_sign_in)
 
-router.post('/login', signup_login.POST_sign_in)
+router.post('/login', checkLoggedIn, signup_login.POST_sign_in)
 
-router.get('/signup', signup_login.GET_sign_up)
+router.get('/signup', checkLoggedIn, signup_login.GET_sign_up)
 
-router.post('/signup', signup_login.POST_sign_up)
+router.post('/signup', checkLoggedIn, signup_login.POST_sign_up)
 
-router.get('/logout', (req, res) => {
+router.get('/logout', hasAccount, (req, res) => {
     req.logout()
     res.redirect('/users/login')
 })
+
+// Fix bug where users can access login and signup while being logged in 
+// 
 
 module.exports = router
