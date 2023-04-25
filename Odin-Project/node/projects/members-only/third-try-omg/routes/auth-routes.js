@@ -16,10 +16,6 @@ router.get('/signup', checkLoggedIn, signup_login.GET_sign_up)
 
 router.post('/signup', checkLoggedIn, signup_login.POST_sign_up)
 
-router.get('/logout', hasAccount, (req, res) => {
-    req.logout()
-    res.redirect('/users/login')
-})
 
 // Fix bug where users can access login and signup while being logged in 
 // 
