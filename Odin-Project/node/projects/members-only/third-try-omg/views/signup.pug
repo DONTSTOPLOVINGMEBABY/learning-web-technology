@@ -3,7 +3,7 @@ extends format
 block content 
 
     if data 
-        form(action='' method="POST")
+        form(action='' id="sign-up-form" method="POST" onsubmit="submitForm(event)")
             div.form-cell
                 label(for="First-Name")  
                 input(type="text" required id="firstname-login-input" name="firstName" value=`${data.error.firstName ? "" : data.newUser.firstName}`)
@@ -16,7 +16,7 @@ block content
                     span#error-form-msg=data.error.lastName.msg
             div.form-cell
                 label(for="Email") Email  
-                input(type="email" required id="password-login-input" name="email"
+                input(type="email" required id="email-login-input" name="email"
                 value=`${data.error.email ? "" : data.newUser.email}`)
                 if data.error.email
                     span#error-form-msg=data.error.email.msg
@@ -38,7 +38,7 @@ block content
             button#login-button Sign Up!
 
     else 
-        form(action='' method="POST")
+        form(action='' method="POST" id='sign-up-form' onsubmit="submitForm(event)")
             div.form-cell
                 label(for="First-Name") First Name  
                 input(type="text" required id="firstname-login-input" name="firstName")
@@ -47,7 +47,7 @@ block content
                 input(type="text" required id="lastname-login-input" name="lastName")
             div.form-cell
                 label(for="Email") Email  
-                input(type="email" required id="password-login-input" name="email")
+                input(type="email" required id="email-login-input" name="email")
             div.form-cell
                 label(for="username") Username 
                 input(type="text" required id="username-login-input" name="username") 
@@ -56,5 +56,12 @@ block content
                 input(type="password" required id="password-login-input" name="password") 
             div.form-cell
                 label(for="confirm-password-login-input") Confirm Password 
-                input(type="password" required id="confirm-password-login-input" name="confirm_password")     
+                input(type="password" required id="confirm-password-login-input" name="confirm_password") 
+                span#wrong-password Passwords must match  
+
             button#login-button Sign Up!
+
+    div Already Registered? 
+        a(href="/auth/login")  Sign in! 
+
+    script(defer src="/js/signup.js")

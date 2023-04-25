@@ -9,4 +9,4 @@ hint.addEventListener("click", () => {
     thehint.style.display = "block"
 })
 
-setTimeout( activateHint, 3000 )
+setTimeout( activateHint, 5000 )
