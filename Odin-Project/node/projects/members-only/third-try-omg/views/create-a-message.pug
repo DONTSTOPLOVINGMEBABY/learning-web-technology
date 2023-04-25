@@ -1,0 +1,40 @@
+extends format 
+
+block additionalStyles 
+    link(rel="stylesheet" href="/css/create-message.css")
+
+block content 
+    
+    h1 Create a message
+    
+    if data
+
+        form(action='' method="POST" id='submit-message-form' onsubmit="submitForm(event)")
+            div.form-cell
+                label(for="message-title") Message Title
+                input(type="text" required id="message-title" name="message_title" value=`${data.errors.message_title ? "" : data.message.title}`)
+            div.form-cell
+                label(for="message-description") Message Content
+                textarea(name='message_description' required id='message-description')=`${data.errors.message_description ? "" : data.message.content}`
+
+            div#center-button
+                button#submit-form Create Message
+
+        if data.errors.message_title 
+            div#error-message=data.errors.message_title.msg
+    
+        if data.errors.message_description 
+            div#error-message=data.errors.message_description.msg
+
+    else 
+
+        form(action='' method="POST" id='submit-message-form' onsubmit="submitForm(event)")
+            div.form-cell
+                label(for="message-title") Message Title
+                input(type="text" required id="message-title" name="message_title")
+            div.form-cell
+                label(for="message-description") Message Content
+                textarea(name='message_description' required id='message-description')
+
+            div#center-button
+                button#submit-form Create Message

@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(98, 98, 98);
+    background-color: rgb(210, 210, 210);
 }
 
 #wrong-password {
@@ -9,4 +9,11 @@ body {
 
 #error-form-msg {
     margin-left: 12px;
+}
+
+#footer {
+    position: absolute;
+    transform: translate(-50%, 50%);
+    bottom: 30px;
+    left: 50%;
 }

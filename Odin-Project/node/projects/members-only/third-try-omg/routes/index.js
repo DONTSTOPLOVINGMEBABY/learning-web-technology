@@ -8,4 +8,10 @@ router.get("/", hasAccount, checkNotAMember, messages_controller.launch)
 
 router.get("/welcome", hasAccount, checkisAMember, messages_controller.get_welcome)
 
+router.post("/welcome", messages_controller.post_welcome)
+
+router.get("/create-a-message", hasAccount, checkNotAMember, messages_controller.get_create_message)
+
+router.post("/create-a-message", hasAccount, checkNotAMember, messages_controller.post_create_message)
+
 module.exports = router

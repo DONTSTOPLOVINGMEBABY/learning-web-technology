@@ -1,5 +1,14 @@
 extends format 
 
+block additionalStyles 
+    link(rel="stylesheet" href="/css/clubhouse.css")
+
 block content 
 
-    h1 Members Only 
+    div#top-level-content
+        h1 Members Only 
+        button(onclick="navigateToMessage()")#create-message Create a Message
+
+
+    
+    script(defer src="/js/message-board.js")

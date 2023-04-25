@@ -1,0 +1,32 @@
+
+Not a member
+----------------
+
+If a user is not a member, they can only access : 
+    1. Login 
+    2. Signup
+    3. Not isMember HomePage 
+
+If a user is signed up :
+
+    AND is not a member : 
+        CAN 
+        1. access the welcome page
+        2. access logout 
+        CAN'T 
+        1. Everything else 
+
+    AND IS a MEMBER : 
+        THEY CAN 
+        1. access full Homepage
+        2. access logout 
+
+        THEY CAN'T 
+        1. They can't access login
+        2. They can't access signup
+        
+
+functions : 
+    1. Need a function to tell if a user is in the db (has an account)
+    2. Need a function to tell if a user is not in the db (doesn't have an account)
+    3. Need a function to tell if a user isaMember  
