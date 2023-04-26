@@ -9,7 +9,6 @@ exports.launch = async (req, res) => {
         const query = await Message.find()
             .sort({ uploadDate : -1 })
             .exec()
-        console.log(query)
         res.render("index", {
             data : {
                 documents : query, 
@@ -103,5 +102,24 @@ exports.post_create_message = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.render("error")
+    }
+}
+
+exports.getUserPosts = async (req, res, next) => {
+    try {
+        let fetchUser = await User.findOne({username: req.params.username}) 
+        let messages = await Message.find(
+            {author : req.params.username})
+            .sort({uploadDate : -1})
+            .exec() 
+        console.log(messages)
+        res.render("user-messages", {
+            data : {
+                userData : fetchUser, 
+                messages : messages, 
+            }
+        })
+    } catch (error) {
+
     }
 }

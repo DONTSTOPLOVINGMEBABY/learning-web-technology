@@ -14,6 +14,8 @@ router.get("/create-a-message", hasAccount, checkNotAMember, messages_controller
 
 router.post("/create-a-message", hasAccount, checkNotAMember, messages_controller.post_create_message)
 
+router.get("/Users/:username", hasAccount, checkNotAMember, messages_controller.getUserPosts)
+
 router.get('/logout', hasAccount, (req, res) => {
     req.logout((err) => {
         if (err) {console.log(err)}
