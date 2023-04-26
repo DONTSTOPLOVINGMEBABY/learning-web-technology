@@ -36,7 +36,7 @@ exports.post_welcome = async(req, res) => {
             })
         }
         else {
-            let user = await User.findById(req.user._conditions._id)
+            let user = await User.findById(req.user.id)
             user.isMember = true 
             await user.save()
             res.redirect("/")
@@ -72,7 +72,7 @@ exports.post_create_message = async (req, res) => {
             title : req.body.message_title, 
             content : req.body.message_description, 
             uploadDate : new Date(), 
-            author : req.user._conditions._id, 
+            author : req.user.id, 
         })
         if (!errors.isEmpty()){
             let error_object = errors.array().reduce((acc, error) => {

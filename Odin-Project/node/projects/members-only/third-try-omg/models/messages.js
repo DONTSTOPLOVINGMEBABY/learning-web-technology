@@ -11,7 +11,7 @@ const MessageSchema = new Schema({
 
 
 MessageSchema.virtual("url").get( function () {
-    return `/Messages/${this._id}`
+    return `/messages/${this._id}`
 })
 
 module.exports = mongoose.model("Message", MessageSchema)

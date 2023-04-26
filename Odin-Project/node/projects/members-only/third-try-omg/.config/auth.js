@@ -1,5 +1,3 @@
-const User = require('../models/users')
-
 module.exports = {
   hasAccount : function (req, res, next) {
     if (!req.isAuthenticated()){
@@ -8,15 +6,13 @@ module.exports = {
     next()
   },
   checkNotAMember : async function (req, res, next) {
-    const thisUser = await User.findById(req.user._conditions._id)
-    if (!thisUser.isMember){
+    if (!req.user.isMember){
       return res.redirect("/welcome")
     }
     next()
   }, 
   checkisAMember : async function (req, res, next) {
-    const thisUser = await User.findById(req.user._conditions._id)
-    if (thisUser.isMember){
+    if (req.user.isMember){
       return res.redirect("/")
     }
     next()
