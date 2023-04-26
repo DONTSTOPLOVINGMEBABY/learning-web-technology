@@ -8,8 +8,21 @@ block content
     div#top-level-content
         h1 Members Only 
         button(onclick="navigateToMessage()")#create-message Create a Message
-
-    
+        if !data.signed_in   
+            h3 
+                a(href="/auth/login") Login to View Full Messages
+         
+    each document in data.documents 
+        div#message 
+            div#top
+                span#title Title: !{document.title}
+                if data.signed_in
+                    span#author 
+                        a(href=`/Users/${document.author}`) Author: !{document.author}
+                    span#uploadDate Uploaded: #{new Date(document.uploadDate).toLocaleDateString()}
+            div#content
+                span#message-content=document.content
+            
 
     
     script(defer src="/js/message-board.js")

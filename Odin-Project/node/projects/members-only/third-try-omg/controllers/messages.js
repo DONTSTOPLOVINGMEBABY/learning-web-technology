@@ -6,7 +6,16 @@ const {body, validationResult} = require('express-validator')
 
 exports.launch = async (req, res) => {
     try {
-        res.render("index")
+        const query = await Message.find()
+            .sort({ uploadDate : -1 })
+            .exec()
+        console.log(query)
+        res.render("index", {
+            data : {
+                documents : query, 
+                signed_in : req.isAuthenticated()
+            }
+        })
     } catch (error) {
         res.send("error")
         console.log(error)
@@ -72,7 +81,7 @@ exports.post_create_message = async (req, res) => {
             title : req.body.message_title, 
             content : req.body.message_description, 
             uploadDate : new Date(), 
-            author : req.user.id, 
+            author : req.user.username, 
         })
         if (!errors.isEmpty()){
             let error_object = errors.array().reduce((acc, error) => {

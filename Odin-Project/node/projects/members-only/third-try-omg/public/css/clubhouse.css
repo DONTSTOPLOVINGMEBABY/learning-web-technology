@@ -15,3 +15,32 @@ body {
     height: 50px;
     
 }
+
+#message {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+#top {
+    display: flex;
+    justify-content: space-around;
+}
+
+#title, #author, #uploadDate { 
+    font-size: 1.6rem;
+}
+
+#content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10px;
+    font-size: 1.25rem;
+}
+
+#message-content {
+    width: 80%;
+}
