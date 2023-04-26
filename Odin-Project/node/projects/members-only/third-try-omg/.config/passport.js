@@ -22,8 +22,14 @@ module.exports = function (passport) {
     }
 
     passport.use( new LocalStrategy({usernameField : 'username'}, authenticateUser))
-    passport.serializeUser((user, done) => done(null, user.id))
-    passport.deserializeUser((id, done) => {
-        done(null, User.findById(id))
+    passport.serializeUser((user, done) => done(null, { id: user.id, username: user.username }))
+    passport.deserializeUser(async (userData, done) => {
+        try {
+            const user = await User.findById(userData.id)
+            user.username = userData.username 
+            done(null, user)
+        } catch (error) {
+            done(error)
+        }
     })
 }
