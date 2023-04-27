@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+#submit-message-form {
+    display: flex ; 
+    flex-direction: column;
+}
+
+
+
+form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-cell {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#message-title {
+    width: 50%;
+    font-weight: 700;
+}
+
+#message-description {
+    width: 50%;
+    font-weight: 700;
+    height: 150px;
+}
+
+#center-button {
+    width: 100%; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#submit-form {
+    width: 80px;
+}
+
+#error-message { 
+    color: red;
+    margin-top: 12px;
+    font-size: 2rem;
+}

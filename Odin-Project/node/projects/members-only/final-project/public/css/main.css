@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(210, 210, 210);
+}
+
+#wrong-password {
+    display: none;
+    color: red;
+}
+
+#error-form-msg {
+    margin-left: 12px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: flex;
+}
+
+#footer > a {
+    margin-right: 12px;
+}

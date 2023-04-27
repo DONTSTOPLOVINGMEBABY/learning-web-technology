@@ -1,0 +1,62 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+#user-messages-page {
+    width: 100%;
+    height: 100%;
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#username, #name {
+    font-weight: 500;
+}
+
+
+#message {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px;
+}
+
+#top-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#top {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+#title, #author, #uploadDate { 
+    font-size: 1.6rem;
+}
+
+#content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10px;
+    font-size: 1.25rem;
+}
+
+#message-content {
+    width: 80%;
+}

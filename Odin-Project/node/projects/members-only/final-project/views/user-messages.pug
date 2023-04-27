@@ -1,0 +1,21 @@
+extends format
+
+block additionalStyles
+  link(rel="stylesheet" href="/css/user-messages.css")
+
+block content
+  div#user-messages-page
+    div#profile-info Profile Info 
+      span#username Username : !{data.userData.username}
+      span#name Name : !{data.userData.firstName} !{data.userData.lastName}
+
+    each message in data.messages
+      div#message
+        div#top-container
+          div#top
+            span#title Title: !{message.title}
+            span#author Author : !{message.author}
+            span#uploadDate Uploaded: #{new Date(message.uploadDate).toLocaleDateString()}
+        div#content
+          span#message-content=message.content
+
