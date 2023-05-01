@@ -3,13 +3,19 @@ const app = express()
 const dotenv = require('dotenv')
 const path = require('path')
 const mongoose = require('mongoose')
+const logger = require('morgan')
 dotenv.config()
 
 const PORT = process.env.PORT || 3000 
 
+// Routes 
+const indexRoutes = require("./routes/index")
+const authRoutes = require("./routes/authRoutes")
+
 // express middleware
 app.use(express.urlencoded({ extended : true }))
 app.use(express.static(path.join(__dirname, 'public'))) 
+app.use(logger('dev'))
 
 // connect mongoose
 const db_connect = process.env.CONNECTION_STRING
@@ -20,9 +26,9 @@ async function connect_goose () {
 connect_goose()
 
 
-app.get("/", (req, res) => {
-    res.send("hello")
-})
+app.use("/", indexRoutes)
+
+app.use("/auth", authRoutes)
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)

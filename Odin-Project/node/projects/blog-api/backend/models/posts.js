@@ -6,6 +6,7 @@ const ArticleSchema = new Schema({
     content : { type: String, require: true }, 
     uploadDate : { type: Date, require: true }, 
     category : { type: String, require: true }, 
+    published: { type: Boolean, require: true }, 
 })
 
 
