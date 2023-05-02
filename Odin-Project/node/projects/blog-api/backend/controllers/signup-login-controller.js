@@ -1,9 +1,18 @@
 const User = require('../models/users')
 const bcrypt = require('bcrypt')
 const {body, validationResult} = require('express-validator')
+const passport = require('passport')
 
 exports.POST_login = async function (req, res, next) {
-    res.send("hello")
+    try {
+        passport.authenticate( 'local', {
+            successRedirect : '/', 
+            failureRedirect: '/auth/login', 
+            failureFlash : false, 
+        })(req, res, next)
+    } catch (error) {
+        res.send(error)
+    }
 }
 
 exports.POST_sign_up = async function (req, res, next) {
@@ -34,11 +43,10 @@ exports.POST_sign_up = async function (req, res, next) {
                 if (query_existing_user){
                     res.send("User already exists with that account")
                 } else {
-                    console.log(newUser)
                     let hashed_password = await bcrypt.hash(newUser.password, 10)
                     newUser.password = hashed_password 
-                    console.log(hashed_password)
                     await newUser.save()
+                    res.send("created")
                 }
             } catch (err) {
                 res.send(err)

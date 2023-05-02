@@ -3,10 +3,14 @@ const app = express()
 const dotenv = require('dotenv')
 const path = require('path')
 const mongoose = require('mongoose')
+const passport = require('passport')
+const session = require('express-session')
 const logger = require('morgan')
 dotenv.config()
 
 const PORT = process.env.PORT || 3000 
+
+require('./.config/passport')(passport)
 
 // Routes 
 const indexRoutes = require("./routes/index")
@@ -25,9 +29,18 @@ async function connect_goose () {
 }
 connect_goose()
 
+app.use(session({
+    secret : 'hank', 
+    resave : true, 
+    saveUninitialized: true, 
+}))
 
+// passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
+// routes 
 app.use("/", indexRoutes)
-
 app.use("/auth", authRoutes)
 
 app.listen(PORT, () => {
