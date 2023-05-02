@@ -3,9 +3,11 @@ const Schema = mongoose.Schema
 
 const ArticleSchema = new Schema({
     title : { type : String, require: true }, 
+    subtitle : { type : String, require : true }, 
+    author : { type : String, require : true }, 
     content : { type: String, require: true }, 
     uploadDate : { type: Date, require: true }, 
-    category : { type: String, require: true }, 
+    categories : { type: Array, require: true }, 
     published: { type: Boolean, require: true }, 
 })
 
