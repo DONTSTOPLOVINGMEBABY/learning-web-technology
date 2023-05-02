@@ -15,6 +15,7 @@ require('./.config/passport')(passport)
 // Routes 
 const indexRoutes = require("./routes/index")
 const authRoutes = require("./routes/authRoutes")
+const adminRoutes = require('./routes/admin-routes')
 
 // express middleware
 app.use(express.urlencoded({ extended : true }))
@@ -42,6 +43,7 @@ app.use(passport.session())
 // routes 
 app.use("/", indexRoutes)
 app.use("/auth", authRoutes)
+app.use("/admin", adminRoutes)
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)

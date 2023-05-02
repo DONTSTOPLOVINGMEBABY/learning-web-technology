@@ -1,0 +1,38 @@
+let title = `Meta open-sources 'significantly faster' build system`
+    let subtitle = `Buck2 is a large-scale build system written in Rust and designed for speed. Builds complete twice as fast as with Buck1, the company says.`
+    let author = `Paul Krill`
+    let content = `Facebook parent company Meta has released its Buck2 build system under the MIT open source license. Written in Rust and designed to make the build experience faster and more efficient, Buck2 is being used by thousands of developers at Meta and performing millions of builds per day, the company said.
+
+    Open-sourced on April 6 as a faster successor to the Buck1 build system, Buck2 can be accessed from GitHub or from the Buck2 website. The system is capable of building software written in any language, and it can build software written in many languages simultaneously. For example, if developers have a Python binary that imports a Rust library that depends on an OCaml library that depends on a C file, Buck2 can help, Meta said.
+    
+    For each language, a generic rule needs to be written that describes what it means to compile to that specific language and how it provides standard features, such as testing, running, and linking with C. Out of the box, Buck2 ships with rules for Assembly, C/C++, Erlang, Go, Haskell, Java, JavaScript, Julia, OCaml, Python, and Rust. To add or reimplement language rules to Buck2, developers can use the Starlark scripting language, a dialect of Python.
+    
+    A from-scratch rewrite of Buck, Buck2 features a separation of the core and language-specific rules, with increased parallelism, integration with remote execution and virtual file systems, and a redesigned console output. Buck2s core was written in Rust while the language rules, such as how to build C++, were written in a Rust implementation of Starlark. Separating the language rules from the core makes the rules easier to change and to understand, Meta said. A single dependency graph powers the build system, eliminating many types of bugs and improving parallelism, while the rules API is designed to offer advanced features for performance.
+
+    Writing Buck2 in Rust offers advantages such as a lack of garbage collection pauses, whereas Java, which Meta used in writing Buck1, offers advantages such as better profiling tools, Meta said. The Buck2 binary is language-agnostic.`
+    let upload_date = new Date(`4/6/2023`).getTime()
+    let category = `Systems Design`
+    let published = true
+
+    let category_id = (await Category.findOne({name : category}))
+    let exists = await Post.findOne({title: title})
+    if (!exists && category_id){
+        try { 
+            const newPost = new Post({
+                title : title, 
+                subtitle : subtitle, 
+                author : author, 
+                content : content, 
+                upload_date : upload_date, 
+                categories: [category_id._id], 
+                published : published, 
+            })
+            await newPost.save()
+            res.send("Saved")
+        } catch (error) {
+            res.send(error)
+        }        
+    }
+    else {
+        res.send("stuff exists and it did not save")
+    }
