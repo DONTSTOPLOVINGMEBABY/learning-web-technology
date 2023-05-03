@@ -48,33 +48,35 @@ function LoginPage() {
     }
 
     return (
-        <div id='admin-login'>
-            <div id='left-side-login'>
-                <Player 
-                    src="https://assets10.lottiefiles.com/packages/lf20_162jfba4.json"
-                    background="transparent"
-                    speed={1.2}
-                    loop
-                    autoplay
-                    id='login-animation'
-                />
-            </div>
-            <div id='right-side-login'>
-                <form id='login-form' action="http://localhost:3001/admin/login" method="POST" onSubmit={submitLogin}>
-                    <h1 id='form-title'>Admin Login</h1>
-                    <div className="login-input-cell">
-                        <input type="text" name="username" ref={username} id="username-input" placeholder='Username' required 
-                        onChange={hideErrorMessages}/>
-                    </div>
-                    <div className="login-input-cell">
-                        <input type="password" name="password" ref={password} id="password-input" placeholder='Password' onChange={hideErrorMessages} required/>
-                    </div>
-                    <div className="login-input-cell">
-                        <button id='sign-in-button' type='submit'>LOGIN</button>
-                    </div>
-                    <span className='form-error' ref={user_info_error}>Incorrect Username/Password</span>
-                    <span className='form-error' ref={server_error}>Server Error, Try Again Later</span>
-                </form>
+        <div id={styles.main_container}>
+            <div id={styles.admin_login_modal}>
+                <div id={styles.left_side_login}>
+                    <Player 
+                        src="https://assets10.lottiefiles.com/packages/lf20_162jfba4.json"
+                        background="transparent"
+                        speed={1.2}
+                        loop
+                        autoplay
+                        id={styles.login_animation}
+                    />
+                </div>
+                <div id={styles.right_side_login}>
+                    <form id={styles.login_form} action="http://localhost:3001/admin/login" method="POST" onSubmit={submitLogin}>
+                        <h1 id={styles.form_title}>Admin Login</h1>
+                        <div className={styles.login_input_cell}>
+                            <input type="text" name="username" ref={username} id={styles.username_input} placeholder='Username' required 
+                            onChange={hideErrorMessages}/>
+                        </div>
+                        <div className={styles.login_input_cell}>
+                            <input type="password" name="password" ref={password} id={styles.password_input} placeholder='Password' onChange={hideErrorMessages} required/>
+                        </div>
+                        <div className={styles.login_input_cell}>
+                            <button id={styles.sign_in_button} type='submit'>LOGIN</button>
+                        </div>
+                        <span className={styles.form_error} ref={user_info_error}>Incorrect Username/Password</span>
+                        <span className={styles.form_error} ref={server_error}>Server Error, Try Again Later</span>
+                    </form>
+                </div>
             </div>
         </div>
     )
