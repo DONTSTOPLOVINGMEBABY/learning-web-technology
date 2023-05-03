@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient( to right top, #4B59BA, #BB5CBD);
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#admin-login {
+    height: 50%;
+    width: 45%;
+    min-height: 500px;
+    min-width: 800px;
+    background-color: white;
+    display: flex;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+#left-side-login, #right-side-login {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Raleway";
+    flex-direction: column;
+    position: relative;
+}
+
+#right-side-login {
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.login-input-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#username-input, #password-input {
+    width: 45%;
+    height: 40px;
+    border-radius: 25px;
+    outline: none;
+    padding-left: 10px;
+    border: none;
+    background-color: #E6E6E6;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+#sign-in-button {
+    width: 47%;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    background-color: #6EB454 ; 
+    color: white;
+    font-weight: 700;
+    outline: black ; 
+    cursor: pointer;
+}
+
+.form-error {
+    margin-top: 10px;
+    color: rgb(253, 102, 102);
+    font-size: 1rem;
+    font-weight: 700;
+    display: none;
+    position: absolute;
+    bottom: 15%;
+
+}
