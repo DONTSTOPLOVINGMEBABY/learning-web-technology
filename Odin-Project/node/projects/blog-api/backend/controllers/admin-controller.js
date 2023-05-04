@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const {body, validationResult} = require('express-validator')
 
 function generateAccessToken(user){
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn : '30s' })
+    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn : '1d' })
 }
 
 exports.POST_login_admin = async function (req, res, next) {
@@ -36,7 +36,7 @@ exports.POST_login_admin = async function (req, res, next) {
                 if (match) {
                     res.json({ accessToken : generateAccessToken({ username : user.username }) })
                 } else {
-                    res.sendStatus(404)
+                    res.sendStatus(403)
                 }
             } else {
                 res.sendStatus(401)

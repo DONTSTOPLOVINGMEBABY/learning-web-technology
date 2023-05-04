@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const logger = require('morgan')
+const cors = require('cors')
 dotenv.config()
 
 const PORT = process.env.PORT || 3000 
@@ -20,7 +21,9 @@ const adminRoutes = require('./routes/admin-routes')
 // express middleware
 app.use(express.urlencoded({ extended : true }))
 app.use(express.static(path.join(__dirname, 'public'))) 
+app.use(express.json())
 app.use(logger('dev'))
+app.use(cors())
 
 // connect mongoose
 const db_connect = process.env.CONNECTION_STRING

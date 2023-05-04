@@ -58,3 +58,5 @@ exports.GET_Category = async function (req, res, next) {
         res.sendStatus(500)
     }    
 }
+
+// This needs a post for a comment + midelware to authenticate user in order to allow comment
