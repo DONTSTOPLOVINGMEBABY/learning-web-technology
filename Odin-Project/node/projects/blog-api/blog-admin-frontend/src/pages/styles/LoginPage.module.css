@@ -37,6 +37,10 @@
     position: relative;
 }
 
+#form_title { 
+    margin-bottom: 12px;
+}
+
 #right_side_login {
     font-size: .75rem;
     font-weight: 700;
