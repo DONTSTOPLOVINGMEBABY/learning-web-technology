@@ -17,4 +17,6 @@ router.post('/login', admin_controller.POST_login_admin)
 
 router.get('/articles/:id', articles_controller.GET_Article)
 
+router.get('/verify', authenticate_jwt, admin_controller.verify_jwt)
+
 module.exports = router

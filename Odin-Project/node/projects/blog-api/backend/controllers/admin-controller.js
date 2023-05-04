@@ -106,3 +106,7 @@ exports.POST_switch_article_status = async function (req, res, next) {
         res.sendStatus(404)
     }
 }
+
+exports.verify_jwt = async function (req, res, next) {
+    res.send(200)
+}
