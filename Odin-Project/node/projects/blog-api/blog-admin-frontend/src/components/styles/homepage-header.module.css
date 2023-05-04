@@ -1,0 +1,65 @@
+#header {
+    height: 56px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.publish_status_icon {
+    height: 10px;
+    width: 10px;
+    margin-right: 4px;
+}
+
+#metrics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#metrics_title {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+#header_title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.publish_status_span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#published_status_container {
+    display: flex;
+}
+
+#admin_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#create_new_post, #all_metrics {
+    width: 47%;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    background-color: #6EB454 ; 
+    color: white;
+    font-weight: 700;
+    outline: black ; 
+    cursor: pointer;
+}
+
+#create_new_post {
+    margin-right: 12px;
+}
