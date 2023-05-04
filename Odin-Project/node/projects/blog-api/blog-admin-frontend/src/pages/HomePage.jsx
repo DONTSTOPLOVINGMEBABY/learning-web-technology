@@ -45,13 +45,13 @@ function HomePage() {
 						<div id={styles.published_articles}>
 							<h1 className={styles.col_title}>Published Articles</h1>
 							{ publishedArticles.map( (article) => {
-								return <ArticlePreview author={article.author} categories={article.categories} content={article.content} published={article.published} subtitle={article.subtitle} title={article.title} uploadDate={article.uploadDate} key={article.title} id={article._id}/> 
+								return <ArticlePreview author={article.author} categories={article.categories} content={article.content} published={article.published} subtitle={article.subtitle} title={article.title} uploadDate={article.uploadDate} key={article._id} id={article._id}/> 
 							})}
 						</div>
 						<div id={styles.unpublished_articles}>
 							<h1 className={styles.col_title}>Unpublished Articles</h1>
 							{ unpublishedArticles.map( (article) => {
-								return <ArticlePreview author={article.author} categories={article.categories} content={article.content} published={article.published} subtitle={article.subtitle} title={article.title} uploadDate={article.uploadDate} key={article.title} id={article._id}/> 
+								return <ArticlePreview author={article.author} categories={article.categories} content={article.content} published={article.published} subtitle={article.subtitle} title={article.title} uploadDate={article.uploadDate} key={article._id} id={article._id}/> 
 							})}
 						</div>
 					</div>

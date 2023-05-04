@@ -1,7 +1,8 @@
 import styles from './styles/LoginPage.module.css'
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import authenticate_jwt from '../utils/auth-jwt'
 
 function LoginPage() {
 
@@ -11,6 +12,24 @@ function LoginPage() {
     const user_info_error = useRef()
     const server_error = useRef()
     const navigate = useNavigate()
+    const [hideLogin, setHideLogin] = useState(true)
+
+    const checkIfLoggedIn = async (e) => {
+        const token = authenticate_jwt() 
+        if (!token){
+            setHideLogin(false)
+            return
+        }
+        let authenticate = await fetch("http://localhost:3001/admin/verify", {
+            method: 'GET', 
+            headers : { 
+				'Content-Type' : 'application/json', 
+				'Authorization' : `Bearer ${token}` 
+			}
+        })
+        if (authenticate.ok){ navigate('/admin/home') }
+        setHideLogin(false)
+    }
 
     const fetchLogin = async () => {
         return await fetch("http://localhost:3001/admin/login", {
@@ -47,7 +66,13 @@ function LoginPage() {
         navigate("/admin/home")
     }
 
+    useEffect( () => {
+        checkIfLoggedIn()
+    }, [])
+
     return (
+        <>
+        { !hideLogin ? 
         <div id={styles.main_container}>
             <div id={styles.admin_login_modal}>
                 <div id={styles.left_side_login}>
@@ -78,7 +103,8 @@ function LoginPage() {
                     </form>
                 </div>
             </div>
-        </div>
+        </div> : null } 
+        </>
     )
 }
 

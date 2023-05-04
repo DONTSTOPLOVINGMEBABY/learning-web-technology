@@ -9,4 +9,3 @@ let try_me = await fetch("http://localhost:3001/admin/home", {
 
 1. Create 'create-new-post' page 
 2. Create '/admin/articles/:id page 
-3. 
