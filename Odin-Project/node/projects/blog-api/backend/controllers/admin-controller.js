@@ -1,5 +1,6 @@
 const Post = require('../models/posts')
 const Category = require('../models/post-categories')
+const Comment = require('../models/comments')
 const Admin = require('../models/admin')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -97,6 +98,7 @@ exports.POST_article = async function (req, res, next) {
 }
 
 exports.POST_switch_article_status = async function (req, res, next) {
+    console.log("hi")
     try {
         let article = await Post.findById(req.params.id)
         article.published = !article.published
@@ -109,4 +111,21 @@ exports.POST_switch_article_status = async function (req, res, next) {
 
 exports.verify_jwt = async function (req, res, next) {
     res.send(200)
+}
+
+exports.GET_article = async function (req, res, next) {
+    try {
+        let article = await Post.findById(req.params.id)
+        
+        let comments = await Comment.find({ postId : req.params.id })
+        if (article){
+            res.json({ article : article, comments: comments })
+        }
+        else {
+            res.sendStatus(404)
+        }
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500)
+    }
 }
