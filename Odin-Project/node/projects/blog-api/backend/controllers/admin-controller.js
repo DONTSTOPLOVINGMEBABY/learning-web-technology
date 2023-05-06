@@ -86,6 +86,7 @@ exports.POST_article = async function (req, res, next) {
                 prev[err.path] = err
                 return prev
             }, {})
+            console.log(newPost)
             res.json({ post : newPost, errors : errors_object })
         }
         else {
@@ -128,4 +129,11 @@ exports.GET_article = async function (req, res, next) {
         console.log(error)
         res.sendStatus(500)
     }
+}
+
+exports.GET_tiny_key = async function (req, res, next) {
+    let key = process.env.TINY_API_KEY
+    console.log("KEY", key)
+    if (key){ res.json( { key : key } ) }
+    else { res.sendStatus(404) }
 }
