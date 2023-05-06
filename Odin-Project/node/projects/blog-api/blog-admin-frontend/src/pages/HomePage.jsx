@@ -31,6 +31,11 @@ function HomePage() {
 		setUnpublishedArticles(articles.unpublished)
 	} 
 
+	const logout = function () {
+		localStorage.removeItem('jwt')
+		navigate('/admin/login')
+	}
+
 	useEffect( () => {
 		if (!validJWT){ get_admin_homepage() }
 	}, [])
@@ -54,6 +59,9 @@ function HomePage() {
 								return <ArticlePreview author={article.author} categories={article.categories} content={article.content} published={article.published} subtitle={article.subtitle} title={article.title} uploadDate={article.uploadDate} key={article._id} id={article._id}/> 
 							})}
 						</div>
+					</div>
+					<div id={styles.center_logout_button}>
+						<button id={styles.logout_button} onClick={logout}>Logout</button>
 					</div>
 				</div>
 			</div>

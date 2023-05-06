@@ -32,3 +32,9 @@
 .col_title {
     margin-bottom: 12px;
 }
+
+#center_logout_button {
+    position: absolute;
+    left: 50%;
+    bottom: .5%;
+}
