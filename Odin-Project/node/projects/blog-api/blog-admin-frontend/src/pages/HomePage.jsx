@@ -71,19 +71,3 @@ function HomePage() {
 }
 
 export default HomePage
-
-
-/*
-
-1. Header
-	- Metrics (# of unpublished articles, # of )
-	- Create a new post 
-	- See all metrics (for graphs, implement later (maybe))
-2. Body 
-	- Two columns (published, unpublished)
-	- column in the middle 
-
-3. Footer
-	- Sign out 
-*/ 
-
