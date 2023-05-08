@@ -6,3 +6,5 @@ Jon Duckett - HTML and CSS_ Design and Build Websites (2011, Wiley) - libgen.lc.
 *that.py
 *this.rb
 *.env
+
+.gitignore
