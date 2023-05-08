@@ -1,0 +1,1 @@
+GET https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=compact&apikey=GH5RZKE5CLNDYG61
