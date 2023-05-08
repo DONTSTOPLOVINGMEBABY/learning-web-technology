@@ -41,11 +41,8 @@ function CreateArticle() {
 			}, 
 			body : JSON.stringify(data), 
 		})
-		if (!postData.ok) { alert("Post failed") }
-		let response = await postData.json()
-		console.log(response)
-		console.log(JSON.stringify(data))
-
+		if (!postData.ok) { alert("Post failed") ; return }
+		navigate("/admin/home")
 	}
  
 	const grab_editor_api_key = async () => {
@@ -100,19 +97,19 @@ function CreateArticle() {
 						/>
 						<div className='cell'>
 							<label htmlFor='Title'>Title</label>
-							<input type='text' name='title' ref={title}/>
+							<input required type='text' name='title' ref={title}/>
 						</div>
 						<div className='cell'>
 							<label htmlFor='subtitle'>Subtitle</label>
-							<input type='text' name='subtitle' ref={subtitle}/>
+							<input required type='text' name='subtitle' ref={subtitle}/>
 						</div>
 						<div className='cell'>
 							<label htmlFor='author'>Author</label>
-							<input type='text' name='author' ref={author}/>
+							<input required type='text' name='author' ref={author}/>
 						</div>
 						<div className='cell'>
 							<label htmlFor='Title'>Upload Date</label>
-							<input type='date' name='upload_date' ref={upload_date}/>
+							<input required type='date' name='upload_date' ref={upload_date}/>
 						</div>
 						<div className='cell'>
 							<label htmlFor='published'>Publish</label>
@@ -120,7 +117,7 @@ function CreateArticle() {
 						</div>
 						<div className='cell'>
 							<label htmlFor='categories'>Categories</label>
-							<select name='categories' id='categories' ref={categories}>
+							<select name='categories' required id='categories' ref={categories}>
 								<option value="AI">AI</option>
 								<option value="Programming Languages">Programming Languages</option>
 								<option value="Systems Design">Systems Design</option>
