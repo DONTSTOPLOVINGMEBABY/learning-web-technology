@@ -1,0 +1,23 @@
+#homepage_wrapper {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 56px calc(100% - 56px);
+    grid-template-columns: 300px calc(100% - 300px);
+}
+
+#header {
+    grid-column: 1/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Raleway";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#sidebar_home {
+    grid-column: 1/2 ; 
+    grid-row : 2/3 ; 
+    background-color: #F9FBFA;
+}

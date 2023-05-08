@@ -1,0 +1,10 @@
+Maybe make a grid for the user site, where you have a sidebar that you can use to filter results and show articles by author, category, view most recent articles or something 
+
+
+Sidebar Homepage 
+------------------
+
+1. filter by author 
+2. filter by category
+3. filter from oldest-to-newest-and-vice-versa 
+
