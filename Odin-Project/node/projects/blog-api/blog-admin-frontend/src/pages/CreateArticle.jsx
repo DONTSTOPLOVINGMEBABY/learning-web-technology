@@ -33,7 +33,7 @@ function CreateArticle() {
 			'categories' : categories.current.value, 
 			'content' : content.current.getContent()
 		}
-		let postData = await fetch("http://localhost:3001/admin/create-article", {
+		let postData = await fetch("https://hjacobs-rest-api-production.up.railway.app/admin/create-article", {
 			method : 'POST', 
 			headers : {
 				'Content-Type' : 'application/json', 
@@ -48,7 +48,7 @@ function CreateArticle() {
 	const grab_editor_api_key = async () => {
 		let token = authenicate_jwt() 
 		if (!token) { navigate("/admin/login") ; return } 
-		let key = await fetch("http://localhost:3001/admin/get_tiny_key", {
+		let key = await fetch("https://hjacobs-rest-api-production.up.railway.app/admin/get_tiny_key", {
 			method: "GET", 
 			headers: {
 				'Content-Type' : 'application/json', 
@@ -74,7 +74,7 @@ function CreateArticle() {
 			<div id={styles.make_article}>
 				{ editorApiKey ? 
 					
-					<form method='POST' action='http://localhost:3001/admin/create-article' onSubmit={send_form}>
+					<form method='POST' action='https://hjacobs-rest-api-production.up.railway.app/admin/create-article' onSubmit={send_form}>
 						<Editor
 						body_id='content_box'
 						apiKey={editorApiKey}

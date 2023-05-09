@@ -26,7 +26,7 @@ function SideBarHome ( props ) {
 
     const setAuthor = async () => {
         let new_author = authorRef.current.value
-        let articles = await fetch("http://localhost:3001/", {
+        let articles = await fetch("https://hjacobs-rest-api-production.up.railway.app/", {
             method: 'GET', 
             headers : {
                 'Content-Type' : 'application/json', 

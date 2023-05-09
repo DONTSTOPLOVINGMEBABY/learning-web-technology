@@ -20,7 +20,7 @@ function LoginPage() {
             setHideLogin(false)
             return
         }
-        let authenticate = await fetch("http://localhost:3001/admin/verify", {
+        let authenticate = await fetch("https://hjacobs-rest-api-production.up.railway.app/admin/verify", {
             method: 'GET', 
             headers : { 
 				'Content-Type' : 'application/json', 
@@ -32,7 +32,7 @@ function LoginPage() {
     }
 
     const fetchLogin = async () => {
-        return await fetch("http://localhost:3001/admin/login", {
+        return await fetch("https://hjacobs-rest-api-production.up.railway.app/admin/login", {
             method: 'POST', 
             headers : { 'Content-Type' : 'application/json' 
             }, 
@@ -86,7 +86,7 @@ function LoginPage() {
                     />
                 </div>
                 <div id={styles.right_side_login}>
-                    <form id={styles.login_form} action="http://localhost:3001/admin/login" method="POST" onSubmit={submitLogin}>
+                    <form id={styles.login_form} action="https://hjacobs-rest-api-production.up.railway.app/admin/login" method="POST" onSubmit={submitLogin}>
                         <h1 id={styles.form_title}>Admin Login</h1>
                         <div className={styles.login_input_cell}>
                             <input type="text" name="username" ref={username} id={styles.username_input} placeholder='Username' required 

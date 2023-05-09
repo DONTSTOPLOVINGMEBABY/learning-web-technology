@@ -18,7 +18,7 @@ function ArticlePage () {
     }
  
     const fetchArticle = async () => {
-        let articleData = await fetch(`http://localhost:3001/articles/${articleId}`, {
+        let articleData = await fetch(`https://hjacobs-rest-api-production.up.railway.app/articles/${articleId}`, {
             method: 'GET', 
         }) 
         if (!articleData.ok){ navigate("/blog") }

@@ -9,7 +9,7 @@ function HomePage () {
     const [articleData, setArticleData] = useState()
     
     const fetchArticleData = async () => {
-        let articles = await fetch("http://localhost:3001/", {
+        let articles = await fetch("https://hjacobs-rest-api-production.up.railway.app/", {
             method: 'GET', 
             headers : {
                 'Content-Type' : 'application/json', 

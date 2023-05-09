@@ -8,6 +8,7 @@ function Router () {
             <Routes>
                 <Route exact path="/blog" element={<HomePage/>}/>
                 <Route exact path="/articles/:articleId" element={<ArticlePage/>}/>
+                <Route path="*" element={<Navigate to="/blog" replace />} /> 
             </Routes>
         </BrowserRouter>
     )

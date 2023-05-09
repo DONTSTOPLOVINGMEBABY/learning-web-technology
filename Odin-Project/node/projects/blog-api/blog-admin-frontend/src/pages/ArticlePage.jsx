@@ -20,7 +20,7 @@ function ArticlePage () {
     }
  
     const fetchArticle = async () => {
-        let articleData = await fetch(`http://localhost:3001/admin/articles/${articleId}`, {
+        let articleData = await fetch(`https://hjacobs-rest-api-production.up.railway.app/admin/articles/${articleId}`, {
             method: 'GET', 
             headers: {
                 'Authorization' : `Bearer ${authenticate_jwt()}`
@@ -36,7 +36,7 @@ function ArticlePage () {
     }
 
     const publish_unpublish_article = async () => {
-        let changeStatus = await fetch(`http://localhost:3001/admin/make-article-live/${articleId}`, {
+        let changeStatus = await fetch(`https://hjacobs-rest-api-production.up.railway.app/admin/make-article-live/${articleId}`, {
             method: 'POST', 
             headers : {
                 'Authorization' : `Bearer ${authenticate_jwt()}`

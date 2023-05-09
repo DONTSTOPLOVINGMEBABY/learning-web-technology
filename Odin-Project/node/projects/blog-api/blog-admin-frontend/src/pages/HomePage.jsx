@@ -16,7 +16,7 @@ function HomePage() {
 	const get_admin_homepage = async () => {
 		let token = authenticate_jwt()
 		if (!token){ navigate("/admin/login") }
-		let articles = await fetch("http://localhost:3001/admin/home", {
+		let articles = await fetch("https://hjacobs-rest-api-production.up.railway.app/admin/home", {
 			method : 'GET', 
 			headers : { 
 				'Content-Type' : 'application/json', 
