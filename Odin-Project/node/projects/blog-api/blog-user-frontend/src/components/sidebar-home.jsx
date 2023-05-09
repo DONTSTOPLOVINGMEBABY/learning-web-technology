@@ -40,32 +40,44 @@ function SideBarHome ( props ) {
         props.setCriteria(newAuthors)
     }
 
-    const call_me = async () => {
-        let checked = []
-        holdRefs.forEach( (ref) => {
-            if (ref.current.checked){
-                checked.push(ref.current.name)
-            }
-        })
-        let articles = await fetch("http://localhost:3001/", {
-            method: 'GET', 
-            headers : {
-                'Content-Type' : 'application/json', 
-            }
-            })
-        if (!articles.ok){ return }
-        articles = await articles.json()
-        if (checked.length == 0) { props.setCriteria(articles) ; return }
-        if ( authorRef.current.value === 'all'){
-            let display_articles = articles.filter( article => article.categories.some( category => checked.includes(category)) )
-            props.setCriteria( display_articles ) 
-        }
-        else {
-            let author = authorRef.current.value 
-            let display_articles = articles.filter( article => article.author === author && article.categories.some( category => checked.includes(category)))
-            props.setCriteria( display_articles )
-        }
-    }
+    // const call_me = async () => {
+    //     let checked = {}
+    //     holdRefs.forEach( (ref) => {
+    //         if (ref.current.checked){
+    //             checked[ref.current.name] = true 
+    //         }
+    //     })
+
+    //     let articles = await fetch("http://localhost:3001/", {
+    //         method: 'GET', 
+    //         headers : {
+    //             'Content-Type' : 'application/json', 
+    //         }
+    //         })
+    //     if (!articles.ok){ return }
+    //     articles = await articles.json()
+    //     console.log(checked)
+    //     console.log(Object.keys(checked).length)
+    //     if (Object.keys(checked).length == 0) { props.setCriteria(articles) ; return }
+    //     if ( authorRef.current.value === 'all'){
+    //         let different = false 
+    //         let display_articles = articles.filter( article => {
+    //             if (article.categories.length !== Object.keys(checked).length) { return false }
+    //             article.categories.forEach( (category) => {
+    //                 if ( category in checked ) {}
+    //                 else { different = true }
+    //             })
+    //             if (!different) { return true }
+    //             else { return false }
+    //         })
+    //         props.setCriteria(display_articles) 
+    //     }
+    //     else {
+    //         let author = authorRef.current.value 
+    //         let display_articles = articles.filter( article => article.author === author && article.categories.some( category => checked.includes(category)))
+    //         props.setCriteria( display_articles )
+    //     }
+    // }
 
 
 
@@ -76,14 +88,14 @@ function SideBarHome ( props ) {
 
     return (
         <div id={props.id}>
-            <div id={styles.sort_categories}>
+            {/* <div id={styles.sort_categories}>
                 { allCategories && holdRefs && allCategories.map( (category, index) => {
                     return ( <div key={category} id={styles.checkbox_container}>
                         <input type="checkbox" onChange={call_me} name={category} ref={holdRefs[index]} />
                         <label htmlFor={category}>{category}</label>
                     </div> ) 
                 })}
-            </div>
+            </div> */}
             <div id={styles.sort_author}>
                 <select onChange={setAuthor} id={props.select_author} ref={authorRef}>
                     <option value="all">All Authors</option>

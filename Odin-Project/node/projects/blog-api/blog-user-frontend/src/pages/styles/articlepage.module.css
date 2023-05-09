@@ -1,0 +1,85 @@
+#article_container {
+    width: 100% ;
+    height: 100% ; 
+    display: flex ;
+    align-items: center ;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Lato";
+}
+
+#article {
+    margin-top: 5%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#categories {
+    color: #0673B6;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+#title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+#subtitle {
+    font-size: 1.5rem;
+    color: #555555;
+    margin-bottom: 20px;
+}
+
+#author {
+    font-style: italic;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+}
+
+#article_title_author {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+#publish_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#published_unpublished_txt {
+    margin-right: 12px;
+    font-size: 100%;
+}
+
+#content {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+#lil_home {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+#lil_home:hover {
+    transform : scale(1.1)
+}
+
+#categories_and_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
