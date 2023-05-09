@@ -27,14 +27,14 @@ function App() {
   const submitStock = async (e) => {
     e.preventDefault()
     console.log(stockInput.current.value)
-    let stock = await fetch("http://localhost:3001/form-guy", {
+    let stock = await fetch(`http://localhost:3001/form-guy/${stockInput.current.value}`, {
       method : 'POST', 
       body : JSON.stringify(stockInput.current.value)
     })
     if (!stock.ok) {console.log(stock) ; return }
     stock = await stock.json()
     console.log("helllo")
-    console.log(stock)
+    setChartData(stock)
 
   }
 

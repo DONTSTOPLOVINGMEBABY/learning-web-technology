@@ -2,9 +2,10 @@ const express = require('express')
 const app = express() 
 const fs = require('fs')
 const cors = require('cors')
-const {api_key} = require('./key')
 const {parse} = require('json2csv')
-
+const dotenv = require('dotenv')
+dotenv.config()
+const api_key = process.env.ALPHA_VANTAGE_API_KEY
 const PORT = 3001
 
 function get_daily_URL (stock, size='compact') {
@@ -48,13 +49,15 @@ app.get("/download", async (req, res) => {
     console.log(Object.keys(hello))
     console.log(hello["Meta Data"])
     // {  }
+    console.log(package)
+    console.log(api_key)
     res.json({name : stock, data : package})
 })
 
-app.post("/form-guy", async (req, res) => {
+app.post("/form-guy/:stock", async (req, res) => {
     console.log(req.body.stock)
     let stock = req.body.stock
-    let data = await fetch(get_daily_URL(stock))
+    let data = await fetch(get_daily_URL(req.params.stock))
     const dates = []
     const prices = []
     let hello = await data.text() 
@@ -65,13 +68,15 @@ app.post("/form-guy", async (req, res) => {
         dates.push(dateString)
         prices.push(hello["Time Series (Daily)"][nicety]['1. open'])
     }
+    console.log(hello)
     let package = dates.map( (date, index) => {
         return {date : date , price: prices[index]}
     })
     console.log(Object.keys(hello))
     console.log(hello["Meta Data"])
+    console.log(package)
     // {  }
-    res.json({name : stock, data : package})
+    res.json({name : req.params.stock, data : package.reverse()})
 })
 
 
