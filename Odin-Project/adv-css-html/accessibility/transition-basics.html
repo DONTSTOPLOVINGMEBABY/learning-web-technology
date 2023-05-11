@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Basics</title>
+</head>
+<body>
+    <h1>CSS Transitions</h1>
+    <h3 class="subtitle">CSS transitions let you animate a change from an element’s initial state to an end state.</h3>
+
+    <div id="button-container">
+        <h1>A simple button</h1>
+        <button id="simple-button">Activate</button>
+        <h3 class="subtitle">
+            This was achieved using the transition property, which is actually a shorthand property for transition-property, transition-duration, transition-timing-function and transition-delay.
+        </h3>
+        <h3 subtitle>
+            <ul>
+                <li>
+                    transition-property - This determines what CSS property will be transitioned. In this case it is the background-color.
+                </li>
+                <li>
+                    transition-duration - This determines the duration that the transition will occur over. In this case the color change will gradually happen over 1 second.
+                </li>
+                <li>
+                    transition-timing-function - This lets us change the speed of the transition over the course of its duration. Here it will ease-out, meaning the color change will be faster at the start than at the end of the transition.
+                </li>
+                <li>
+                    transition-delay - This determines the delay at which the transition will start. In this case, the color change starts a quarter of a second after the cursor rests on the button.
+                </li>
+                <li>
+                    Transition is a shorthand that combines transition-duration transition property and transition delay. Written -> transition: background-color 1s ease-out 0.25s;
+                </li>
+            </ul>
+        </h3>
+    </div>
+
+    <h1>Stacking Context</h1>
+    <div id="stack">
+
+    </div>
+
+
+    <style>
+        .subtitle {
+            color: gray;
+        }
+
+        #button-container { 
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #simple-button {
+            width: 120px;
+            height: 40px;
+            border: black 2px solid;
+            color: black;
+            background-color: inherit;
+            transition: .5s ease-in;
+            transition-property: background-color color;
+        }
+
+        #simple-button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        ul, li {
+            margin: 0;
+            color: grey;
+        }
+
+        #stack {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            transition: transform 2s 1s;
+        }
+
+        #stack:hover {
+            transform: rotate(180deg);
+        }
+
+    </style>
+</body>
+</html>

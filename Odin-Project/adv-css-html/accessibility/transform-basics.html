@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of Transforms</title>
+</head>
+<body>
+    
+
+    <img id="rotate" src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=595&height=400&name=image8-2.jpg" alt="a google picture"/>
+    
+    <img id="scale" src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=595&height=400&name=image8-2.jpg" alt="a google picture"/>
+    
+    <img id="skew" src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=595&height=400&name=image8-2.jpg" alt="a google picture"/>
+    
+    <img id="translate" src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=595&height=400&name=image8-2.jpg" alt="a google picture"/>
+
+
+    <h1>Chaining Multiple Transforms</h1>
+    <h3 class="gray">Now that you have a grasp of 2D transforms, we will learn how to chain them. Chaining multiple transforms is as simple as adding more transform functions with a space between each one.</h3>
+
+
+    <div class="red-box"></div>
+    <div class="blue-box"></div>
+
+    <h1 id="play-with-perspective">Lets play around with perspective</h1>
+    <h3 class="gray">Essentially, by setting a perspective value, we are telling the object to render as if we were viewing it from a specific distance on the z-axis.</h3>
+    <h3 class="gray">Unlike other transform function values, perspective must be declared first (leftmost) when there are multiple transform function values. In the upcoming examples for rotate, scale, and translate, we will be able to see how it affects the target element.</h3>
+
+    <div class="container">
+        <div class="cube">
+          <div class="side front"></div>
+          <div class="side back"></div>
+          <div class="side left"></div>
+          <div class="side right"></div>
+          <div class="side top"></div>
+          <div class="side bottom"></div>
+        </div>
+    </div>
+
+
+    <style>
+        img {
+            margin: 100px;
+        }
+
+        #rotate {
+            transform: rotate(45deg);
+            /* transform: rotate(1rad); */
+            /* transform: rotate(.3turn); */
+        }
+
+        #scale {
+            /* transform: scaleX(.25); */
+            /* transform: scaleY(1.5); */
+            /* transform: scale(0.25, 1.5); */
+            transform: scale(0.5);
+        }
+
+        #skew {
+            transform: skewX(45deg);
+            /* transform: skewY(-1.571rad); */
+            /* transform: skew(45deg, -.5rad); */
+        }
+
+        #translate {
+            /* transform: translateX(20px); */
+            /* transform: translateY(-33%); */
+            /* transform: translateXY(20px, -33%); */
+            transform: translate(20px, -33%);
+        }
+
+        .gray {
+            color: gray;
+        }
+
+         .red-box,
+        .blue-box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        .red-box {
+            background: red;
+            transform: rotate(45deg) translate(200%);
+        }
+
+        .blue-box {
+            background: blue;
+            transform: translate(200%) rotate(45deg);
+        } 
+
+        #play-with-perspective {
+            margin-top: 400px;
+        }
+
+                /* The parent container, with perspective */
+        .container {
+        width: 400px;
+        height: 400px;
+        border: 2px solid white;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 800px;
+        perspective-origin: top right;
+        }
+
+        /* The child element, with 3D tranforms preserved */
+        .cube {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        transform-style: preserve-3d;
+        animation: cubeRotate 10s linear infinite;
+        }
+
+        /* The sides of the cube, absolutely positioned */
+        .side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        border: 2px solid white;
+        }
+
+        /* Background colors for the cube's sides to help visualize the work */
+        .front { background-color: #d50000; }
+        .back { background-color: #aa00ff; }
+
+        .left { background-color: #304ffe; }
+        .right { background-color: #0091ea; }
+
+        .top { background-color: #00bfa5; }
+        .bottom { background-color: #64dd17; }
+
+        .front {
+        background-color: #d50000;
+        transform: translateZ(100px);
+        }
+
+
+        .back {
+        background-color: #aa00ff;
+        transform: translateZ(-100px);
+        /* or */
+        /* transform: rotateY(180deg) translateZ(100px); */
+        }
+
+        .left {
+        background-color: #304ffe;
+        transform: rotateY(90deg) translateZ(100px);
+        /* or */
+        /* transform: translateX(100px) rotateY(90deg); */
+        }
+
+        .right {
+        background-color: #0091ea;
+        transform: rotateY(-90deg) translateZ(100px);
+        /* or */
+        /* transform: translateX(-100px) rotateY(90deg); */
+        }
+
+        .top {
+        background-color: #00Bfa5;
+        transform: rotateX(90deg) translateZ(100px);
+        /* or */
+        /* transform: translateY(-100px) rotateX(90deg); */
+        }
+        
+        .bottom {
+        background-color: #64dd17;
+        transform: rotateX(-90deg) translateZ(100px);
+        /* or */
+        /* transform: translateY(100px) rotateX(90deg); */
+        }
+
+        @keyframes cubeRotate {
+        from { transform: rotateY(0deg) rotateX(720deg) rotateZ(0deg); }
+        to { transform: rotateY(360deg) rotateX(0deg) rotateZ(360deg); }
+        }
+
+
+
+    </style>
+
+
+</body>
+</html>

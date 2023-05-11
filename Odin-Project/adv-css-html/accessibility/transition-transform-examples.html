@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDN Transition Examples</title>
+</head>
+<body>
+    <h1>Following along with MDN</h1>
+
+    <h1>A simple square that gets bigger on hover</h1>
+    <div class="square-container">
+        <div id="square-that-grows">
+        </div>
+    </div>
+
+    <h1>A square that rotates and gets bigger</h1>
+    <div class="square-container">
+        <div id="square-that-rotates">
+        </div>
+    </div>
+
+    <div id="ball-game">
+        <div id="ball"></div>
+    </div>
+
+
+    <style>
+        .square-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            padding: 50px;
+            margin: 50px;
+        }
+
+        #square-that-grows {
+            height: 120px;
+            width: 120px;
+            background-color: red;
+            transition: ease 1s transform;
+        }
+
+        #square-that-rotates { 
+            height: 120px;
+            width: 120px;
+            background-color: darkblue;
+            transition: ease 1s transform;
+        }
+
+        #square-that-grows:hover {
+            transform: scale(2);
+        }
+
+        #square-that-rotates:hover {
+            transform: rotate(180deg) scale(2)
+        }
+
+        #ball-game {
+            height: 500px;
+            width: 500px;
+            border: 2px black solid;
+            margin: 50px;
+            overflow: hidden;
+        }
+
+        #ball {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: red;
+            transition: transform 1s;
+            /* transform: translate(12px, 300px); */
+        }
+
+        /* MDN: transition: width 2s, height 2s, background-color 2s, rotate 2s; */
+    </style>
+
+
+    <script>
+        let game_box = document.getElementById('ball-game')
+        let game_box_info = game_box.getBoundingClientRect()
+        let ball = document.getElementById('ball')
+        let height = game_box.client
+        let width= game_box.clientWidth
+        let translateY = 0
+        let translateX = 0
+
+
+        game_box.addEventListener( 'click', (e) => {
+            console.log(e.clientX)
+            console.log(e.clientY)
+            ball.style.transform = `translateY(${e.clientY - game_box_info.top}px)`
+            ball.style.transform += `translateX(${e.clientX - game_box_info.left}px)`
+            console.log()
+        })
+        ball.addEventListener( 'click', (e) => {
+            e.stopPropagation()
+        })
+
+        // window.addEventListener( 'keydown', (e) => {
+        //     if (e.key == 'ArrowDown'){
+        //         ball.style.transform += `translateY(${translateY}px)`
+        //         ball.style.transform = `translateX(${translateX}px)`
+        //         translateY += 1 
+        //     }
+        // })
+        // window.addEventListener( 'keydown', (e) => {
+        //     if (e.key == 'ArrowRight'){
+        //         ball.style.transform = `translateY(${translateY}px)`
+        //         ball.style.transform += `translateX(${translateX}px)`
+        //         translateX += 1 
+        //     }
+        // })
+
+        // window.addEventListener( 'keydown', (e) => {
+        //     if (e.key == 'ArrowLeft'){
+        //         ball.style.transform -= `translateX(${translateX}px)` 
+        //     }
+        // })
+
+
+    
+
+
+
+        console.log(height, width)
+
+    </script>
+
+
+</body>
+</html>
