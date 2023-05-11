@@ -51,7 +51,9 @@ app.get("/download", async (req, res) => {
     // {  }
     console.log(package)
     console.log(api_key)
-    res.json({name : stock, data : package})
+    package = package.reverse()
+    let first_item = package[0]
+    res.json({name : stock, data : package, first_item})
 })
 
 app.post("/form-guy/:stock", async (req, res) => {
@@ -75,8 +77,10 @@ app.post("/form-guy/:stock", async (req, res) => {
     console.log(Object.keys(hello))
     console.log(hello["Meta Data"])
     console.log(package)
+    package = package.reverse()
+    let first_item = package[0]
     // {  }
-    res.json({name : req.params.stock, data : package.reverse()})
+    res.json({name : req.params.stock, data : package, first_item})
 })
 
 

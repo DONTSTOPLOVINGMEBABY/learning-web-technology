@@ -3,12 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Papa from 'papaparse'
-import { LineChart, Line, CartesianGrid, YAxis, XAxis } from 'recharts'
+import { LineChart, Line, CartesianGrid, YAxis, XAxis, ReferenceLine } from 'recharts'
 
 
 function App() {
   const [count, setCount] = useState(0)
   const [chartData, setChartData] = useState()
+  const [firstPrice, setFirstPrice] = useState() 
+  const [maxPrice, setMaxPrice] = useState()
+  const [minPrice, setMinPrice] = useState()
   const stockInput = useRef()
 
 
@@ -19,9 +22,9 @@ function App() {
   const try_this = async () => {
     const data = await fetch("http://localhost:3001/download") ; 
     const data_json = await data.json()   
-    console.log(data_json)
     setChartData(data_json)
-    console.log(data_json)
+    setFirstPrice(data_json["first_item"]["price"])
+    console.log("One", data_json)
   }
 
   const submitStock = async (e) => {
@@ -35,7 +38,7 @@ function App() {
     stock = await stock.json()
     console.log("helllo")
     setChartData(stock)
-
+    setFirstPrice(stock["first_item"]["price"])
   }
 
   useEffect( () => {
@@ -50,7 +53,8 @@ function App() {
         <Line type="monotone" dataKey="price" stroke="#0e4c4c" />
         <CartesianGrid stroke='#ccc' strokeDasharray="5 5"/>
         <XAxis dataKey="date"/> 
-        <YAxis dataKey="price" /> 
+        <YAxis dataKey="price" domain={['dataMin', 'dataMax']}/> 
+        <ReferenceLine y={firstPrice} stroke='black'/> 
       </LineChart> </> : null }
       <form onSubmit={submitStock}>
         <input placeholder="Stock Symbol" name='stock' ref={stockInput} id='stock-input'/>
