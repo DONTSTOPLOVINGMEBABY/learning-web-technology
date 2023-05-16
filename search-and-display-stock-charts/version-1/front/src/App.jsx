@@ -20,7 +20,7 @@ function App() {
   }
 
   const try_this = async () => {
-    const data = await fetch("http://localhost:3001/download") ; 
+    const data = await fetch("https://hjacobs-rest-api-production.up.railway.app/download") ; 
     const data_json = await data.json()   
     setChartData(data_json)
     setFirstPrice(data_json["first_item"]["price"])
@@ -30,7 +30,7 @@ function App() {
   const submitStock = async (e) => {
     e.preventDefault()
     console.log(stockInput.current.value)
-    let stock = await fetch(`http://localhost:3001/form-guy/${stockInput.current.value}`, {
+    let stock = await fetch(`https://hjacobs-rest-api-production.up.railway.app/form-guy/${stockInput.current.value}`, {
       method : 'POST', 
       body : JSON.stringify(stockInput.current.value)
     })
