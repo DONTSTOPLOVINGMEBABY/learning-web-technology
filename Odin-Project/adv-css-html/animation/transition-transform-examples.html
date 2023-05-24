@@ -25,6 +25,14 @@
         <div id="ball"></div>
     </div>
 
+    <div id="parent-container-goog-image">
+        <img id="make-3d" src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=595&height=400&name=image8-2.jpg" alt="a google picture"/>
+    </div>
+
+    <div id="another-translate-example">
+        BOX
+    </div>
+
 
     <style>
         .square-container {
@@ -73,6 +81,36 @@
             background-color: red;
             transition: transform 1s;
             /* transform: translate(12px, 300px); */
+        }
+
+        #parent-container-goog-image {
+            perspective: 1500px;
+            height: 1000px;
+        }
+
+        #make-3d {
+            margin-top: 200px;
+            margin-left: 100px;
+            transform: rotateX(10deg) rotateY(-20deg) rotateZ(40deg) ;
+            transition: .5s ease-in transform; 
+        }
+
+        #make-3d:hover {
+            transform: rotateY(0) rotateZ(0) rotateX(180deg);
+        }
+
+        #another-translate-example {
+            height: 300px;
+            width: 300px;
+            background-color: #42B5A2;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            /* margin-bottom: 200px; */
+            /* margin-left: 100px; */
+            transform: translate(100px, -200px);
         }
 
         /* MDN: transition: width 2s, height 2s, background-color 2s, rotate 2s; */
