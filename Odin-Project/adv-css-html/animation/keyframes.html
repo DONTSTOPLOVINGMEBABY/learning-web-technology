@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframes</title>
+</head>
+<body>
+
+    <div class="ball-container1">
+        <div id="the-ball-itself">
+        </div>
+    </div>
+
+    <div class="ball-container">
+        <div id="second-ball">
+
+        </div>
+    </div>
+
+    <div id="text-container">
+        <div id="the-text-itself">
+        GREETINGS FROM <span style="color : red">U</span><span style="color : white">S</span><span style="color : blue">A</span>
+        </div>
+    </div>
+    
+
+    <style>
+
+        body {
+            margin: 0;
+            padding-top: 50px;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: darkslategrey;
+            flex-direction: column;
+        }
+
+        .ball-container {
+            margin-top: 100px;
+        }
+
+        #the-ball-itself {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            /* animation-duration: 5s;
+            animation-name: change-color;
+            animation-iteration-count: infinite; 
+            animation-direction: alternate; */
+            animation: 5s change-color infinite alternate; /* Shorthand!! */
+        }
+
+        /* from/to is alias for % with keyframes
+
+            @keyframes change-color {
+                from {
+                    background-color: red;
+                }
+
+                to {
+                    background-color: green;
+                }
+            }
+        */
+
+        @keyframes change-color {
+            25% {
+                background-color: red;
+            }
+
+            50% {
+                background-color: #42B5A2;
+            }
+
+            75% {
+                background-color: yellow;
+            }
+
+            100% {
+                background-color: black;
+            }
+        }
+
+        #second-ball {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            /* background-color: red; */
+            animation: 3s change-color-get-big infinite alternate;
+        }
+
+        @keyframes change-color-get-big {
+            from {
+                background-color: red;
+            }
+
+            75% {
+                background-color: yellow;
+                transform: scale(1.5);
+            }
+
+            100% {
+                background-color: black;
+            }
+        }
+
+        #text-container {
+            margin-top: 150px;
+            /* position: relative; */
+            width: 100%;
+            height: 200px;
+            /* min-width: 600px; */
+        }
+
+        #the-text-itself {
+            font-size: 3rem;
+            animation: 5s roll-text infinite normal;
+            /* width: 100%; */
+            /* position: absolute;  */
+        }
+
+        @keyframes roll-text {
+            from {
+                /* left: -100%; */
+                margin-left: -50%;
+                width: 300%;
+            }
+            to {
+                /* left: 100%; */
+                margin-left: 100%;
+                width: 100%;
+            }
+        }
+
+    </style>
+</body>
+</html>
