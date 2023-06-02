@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form with Nice Dots</title>
+</head>
+<body>
+    
+
+    <div id="login-form-container">
+        <form action="http://localhost:3000" method="POST">
+            <div class="form-cell">
+                <label for="username">
+                    <input id="username" name="username" type="text" placeholder="username">
+                </label>
+            </div>
+            <div class="form-cell">
+                <label for="password">
+                    <input id="password" name="password" type="password" placeholder="password">
+                </label>
+            </div>
+            <!-- <div class="everything-but-the-button-container">
+                <div class="form-cell">
+                    <span>Username</span>
+                    <span>Password</span>
+                </div>
+                <div class="form-cell">
+                    <input id="username" type="text">
+                    <input id="password" type="password">
+                </div>
+            </div> -->
+
+            <div class="center-button">
+                <button id="login-button">LOGIN</button>
+            </div>
+        </form>
+        <object data="./assets/white-dot.svg" id="dot">
+    </div>
+
+
+
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(196,195,191,1) 21%, rgba(56,73,179,1) 37%, rgba(0,23,91,1) 47%, rgba(6,72,162,1) 55%, rgba(154,204,255,1) 65%, rgba(3,135,203,1) 75%, rgba(54,157,196,1) 83%, rgba(42,65,71,1) 89%, rgba(0,212,255,1) 100%);
+            margin: 0;
+
+        }
+
+        /* Form components styling */
+
+        .center-button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        #login-button {
+            width: 200px;
+            height: 40px;
+            font-weight: 700;
+            font-size: 1.25;
+            border: none;
+            border-radius: 25px;
+            background-color: #6EB454 ; 
+            color: white;
+            font-weight: 700;
+            outline: black ; 
+            cursor: pointer;
+        }
+
+        
+        .form-cell {
+            display: flex;
+            flex-direction: column;
+            height: 75px;
+        }
+
+
+        .everything-but-the-button-container {
+            display: flex;
+        }
+
+
+        #login-form-container {
+            height: 500px;
+            width: 400px;
+            border-radius: 25px;
+            border: 2px solid black;
+            background-color: rgb(253, 253, 253);
+        }
+
+        form {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+    </style>
+
+    <script>
+
+    </script>
+
+
+</body>
+</html>
