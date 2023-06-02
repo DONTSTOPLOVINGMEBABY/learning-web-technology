@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Accessibility</title>
+</head>
+<body>
+
+
+    <div id="something">
+        <h1 class="button" tabindex="1">First</h1>
+        <h1 class="button" tabindex="2">Second</h1>
+        <h1 class="button" tabindex="3">Third</h1>
+    </div>
+
+    <style>
+        *:focus {
+            outline: none;
+            border: 1px solid green;
+        }
+    </style>
+
+
+    <script>
+        const buttons = document.querySelectorAll('.button');
+
+        function nameAlerter(e) {
+            if (e.type === 'click' || e.key === ' ' || e.key === 'Enter') {
+                alert(e.target.textContent);
+            }
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', nameAlerter)
+            button.addEventListener('keydown', nameAlerter)
+        })
+    </script>
+
+</body>
+</html>
