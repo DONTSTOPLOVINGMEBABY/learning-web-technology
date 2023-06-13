@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+}
+
+h5,  p {
+    margin: 0;
+    padding: 0;
+}
+
+
+#root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat {
+    width: 99%;
+    height: 50%;
+    overflow: auto;
+    border: black 2px solid;
+    margin: 12px 0px;
+}
+
+.message {
+    width: 200px;
+    max-height: 100px;
+    margin-bottom: 12px;
+    background-color: darkslategray;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px;
+    overflow: auto;
+}
+
+.form-cell {
+    display: flex;
+    /* flex-direction: column; */
+    width: 220px;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    margin: 12px 0;
+}
+
+#submit-button {
+    margin-left: 6px;
+}
