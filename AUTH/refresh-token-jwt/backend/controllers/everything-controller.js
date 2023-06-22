@@ -26,6 +26,7 @@ class AuthenticationController {
             async function (req, res) {
                 try {
                     const errors = validationResult(req)
+                    console.log(req.body)
                     if (!errors.isEmpty()){
                         return res.status(400).json({ errors: errors.array() })
                     }
