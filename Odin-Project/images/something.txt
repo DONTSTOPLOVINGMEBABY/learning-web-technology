@@ -1,9 +1,0 @@
-Here is a file, let's see if we can preserve it's commit history
-when we try to move it to another folder. 
-
-THe original message is, "Hello my name is Henry"
-
-
-some more changed
-
-one more
