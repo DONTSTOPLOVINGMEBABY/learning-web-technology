@@ -24,7 +24,8 @@ function thisTakesAWhile () {
 
 
 app.get("/", async (req, res) => {
-    let number = await client.get('cached-number')
+    let number = await client.get('cached-dooker')
+    console.log(number)
     if (number){
         return res.send(`${number}`)    
     }
