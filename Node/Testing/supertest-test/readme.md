@@ -1,0 +1,1 @@
+Use this command to run the test file using ESM : node --experimental-vm-modules node_modules/jest/bin/jest.js 

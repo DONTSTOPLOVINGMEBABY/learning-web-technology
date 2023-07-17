@@ -1,7 +1,4 @@
 import Express from "express"
-
-
-
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from "cors"
@@ -10,19 +7,21 @@ import morgan from "morgan"
 import cookieParser from "cookie-parser"
 dotenv.config()
 
-function CreateApp() {
+function CreateApp(DB) {
     const app = Express()
 
     // constants 
-    const DB = process.env.CONNECTION_STRING
-    const PORT = process.env.PORT 
+    // const DB = process.env.CONNECTION_STRING
 
     // Connect DB
-    async function connect_mongo () {
-        let connection = await mongoose.connect(DB)
-        console.log(`[CONNECTED] Mongo`)
+    if (typeof DB === 'string'){
+        async function connect_mongo () {
+            let connection = await mongoose.connect(DB)
+            // console.log(typeof connection)
+            console.log(`[CONNECTED] Mongo`)
+        }
+        connect_mongo()
     }
-    connect_mongo()
 
 
     // Middlewares 

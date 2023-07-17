@@ -1,5 +1,7 @@
 import CreateApp from "./app.js"
-const app = CreateApp()
+import dotenv from 'dotenv'
+dotenv.config()
+const app = CreateApp(process.env.CONNECTION_STRING)
 
 
 app.listen(4000, () => {
