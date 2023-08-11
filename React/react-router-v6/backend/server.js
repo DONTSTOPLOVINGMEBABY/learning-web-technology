@@ -1,8 +1,10 @@
 import Express from "express"
 import morgan from "morgan"
 import pkg from 'jsonwebtoken'
+import cors from 'cors'
 const { sign, verify } = pkg
 const app = Express()
+
 
 const user = {
     username : 'user', 
@@ -14,7 +16,7 @@ const protected_data = 'this is totally awesome and totally protected. hands off
 const ACCESS_TOKEN = `hello-darkness-my-old-friend` // not that serious 
 
 app.use(morgan('dev'))
-
+app.use(cors())
 
 app.get('/authorize', async (req, res) => {
     try {
@@ -32,6 +34,15 @@ app.get('/protected', authMiddleware, (req, res) => {
 app.get('/not-protected', (req, res) => {
     res.json('just some simple data')
 })
+
+
+app.get('/test-loader', (req, res) => {
+    setTimeout( () => {
+        res.send('hello')
+    }, 1000)
+})
+
+
 
 async function signToken (data) {
     return new Promise( (resolve, reject) => {
